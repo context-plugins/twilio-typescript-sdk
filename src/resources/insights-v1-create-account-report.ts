@@ -1,0 +1,53 @@
+import type { AuthSchemes } from "../auth-schemes.js";
+import type { ApiPromise, RawClient, RequestOptions } from "../core/index.js";
+import { ResponseError, s } from "../core/index.js";
+import {
+  insightsV2CreateAccountReportRequestSchema,
+  type InsightsV2CreateAccountReportRequest,
+} from "../models/insights-v2-create-account-report-request.js";
+import {
+  insightsV2CreateReportResponseSchema,
+  type InsightsV2CreateReportResponse,
+} from "../models/insights-v2-create-report-response.js";
+import type { Servers } from "../servers.js";
+
+export class InsightsV1CreateAccountReport {
+  readonly #rawClient: RawClient;
+  readonly #servers: Servers;
+  readonly #auth: AuthSchemes;
+
+  constructor(rawClient: RawClient, servers: Servers, auth: AuthSchemes) {
+    this.#rawClient = rawClient;
+    this.#servers = servers;
+    this.#auth = auth;
+  }
+
+  createAccountReport(
+    request: InsightsV1CreateAccountReport.CreateAccountReportRequest,
+    options?: RequestOptions,
+  ): ApiPromise<InsightsV2CreateReportResponse, ResponseError> {
+    return this.#rawClient.execute<InsightsV2CreateReportResponse, ResponseError>(
+      {
+        method: "POST",
+        url: this.#servers.default14("/v2/Voice/Reports"),
+        auth: this.#auth.accountSidAuthToken,
+        body: {
+          kind: "json",
+          value: request.body,
+          schema: s.optional(s.lazy(() => insightsV2CreateAccountReportRequestSchema)),
+        },
+      },
+      {
+        success: { kind: "json", schema: insightsV2CreateReportResponseSchema },
+        errorFactory: ResponseError,
+      },
+      options,
+    );
+  }
+}
+
+export namespace InsightsV1CreateAccountReport {
+  export type CreateAccountReportRequest = {
+    body?: InsightsV2CreateAccountReportRequest;
+  };
+}

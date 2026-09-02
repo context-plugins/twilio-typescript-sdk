@@ -1,0 +1,24 @@
+import { s, type Schema } from "../core/index.js";
+import { status4Schema, type Status4 } from "./status4.js";
+
+export type FlexV2Instance = {
+  flexInstanceSid?: string;
+  accountSid?: string;
+  status?: Status4;
+  dateCreated?: Date;
+  dateUpdated?: Date;
+};
+
+export const flexV2InstanceSchema: Schema<FlexV2Instance> = s.object<FlexV2Instance>({
+  flexInstanceSid: s.optional(s.string()),
+  accountSid: s.optional(s.string()),
+  status: s.optional(s.lazy(() => status4Schema)),
+  dateCreated: s.optional(s.dateTime()),
+  dateUpdated: s.optional(s.dateTime()),
+  _keysMap: {
+    flexInstanceSid: "flex_instance_sid",
+    accountSid: "account_sid",
+    dateCreated: "date_created",
+    dateUpdated: "date_updated",
+  },
+});

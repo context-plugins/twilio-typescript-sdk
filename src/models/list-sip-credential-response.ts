@@ -1,0 +1,36 @@
+import { s, type Schema } from "../core/index.js";
+import {
+  apiV2010AccountSipSipCredentialListSipCredentialSchema,
+  type ApiV2010AccountSipSipCredentialListSipCredential,
+} from "./api-v2010-account-sip-sip-credential-list-sip-credential.js";
+
+export type ListSipCredentialResponse = {
+  end?: number;
+  firstPageUri?: string;
+  nextPageUri?: string | null;
+  page?: number;
+  pageSize?: number;
+  previousPageUri?: string | null;
+  start?: number;
+  uri?: string;
+  credentials?: ApiV2010AccountSipSipCredentialListSipCredential[];
+};
+
+export const listSipCredentialResponseSchema: Schema<ListSipCredentialResponse> =
+  s.object<ListSipCredentialResponse>({
+    end: s.optional(s.number()),
+    firstPageUri: s.optional(s.string()),
+    nextPageUri: s.optionalNullable(s.string()),
+    page: s.optional(s.number()),
+    pageSize: s.optional(s.number()),
+    previousPageUri: s.optionalNullable(s.string()),
+    start: s.optional(s.number()),
+    uri: s.optional(s.string()),
+    credentials: s.optional(s.array(s.lazy(() => apiV2010AccountSipSipCredentialListSipCredentialSchema))),
+    _keysMap: {
+      firstPageUri: "first_page_uri",
+      nextPageUri: "next_page_uri",
+      pageSize: "page_size",
+      previousPageUri: "previous_page_uri",
+    },
+  });

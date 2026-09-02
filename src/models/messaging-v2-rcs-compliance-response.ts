@@ -1,0 +1,19 @@
+import { s, type Schema } from "../core/index.js";
+import {
+  messagingV2RcsComplianceCountryResponseSchema,
+  type MessagingV2RcsComplianceCountryResponse,
+} from "./messaging-v2-rcs-compliance-country-response.js";
+
+export type MessagingV2RcsComplianceResponse = {
+  registrationSid: string;
+  countries?: MessagingV2RcsComplianceCountryResponse[];
+};
+
+export const messagingV2RcsComplianceResponseSchema: Schema<MessagingV2RcsComplianceResponse> =
+  s.object<MessagingV2RcsComplianceResponse>({
+    registrationSid: s.string(),
+    countries: s.optional(s.array(s.lazy(() => messagingV2RcsComplianceCountryResponseSchema))),
+    _keysMap: {
+      registrationSid: "registration_sid",
+    },
+  });

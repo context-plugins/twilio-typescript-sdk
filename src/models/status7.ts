@@ -1,0 +1,10 @@
+import { s, type EnumSchema } from "../core/index.js";
+
+export const Status7 = {
+  Active: "ACTIVE",
+  Inactive: "INACTIVE",
+  Closed: "CLOSED",
+} as const;
+export type Status7 = (typeof Status7)[keyof typeof Status7] | (string & {});
+
+export const status7Schema: EnumSchema<Status7> = s.enumOf<Status7>(Status7);

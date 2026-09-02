@@ -1,0 +1,12 @@
+import { s, type EnumSchema } from "../core/index.js";
+
+export const CompositionEnumFormat = {
+  Mp4: "mp4",
+  Webm: "webm",
+} as const;
+export type CompositionEnumFormat =
+  | (typeof CompositionEnumFormat)[keyof typeof CompositionEnumFormat]
+  | (string & {});
+
+export const compositionEnumFormatSchema: EnumSchema<CompositionEnumFormat> =
+  s.enumOf<CompositionEnumFormat>(CompositionEnumFormat);

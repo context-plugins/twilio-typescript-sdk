@@ -1,0 +1,21 @@
+import { s, type EnumSchema } from "../core/index.js";
+
+export const MessageEnumStatus = {
+  Queued: "queued",
+  Sending: "sending",
+  Sent: "sent",
+  Failed: "failed",
+  Delivered: "delivered",
+  Undelivered: "undelivered",
+  Receiving: "receiving",
+  Received: "received",
+  Accepted: "accepted",
+  Scheduled: "scheduled",
+  Read: "read",
+  PartiallyDelivered: "partially_delivered",
+  Canceled: "canceled",
+} as const;
+export type MessageEnumStatus = (typeof MessageEnumStatus)[keyof typeof MessageEnumStatus] | (string & {});
+
+export const messageEnumStatusSchema: EnumSchema<MessageEnumStatus> =
+  s.enumOf<MessageEnumStatus>(MessageEnumStatus);

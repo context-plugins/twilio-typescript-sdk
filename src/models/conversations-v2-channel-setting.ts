@@ -1,0 +1,20 @@
+import { s, type Schema } from "../core/index.js";
+import {
+  conversationsV2CaptureRuleSchema,
+  type ConversationsV2CaptureRule,
+} from "./conversations-v2-capture-rule.js";
+import {
+  conversationsV2StatusTimeoutsSchema,
+  type ConversationsV2StatusTimeouts,
+} from "./conversations-v2-status-timeouts.js";
+
+export type ConversationsV2ChannelSetting = {
+  statusTimeouts?: ConversationsV2StatusTimeouts;
+  captureRules?: ConversationsV2CaptureRule[];
+};
+
+export const conversationsV2ChannelSettingSchema: Schema<ConversationsV2ChannelSetting> =
+  s.object<ConversationsV2ChannelSetting>({
+    statusTimeouts: s.optional(s.lazy(() => conversationsV2StatusTimeoutsSchema)),
+    captureRules: s.optional(s.array(s.lazy(() => conversationsV2CaptureRuleSchema))),
+  });

@@ -1,0 +1,17 @@
+import { s, type Schema } from "../core/index.js";
+import {
+  messagingV1TollfreeVerificationSchema,
+  type MessagingV1TollfreeVerification,
+} from "./messaging-v1-tollfree-verification.js";
+import { metaSchema, type Meta } from "./meta.js";
+
+export type ListTollfreeVerificationResponse = {
+  verifications?: MessagingV1TollfreeVerification[];
+  meta?: Meta;
+};
+
+export const listTollfreeVerificationResponseSchema: Schema<ListTollfreeVerificationResponse> =
+  s.object<ListTollfreeVerificationResponse>({
+    verifications: s.optional(s.array(s.lazy(() => messagingV1TollfreeVerificationSchema))),
+    meta: s.optional(s.lazy(() => metaSchema)),
+  });
