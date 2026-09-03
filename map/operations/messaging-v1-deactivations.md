@@ -4,7 +4,7 @@
 
 Accessor: `client.messagingV1Deactivations` · Source: `src/resources/messaging-v1-deactivations.ts` · 1 operation · Request and error types: namespace `MessagingV1Deactivations`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
 
 ### fetchDeactivation
 

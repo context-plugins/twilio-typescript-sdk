@@ -4,7 +4,7 @@
 
 Accessor: `client.numbersV2EndUser` · Source: `src/resources/numbers-v2-end-user.ts` · 5 operations · Request types: namespace `NumbersV2EndUser`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
 
 ### createEndUser
 

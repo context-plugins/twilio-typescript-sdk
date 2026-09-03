@@ -1,9 +1,9 @@
 # Reference
 
-> Source: [TwilioClient](src/client.ts)
+> Source: [TwilioSdkClient](src/client.ts)
 
 <details>
-<summary><code>createBulkLookup(request: TwilioClient.CreateBulkLookupRequest, options?: RequestOptions): ApiPromise&lt;LookupResponse1, ResponseError&gt;</code></summary>
+<summary><code>createBulkLookup(request: TwilioSdkClient.CreateBulkLookupRequest, options?: RequestOptions): ApiPromise&lt;LookupResponse1, ResponseError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -68,7 +68,7 @@ try {
 </details>
 
 <details>
-<summary><code>createLookupPhoneNumberOverrides(request: TwilioClient.CreateLookupPhoneNumberOverridesRequest, options?: RequestOptions): ApiPromise&lt;OverridesResponse, TwilioClient.CreateLookupPhoneNumberOverridesError&gt;</code></summary>
+<summary><code>createLookupPhoneNumberOverrides(request: TwilioSdkClient.CreateLookupPhoneNumberOverridesRequest, options?: RequestOptions): ApiPromise&lt;OverridesResponse, TwilioSdkClient.CreateLookupPhoneNumberOverridesError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -94,7 +94,7 @@ try {
   // TODO: Handle 'response' of type OverridesResponse
 } catch (err) {
   if (
-    err instanceof TwilioClient.CreateLookupPhoneNumberOverridesError &&
+    err instanceof TwilioSdkClient.CreateLookupPhoneNumberOverridesError &&
       err.payload.kind === "accountsCallsRecordingsSidJson201041408Error1"
   ) {
     // TODO: Handle 'err.payload.body' of type AccountsCallsRecordingsSidJson201041408Error1
@@ -126,7 +126,7 @@ try {
 
 **OnSuccess**: <code>[OverridesResponse](src/models/overrides-response.ts)</code>
 
-**OnError**: <code>[TwilioClient.CreateLookupPhoneNumberOverridesError](src/client.ts)</code>
+**OnError**: <code>[TwilioSdkClient.CreateLookupPhoneNumberOverridesError](src/client.ts)</code>
 
 </dd>
 </dl>
@@ -137,7 +137,7 @@ try {
 </details>
 
 <details>
-<summary><code>deleteLookupPhoneNumberOverrides(request: TwilioClient.DeleteLookupPhoneNumberOverridesRequest, options?: RequestOptions): ApiPromise&lt;undefined, TwilioClient.DeleteLookupPhoneNumberOverridesError&gt;</code></summary>
+<summary><code>deleteLookupPhoneNumberOverrides(request: TwilioSdkClient.DeleteLookupPhoneNumberOverridesRequest, options?: RequestOptions): ApiPromise&lt;undefined, TwilioSdkClient.DeleteLookupPhoneNumberOverridesError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -162,7 +162,7 @@ try {
   await client.deleteLookupPhoneNumberOverrides({ field, phoneNumber });
 } catch (err) {
   if (
-    err instanceof TwilioClient.DeleteLookupPhoneNumberOverridesError &&
+    err instanceof TwilioSdkClient.DeleteLookupPhoneNumberOverridesError &&
       err.payload.kind === "accountsCallsRecordingsSidJson201041408Error1"
   ) {
     // TODO: Handle 'err.payload.body' of type AccountsCallsRecordingsSidJson201041408Error1
@@ -193,7 +193,7 @@ try {
 
 **OnSuccess**: <code>undefined</code>
 
-**OnError**: <code>[TwilioClient.DeleteLookupPhoneNumberOverridesError](src/client.ts)</code>
+**OnError**: <code>[TwilioSdkClient.DeleteLookupPhoneNumberOverridesError](src/client.ts)</code>
 
 </dd>
 </dl>
@@ -204,7 +204,7 @@ try {
 </details>
 
 <details>
-<summary><code>deleteLookupRateLimit(request: TwilioClient.DeleteLookupRateLimitRequest, options?: RequestOptions): ApiPromise&lt;undefined, TwilioClient.DeleteLookupRateLimitError&gt;</code></summary>
+<summary><code>deleteLookupRateLimit(request: TwilioSdkClient.DeleteLookupRateLimitRequest, options?: RequestOptions): ApiPromise&lt;undefined, TwilioSdkClient.DeleteLookupRateLimitError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -219,7 +219,7 @@ try {
   await client.deleteLookupRateLimit({ field, bucket });
 } catch (err) {
   if (
-    err instanceof TwilioClient.DeleteLookupRateLimitError &&
+    err instanceof TwilioSdkClient.DeleteLookupRateLimitError &&
       err.payload.kind === "accountsCallsRecordingsSidJson201041408Error1"
   ) {
     // TODO: Handle 'err.payload.body' of type AccountsCallsRecordingsSidJson201041408Error1
@@ -250,7 +250,7 @@ try {
 
 **OnSuccess**: <code>undefined</code>
 
-**OnError**: <code>[TwilioClient.DeleteLookupRateLimitError](src/client.ts)</code>
+**OnError**: <code>[TwilioSdkClient.DeleteLookupRateLimitError](src/client.ts)</code>
 
 </dd>
 </dl>
@@ -261,7 +261,7 @@ try {
 </details>
 
 <details>
-<summary><code>fetchLookupAccountRateLimits(request: TwilioClient.FetchLookupAccountRateLimitsRequest, options?: RequestOptions): ApiPromise&lt;RateLimitListResponse, TwilioClient.FetchLookupAccountRateLimitsError&gt;</code></summary>
+<summary><code>fetchLookupAccountRateLimits(request: TwilioSdkClient.FetchLookupAccountRateLimitsRequest, options?: RequestOptions): ApiPromise&lt;RateLimitListResponse, TwilioSdkClient.FetchLookupAccountRateLimitsError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -288,7 +288,7 @@ try {
   // TODO: Handle 'response' of type RateLimitListResponse
 } catch (err) {
   if (
-    err instanceof TwilioClient.FetchLookupAccountRateLimitsError &&
+    err instanceof TwilioSdkClient.FetchLookupAccountRateLimitsError &&
       err.payload.kind === "accountsCallsRecordingsSidJson201041408Error1"
   ) {
     // TODO: Handle 'err.payload.body' of type AccountsCallsRecordingsSidJson201041408Error1
@@ -318,7 +318,7 @@ try {
 
 **OnSuccess**: <code>[RateLimitListResponse](src/models/rate-limit-list-response.ts)</code>
 
-**OnError**: <code>[TwilioClient.FetchLookupAccountRateLimitsError](src/client.ts)</code>
+**OnError**: <code>[TwilioSdkClient.FetchLookupAccountRateLimitsError](src/client.ts)</code>
 
 </dd>
 </dl>
@@ -329,7 +329,7 @@ try {
 </details>
 
 <details>
-<summary><code>fetchLookupPhoneNumberOverrides(request: TwilioClient.FetchLookupPhoneNumberOverridesRequest, options?: RequestOptions): ApiPromise&lt;OverridesResponse, TwilioClient.FetchLookupPhoneNumberOverridesError&gt;</code></summary>
+<summary><code>fetchLookupPhoneNumberOverrides(request: TwilioSdkClient.FetchLookupPhoneNumberOverridesRequest, options?: RequestOptions): ApiPromise&lt;OverridesResponse, TwilioSdkClient.FetchLookupPhoneNumberOverridesError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -355,7 +355,7 @@ try {
   // TODO: Handle 'response' of type OverridesResponse
 } catch (err) {
   if (
-    err instanceof TwilioClient.FetchLookupPhoneNumberOverridesError &&
+    err instanceof TwilioSdkClient.FetchLookupPhoneNumberOverridesError &&
       err.payload.kind === "accountsCallsRecordingsSidJson201041408Error1"
   ) {
     // TODO: Handle 'err.payload.body' of type AccountsCallsRecordingsSidJson201041408Error1
@@ -386,7 +386,7 @@ try {
 
 **OnSuccess**: <code>[OverridesResponse](src/models/overrides-response.ts)</code>
 
-**OnError**: <code>[TwilioClient.FetchLookupPhoneNumberOverridesError](src/client.ts)</code>
+**OnError**: <code>[TwilioSdkClient.FetchLookupPhoneNumberOverridesError](src/client.ts)</code>
 
 </dd>
 </dl>
@@ -397,7 +397,7 @@ try {
 </details>
 
 <details>
-<summary><code>fetchLookupRateLimit(request: TwilioClient.FetchLookupRateLimitRequest, options?: RequestOptions): ApiPromise&lt;RateLimitResponse, TwilioClient.FetchLookupRateLimitError&gt;</code></summary>
+<summary><code>fetchLookupRateLimit(request: TwilioSdkClient.FetchLookupRateLimitRequest, options?: RequestOptions): ApiPromise&lt;RateLimitResponse, TwilioSdkClient.FetchLookupRateLimitError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -413,7 +413,7 @@ try {
   // TODO: Handle 'response' of type RateLimitResponse
 } catch (err) {
   if (
-    err instanceof TwilioClient.FetchLookupRateLimitError &&
+    err instanceof TwilioSdkClient.FetchLookupRateLimitError &&
       err.payload.kind === "accountsCallsRecordingsSidJson201041408Error1"
   ) {
     // TODO: Handle 'err.payload.body' of type AccountsCallsRecordingsSidJson201041408Error1
@@ -444,7 +444,7 @@ try {
 
 **OnSuccess**: <code>[RateLimitResponse](src/models/rate-limit-response.ts)</code>
 
-**OnError**: <code>[TwilioClient.FetchLookupRateLimitError](src/client.ts)</code>
+**OnError**: <code>[TwilioSdkClient.FetchLookupRateLimitError](src/client.ts)</code>
 
 </dd>
 </dl>
@@ -455,7 +455,7 @@ try {
 </details>
 
 <details>
-<summary><code>updateChallengePasskeys(request: TwilioClient.UpdateChallengePasskeysRequest, options?: RequestOptions): ApiPromise&lt;V2ServicesPasskeysApproveChallengeResponse, ResponseError&gt;</code></summary>
+<summary><code>updateChallengePasskeys(request: TwilioSdkClient.UpdateChallengePasskeysRequest, options?: RequestOptions): ApiPromise&lt;V2ServicesPasskeysApproveChallengeResponse, ResponseError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -518,7 +518,7 @@ try {
 </details>
 
 <details>
-<summary><code>updateLookupPhoneNumberOverrides(request: TwilioClient.UpdateLookupPhoneNumberOverridesRequest, options?: RequestOptions): ApiPromise&lt;OverridesResponse, TwilioClient.UpdateLookupPhoneNumberOverridesError&gt;</code></summary>
+<summary><code>updateLookupPhoneNumberOverrides(request: TwilioSdkClient.UpdateLookupPhoneNumberOverridesRequest, options?: RequestOptions): ApiPromise&lt;OverridesResponse, TwilioSdkClient.UpdateLookupPhoneNumberOverridesError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -544,7 +544,7 @@ try {
   // TODO: Handle 'response' of type OverridesResponse
 } catch (err) {
   if (
-    err instanceof TwilioClient.UpdateLookupPhoneNumberOverridesError &&
+    err instanceof TwilioSdkClient.UpdateLookupPhoneNumberOverridesError &&
       err.payload.kind === "accountsCallsRecordingsSidJson201041408Error1"
   ) {
     // TODO: Handle 'err.payload.body' of type AccountsCallsRecordingsSidJson201041408Error1
@@ -576,7 +576,7 @@ try {
 
 **OnSuccess**: <code>[OverridesResponse](src/models/overrides-response.ts)</code>
 
-**OnError**: <code>[TwilioClient.UpdateLookupPhoneNumberOverridesError](src/client.ts)</code>
+**OnError**: <code>[TwilioSdkClient.UpdateLookupPhoneNumberOverridesError](src/client.ts)</code>
 
 </dd>
 </dl>
@@ -587,7 +587,7 @@ try {
 </details>
 
 <details>
-<summary><code>updateLookupRateLimit(request: TwilioClient.UpdateLookupRateLimitRequest, options?: RequestOptions): ApiPromise&lt;RateLimitResponse, TwilioClient.UpdateLookupRateLimitError&gt;</code></summary>
+<summary><code>updateLookupRateLimit(request: TwilioSdkClient.UpdateLookupRateLimitRequest, options?: RequestOptions): ApiPromise&lt;RateLimitResponse, TwilioSdkClient.UpdateLookupRateLimitError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -603,7 +603,7 @@ try {
   // TODO: Handle 'response' of type RateLimitResponse
 } catch (err) {
   if (
-    err instanceof TwilioClient.UpdateLookupRateLimitError &&
+    err instanceof TwilioSdkClient.UpdateLookupRateLimitError &&
       err.payload.kind === "accountsCallsRecordingsSidJson201041408Error1"
   ) {
     // TODO: Handle 'err.payload.body' of type AccountsCallsRecordingsSidJson201041408Error1
@@ -635,7 +635,7 @@ try {
 
 **OnSuccess**: <code>[RateLimitResponse](src/models/rate-limit-response.ts)</code>
 
-**OnError**: <code>[TwilioClient.UpdateLookupRateLimitError](src/client.ts)</code>
+**OnError**: <code>[TwilioSdkClient.UpdateLookupRateLimitError](src/client.ts)</code>
 
 </dd>
 </dl>
@@ -646,7 +646,7 @@ try {
 </details>
 
 <details>
-<summary><code>updatePasskeysFactor(request: TwilioClient.UpdatePasskeysFactorRequest, options?: RequestOptions): ApiPromise&lt;V2ServicesPasskeysVerifyFactorResponse, ResponseError&gt;</code></summary>
+<summary><code>updatePasskeysFactor(request: TwilioSdkClient.UpdatePasskeysFactorRequest, options?: RequestOptions): ApiPromise&lt;V2ServicesPasskeysVerifyFactorResponse, ResponseError&gt;</code></summary>
 
 <dl>
 <dd>

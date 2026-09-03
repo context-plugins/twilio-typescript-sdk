@@ -4,7 +4,7 @@
 
 Accessor: `client.proxyV1PhoneNumber` · Source: `src/resources/proxy-v1-phone-number.ts` · 5 operations · Request types: namespace `ProxyV1PhoneNumber`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
 
 ### createPhoneNumber2
 

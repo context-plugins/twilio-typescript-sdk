@@ -355,7 +355,7 @@ import { VideoV1SubscribedTrack } from "./resources/video-v1-subscribed-track.js
 import { VideoV1Transcriptions } from "./resources/video-v1-transcriptions.js";
 import { buildServers, type Servers } from "./servers.js";
 
-export class TwilioClient {
+export class TwilioSdkClient {
   readonly #rawClient: RawClient;
   readonly #servers: Servers;
   readonly #auth: AuthSchemes;
@@ -2890,7 +2890,7 @@ export class TwilioClient {
   }
 
   createBulkLookup(
-    request: TwilioClient.CreateBulkLookupRequest,
+    request: TwilioSdkClient.CreateBulkLookupRequest,
     options?: RequestOptions,
   ): ApiPromise<LookupResponse1, ResponseError> {
     return this.#rawClient.execute<LookupResponse1, ResponseError>(
@@ -2909,9 +2909,9 @@ export class TwilioClient {
   }
 
   createLookupPhoneNumberOverrides(
-    request: TwilioClient.CreateLookupPhoneNumberOverridesRequest,
+    request: TwilioSdkClient.CreateLookupPhoneNumberOverridesRequest,
     options?: RequestOptions,
-  ): ApiPromise<OverridesResponse, TwilioClient.CreateLookupPhoneNumberOverridesError> {
+  ): ApiPromise<OverridesResponse, TwilioSdkClient.CreateLookupPhoneNumberOverridesError> {
     return this.#rawClient.execute(
       {
         method: "POST",
@@ -2925,16 +2925,16 @@ export class TwilioClient {
       },
       {
         success: { kind: "json", schema: overridesResponseSchema },
-        errorFactory: TwilioClient.CreateLookupPhoneNumberOverridesError,
+        errorFactory: TwilioSdkClient.CreateLookupPhoneNumberOverridesError,
       },
       options,
     );
   }
 
   deleteLookupPhoneNumberOverrides(
-    request: TwilioClient.DeleteLookupPhoneNumberOverridesRequest,
+    request: TwilioSdkClient.DeleteLookupPhoneNumberOverridesRequest,
     options?: RequestOptions,
-  ): ApiPromise<undefined, TwilioClient.DeleteLookupPhoneNumberOverridesError> {
+  ): ApiPromise<undefined, TwilioSdkClient.DeleteLookupPhoneNumberOverridesError> {
     return this.#rawClient.execute(
       {
         method: "DELETE",
@@ -2948,16 +2948,16 @@ export class TwilioClient {
       },
       {
         success: { kind: "empty" },
-        errorFactory: TwilioClient.DeleteLookupPhoneNumberOverridesError,
+        errorFactory: TwilioSdkClient.DeleteLookupPhoneNumberOverridesError,
       },
       options,
     );
   }
 
   deleteLookupRateLimit(
-    request: TwilioClient.DeleteLookupRateLimitRequest,
+    request: TwilioSdkClient.DeleteLookupRateLimitRequest,
     options?: RequestOptions,
-  ): ApiPromise<undefined, TwilioClient.DeleteLookupRateLimitError> {
+  ): ApiPromise<undefined, TwilioSdkClient.DeleteLookupRateLimitError> {
     return this.#rawClient.execute(
       {
         method: "DELETE",
@@ -2971,16 +2971,16 @@ export class TwilioClient {
       },
       {
         success: { kind: "empty" },
-        errorFactory: TwilioClient.DeleteLookupRateLimitError,
+        errorFactory: TwilioSdkClient.DeleteLookupRateLimitError,
       },
       options,
     );
   }
 
   fetchLookupAccountRateLimits(
-    request: TwilioClient.FetchLookupAccountRateLimitsRequest,
+    request: TwilioSdkClient.FetchLookupAccountRateLimitsRequest,
     options?: RequestOptions,
-  ): ApiPromise<RateLimitListResponse, TwilioClient.FetchLookupAccountRateLimitsError> {
+  ): ApiPromise<RateLimitListResponse, TwilioSdkClient.FetchLookupAccountRateLimitsError> {
     return this.#rawClient.execute(
       {
         method: "GET",
@@ -2991,16 +2991,16 @@ export class TwilioClient {
       },
       {
         success: { kind: "json", schema: rateLimitListResponseSchema },
-        errorFactory: TwilioClient.FetchLookupAccountRateLimitsError,
+        errorFactory: TwilioSdkClient.FetchLookupAccountRateLimitsError,
       },
       options,
     );
   }
 
   fetchLookupPhoneNumberOverrides(
-    request: TwilioClient.FetchLookupPhoneNumberOverridesRequest,
+    request: TwilioSdkClient.FetchLookupPhoneNumberOverridesRequest,
     options?: RequestOptions,
-  ): ApiPromise<OverridesResponse, TwilioClient.FetchLookupPhoneNumberOverridesError> {
+  ): ApiPromise<OverridesResponse, TwilioSdkClient.FetchLookupPhoneNumberOverridesError> {
     return this.#rawClient.execute(
       {
         method: "GET",
@@ -3014,16 +3014,16 @@ export class TwilioClient {
       },
       {
         success: { kind: "json", schema: overridesResponseSchema },
-        errorFactory: TwilioClient.FetchLookupPhoneNumberOverridesError,
+        errorFactory: TwilioSdkClient.FetchLookupPhoneNumberOverridesError,
       },
       options,
     );
   }
 
   fetchLookupRateLimit(
-    request: TwilioClient.FetchLookupRateLimitRequest,
+    request: TwilioSdkClient.FetchLookupRateLimitRequest,
     options?: RequestOptions,
-  ): ApiPromise<RateLimitResponse, TwilioClient.FetchLookupRateLimitError> {
+  ): ApiPromise<RateLimitResponse, TwilioSdkClient.FetchLookupRateLimitError> {
     return this.#rawClient.execute(
       {
         method: "GET",
@@ -3037,14 +3037,14 @@ export class TwilioClient {
       },
       {
         success: { kind: "json", schema: rateLimitResponseSchema },
-        errorFactory: TwilioClient.FetchLookupRateLimitError,
+        errorFactory: TwilioSdkClient.FetchLookupRateLimitError,
       },
       options,
     );
   }
 
   updateChallengePasskeys(
-    request: TwilioClient.UpdateChallengePasskeysRequest,
+    request: TwilioSdkClient.UpdateChallengePasskeysRequest,
     options?: RequestOptions,
   ): ApiPromise<V2ServicesPasskeysApproveChallengeResponse, ResponseError> {
     return this.#rawClient.execute<V2ServicesPasskeysApproveChallengeResponse, ResponseError>(
@@ -3064,9 +3064,9 @@ export class TwilioClient {
   }
 
   updateLookupPhoneNumberOverrides(
-    request: TwilioClient.UpdateLookupPhoneNumberOverridesRequest,
+    request: TwilioSdkClient.UpdateLookupPhoneNumberOverridesRequest,
     options?: RequestOptions,
-  ): ApiPromise<OverridesResponse, TwilioClient.UpdateLookupPhoneNumberOverridesError> {
+  ): ApiPromise<OverridesResponse, TwilioSdkClient.UpdateLookupPhoneNumberOverridesError> {
     return this.#rawClient.execute(
       {
         method: "PUT",
@@ -3080,16 +3080,16 @@ export class TwilioClient {
       },
       {
         success: { kind: "json", schema: overridesResponseSchema },
-        errorFactory: TwilioClient.UpdateLookupPhoneNumberOverridesError,
+        errorFactory: TwilioSdkClient.UpdateLookupPhoneNumberOverridesError,
       },
       options,
     );
   }
 
   updateLookupRateLimit(
-    request: TwilioClient.UpdateLookupRateLimitRequest,
+    request: TwilioSdkClient.UpdateLookupRateLimitRequest,
     options?: RequestOptions,
-  ): ApiPromise<RateLimitResponse, TwilioClient.UpdateLookupRateLimitError> {
+  ): ApiPromise<RateLimitResponse, TwilioSdkClient.UpdateLookupRateLimitError> {
     return this.#rawClient.execute(
       {
         method: "PUT",
@@ -3103,14 +3103,14 @@ export class TwilioClient {
       },
       {
         success: { kind: "json", schema: rateLimitResponseSchema },
-        errorFactory: TwilioClient.UpdateLookupRateLimitError,
+        errorFactory: TwilioSdkClient.UpdateLookupRateLimitError,
       },
       options,
     );
   }
 
   updatePasskeysFactor(
-    request: TwilioClient.UpdatePasskeysFactorRequest,
+    request: TwilioSdkClient.UpdatePasskeysFactorRequest,
     options?: RequestOptions,
   ): ApiPromise<V2ServicesPasskeysVerifyFactorResponse, ResponseError> {
     return this.#rawClient.execute<V2ServicesPasskeysVerifyFactorResponse, ResponseError>(
@@ -3130,7 +3130,7 @@ export class TwilioClient {
   }
 }
 
-export namespace TwilioClient {
+export namespace TwilioSdkClient {
   export type CreateBulkLookupRequest = {
     body?: LookupRequest;
   };

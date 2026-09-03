@@ -1,4 +1,4 @@
-export { TwilioClient } from "./client.js";
+export { TwilioSdkClient } from "./client.js";
 export { DEFAULT_CLIENT_OPTIONS, type ClientOptions } from "./client-options.js";
 
 export type { BasicAuthCredentials } from "./core/auth/credentials.js";
@@ -3964,7 +3964,7 @@ export {
 } from "./models/workspace-enum-queue-order.js";
 
 export {
-  CoreError as TwilioError,
+  CoreError as TwilioSdkError,
   ConnectionError,
   TimeoutError,
   AbortError,

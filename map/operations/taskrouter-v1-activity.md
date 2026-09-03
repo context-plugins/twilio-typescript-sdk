@@ -4,7 +4,7 @@
 
 Accessor: `client.taskrouterV1Activity` · Source: `src/resources/taskrouter-v1-activity.ts` · 5 operations · Request types: namespace `TaskrouterV1Activity`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
 
 ### createActivity
 

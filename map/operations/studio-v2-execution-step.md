@@ -4,7 +4,7 @@
 
 Accessor: `client.studioV2ExecutionStep` · Source: `src/resources/studio-v2-execution-step.ts` · 2 operations · Request types: namespace `StudioV2ExecutionStep`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
 
 ### fetchExecutionStep2
 

@@ -4,7 +4,7 @@
 
 Accessor: `client.verifyV2VerificationCheck` · Source: `src/resources/verify-v2-verification-check.ts` · 1 operation · Request types: namespace `VerifyV2VerificationCheck`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
 
 ### createVerificationCheck
 

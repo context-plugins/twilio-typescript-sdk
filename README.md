@@ -1,8 +1,8 @@
-# Twilio
+# Twilio SDK
 
 [![Built with APIMatic][apimatic-badge]][apimatic-url] [![License: MIT][license-badge]][license-url]
 
-The Twilio SDK for TypeScript provides typed access to the Twilio REST APIs from Node.js and the browser.
+The Twilio SDK SDK for TypeScript provides typed access to the Twilio SDK REST APIs from Node.js and the browser.
 
 > [!TIP]
 > **Looking for a specific signature, request field, model, enum or error type?** This SDK ships a generated, machine-readable **[SDK map](sdk-map.md)** — a lookup index of the whole TypeScript surface. Consult it **before** grepping or scanning the source tree; it answers most contract questions directly and, where a source file is genuinely needed, names the exact one to open. Details under [SDK map](#sdk-map).
@@ -28,9 +28,9 @@ npm install <path-to-sdk>
 Create one client and reuse it. Configure its behaviour through [ClientOptions](src/client-options.ts).
 
 ```ts
-import { ServerEnvironment, TwilioClient } from "twilio";
+import { ServerEnvironment, TwilioSdkClient } from "twilio-sdk";
 
-const client = new TwilioClient({
+const client = new TwilioSdkClient({
   serverEnvironment: ServerEnvironment.Production,
   accountSidAuthToken: { username: "YOUR_USERNAME", password: "YOUR_PASSWORD" },
 });
@@ -43,9 +43,9 @@ Every option has a default — see `DEFAULT_CLIENT_OPTIONS` in the same module. 
 The package ships both dialects from a single entry, so `require` works with full types. In a TypeScript CommonJS file use the `import ... = require(...)` form — a plain destructuring `require` runs fine but gives you `any`.
 
 ```ts
-import sdk = require("twilio");
+import sdk = require("twilio-sdk");
 
-const client = new sdk.TwilioClient({
+const client = new sdk.TwilioSdkClient({
   serverEnvironment: sdk.ServerEnvironment.Production,
   accountSidAuthToken: { username: "YOUR_USERNAME", password: "YOUR_PASSWORD" },
 });

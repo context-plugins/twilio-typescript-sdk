@@ -4,7 +4,7 @@
 
 Accessor: `client.conversationsV2ConversationApi` · Source: `src/resources/conversations-v2-conversation-api.ts` · 6 operations · Request and error types: namespace `ConversationsV2ConversationApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
 
 ### createConversationWithConfig
 

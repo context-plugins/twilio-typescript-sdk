@@ -4,7 +4,7 @@
 
 Accessor: `client.insightsV1GetInboundPhoneNumbersReport` · Source: `src/resources/insights-v1-get-inbound-phone-numbers-report.ts` · 1 operation · Request types: namespace `InsightsV1GetInboundPhoneNumbersReport`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
 
 ### listInboundPhoneNumbersReport
 

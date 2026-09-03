@@ -4,7 +4,7 @@
 
 Accessor: `client.videoV1RecordingApi` · Source: `src/resources/video-v1-recording-api.ts` · 3 operations · Request types: namespace `VideoV1RecordingApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
 
 ### deleteRecording2
 
