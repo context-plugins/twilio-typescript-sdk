@@ -1,4 +1,5 @@
-import { s, type Schema } from "../core/index.js";
+import * as s from "../core/validation/index.js";
+import type { Schema } from "../core/validation/schema.js";
 import { apiV2010AccountKeySchema, type ApiV2010AccountKey } from "./api-v2010-account-key.js";
 
 export type ListKeyResponse = {

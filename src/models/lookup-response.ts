@@ -1,4 +1,5 @@
-import { s, type Schema } from "../core/index.js";
+import * as s from "../core/validation/index.js";
+import type { Schema } from "../core/validation/schema.js";
 import { callForwardingInfoSchema, type CallForwardingInfo } from "./call-forwarding-info.js";
 import { callerNameInfoSchema, type CallerNameInfo } from "./caller-name-info.js";
 import { identityMatchInfoSchema, type IdentityMatchInfo } from "./identity-match-info.js";

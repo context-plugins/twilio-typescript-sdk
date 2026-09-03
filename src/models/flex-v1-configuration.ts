@@ -1,4 +1,5 @@
-import { s, type Schema } from "../core/index.js";
+import * as s from "../core/validation/index.js";
+import type { Schema } from "../core/validation/schema.js";
 import { configurationEnumStatusSchema, type ConfigurationEnumStatus } from "./configuration-enum-status.js";
 
 export type FlexV1Configuration = {

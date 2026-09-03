@@ -1,4 +1,5 @@
-import { s, type Schema } from "../core/index.js";
+import * as s from "../core/validation/index.js";
+import type { Schema } from "../core/validation/schema.js";
 import { amdStatusCallbackMethodSchema, type AmdStatusCallbackMethod } from "./amd-status-callback-method.js";
 import { recordingEnumCodecSchema, type RecordingEnumCodec } from "./recording-enum-codec.js";
 import { recordingEnumFormatSchema, type RecordingEnumFormat } from "./recording-enum-format.js";

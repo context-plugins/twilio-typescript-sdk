@@ -1,4 +1,5 @@
-import { s, type Schema } from "../core/index.js";
+import * as s from "../core/validation/index.js";
+import type { Schema } from "../core/validation/schema.js";
 import { emailSchema, type Email } from "./email.js";
 import { phoneNumberSchema, type PhoneNumber } from "./phone-number.js";
 import { useCaseSchema, type UseCase } from "./use-case.js";

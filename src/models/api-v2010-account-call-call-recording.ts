@@ -1,4 +1,5 @@
-import { s, type Schema } from "../core/index.js";
+import * as s from "../core/validation/index.js";
+import type { Schema } from "../core/validation/schema.js";
 import { callRecordingEnumSourceSchema, type CallRecordingEnumSource } from "./call-recording-enum-source.js";
 import { callRecordingEnumStatusSchema, type CallRecordingEnumStatus } from "./call-recording-enum-status.js";
 

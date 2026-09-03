@@ -1,4 +1,5 @@
-import { s, type Schema } from "../core/index.js";
+import * as s from "../core/validation/index.js";
+import type { Schema } from "../core/validation/schema.js";
 import { metaSchema, type Meta } from "./meta.js";
 import { trusthubV1EndUserSchema, type TrusthubV1EndUser } from "./trusthub-v1-end-user.js";
 

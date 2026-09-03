@@ -1,7 +1,7 @@
 export { TwilioClient } from "./client.js";
 export { DEFAULT_CLIENT_OPTIONS, type ClientOptions } from "./client-options.js";
 
-export type { BasicAuthCredentials } from "./core/index.js";
+export type { BasicAuthCredentials } from "./core/auth/credentials.js";
 
 export { ServerEnvironment, DEFAULT_SERVER_OPTIONS } from "./servers.js";
 export type {
@@ -3965,22 +3965,16 @@ export {
 
 export {
   CoreError as TwilioError,
-  ResponseError,
   ConnectionError,
   TimeoutError,
   AbortError,
   SdkError,
-  SchemaError,
   AuthError,
-} from "./core/index.js";
-export type {
-  ApiPromise,
-  RequestOptions,
-  ApiResult,
-  ErrorKind,
-  ErrorPayload,
-  Declared,
-  Schema,
-  EnumSchema,
-  Encoded,
-} from "./core/index.js";
+} from "./core/errors.js";
+export { ResponseError } from "./core/response-error.js";
+export { SchemaError } from "./core/validation/schema-error.js";
+export type { ApiPromise, ApiResult } from "./core/api-promise.js";
+export type { RequestOptions } from "./core/api-request.js";
+export type { ErrorKind } from "./core/errors.js";
+export type { ErrorPayload, Declared } from "./core/response-error.js";
+export type { Schema, EnumSchema, Encoded } from "./core/validation/schema.js";

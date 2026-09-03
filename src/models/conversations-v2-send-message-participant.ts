@@ -1,4 +1,5 @@
-import { s, type Schema } from "../core/index.js";
+import * as s from "../core/validation/index.js";
+import type { Schema } from "../core/validation/schema.js";
 import { channel3Schema, type Channel3 } from "./channel3.js";
 
 export type ConversationsV2SendMessageParticipant = {

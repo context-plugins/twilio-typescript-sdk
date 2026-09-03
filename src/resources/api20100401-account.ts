@@ -1,6 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
-import type { ApiPromise, RawClient, RequestOptions } from "../core/index.js";
-import { ResponseError, s } from "../core/index.js";
+import type { ApiPromise } from "../core/api-promise.js";
+import type { RequestOptions } from "../core/api-request.js";
+import type { RawClient } from "../core/raw-client.js";
+import { ResponseError } from "../core/response-error.js";
+import * as s from "../core/validation/index.js";
 import { accountEnumStatusSchema, type AccountEnumStatus } from "../models/account-enum-status.js";
 import { apiV2010AccountSchema, type ApiV2010Account } from "../models/api-v2010-account.js";
 import { listAccountResponseSchema, type ListAccountResponse } from "../models/list-account-response.js";

@@ -1,4 +1,5 @@
-import { s, type Schema } from "../core/index.js";
+import * as s from "../core/validation/index.js";
+import type { Schema } from "../core/validation/schema.js";
 import { lookupRequestWithCorIdSchema, type LookupRequestWithCorId } from "./lookup-request-with-cor-id.js";
 
 export type LookupRequest = {

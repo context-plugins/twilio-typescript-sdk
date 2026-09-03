@@ -1,4 +1,5 @@
-import { s, type Schema } from "../core/index.js";
+import * as s from "../core/validation/index.js";
+import type { Schema } from "../core/validation/schema.js";
 import { brandedCallingSchema, type BrandedCalling } from "./branded-calling.js";
 import { countyCarrierValueSchema, type CountyCarrierValue } from "./county-carrier-value.js";
 import { stirShakenSchema, type StirShaken } from "./stir-shaken.js";

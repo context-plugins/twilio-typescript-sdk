@@ -1,6 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
-import type { ApiPromise, RawClient, RequestOptions } from "../core/index.js";
-import { ResponseError, s } from "../core/index.js";
+import type { ApiPromise } from "../core/api-promise.js";
+import type { RequestOptions } from "../core/api-request.js";
+import type { RawClient } from "../core/raw-client.js";
+import { ResponseError } from "../core/response-error.js";
+import * as s from "../core/validation/index.js";
 import { listFlowResponseSchema, type ListFlowResponse } from "../models/list-flow-response.js";
 import { studioV1FlowSchema, type StudioV1Flow } from "../models/studio-v1-flow.js";
 import type { Servers } from "../servers.js";

@@ -1,6 +1,8 @@
 import type { AuthSchemes } from "../auth-schemes.js";
-import type { ApiPromise, RawClient, RequestOptions } from "../core/index.js";
-import { ResponseError } from "../core/index.js";
+import type { ApiPromise } from "../core/api-promise.js";
+import type { RequestOptions } from "../core/api-request.js";
+import type { RawClient } from "../core/raw-client.js";
+import { ResponseError } from "../core/response-error.js";
 import { formEnumFormTypesSchema, type FormEnumFormTypes } from "../models/form-enum-form-types.js";
 import { verifyV2FormSchema, type VerifyV2Form } from "../models/verify-v2-form.js";
 import type { Servers } from "../servers.js";

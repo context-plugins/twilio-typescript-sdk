@@ -1,4 +1,5 @@
-import { s, type Schema } from "../core/index.js";
+import * as s from "../core/validation/index.js";
+import type { Schema } from "../core/validation/schema.js";
 import { flexV1PluginReleaseSchema, type FlexV1PluginRelease } from "./flex-v1-plugin-release.js";
 import { metaSchema, type Meta } from "./meta.js";
 

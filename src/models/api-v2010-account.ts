@@ -1,4 +1,5 @@
-import { s, type Schema } from "../core/index.js";
+import * as s from "../core/validation/index.js";
+import type { Schema } from "../core/validation/schema.js";
 import { accountEnumStatusSchema, type AccountEnumStatus } from "./account-enum-status.js";
 import { accountEnumTypeSchema, type AccountEnumType } from "./account-enum-type.js";
 

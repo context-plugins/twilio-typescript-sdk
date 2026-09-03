@@ -1,4 +1,5 @@
-import { s, type Schema } from "../core/index.js";
+import * as s from "../core/validation/index.js";
+import type { Schema } from "../core/validation/schema.js";
 import { reportFilterSchema, type ReportFilter } from "./report-filter.js";
 import { timeRangeSchema, type TimeRange } from "./time-range.js";
 

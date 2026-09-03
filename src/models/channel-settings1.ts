@@ -1,4 +1,5 @@
-import { s, type Schema } from "../core/index.js";
+import * as s from "../core/validation/index.js";
+import type { Schema } from "../core/validation/schema.js";
 import { captureRule1Schema, type CaptureRule1 } from "./capture-rule1.js";
 import { statusTimeouts1Schema, type StatusTimeouts1 } from "./status-timeouts1.js";
 

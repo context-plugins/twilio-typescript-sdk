@@ -1,6 +1,6 @@
 import type { ClientOptions } from "./client-options.js";
-import type { AuthScheme } from "./core/index.js";
-import { basicAuth } from "./core/index.js";
+import type { AuthScheme } from "./core/api-request.js";
+import { basicAuth } from "./core/auth/schemes.js";
 
 export type AuthSchemes = {
   readonly accountSidAuthToken: AuthScheme;

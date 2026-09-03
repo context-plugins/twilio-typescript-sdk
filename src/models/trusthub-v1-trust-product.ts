@@ -1,4 +1,5 @@
-import { s, type Schema } from "../core/index.js";
+import * as s from "../core/validation/index.js";
+import type { Schema } from "../core/validation/schema.js";
 import { trustProductEnumStatusSchema, type TrustProductEnumStatus } from "./trust-product-enum-status.js";
 
 export type TrusthubV1TrustProduct = {

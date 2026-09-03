@@ -1,4 +1,5 @@
-import { s, type Schema } from "../core/index.js";
+import * as s from "../core/validation/index.js";
+import type { Schema } from "../core/validation/schema.js";
 import { voiceFallbackMethodSchema, type VoiceFallbackMethod } from "./voice-fallback-method.js";
 import { voiceMethodSchema, type VoiceMethod } from "./voice-method.js";
 import {

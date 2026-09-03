@@ -1,4 +1,5 @@
-import { s, type Schema } from "../core/index.js";
+import * as s from "../core/validation/index.js";
+import type { Schema } from "../core/validation/schema.js";
 import { credentialEnumPushTypeSchema, type CredentialEnumPushType } from "./credential-enum-push-type.js";
 
 export type ConversationsV1Credential = {

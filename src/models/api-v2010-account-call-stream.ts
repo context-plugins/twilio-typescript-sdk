@@ -1,4 +1,5 @@
-import { s, type Schema } from "../core/index.js";
+import * as s from "../core/validation/index.js";
+import type { Schema } from "../core/validation/schema.js";
 import { streamEnumStatusSchema, type StreamEnumStatus } from "./stream-enum-status.js";
 
 export type ApiV2010AccountCallStream = {

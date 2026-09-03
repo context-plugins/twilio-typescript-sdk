@@ -1,4 +1,5 @@
-import { s, type Schema } from "../core/index.js";
+import * as s from "../core/validation/index.js";
+import type { Schema } from "../core/validation/schema.js";
 import { conversationsV1ServiceSchema, type ConversationsV1Service } from "./conversations-v1-service.js";
 import { metaSchema, type Meta } from "./meta.js";
 

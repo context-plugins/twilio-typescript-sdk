@@ -1,4 +1,5 @@
-import { s, type Schema } from "../core/index.js";
+import * as s from "../core/validation/index.js";
+import type { Schema } from "../core/validation/schema.js";
 import { jobResultSchema, type JobResult } from "./job-result.js";
 import { jobStatusSchema, type JobStatus } from "./job-status.js";
 import { jobThresholdsSchema, type JobThresholds } from "./job-thresholds.js";

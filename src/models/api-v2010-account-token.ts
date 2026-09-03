@@ -1,4 +1,5 @@
-import { s, type Schema } from "../core/index.js";
+import * as s from "../core/validation/index.js";
+import type { Schema } from "../core/validation/schema.js";
 import { iceServerSchema, type IceServer } from "./ice-server.js";
 
 export type ApiV2010AccountToken = {

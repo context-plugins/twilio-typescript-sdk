@@ -1,4 +1,5 @@
-import type { BasicAuthCredentials, FetchLike } from "./core/index.js";
+import type { FetchLike } from "./core/api-request.js";
+import type { BasicAuthCredentials } from "./core/auth/credentials.js";
 import { ServerEnvironment, type ServerOptions } from "./servers.js";
 
 export type ClientOptions = {

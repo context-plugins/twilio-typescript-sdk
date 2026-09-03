@@ -1,4 +1,5 @@
-import { s, type Schema } from "../core/index.js";
+import * as s from "../core/validation/index.js";
+import type { Schema } from "../core/validation/schema.js";
 import { messagingV2RcsCarrierSchema, type MessagingV2RcsCarrier } from "./messaging-v2-rcs-carrier.js";
 import {
   messagingV2RcsCountryStatusSchema,

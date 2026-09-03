@@ -1,4 +1,5 @@
-import { s, type Schema } from "../core/index.js";
+import * as s from "../core/validation/index.js";
+import type { Schema } from "../core/validation/schema.js";
 import { method21Schema, type Method21 } from "./method21.js";
 
 export type StatusCallback1 = {

@@ -1,4 +1,5 @@
-import { s, type Schema } from "../core/index.js";
+import * as s from "../core/validation/index.js";
+import type { Schema } from "../core/validation/schema.js";
 import { status4Schema, type Status4 } from "./status4.js";
 
 export type FlexV2Instance = {

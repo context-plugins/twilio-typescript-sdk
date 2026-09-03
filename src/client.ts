@@ -1,7 +1,10 @@
 import { buildAuthSchemes, type AuthSchemes } from "./auth-schemes.js";
 import { DEFAULT_CLIENT_OPTIONS, type ClientOptions } from "./client-options.js";
-import type { ApiPromise, Declared, ErrorDecoders, RequestOptions } from "./core/index.js";
-import { RawClient, ResponseError, s } from "./core/index.js";
+import type { ApiPromise } from "./core/api-promise.js";
+import type { RequestOptions } from "./core/api-request.js";
+import { RawClient } from "./core/raw-client.js";
+import { ResponseError, type Declared, type ErrorDecoders } from "./core/response-error.js";
+import * as s from "./core/validation/index.js";
 import {
   accountsCallsRecordingsSidJson201041408Error1Schema,
   type AccountsCallsRecordingsSidJson201041408Error1,
