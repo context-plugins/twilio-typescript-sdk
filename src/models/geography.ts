@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
+/** The geographic information associated with the phone number. */
 export type Geography = {
   isoCountry?: string;
   region?: string;
@@ -17,8 +18,8 @@ export const geographySchema: Schema<Geography> = s.object<Geography>({
   region: s.optional(s.string()),
   locality: s.optional(s.string()),
   postalCode: s.optional(s.string()),
-  latitude: s.optional(s.number()),
-  longitude: s.optional(s.number()),
+  latitude: s.optional(s.float64()),
+  longitude: s.optional(s.float64()),
   lata: s.optional(s.string()),
   rateCenter: s.optional(s.string()),
   _keysMap: {

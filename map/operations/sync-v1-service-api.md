@@ -4,17 +4,18 @@
 
 Accessor: `client.syncV1ServiceApi` · Source: `src/resources/sync-v1-service-api.ts` · 5 operations · Request types: namespace `SyncV1ServiceApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createService5
 
 - **Server**: `default12` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createService5(request: SyncV1ServiceApi.CreateService5Request, options?: RequestOptions): ApiPromise<SyncV1Service, ResponseError>`
+- **Signature**: `createService5(request: SyncV1ServiceApi.CreateService5Request, options?: RequestOptions): ApiPromise<SyncV1Service, ApiError>`
 - **Wire**: `POST /v1/Services`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `SyncV1Service`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `SyncV1ServiceApi.CreateService5Request` (7):
 
@@ -35,12 +36,13 @@ Accessor: `client.syncV1ServiceApi` · Source: `src/resources/sync-v1-service-ap
 ### deleteService5
 
 - **Server**: `default12` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteService5(request: SyncV1ServiceApi.DeleteService5Request, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteService5(request: SyncV1ServiceApi.DeleteService5Request, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Services/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `SyncV1ServiceApi.DeleteService5Request` (1):
 
@@ -51,12 +53,12 @@ Accessor: `client.syncV1ServiceApi` · Source: `src/resources/sync-v1-service-ap
 ### fetchService5
 
 - **Server**: `default12` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchService5(request: SyncV1ServiceApi.FetchService5Request, options?: RequestOptions): ApiPromise<SyncV1Service, ResponseError>`
+- **Signature**: `fetchService5(request: SyncV1ServiceApi.FetchService5Request, options?: RequestOptions): ApiPromise<SyncV1Service, ApiError>`
 - **Wire**: `GET /v1/Services/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `SyncV1Service`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `SyncV1ServiceApi.FetchService5Request` (1):
 
@@ -71,12 +73,12 @@ Accessor: `client.syncV1ServiceApi` · Source: `src/resources/sync-v1-service-ap
 ### listService5
 
 - **Server**: `default12` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listService5(request: SyncV1ServiceApi.ListService5Request, options?: RequestOptions): ApiPromise<ListServiceResponse4, ResponseError>`
+- **Signature**: `listService5(request: SyncV1ServiceApi.ListService5Request, options?: RequestOptions): ApiPromise<ListServiceResponse4, ApiError>`
 - **Wire**: `GET /v1/Services`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListServiceResponse4`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `SyncV1ServiceApi.ListService5Request` (3):
 
@@ -93,12 +95,13 @@ Accessor: `client.syncV1ServiceApi` · Source: `src/resources/sync-v1-service-ap
 ### updateService4
 
 - **Server**: `default12` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateService4(request: SyncV1ServiceApi.UpdateService4Request, options?: RequestOptions): ApiPromise<SyncV1Service, ResponseError>`
+- **Signature**: `updateService4(request: SyncV1ServiceApi.UpdateService4Request, options?: RequestOptions): ApiPromise<SyncV1Service, ApiError>`
 - **Wire**: `POST /v1/Services/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `SyncV1Service`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `SyncV1ServiceApi.UpdateService4Request` (8):
 

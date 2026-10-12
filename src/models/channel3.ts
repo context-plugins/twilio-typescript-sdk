@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** Channel type for address resolution. */
 export const Channel3 = {
   Voice: "VOICE",
   Sms: "SMS",

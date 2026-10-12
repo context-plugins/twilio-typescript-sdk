@@ -4,16 +4,17 @@
 
 Accessor: `client.api20100401Trigger` · Source: `src/resources/api20100401-trigger.ts` · 5 operations · Request types: namespace `Api20100401Trigger`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createUsageTrigger
 
-- **Signature**: `createUsageTrigger(request: Api20100401Trigger.CreateUsageTriggerRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountUsageUsageTrigger, ResponseError>`
+- **Signature**: `createUsageTrigger(request: Api20100401Trigger.CreateUsageTriggerRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountUsageUsageTrigger, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/Usage/Triggers.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountUsageUsageTrigger`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Trigger.CreateUsageTriggerRequest` (8):
 
@@ -37,12 +38,13 @@ Accessor: `client.api20100401Trigger` · Source: `src/resources/api20100401-trig
 
 ### deleteUsageTrigger
 
-- **Signature**: `deleteUsageTrigger(request: Api20100401Trigger.DeleteUsageTriggerRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteUsageTrigger(request: Api20100401Trigger.DeleteUsageTriggerRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /2010-04-01/Accounts/{AccountSid}/Usage/Triggers/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Trigger.DeleteUsageTriggerRequest` (2):
 
@@ -53,12 +55,12 @@ Accessor: `client.api20100401Trigger` · Source: `src/resources/api20100401-trig
 
 ### fetchUsageTrigger
 
-- **Signature**: `fetchUsageTrigger(request: Api20100401Trigger.FetchUsageTriggerRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountUsageUsageTrigger, ResponseError>`
+- **Signature**: `fetchUsageTrigger(request: Api20100401Trigger.FetchUsageTriggerRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountUsageUsageTrigger, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Usage/Triggers/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ApiV2010AccountUsageUsageTrigger`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Trigger.FetchUsageTriggerRequest` (2):
 
@@ -73,12 +75,12 @@ Accessor: `client.api20100401Trigger` · Source: `src/resources/api20100401-trig
 
 ### listUsageTrigger
 
-- **Signature**: `listUsageTrigger(request: Api20100401Trigger.ListUsageTriggerRequest, options?: RequestOptions): ApiPromise<ListUsageTriggerResponse, ResponseError>`
+- **Signature**: `listUsageTrigger(request: Api20100401Trigger.ListUsageTriggerRequest, options?: RequestOptions): ApiPromise<ListUsageTriggerResponse, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Usage/Triggers.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListUsageTriggerResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Trigger.ListUsageTriggerRequest` (7):
 
@@ -100,12 +102,13 @@ Accessor: `client.api20100401Trigger` · Source: `src/resources/api20100401-trig
 
 ### updateUsageTrigger
 
-- **Signature**: `updateUsageTrigger(request: Api20100401Trigger.UpdateUsageTriggerRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountUsageUsageTrigger, ResponseError>`
+- **Signature**: `updateUsageTrigger(request: Api20100401Trigger.UpdateUsageTriggerRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountUsageUsageTrigger, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/Usage/Triggers/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountUsageUsageTrigger`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Trigger.UpdateUsageTriggerRequest` (5):
 

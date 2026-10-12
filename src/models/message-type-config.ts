@@ -2,7 +2,9 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type MessageTypeConfig = {
+  /** The message type key/identifier (typically country codes or special identifiers) */
   key: string;
+  /** Human-readable display name for the message type */
   friendlyName: string;
 };
 

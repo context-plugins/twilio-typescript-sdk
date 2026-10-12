@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** One of `inbound_track`, `outbound_track`, `both_tracks`. */
 export const SiprecEnumTrack = {
   InboundTrack: "inbound_track",
   OutboundTrack: "outbound_track",

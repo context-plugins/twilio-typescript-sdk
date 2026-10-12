@@ -12,10 +12,10 @@ export type JobResult = {
 
 export const jobResultSchema: Schema<JobResult> = s.object<JobResult>({
   fileUrl: s.optionalNullable(s.string()),
-  totalCount: s.optional(s.number()),
-  processedCount: s.optional(s.number()),
-  successCount: s.optional(s.number()),
-  errorCount: s.optional(s.number()),
+  totalCount: s.optional(s.int()),
+  processedCount: s.optional(s.int()),
+  successCount: s.optional(s.int()),
+  errorCount: s.optional(s.int()),
   details: s.optionalNullable(s.string()),
   _keysMap: {
     fileUrl: "file_url",

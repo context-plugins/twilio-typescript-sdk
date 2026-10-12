@@ -4,17 +4,17 @@
 
 Accessor: `client.taskrouterV1WorkerReservation` · Source: `src/resources/taskrouter-v1-worker-reservation.ts` · 3 operations · Request types: namespace `TaskrouterV1WorkerReservation`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchWorkerReservation
 
 - **Server**: `default8` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchWorkerReservation(request: TaskrouterV1WorkerReservation.FetchWorkerReservationRequest, options?: RequestOptions): ApiPromise<TaskrouterV1WorkspaceWorkerWorkerReservation, ResponseError>`
+- **Signature**: `fetchWorkerReservation(request: TaskrouterV1WorkerReservation.FetchWorkerReservationRequest, options?: RequestOptions): ApiPromise<TaskrouterV1WorkspaceWorkerWorkerReservation, ApiError>`
 - **Wire**: `GET /v1/Workspaces/{WorkspaceSid}/Workers/{WorkerSid}/Reservations/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `TaskrouterV1WorkspaceWorkerWorkerReservation`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TaskrouterV1WorkerReservation.FetchWorkerReservationRequest` (3):
 
@@ -31,12 +31,12 @@ Accessor: `client.taskrouterV1WorkerReservation` · Source: `src/resources/taskr
 ### listWorkerReservation
 
 - **Server**: `default8` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listWorkerReservation(request: TaskrouterV1WorkerReservation.ListWorkerReservationRequest, options?: RequestOptions): ApiPromise<ListWorkerReservationResponse, ResponseError>`
+- **Signature**: `listWorkerReservation(request: TaskrouterV1WorkerReservation.ListWorkerReservationRequest, options?: RequestOptions): ApiPromise<ListWorkerReservationResponse, ApiError>`
 - **Wire**: `GET /v1/Workspaces/{WorkspaceSid}/Workers/{WorkerSid}/Reservations`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListWorkerReservationResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TaskrouterV1WorkerReservation.ListWorkerReservationRequest` (6):
 
@@ -57,12 +57,13 @@ Accessor: `client.taskrouterV1WorkerReservation` · Source: `src/resources/taskr
 ### updateWorkerReservation
 
 - **Server**: `default8` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateWorkerReservation(request: TaskrouterV1WorkerReservation.UpdateWorkerReservationRequest, options?: RequestOptions): ApiPromise<TaskrouterV1WorkspaceWorkerWorkerReservation, ResponseError>`
+- **Signature**: `updateWorkerReservation(request: TaskrouterV1WorkerReservation.UpdateWorkerReservationRequest, options?: RequestOptions): ApiPromise<TaskrouterV1WorkspaceWorkerWorkerReservation, ApiError>`
 - **Wire**: `POST /v1/Workspaces/{WorkspaceSid}/Workers/{WorkerSid}/Reservations/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `TaskrouterV1WorkspaceWorkerWorkerReservation`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TaskrouterV1WorkerReservation.UpdateWorkerReservationRequest` (56):
 

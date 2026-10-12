@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** Business customer type */
 export const BusinessIdentity = {
   Direct: "DIRECT",
   Isv: "ISV",

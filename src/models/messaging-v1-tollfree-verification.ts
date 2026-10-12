@@ -26,57 +26,139 @@ import {
 } from "./tollfree-verification-enum-vetting-provider.js";
 
 export type MessagingV1TollfreeVerification = {
+  /** The unique string to identify Tollfree Verification. */
   sid?: string | null;
+  /**
+   * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Tollfree
+   * Verification resource.
+   */
   accountSid?: string | null;
+  /** Customer's Profile Bundle BundleSid. */
   customerProfileSid?: string | null;
+  /** Tollfree TrustProduct Bundle BundleSid. */
   trustProductSid?: string | null;
+  /**
+   * The date and time in GMT when the resource was created specified in [ISO
+   * 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+   */
   dateCreated?: Date | null;
+  /**
+   * The date and time in GMT when the resource was last updated specified in [ISO
+   * 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+   */
   dateUpdated?: Date | null;
+  /** The SID of the Regulated Item. */
   regulatedItemSid?: string | null;
+  /** The name of the business or organization using the Tollfree number. */
   businessName?: string | null;
+  /** The address of the business or organization using the Tollfree number. */
   businessStreetAddress?: string | null;
+  /** The address of the business or organization using the Tollfree number. */
   businessStreetAddress2?: string | null;
+  /** The city of the business or organization using the Tollfree number. */
   businessCity?: string | null;
+  /** The state/province/region of the business or organization using the Tollfree number. */
   businessStateProvinceRegion?: string | null;
+  /** The postal code of the business or organization using the Tollfree number. */
   businessPostalCode?: string | null;
+  /** The country of the business or organization using the Tollfree number. */
   businessCountry?: string | null;
+  /** The website of the business or organization using the Tollfree number. */
   businessWebsite?: string | null;
+  /** The first name of the contact for the business or organization using the Tollfree number. */
   businessContactFirstName?: string | null;
+  /** The last name of the contact for the business or organization using the Tollfree number. */
   businessContactLastName?: string | null;
+  /**
+   * The email address of the contact for the business or organization using the Tollfree number.
+   */
   businessContactEmail?: string | null;
+  /**
+   * The E.164 formatted phone number of the contact for the business or organization using the
+   * Tollfree number.
+   */
   businessContactPhone?: string | null;
+  /** The email address to receive the notification about the verification result. . */
   notificationEmail?: string | null;
+  /** The category of the use case for the Tollfree Number. List as many as are applicable. */
   useCaseCategories?: TollfreeVerificationEnumUseCaseCategory[] | null;
+  /** Use this to further explain how messaging is used by the business or organization. */
   useCaseSummary?: string | null;
+  /** An example of message content, i.e. a sample message. */
   productionMessageSample?: string | null;
+  /**
+   * Link to an image that shows the opt-in workflow. Multiple images allowed and must be a publicly
+   * hosted URL.
+   */
   optInImageUrls?: string[] | null;
+  /** Describe how a user opts-in to text messages. */
   optInType?: TollfreeVerificationEnumOptInType;
+  /** Estimate monthly volume of messages from the Tollfree Number. */
   messageVolume?: string | null;
+  /** Additional information to be provided for verification. */
   additionalInformation?: string | null;
+  /** The SID of the Phone Number associated with the Tollfree Verification. */
   tollfreePhoneNumberSid?: string | null;
+  /** The E.164 formatted toll-free phone number associated with the verification. */
   tollfreePhoneNumber?: string | null;
+  /** The compliance status of the Tollfree Verification record. */
   status?: TollfreeVerificationEnumStatus;
+  /** The absolute URL of the Tollfree Verification resource. */
   url?: string | null;
+  /** The rejection reason given when a Tollfree Verification has been rejected. */
   rejectionReason?: string | null;
+  /** The error code given when a Tollfree Verification has been rejected. */
   errorCode?: number | null;
+  /** The date and time when the ability to edit a rejected verification expires. */
   editExpiration?: Date | null;
+  /**
+   * If a rejected verification is allowed to be edited/resubmitted. Some rejection reasons allow
+   * editing and some do not.
+   */
   editAllowed?: boolean | null;
+  /** A legally recognized business registration number */
   businessRegistrationNumber?: string | null;
+  /**
+   * The organizational authority for business registrations. Required for all business types except
+   * SOLE_PROPRIETOR.
+   */
   businessRegistrationAuthority?: TollfreeVerificationEnumBusinessRegistrationAuthority | null;
+  /** Country business is registered in */
   businessRegistrationCountry?: string | null;
+  /**
+   * The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT,
+   * SOLE_PROPRIETOR, GOVERNMENT. Required field.
+   */
   businessType?: TollfreeVerificationEnumBusinessType | null;
+  /** The E.164 formatted number associated with the business. */
   businessRegistrationPhoneNumber?: string | null;
+  /**
+   * Trade name, sub entity, or downstream business name of business being submitted for
+   * verification
+   */
   doingBusinessAs?: string | null;
+  /** The confirmation message sent to users when they opt in to receive messages. */
   optInConfirmationMessage?: string | null;
+  /** A sample help message provided to users. */
   helpMessageSample?: string | null;
+  /** The URL to the privacy policy for the business or organization. */
   privacyPolicyUrl?: string | null;
+  /** The URL of the terms and conditions for the business or organization. */
   termsAndConditionsUrl?: string | null;
+  /** Indicates if the content is age gated. */
   ageGatedContent?: boolean | null;
+  /** List of keywords that users can send to opt in or out of messages. */
   optInKeywords?: string[] | null;
+  /**
+   * A list of rejection reasons and codes describing why a Tollfree Verification has been rejected.
+   */
   rejectionReasons?: Record<string, unknown>[] | null;
+  /** The URLs of the documents associated with the Tollfree Verification resource. */
   resourceLinks?: Record<string, unknown> | null;
+  /** An optional external reference ID supplied by customer and echoed back on status retrieval. */
   externalReferenceId?: string | null;
   vettingId?: string | null;
+  /** The third-party political vetting provider. */
   vettingProvider?: TollfreeVerificationEnumVettingProvider | null;
   vettingIdExpiration?: Date | null;
 };
@@ -117,7 +199,7 @@ export const messagingV1TollfreeVerificationSchema: Schema<MessagingV1TollfreeVe
     status: s.optional(s.lazy(() => tollfreeVerificationEnumStatusSchema)),
     url: s.optionalNullable(s.string()),
     rejectionReason: s.optionalNullable(s.string()),
-    errorCode: s.optionalNullable(s.number()),
+    errorCode: s.optionalNullable(s.int()),
     editExpiration: s.optionalNullable(s.dateTime()),
     editAllowed: s.optionalNullable(s.boolean()),
     businessRegistrationNumber: s.optionalNullable(s.string()),

@@ -1,8 +1,8 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
 import * as s from "../core/validation/index.js";
 import {
   apiV2010AccountBalanceSchema,
@@ -21,21 +21,39 @@ export class Api20100401Balance {
     this.#auth = auth;
   }
 
+  /**
+   * Fetch the balance for an Account based on Account Sid. Balance changes may not be reflected
+   * immediately. Child accounts do not contain balance information
+   *
+   * @remarks
+   * Fetch the balance for an Account based on Account Sid. Balance changes may not be reflected
+   * immediately. Child accounts do not contain balance information
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   fetchBalance(
     request: Api20100401Balance.FetchBalanceRequest,
     options?: RequestOptions,
-  ): ApiPromise<ApiV2010AccountBalance, ResponseError> {
-    return this.#rawClient.execute<ApiV2010AccountBalance, ResponseError>(
+  ): ApiPromise<ApiV2010AccountBalance, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default("/2010-04-01/Accounts/{AccountSid}/Balance.json"),
+        urlTemplate: this.#servers.default("/2010-04-01/Accounts/{AccountSid}/Balance.json"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "AccountSid", value: request.accountSid, schema: s.string() }],
+        query: [],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: apiV2010AccountBalanceSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -44,6 +62,7 @@ export class Api20100401Balance {
 
 export namespace Api20100401Balance {
   export type FetchBalanceRequest = {
+    /** The unique SID identifier of the Account. */
     accountSid: string;
   };
 }

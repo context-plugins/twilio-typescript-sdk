@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The compliance status of the Evaluation resource. */
 export const EvaluationEnumStatus = {
   Compliant: "compliant",
   Noncompliant: "noncompliant",

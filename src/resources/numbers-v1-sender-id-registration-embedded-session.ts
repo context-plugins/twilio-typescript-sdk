@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError, type Declared, type ErrorDecoders, type ErrorPayload } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError, type Declared, type ErrorDecoders } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import {
   accountsCallsRecordingsSidJson201041408Error1Schema,
@@ -29,6 +30,24 @@ export class NumbersV1SenderIdRegistrationEmbeddedSession {
     this.#auth = auth;
   }
 
+  /**
+   * Create Embedded Session
+   *
+   * @remarks
+   * Creates a new embedded Persona inquiry session for an existing registration in DRAFT or
+   * TWILIO_REJECTED status. Use this to resume an incomplete registration or resubmit a rejected
+   * one.
+   *
+   * @returns Created
+   *
+   * @throws {@link
+   * NumbersV1SenderIdRegistrationEmbeddedSession.CreateSenderIdRegistrationEmbeddedSessionError}
+   * when the API answers with an error status — narrow on `err.payload.kind`
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   createSenderIdRegistrationEmbeddedSession(
     request: NumbersV1SenderIdRegistrationEmbeddedSession.CreateSenderIdRegistrationEmbeddedSessionRequest,
     options?: RequestOptions,
@@ -39,9 +58,11 @@ export class NumbersV1SenderIdRegistrationEmbeddedSession {
     return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default5("/v1/SenderIdRegistrations/{BundleSid}/EmbeddedSessions"),
+        urlTemplate: this.#servers.default5("/v1/SenderIdRegistrations/{BundleSid}/EmbeddedSessions"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "BundleSid", value: request.bundleSid, schema: s.string() }],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: { kind: "json", value: request.body, schema: numbersV1CreateEmbeddedSessionRequestSchema },
       },
       {
@@ -56,25 +77,31 @@ export class NumbersV1SenderIdRegistrationEmbeddedSession {
 
 export namespace NumbersV1SenderIdRegistrationEmbeddedSession {
   export type CreateSenderIdRegistrationEmbeddedSessionRequest = {
+    /** The unique identifier of the registration (BU-prefixed). */
     bundleSid: string;
     body: NumbersV1CreateEmbeddedSessionRequest;
   };
 
-  export class CreateSenderIdRegistrationEmbeddedSessionError extends ResponseError<
-    | Declared<"accountsCallsRecordingsSidJson201041408Error1", AccountsCallsRecordingsSidJson201041408Error1>
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error12",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error13",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error14",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-  > {
+  export class CreateSenderIdRegistrationEmbeddedSessionError extends ApiError {
+    declare readonly payload: ErrorPayload<
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error1",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error12",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error13",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error14",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+    >;
+
     static readonly errors: ErrorDecoders<CreateSenderIdRegistrationEmbeddedSessionError> = [
       {
         on: 400,

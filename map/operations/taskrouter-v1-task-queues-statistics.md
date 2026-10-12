@@ -4,17 +4,17 @@
 
 Accessor: `client.taskrouterV1TaskQueuesStatistics` · Source: `src/resources/taskrouter-v1-task-queues-statistics.ts` · 1 operation · Request types: namespace `TaskrouterV1TaskQueuesStatistics`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### listTaskQueuesStatistics
 
 - **Server**: `default8` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listTaskQueuesStatistics(request: TaskrouterV1TaskQueuesStatistics.ListTaskQueuesStatisticsRequest, options?: RequestOptions): ApiPromise<ListTaskQueuesStatisticsResponse, ResponseError>`
+- **Signature**: `listTaskQueuesStatistics(request: TaskrouterV1TaskQueuesStatistics.ListTaskQueuesStatisticsRequest, options?: RequestOptions): ApiPromise<ListTaskQueuesStatisticsResponse, ApiError>`
 - **Wire**: `GET /v1/Workspaces/{WorkspaceSid}/TaskQueues/Statistics`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListTaskQueuesStatisticsResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TaskrouterV1TaskQueuesStatistics.ListTaskQueuesStatisticsRequest` (10):
 

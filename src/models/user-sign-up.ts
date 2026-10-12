@@ -2,6 +2,7 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 import { signUpOptionSchema, type SignUpOption } from "./sign-up-option.js";
 
+/** User sign-up configuration for the application. */
 export type UserSignUp = {
   signUpOptions?: SignUpOption[];
   doubleOptInProcess?: boolean;

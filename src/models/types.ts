@@ -15,20 +15,71 @@ import { whatsappAuthenticationSchema, type WhatsappAuthentication } from "./wha
 import { whatsappCardSchema, type WhatsappCard } from "./whatsapp-card.js";
 import { whatsappFlowsSchema, type WhatsappFlows } from "./whatsapp-flows.js";
 
+/** Content types */
 export type Types = {
+  /** Type containing only plain text-based content */
   twilioText?: TwilioText | null;
+  /**
+   * twilio/media is used to send file attachments, or to send long text via MMS in the US and
+   * Canada. As such, the twilio/media type must contain at least ONE of text or media content.
+   */
   twilioMedia?: TwilioMedia | null;
+  /**
+   * twilio/location type contains a location pin and an optional label, which can be used to
+   * enhance delivery notifications or connect recipients to physical experiences you offer.
+   */
   twilioLocation?: TwilioLocation | null;
+  /**
+   * twilio/list-picker includes a menu of up to 10 options, which offers a simple way for users to
+   * make a selection.
+   */
   twilioListPicker?: TwilioListPicker | null;
+  /**
+   * twilio/call-to-action buttons let recipients tap to trigger actions such as launching a website
+   * or making a phone call.
+   */
   twilioCallToAction?: TwilioCallToAction | null;
+  /**
+   * twilio/quick-reply templates let recipients tap, rather than type, to respond to the message.
+   */
   twilioQuickReply?: TwilioQuickReply | null;
+  /**
+   * twilio/card is a structured template which can be used to send a series of related information.
+   * It must include a title and at least one additional field.
+   */
   twilioCard?: TwilioCard | null;
+  /**
+   * twilio/catalog type lets recipients view list of catalog products, ask questions about
+   * products, order products.
+   */
   twilioCatalog?: TwilioCatalog | null;
+  /**
+   * twilio/carousel templates allow you to send a single text message accompanied by a set of up to
+   * 10 carousel cards in a horizontally scrollable view
+   */
   twilioCarousel?: TwilioCarousel | null;
+  /**
+   * twilio/flows templates allow you to send multiple messages in a set order with text or select
+   * options
+   */
   twilioFlows?: TwilioFlows | null;
+  /**
+   * twilio/schedule templates allow us to send a message with a schedule with different time slots
+   */
   twilioSchedule?: TwilioSchedule | null;
+  /**
+   * whatsapp/card is a structured template which can be used to send a series of related
+   * information. It must include a body and at least one additional field.
+   */
   whatsappCard?: WhatsappCard | null;
+  /**
+   * whatsApp/authentication templates let companies deliver WA approved one-time-password button.
+   */
   whatsappAuthentication?: WhatsappAuthentication | null;
+  /**
+   * whatsapp/flows templates allow you to send multiple messages in a set order with text or select
+   * options
+   */
   whatsappFlows?: WhatsappFlows | null;
 };
 

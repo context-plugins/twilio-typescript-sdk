@@ -1,6 +1,10 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * The HTTP method Twilio will use when requesting the above `Url`. Either `GET` or `POST`. Default
+ * is `POST`.
+ */
 export const Method3 = {
   Get: "GET",
   Post: "POST",

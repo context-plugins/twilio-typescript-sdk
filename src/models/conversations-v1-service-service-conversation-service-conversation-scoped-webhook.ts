@@ -2,14 +2,34 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type ConversationsV1ServiceServiceConversationServiceConversationScopedWebhook = {
+  /** A 34 character string that uniquely identifies this resource. */
   sid?: string | null;
+  /**
+   * The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for
+   * this conversation.
+   */
   accountSid?: string | null;
+  /**
+   * The SID of the [Conversation
+   * Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant
+   * resource is associated with.
+   */
   chatServiceSid?: string | null;
+  /**
+   * The unique ID of the
+   * [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this
+   * webhook.
+   */
   conversationSid?: string | null;
+  /** The target of this webhook: `webhook`, `studio`, `trigger` */
   target?: string | null;
+  /** An absolute API resource URL for this webhook. */
   url?: string | null;
+  /** The configuration of this webhook. Is defined based on target. */
   configuration?: Record<string, unknown> | null;
+  /** The date that this resource was created. */
   dateCreated?: Date | null;
+  /** The date that this resource was last updated. */
   dateUpdated?: Date | null;
 };
 

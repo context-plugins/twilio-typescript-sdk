@@ -2,8 +2,11 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type VerifyV2Safelist = {
+  /** The unique string that we created to identify the SafeList resource. */
   sid?: string | null;
+  /** The phone number in SafeList. */
   phoneNumber?: string | null;
+  /** The absolute URL of the SafeList resource. */
   url?: string | null;
 };
 

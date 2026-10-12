@@ -2,9 +2,13 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type DefaultKeyword = {
+  /** The opt-out keyword */
   keyword?: string;
+  /** The type of message (SMS, etc.) */
   messageType?: string;
+  /** Language code for the message */
   language?: string;
+  /** The default response message sent when this keyword is used */
   message?: string;
 };
 

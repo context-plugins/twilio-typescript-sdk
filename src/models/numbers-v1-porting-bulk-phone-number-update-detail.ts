@@ -5,6 +5,7 @@ export type NumbersV1PortingBulkPhoneNumberUpdateDetail = {
   portInPhoneNumberSid: string;
   currentStatus: string;
   requestedStatus: string;
+  /** Error message explaining why the update failed */
   errorMessage?: string | null;
 };
 

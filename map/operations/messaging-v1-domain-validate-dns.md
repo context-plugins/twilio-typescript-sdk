@@ -4,17 +4,17 @@
 
 Accessor: `client.messagingV1DomainValidateDns` · Source: `src/resources/messaging-v1-domain-validate-dns.ts` · 1 operation · Request types: namespace `MessagingV1DomainValidateDns`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchDomainDnsValidation
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchDomainDnsValidation(request: MessagingV1DomainValidateDns.FetchDomainDnsValidationRequest, options?: RequestOptions): ApiPromise<MessagingV1DomainDnsValidation, ResponseError>`
+- **Signature**: `fetchDomainDnsValidation(request: MessagingV1DomainValidateDns.FetchDomainDnsValidationRequest, options?: RequestOptions): ApiPromise<MessagingV1DomainDnsValidation, ApiError>`
 - **Wire**: `GET /v1/LinkShortening/Domains/{DomainSid}/ValidateDns`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `MessagingV1DomainDnsValidation`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1DomainValidateDns.FetchDomainDnsValidationRequest` (1):
 

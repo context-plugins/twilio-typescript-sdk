@@ -4,17 +4,18 @@
 
 Accessor: `client.verifyV2AccessToken` · Source: `src/resources/verify-v2-access-token.ts` · 2 operations · Request types: namespace `VerifyV2AccessToken`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createAccessToken
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createAccessToken(request: VerifyV2AccessToken.CreateAccessTokenRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceAccessToken, ResponseError>`
+- **Signature**: `createAccessToken(request: VerifyV2AccessToken.CreateAccessTokenRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceAccessToken, ApiError>`
 - **Wire**: `POST /v2/Services/{ServiceSid}/AccessTokens`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `VerifyV2ServiceAccessToken`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2AccessToken.CreateAccessTokenRequest` (5):
 
@@ -34,12 +35,12 @@ Accessor: `client.verifyV2AccessToken` · Source: `src/resources/verify-v2-acces
 ### fetchAccessToken
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchAccessToken(request: VerifyV2AccessToken.FetchAccessTokenRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceAccessToken, ResponseError>`
+- **Signature**: `fetchAccessToken(request: VerifyV2AccessToken.FetchAccessTokenRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceAccessToken, ApiError>`
 - **Wire**: `GET /v2/Services/{ServiceSid}/AccessTokens/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `VerifyV2ServiceAccessToken`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2AccessToken.FetchAccessTokenRequest` (2):
 

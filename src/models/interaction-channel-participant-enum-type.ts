@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** Participant type. Can be: `agent`, `customer`, `supervisor`, `external`, `unknown` */
 export const InteractionChannelParticipantEnumType = {
   Supervisor: "supervisor",
   Customer: "customer",

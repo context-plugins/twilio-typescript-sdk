@@ -3,12 +3,19 @@ import type { Schema } from "../core/validation/schema.js";
 import { callbackMethod2Schema, type CallbackMethod2 } from "./callback-method2.js";
 import { fallbackMethod1Schema, type FallbackMethod1 } from "./fallback-method1.js";
 
+/** The configuration settings for webhooks. */
 export type MessagingV2ChannelsSenderWebhook = {
+  /** The URL to send the webhook to. */
   callbackUrl?: string | null;
+  /** The HTTP method for the webhook. */
   callbackMethod?: CallbackMethod2 | null;
+  /** The URL to send the fallback webhook to. */
   fallbackUrl?: string | null;
+  /** The HTTP method for the fallback webhook. */
   fallbackMethod?: FallbackMethod1 | null;
+  /** The URL to send the status callback to. */
   statusCallbackUrl?: string | null;
+  /** The HTTP method for the status callback. */
   statusCallbackMethod?: string | null;
 };
 

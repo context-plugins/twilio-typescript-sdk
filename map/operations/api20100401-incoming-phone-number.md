@@ -4,16 +4,17 @@
 
 Accessor: `client.api20100401IncomingPhoneNumber` · Source: `src/resources/api20100401-incoming-phone-number.ts` · 5 operations · Request types: namespace `Api20100401IncomingPhoneNumber`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createIncomingPhoneNumber
 
-- **Signature**: `createIncomingPhoneNumber(request: Api20100401IncomingPhoneNumber.CreateIncomingPhoneNumberRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountIncomingPhoneNumber, ResponseError>`
+- **Signature**: `createIncomingPhoneNumber(request: Api20100401IncomingPhoneNumber.CreateIncomingPhoneNumberRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountIncomingPhoneNumber, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountIncomingPhoneNumber`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401IncomingPhoneNumber.CreateIncomingPhoneNumberRequest` (25):
 
@@ -58,12 +59,13 @@ Accessor: `client.api20100401IncomingPhoneNumber` · Source: `src/resources/api2
 
 ### deleteIncomingPhoneNumber
 
-- **Signature**: `deleteIncomingPhoneNumber(request: Api20100401IncomingPhoneNumber.DeleteIncomingPhoneNumberRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteIncomingPhoneNumber(request: Api20100401IncomingPhoneNumber.DeleteIncomingPhoneNumberRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401IncomingPhoneNumber.DeleteIncomingPhoneNumberRequest` (2):
 
@@ -74,12 +76,12 @@ Accessor: `client.api20100401IncomingPhoneNumber` · Source: `src/resources/api2
 
 ### fetchIncomingPhoneNumber
 
-- **Signature**: `fetchIncomingPhoneNumber(request: Api20100401IncomingPhoneNumber.FetchIncomingPhoneNumberRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountIncomingPhoneNumber, ResponseError>`
+- **Signature**: `fetchIncomingPhoneNumber(request: Api20100401IncomingPhoneNumber.FetchIncomingPhoneNumberRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountIncomingPhoneNumber, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ApiV2010AccountIncomingPhoneNumber`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401IncomingPhoneNumber.FetchIncomingPhoneNumberRequest` (2):
 
@@ -94,12 +96,12 @@ Accessor: `client.api20100401IncomingPhoneNumber` · Source: `src/resources/api2
 
 ### listIncomingPhoneNumber
 
-- **Signature**: `listIncomingPhoneNumber(request: Api20100401IncomingPhoneNumber.ListIncomingPhoneNumberRequest, options?: RequestOptions): ApiPromise<ListIncomingPhoneNumberResponse, ResponseError>`
+- **Signature**: `listIncomingPhoneNumber(request: Api20100401IncomingPhoneNumber.ListIncomingPhoneNumberRequest, options?: RequestOptions): ApiPromise<ListIncomingPhoneNumberResponse, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListIncomingPhoneNumberResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401IncomingPhoneNumber.ListIncomingPhoneNumberRequest` (8):
 
@@ -120,12 +122,13 @@ Accessor: `client.api20100401IncomingPhoneNumber` · Source: `src/resources/api2
 
 ### updateIncomingPhoneNumber
 
-- **Signature**: `updateIncomingPhoneNumber(request: Api20100401IncomingPhoneNumber.UpdateIncomingPhoneNumberRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountIncomingPhoneNumber, ResponseError>`
+- **Signature**: `updateIncomingPhoneNumber(request: Api20100401IncomingPhoneNumber.UpdateIncomingPhoneNumberRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountIncomingPhoneNumber, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountIncomingPhoneNumber`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401IncomingPhoneNumber.UpdateIncomingPhoneNumberRequest` (25):
 

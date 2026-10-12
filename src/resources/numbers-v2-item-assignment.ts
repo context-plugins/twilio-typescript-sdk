@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import {
   listItemAssignmentResponseSchema,
@@ -25,16 +26,32 @@ export class NumbersV2ItemAssignment {
     this.#auth = auth;
   }
 
+  /**
+   * Create a new Assigned Item.
+   *
+   * @remarks
+   * Create a new Assigned Item.
+   *
+   * @returns Created
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   createItemAssignment(
     request: NumbersV2ItemAssignment.CreateItemAssignmentRequest,
     options?: RequestOptions,
-  ): ApiPromise<NumbersV2RegulatoryComplianceBundleItemAssignment, ResponseError> {
-    return this.#rawClient.execute<NumbersV2RegulatoryComplianceBundleItemAssignment, ResponseError>(
+  ): ApiPromise<NumbersV2RegulatoryComplianceBundleItemAssignment, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default5("/v2/RegulatoryCompliance/Bundles/{BundleSid}/ItemAssignments"),
+        urlTemplate: this.#servers.default5("/v2/RegulatoryCompliance/Bundles/{BundleSid}/ItemAssignments"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "BundleSid", value: request.bundleSid, schema: s.string() }],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: {
           kind: "formUrlEncoded",
           value: [{ name: "ObjectSid", value: request.objectSid, schema: s.string() }],
@@ -42,78 +59,129 @@ export class NumbersV2ItemAssignment {
       },
       {
         success: { kind: "json", schema: numbersV2RegulatoryComplianceBundleItemAssignmentSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Remove an Assignment Item Instance.
+   *
+   * @remarks
+   * Remove an Assignment Item Instance.
+   *
+   * @returns The resource was deleted successfully.
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   deleteItemAssignment(
     request: NumbersV2ItemAssignment.DeleteItemAssignmentRequest,
     options?: RequestOptions,
-  ): ApiPromise<undefined, ResponseError> {
-    return this.#rawClient.execute<undefined, ResponseError>(
+  ): ApiPromise<undefined, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "DELETE",
-        url: this.#servers.default5("/v2/RegulatoryCompliance/Bundles/{BundleSid}/ItemAssignments/{Sid}"),
+        urlTemplate: this.#servers.default5(
+          "/v2/RegulatoryCompliance/Bundles/{BundleSid}/ItemAssignments/{Sid}",
+        ),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           { name: "BundleSid", value: request.bundleSid, schema: s.string() },
           { name: "Sid", value: request.sid, schema: s.string() },
         ],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: { kind: "empty" },
       },
       {
         success: { kind: "empty" },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Fetch specific Assigned Item Instance.
+   *
+   * @remarks
+   * Fetch specific Assigned Item Instance.
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   fetchItemAssignment(
     request: NumbersV2ItemAssignment.FetchItemAssignmentRequest,
     options?: RequestOptions,
-  ): ApiPromise<NumbersV2RegulatoryComplianceBundleItemAssignment, ResponseError> {
-    return this.#rawClient.execute<NumbersV2RegulatoryComplianceBundleItemAssignment, ResponseError>(
+  ): ApiPromise<NumbersV2RegulatoryComplianceBundleItemAssignment, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default5("/v2/RegulatoryCompliance/Bundles/{BundleSid}/ItemAssignments/{Sid}"),
+        urlTemplate: this.#servers.default5(
+          "/v2/RegulatoryCompliance/Bundles/{BundleSid}/ItemAssignments/{Sid}",
+        ),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           { name: "BundleSid", value: request.bundleSid, schema: s.string() },
           { name: "Sid", value: request.sid, schema: s.string() },
         ],
+        query: [],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: numbersV2RegulatoryComplianceBundleItemAssignmentSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Retrieve a list of all Assigned Items for an account.
+   *
+   * @remarks
+   * Retrieve a list of all Assigned Items for an account.
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   listItemAssignment(
     request: NumbersV2ItemAssignment.ListItemAssignmentRequest,
     options?: RequestOptions,
-  ): ApiPromise<ListItemAssignmentResponse, ResponseError> {
-    return this.#rawClient.execute<ListItemAssignmentResponse, ResponseError>(
+  ): ApiPromise<ListItemAssignmentResponse, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default5("/v2/RegulatoryCompliance/Bundles/{BundleSid}/ItemAssignments"),
+        urlTemplate: this.#servers.default5("/v2/RegulatoryCompliance/Bundles/{BundleSid}/ItemAssignments"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "BundleSid", value: request.bundleSid, schema: s.string() }],
         query: [
-          { name: "PageSize", value: request.pageSize, schema: s.optional(s.number()) },
-          { name: "Page", value: request.page, schema: s.optional(s.number()) },
+          { name: "PageSize", value: request.pageSize, schema: s.optional(s.int()) },
+          { name: "Page", value: request.page, schema: s.optional(s.int()) },
           { name: "PageToken", value: request.pageToken, schema: s.optional(s.string()) },
         ],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: listItemAssignmentResponseSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -122,24 +190,36 @@ export class NumbersV2ItemAssignment {
 
 export namespace NumbersV2ItemAssignment {
   export type CreateItemAssignmentRequest = {
+    /** The unique string that we created to identify the Bundle resource. */
     bundleSid: string;
+    /** The SID of an object bag that holds information of the different items. */
     objectSid: string;
   };
 
   export type DeleteItemAssignmentRequest = {
+    /** The unique string that we created to identify the Bundle resource. */
     bundleSid: string;
+    /** The unique string that we created to identify the Identity resource. */
     sid: string;
   };
 
   export type FetchItemAssignmentRequest = {
+    /** The unique string that we created to identify the Bundle resource. */
     bundleSid: string;
+    /** The unique string that we created to identify the Identity resource. */
     sid: string;
   };
 
   export type ListItemAssignmentRequest = {
+    /** The unique string that we created to identify the Bundle resource. */
     bundleSid: string;
+    /**
+     * How many resources to return in each list page. The default is 50, and the maximum is 1000.
+     */
     pageSize?: number;
+    /** The page index. This value is simply for client state. */
     page?: number;
+    /** The page token. This is provided by the API. */
     pageToken?: string;
   };
 }

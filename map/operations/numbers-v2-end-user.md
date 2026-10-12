@@ -4,17 +4,18 @@
 
 Accessor: `client.numbersV2EndUser` · Source: `src/resources/numbers-v2-end-user.ts` · 5 operations · Request types: namespace `NumbersV2EndUser`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createEndUser
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createEndUser(request: NumbersV2EndUser.CreateEndUserRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceEndUser, ResponseError>`
+- **Signature**: `createEndUser(request: NumbersV2EndUser.CreateEndUserRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceEndUser, ApiError>`
 - **Wire**: `POST /v2/RegulatoryCompliance/EndUsers`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `NumbersV2RegulatoryComplianceEndUser`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2EndUser.CreateEndUserRequest` (3):
 
@@ -32,12 +33,13 @@ Accessor: `client.numbersV2EndUser` · Source: `src/resources/numbers-v2-end-use
 ### deleteEndUser
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteEndUser(request: NumbersV2EndUser.DeleteEndUserRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteEndUser(request: NumbersV2EndUser.DeleteEndUserRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v2/RegulatoryCompliance/EndUsers/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2EndUser.DeleteEndUserRequest` (1):
 
@@ -48,12 +50,12 @@ Accessor: `client.numbersV2EndUser` · Source: `src/resources/numbers-v2-end-use
 ### fetchEndUser
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchEndUser(request: NumbersV2EndUser.FetchEndUserRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceEndUser, ResponseError>`
+- **Signature**: `fetchEndUser(request: NumbersV2EndUser.FetchEndUserRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceEndUser, ApiError>`
 - **Wire**: `GET /v2/RegulatoryCompliance/EndUsers/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `NumbersV2RegulatoryComplianceEndUser`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2EndUser.FetchEndUserRequest` (1):
 
@@ -68,12 +70,12 @@ Accessor: `client.numbersV2EndUser` · Source: `src/resources/numbers-v2-end-use
 ### listEndUser
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listEndUser(request: NumbersV2EndUser.ListEndUserRequest, options?: RequestOptions): ApiPromise<ListEndUserResponse, ResponseError>`
+- **Signature**: `listEndUser(request: NumbersV2EndUser.ListEndUserRequest, options?: RequestOptions): ApiPromise<ListEndUserResponse, ApiError>`
 - **Wire**: `GET /v2/RegulatoryCompliance/EndUsers`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListEndUserResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2EndUser.ListEndUserRequest` (3):
 
@@ -90,12 +92,13 @@ Accessor: `client.numbersV2EndUser` · Source: `src/resources/numbers-v2-end-use
 ### updateEndUser
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateEndUser(request: NumbersV2EndUser.UpdateEndUserRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceEndUser, ResponseError>`
+- **Signature**: `updateEndUser(request: NumbersV2EndUser.UpdateEndUserRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceEndUser, ApiError>`
 - **Wire**: `POST /v2/RegulatoryCompliance/EndUsers/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `NumbersV2RegulatoryComplianceEndUser`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2EndUser.UpdateEndUserRequest` (3):
 

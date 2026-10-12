@@ -1,6 +1,10 @@
 import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
+/**
+ * The set of Boolean properties that describes the SMS, MMS, Voice, and Fax capabilities of the
+ * phone number.
+ */
 export type Capabilities1 = {
   voice?: boolean;
   restrictedVoice?: boolean;

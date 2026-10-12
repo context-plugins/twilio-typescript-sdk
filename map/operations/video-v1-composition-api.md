@@ -4,17 +4,18 @@
 
 Accessor: `client.videoV1CompositionApi` · Source: `src/resources/video-v1-composition-api.ts` · 4 operations · Request types: namespace `VideoV1CompositionApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createComposition
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createComposition(request: VideoV1CompositionApi.CreateCompositionRequest, options?: RequestOptions): ApiPromise<VideoV1Composition, ResponseError>`
+- **Signature**: `createComposition(request: VideoV1CompositionApi.CreateCompositionRequest, options?: RequestOptions): ApiPromise<VideoV1Composition, ApiError>`
 - **Wire**: `POST /v1/Compositions`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `VideoV1Composition`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1CompositionApi.CreateCompositionRequest` (9):
 
@@ -39,12 +40,13 @@ Accessor: `client.videoV1CompositionApi` · Source: `src/resources/video-v1-comp
 ### deleteComposition
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteComposition(request: VideoV1CompositionApi.DeleteCompositionRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteComposition(request: VideoV1CompositionApi.DeleteCompositionRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Compositions/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1CompositionApi.DeleteCompositionRequest` (1):
 
@@ -55,12 +57,12 @@ Accessor: `client.videoV1CompositionApi` · Source: `src/resources/video-v1-comp
 ### fetchComposition
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchComposition(request: VideoV1CompositionApi.FetchCompositionRequest, options?: RequestOptions): ApiPromise<VideoV1Composition, ResponseError>`
+- **Signature**: `fetchComposition(request: VideoV1CompositionApi.FetchCompositionRequest, options?: RequestOptions): ApiPromise<VideoV1Composition, ApiError>`
 - **Wire**: `GET /v1/Compositions/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `VideoV1Composition`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1CompositionApi.FetchCompositionRequest` (1):
 
@@ -75,12 +77,12 @@ Accessor: `client.videoV1CompositionApi` · Source: `src/resources/video-v1-comp
 ### listComposition
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listComposition(request: VideoV1CompositionApi.ListCompositionRequest, options?: RequestOptions): ApiPromise<ListCompositionResponse, ResponseError>`
+- **Signature**: `listComposition(request: VideoV1CompositionApi.ListCompositionRequest, options?: RequestOptions): ApiPromise<ListCompositionResponse, ApiError>`
 - **Wire**: `GET /v1/Compositions`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListCompositionResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1CompositionApi.ListCompositionRequest` (7):
 

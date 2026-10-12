@@ -30,15 +30,25 @@ import {
 } from "./messaging-v2-rcs-compliance-response.js";
 
 export type MessagingV2ChannelsSenderResponse = {
+  /** The SID of the sender. */
   sid?: string | null;
+  /** The status of the sender. */
   status?: ChannelsSenderEnumStatus;
+  /** The ID of the sender in `whatsapp:<E.164_PHONE_NUMBER>` format. */
   senderId?: string | null;
+  /** The configuration settings for creating a sender. */
   configuration?: MessagingV2ChannelsSenderConfiguration | null;
+  /** The configuration settings for webhooks. */
   webhook?: MessagingV2ChannelsSenderWebhook | null;
+  /** The profile information for the sender. */
   profile?: MessagingV2ChannelsSenderProfileGenericResponse | null;
+  /** The additional properties for the sender. */
   properties?: MessagingV2ChannelsSenderProperties | null;
+  /** The reasons why the sender is offline. */
   offlineReasons?: (MessagingV2ChannelsSenderOfflineReasonsItems | null)[] | null;
+  /** The KYC compliance information. This section consists of response to the request launch. */
   compliance?: MessagingV2RcsComplianceResponse | null;
+  /** The URL of the resource. */
   url?: string | null;
 };
 

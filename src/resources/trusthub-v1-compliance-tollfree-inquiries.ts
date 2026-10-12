@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import {
   complianceTollfreeInquiryEnumOptInTypeSchema,
@@ -29,15 +30,34 @@ export class TrusthubV1ComplianceTollfreeInquiries {
     this.#auth = auth;
   }
 
+  /**
+   * Create a new Compliance Tollfree Verification Inquiry for the authenticated account. This is
+   * necessary to start a new embedded session.
+   *
+   * @remarks
+   * Create a new Compliance Tollfree Verification Inquiry for the authenticated account. This is
+   * necessary to start a new embedded session.
+   *
+   * @returns Created
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   createComplianceTollfreeInquiry(
     request: TrusthubV1ComplianceTollfreeInquiries.CreateComplianceTollfreeInquiryRequest,
     options?: RequestOptions,
-  ): ApiPromise<TrusthubV1ComplianceTollfreeInquiry, ResponseError> {
-    return this.#rawClient.execute<TrusthubV1ComplianceTollfreeInquiry, ResponseError>(
+  ): ApiPromise<TrusthubV1ComplianceTollfreeInquiry, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default9("/v1/ComplianceInquiries/Tollfree/Initialize"),
+        urlTemplate: this.#servers.default9("/v1/ComplianceInquiries/Tollfree/Initialize"),
         auth: this.#auth.accountSidAuthToken,
+        pathParams: [],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: {
           kind: "formUrlEncoded",
           value: [
@@ -164,7 +184,7 @@ export class TrusthubV1ComplianceTollfreeInquiries {
       },
       {
         success: { kind: "json", schema: trusthubV1ComplianceTollfreeInquirySchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -173,43 +193,91 @@ export class TrusthubV1ComplianceTollfreeInquiries {
 
 export namespace TrusthubV1ComplianceTollfreeInquiries {
   export type CreateComplianceTollfreeInquiryRequest = {
+    /** The Tollfree phone number to be verified */
     tollfreePhoneNumber: string;
+    /** The email address to receive the notification about the verification result. */
     notificationEmail: string;
+    /** The Customer Profile Sid associated with the Account. */
     customerProfileSid?: string;
+    /** The name of the business or organization using the Tollfree number. */
     businessName?: string;
+    /** The website of the business or organization using the Tollfree number. */
     businessWebsite?: string;
+    /** The category of the use case for the Tollfree Number. List as many are applicable.. */
     useCaseCategories?: string[];
+    /** Use this to further explain how messaging is used by the business or organization. */
     useCaseSummary?: string;
+    /** An example of message content, i.e. a sample message. */
     productionMessageSample?: string;
+    /**
+     * Link to an image that shows the opt-in workflow. Multiple images allowed and must be a
+     * publicly hosted URL.
+     */
     optInImageUrls?: string[];
+    /** Describe how a user opts-in to text messages. */
     optInType?: ComplianceTollfreeInquiryEnumOptInType;
+    /** Estimate monthly volume of messages from the Tollfree Number. */
     messageVolume?: string;
+    /** The address of the business or organization using the Tollfree number. */
     businessStreetAddress?: string;
+    /** The address of the business or organization using the Tollfree number. */
     businessStreetAddress2?: string;
+    /** The city of the business or organization using the Tollfree number. */
     businessCity?: string;
+    /** The state/province/region of the business or organization using the Tollfree number. */
     businessStateProvinceRegion?: string;
+    /** The postal code of the business or organization using the Tollfree number. */
     businessPostalCode?: string;
+    /** The country of the business or organization using the Tollfree number. */
     businessCountry?: string;
+    /** Additional information to be provided for verification. */
     additionalInformation?: string;
+    /** The first name of the contact for the business or organization using the Tollfree number. */
     businessContactFirstName?: string;
+    /** The last name of the contact for the business or organization using the Tollfree number. */
     businessContactLastName?: string;
+    /**
+     * The email address of the contact for the business or organization using the Tollfree number.
+     */
     businessContactEmail?: string;
+    /**
+     * The phone number of the contact for the business or organization using the Tollfree number.
+     */
     businessContactPhone?: string;
+    /** Theme id for styling the inquiry form. */
     themeSetId?: string;
+    /** Skip the messaging use case screen of the inquiry form. */
     skipMessagingUseCase?: boolean;
+    /** The Business Registration Number of the business or organization. */
     businessRegistrationNumber?: string;
+    /** The Business Registration Authority of the business or organization. */
     businessRegistrationAuthority?: string;
+    /** The Business Registration Country of the business or organization. */
     businessRegistrationCountry?: string;
+    /** Type of Business. */
     businessType?: TollfreeVerificationEnumBusinessType;
+    /**
+     * Trade name, sub entity, or downstream business name of business being submitted for
+     * verification.
+     */
     doingBusinessAs?: string;
+    /** The confirmation message sent to users when they opt in to receive messages. */
     optInConfirmationMessage?: string;
+    /** A sample help message provided to users. */
     helpMessageSample?: string;
+    /** The URL to the privacy policy for the business or organization. */
     privacyPolicyUrl?: string;
+    /** The URL to the terms and conditions for the business or organization. */
     termsAndConditionsUrl?: string;
+    /** Indicates if the content is age gated. */
     ageGatedContent?: boolean;
+    /** A legally recognized business registration number. */
     externalReferenceId?: string;
+    /** List of keywords that users can text in to opt in to receive messages. */
     optInKeywords?: string[];
+    /** Unique identifier for the created Vetting . */
     vettingId?: string;
+    /** Name of the vetting provider. */
     vettingProvider?: string;
   };
 }

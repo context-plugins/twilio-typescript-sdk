@@ -7,24 +7,78 @@ import {
 import { interactionEnumTypeSchema, type InteractionEnumType } from "./interaction-enum-type.js";
 
 export type ProxyV1ServiceSessionInteraction = {
+  /** The unique string that we created to identify the Interaction resource. */
   sid?: string | null;
+  /** The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) resource. */
   sessionSid?: string | null;
+  /** The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) resource. */
   serviceSid?: string | null;
+  /**
+   * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the
+   * Interaction resource.
+   */
   accountSid?: string | null;
+  /**
+   * A JSON string that includes the message body of message interactions (e.g. `{"body": "hello"}`)
+   * or the call duration (when available) of a call (e.g. `{"duration": "5"}`).
+   */
   data?: string | null;
+  /** The Type of the Interaction. Can be: `message`, `voice` or `unknown`. */
   type?: InteractionEnumType;
+  /**
+   * The SID of the inbound [Participant](https://www.twilio.com/docs/proxy/api/participant)
+   * resource.
+   */
   inboundParticipantSid?: string | null;
+  /**
+   * The SID of the inbound resource; either the
+   * [Call](https://www.twilio.com/docs/voice/api/call-resource) or
+   * [Message](https://www.twilio.com/docs/sms/api/message-resource).
+   */
   inboundResourceSid?: string | null;
+  /**
+   * The inbound resource status of the Interaction. Will always be `delivered` for messages and
+   * `in-progress` for calls.
+   */
   inboundResourceStatus?: InteractionEnumResourceStatus;
+  /**
+   * The inbound resource type. Can be [Call](https://www.twilio.com/docs/voice/api/call-resource)
+   * or [Message](https://www.twilio.com/docs/sms/api/message-resource).
+   */
   inboundResourceType?: string | null;
+  /** The URL of the Twilio inbound resource */
   inboundResourceUrl?: string | null;
+  /** The SID of the outbound [Participant](https://www.twilio.com/docs/proxy/api/participant)). */
   outboundParticipantSid?: string | null;
+  /**
+   * The SID of the outbound resource; either the
+   * [Call](https://www.twilio.com/docs/voice/api/call-resource) or
+   * [Message](https://www.twilio.com/docs/sms/api/message-resource).
+   */
   outboundResourceSid?: string | null;
+  /**
+   * The inbound resource status of the Interaction. Will always be `delivered` for messages and
+   * `in-progress` for calls.
+   */
   outboundResourceStatus?: InteractionEnumResourceStatus;
+  /**
+   * The outbound resource type. Can be: [Call](https://www.twilio.com/docs/voice/api/call-resource)
+   * or [Message](https://www.twilio.com/docs/sms/api/message-resource).
+   */
   outboundResourceType?: string | null;
+  /** The URL of the Twilio outbound resource. */
   outboundResourceUrl?: string | null;
+  /**
+   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the
+   * Interaction was created.
+   */
   dateCreated?: Date | null;
+  /**
+   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the resource
+   * was last updated.
+   */
   dateUpdated?: Date | null;
+  /** The absolute URL of the Interaction resource. */
   url?: string | null;
 };
 

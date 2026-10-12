@@ -2,6 +2,7 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type V2IndicatorsTypingJsonResponse = {
+  /** Indicates if the typing indicator was sent successfully. */
   success?: boolean;
 };
 

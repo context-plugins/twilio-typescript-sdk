@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The status of the sender. */
 export const ChannelsSenderEnumStatus = {
   Creating: "CREATING",
   Online: "ONLINE",

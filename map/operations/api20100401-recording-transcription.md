@@ -4,16 +4,17 @@
 
 Accessor: `client.api20100401RecordingTranscription` · Source: `src/resources/api20100401-recording-transcription.ts` · 3 operations · Request types: namespace `Api20100401RecordingTranscription`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### deleteRecordingTranscription
 
-- **Signature**: `deleteRecordingTranscription(request: Api20100401RecordingTranscription.DeleteRecordingTranscriptionRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteRecordingTranscription(request: Api20100401RecordingTranscription.DeleteRecordingTranscriptionRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /2010-04-01/Accounts/{AccountSid}/Recordings/{RecordingSid}/Transcriptions/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401RecordingTranscription.DeleteRecordingTranscriptionRequest` (3):
 
@@ -25,12 +26,12 @@ Accessor: `client.api20100401RecordingTranscription` · Source: `src/resources/a
 
 ### fetchRecordingTranscription
 
-- **Signature**: `fetchRecordingTranscription(request: Api20100401RecordingTranscription.FetchRecordingTranscriptionRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountRecordingRecordingTranscription, ResponseError>`
+- **Signature**: `fetchRecordingTranscription(request: Api20100401RecordingTranscription.FetchRecordingTranscriptionRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountRecordingRecordingTranscription, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Recordings/{RecordingSid}/Transcriptions/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ApiV2010AccountRecordingRecordingTranscription`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401RecordingTranscription.FetchRecordingTranscriptionRequest` (3):
 
@@ -46,12 +47,12 @@ Accessor: `client.api20100401RecordingTranscription` · Source: `src/resources/a
 
 ### listRecordingTranscription
 
-- **Signature**: `listRecordingTranscription(request: Api20100401RecordingTranscription.ListRecordingTranscriptionRequest, options?: RequestOptions): ApiPromise<ListRecordingTranscriptionResponse, ResponseError>`
+- **Signature**: `listRecordingTranscription(request: Api20100401RecordingTranscription.ListRecordingTranscriptionRequest, options?: RequestOptions): ApiPromise<ListRecordingTranscriptionResponse, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Recordings/{RecordingSid}/Transcriptions.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListRecordingTranscriptionResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401RecordingTranscription.ListRecordingTranscriptionRequest` (5):
 

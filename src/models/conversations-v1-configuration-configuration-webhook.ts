@@ -7,12 +7,30 @@ import {
 } from "./configuration-webhook-enum-target.js";
 
 export type ConversationsV1ConfigurationConfigurationWebhook = {
+  /**
+   * The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for
+   * this conversation.
+   */
   accountSid?: string | null;
+  /** The HTTP method to be used when sending a webhook request. */
   method?: AmdStatusCallbackMethod;
+  /**
+   * The list of webhook event triggers that are enabled for this Service: `onMessageAdded`,
+   * `onMessageUpdated`, `onMessageRemoved`, `onMessageAdd`, `onMessageUpdate`, `onMessageRemove`,
+   * `onConversationUpdated`, `onConversationRemoved`, `onConversationAdd`, `onConversationAdded`,
+   * `onConversationRemove`, `onConversationUpdate`, `onConversationStateUpdated`,
+   * `onParticipantAdded`, `onParticipantUpdated`, `onParticipantRemoved`, `onParticipantAdd`,
+   * `onParticipantRemove`, `onParticipantUpdate`, `onDeliveryUpdated`, `onUserAdded`,
+   * `onUserUpdate`, `onUserUpdated`
+   */
   filters?: string[] | null;
+  /** The absolute url the pre-event webhook request should be sent to. */
   preWebhookUrl?: string | null;
+  /** The absolute url the post-event webhook request should be sent to. */
   postWebhookUrl?: string | null;
+  /** The routing target of the webhook. Can be ordinary or route internally to Flex */
   target?: ConfigurationWebhookEnumTarget;
+  /** An absolute API resource API resource URL for this webhook. */
   url?: string | null;
 };
 

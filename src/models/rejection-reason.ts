@@ -1,6 +1,10 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * The description of the rejection reason provided by the losing carrier. This field may be null if
+ * the number has not been rejected by the losing carrier.
+ */
 export const RejectionReason = {
   ContactSupportRequired: "CONTACT_SUPPORT_REQUIRED",
   PhoneNumberWithCarrierRestriction: "PHONE_NUMBER_WITH_CARRIER_RESTRICTION",

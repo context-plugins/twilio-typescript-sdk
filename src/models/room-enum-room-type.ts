@@ -1,6 +1,10 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * Type of room. Use `group` for new implementations. `go`, `peer-to-peer`, and `group-small` are
+ * deprecated.
+ */
 export const RoomEnumRoomType = {
   Group: "group",
   Go: "go",

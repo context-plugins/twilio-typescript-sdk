@@ -8,14 +8,23 @@ import {
 import { status3Schema, type Status3 } from "./status3.js";
 
 export type ConversationsV2Conversation = {
+  /** Conversation ID. */
   id: string;
+  /** Account ID. */
   accountId: string;
+  /** Configuration ID. */
   configurationId: string;
+  /** Conversation status. */
   status?: Status3;
+  /** Conversation name. */
   name?: string | null;
+  /** Timestamp when this Conversation was created. */
   createdAt?: Date;
+  /** Timestamp when this Conversation was last updated. */
   updatedAt?: Date;
+  /** Full configuration settings for this Conversation. */
   configuration?: Configuration;
+  /** Participants in this Conversation. */
   participants?: ConversationsV2Participant[];
 };
 

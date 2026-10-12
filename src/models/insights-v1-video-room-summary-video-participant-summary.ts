@@ -18,22 +18,47 @@ import {
 } from "./video-participant-summary-enum-twilio-realm.js";
 
 export type InsightsV1VideoRoomSummaryVideoParticipantSummary = {
+  /** Unique identifier for the participant. */
   participantSid?: string | null;
+  /** The application-defined string that uniquely identifies the participant within a Room. */
   participantIdentity?: string | null;
+  /** When the participant joined the room. */
   joinTime?: Date | null;
+  /** When the participant left the room. */
   leaveTime?: Date | null;
+  /** Amount of time in seconds the participant was in the room. */
   durationSec?: number | null;
+  /** Account SID associated with the room. */
   accountSid?: string | null;
+  /** Unique identifier for the room. */
   roomSid?: string | null;
   status?: VideoParticipantSummaryEnumRoomStatus;
+  /** Codecs detected from the participant. Can be `VP8`, `H264`, or `VP9`. */
   codecs?: VideoParticipantSummaryEnumCodec[] | null;
+  /**
+   * Reason the participant left the room. See [the list of possible values
+   * here](https://www.twilio.com/docs/video/troubleshooting/video-log-analyzer-api#end_reason).
+   */
   endReason?: string | null;
+  /** Errors encountered by the participant. */
   errorCode?: number | null;
+  /** Twilio error code dictionary link. */
   errorCodeUrl?: string | null;
   mediaRegion?: VideoParticipantSummaryEnumTwilioRealm;
+  /**
+   * Object containing information about the participant's data from the room. See
+   * [below](https://www.twilio.com/docs/video/troubleshooting/video-log-analyzer-api#properties)
+   * for more information.
+   */
   properties?: Record<string, unknown> | null;
   edgeLocation?: VideoParticipantSummaryEnumEdgeLocation;
+  /**
+   * Object containing information about the SDK name and version. See
+   * [below](https://www.twilio.com/docs/video/troubleshooting/video-log-analyzer-api#publisher_info)
+   * for more information.
+   */
   publisherInfo?: Record<string, unknown> | null;
+  /** URL of the participant resource. */
   url?: string | null;
 };
 
@@ -43,13 +68,13 @@ export const insightsV1VideoRoomSummaryVideoParticipantSummarySchema: Schema<Ins
     participantIdentity: s.optionalNullable(s.string()),
     joinTime: s.optionalNullable(s.dateTime()),
     leaveTime: s.optionalNullable(s.dateTime()),
-    durationSec: s.optionalNullable(s.number()),
+    durationSec: s.optionalNullable(s.int()),
     accountSid: s.optionalNullable(s.string()),
     roomSid: s.optionalNullable(s.string()),
     status: s.optional(s.lazy(() => videoParticipantSummaryEnumRoomStatusSchema)),
     codecs: s.optionalNullable(s.array(s.lazy(() => videoParticipantSummaryEnumCodecSchema))),
     endReason: s.optionalNullable(s.string()),
-    errorCode: s.optionalNullable(s.number()),
+    errorCode: s.optionalNullable(s.int()),
     errorCodeUrl: s.optionalNullable(s.string()),
     mediaRegion: s.optional(s.lazy(() => videoParticipantSummaryEnumTwilioRealmSchema)),
     properties: s.optionalNullable(s.record(s.string(), s.unknown())),

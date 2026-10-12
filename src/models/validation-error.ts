@@ -1,6 +1,10 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * Contains reasons why a phone number is invalid. Possible values: TOO_SHORT, TOO_LONG,
+ * INVALID_BUT_POSSIBLE, INVALID_COUNTRY_CODE, INVALID_LENGTH, NOT_A_NUMBER.
+ */
 export const ValidationError = {
   TooShort: "TOO_SHORT",
   TooLong: "TOO_LONG",

@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The carrier-level status. */
 export const MessagingV2RcsCarrierStatus = {
   Unknown: "UNKNOWN",
   Unlaunched: "UNLAUNCHED",

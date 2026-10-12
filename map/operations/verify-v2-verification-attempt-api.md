@@ -4,17 +4,17 @@
 
 Accessor: `client.verifyV2VerificationAttemptApi` · Source: `src/resources/verify-v2-verification-attempt-api.ts` · 2 operations · Request types: namespace `VerifyV2VerificationAttemptApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchVerificationAttempt
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchVerificationAttempt(request: VerifyV2VerificationAttemptApi.FetchVerificationAttemptRequest, options?: RequestOptions): ApiPromise<VerifyV2VerificationAttempt, ResponseError>`
+- **Signature**: `fetchVerificationAttempt(request: VerifyV2VerificationAttemptApi.FetchVerificationAttemptRequest, options?: RequestOptions): ApiPromise<VerifyV2VerificationAttempt, ApiError>`
 - **Wire**: `GET /v2/Attempts/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `VerifyV2VerificationAttempt`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2VerificationAttemptApi.FetchVerificationAttemptRequest` (1):
 
@@ -29,12 +29,12 @@ Accessor: `client.verifyV2VerificationAttemptApi` · Source: `src/resources/veri
 ### listVerificationAttempt
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listVerificationAttempt(request: VerifyV2VerificationAttemptApi.ListVerificationAttemptRequest, options?: RequestOptions): ApiPromise<ListVerificationAttemptResponse, ResponseError>`
+- **Signature**: `listVerificationAttempt(request: VerifyV2VerificationAttemptApi.ListVerificationAttemptRequest, options?: RequestOptions): ApiPromise<ListVerificationAttemptResponse, ApiError>`
 - **Wire**: `GET /v2/Attempts`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListVerificationAttemptResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2VerificationAttemptApi.ListVerificationAttemptRequest` (11):
 

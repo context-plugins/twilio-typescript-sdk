@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import {
   insightsV2CreatePhoneNumbersReportRequestSchema,
@@ -25,15 +26,32 @@ export class InsightsV1CreateOutboundPhoneNumbersReport {
     this.#auth = auth;
   }
 
+  /**
+   * Create Outbound Phone Numbers Level Report
+   *
+   * @remarks
+   * Create Outbound specific Phone Numbers Report for a specific account with given time range.
+   *
+   * @returns Created
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   createOutboundPhoneNumbersReport(
     request: InsightsV1CreateOutboundPhoneNumbersReport.CreateOutboundPhoneNumbersReportRequest,
     options?: RequestOptions,
-  ): ApiPromise<InsightsV2CreateReportResponse, ResponseError> {
-    return this.#rawClient.execute<InsightsV2CreateReportResponse, ResponseError>(
+  ): ApiPromise<InsightsV2CreateReportResponse, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default14("/v2/Voice/Reports/PhoneNumbers/Outbound"),
+        urlTemplate: this.#servers.default14("/v2/Voice/Reports/PhoneNumbers/Outbound"),
         auth: this.#auth.accountSidAuthToken,
+        pathParams: [],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: {
           kind: "json",
           value: request.body,
@@ -42,7 +60,7 @@ export class InsightsV1CreateOutboundPhoneNumbersReport {
       },
       {
         success: { kind: "json", schema: insightsV2CreateReportResponseSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );

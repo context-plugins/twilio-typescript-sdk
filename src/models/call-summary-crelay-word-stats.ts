@@ -12,7 +12,7 @@ export type CallSummaryCrelayWordStats = {
 
 export const callSummaryCrelayWordStatsSchema: Schema<CallSummaryCrelayWordStats> =
   s.object<CallSummaryCrelayWordStats>({
-    total: s.optional(s.number()),
+    total: s.optional(s.int()),
     wordsPerMinute: s.optional(s.lazy(() => callSummaryCrelayRateStatsSchema)),
     _keysMap: {
       wordsPerMinute: "words_per_minute",

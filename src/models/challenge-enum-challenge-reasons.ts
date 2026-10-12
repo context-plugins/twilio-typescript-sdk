@@ -1,6 +1,10 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * Reason for the Challenge to be in certain `status`. One of `none`, `not_needed` or
+ * `not_requested`.
+ */
 export const ChallengeEnumChallengeReasons = {
   None: "none",
   NotNeeded: "not_needed",

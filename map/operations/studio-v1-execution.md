@@ -4,17 +4,18 @@
 
 Accessor: `client.studioV1Execution` · Source: `src/resources/studio-v1-execution.ts` · 5 operations · Request types: namespace `StudioV1Execution`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createExecution
 
 - **Server**: `default11` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createExecution(request: StudioV1Execution.CreateExecutionRequest, options?: RequestOptions): ApiPromise<StudioV1FlowExecution, ResponseError>`
+- **Signature**: `createExecution(request: StudioV1Execution.CreateExecutionRequest, options?: RequestOptions): ApiPromise<StudioV1FlowExecution, ApiError>`
 - **Wire**: `POST /v1/Flows/{FlowSid}/Executions`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `StudioV1FlowExecution`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `StudioV1Execution.CreateExecutionRequest` (4):
 
@@ -32,12 +33,13 @@ Accessor: `client.studioV1Execution` · Source: `src/resources/studio-v1-executi
 ### deleteExecution
 
 - **Server**: `default11` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteExecution(request: StudioV1Execution.DeleteExecutionRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteExecution(request: StudioV1Execution.DeleteExecutionRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Flows/{FlowSid}/Executions/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `StudioV1Execution.DeleteExecutionRequest` (2):
 
@@ -49,12 +51,12 @@ Accessor: `client.studioV1Execution` · Source: `src/resources/studio-v1-executi
 ### fetchExecution
 
 - **Server**: `default11` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchExecution(request: StudioV1Execution.FetchExecutionRequest, options?: RequestOptions): ApiPromise<StudioV1FlowExecution, ResponseError>`
+- **Signature**: `fetchExecution(request: StudioV1Execution.FetchExecutionRequest, options?: RequestOptions): ApiPromise<StudioV1FlowExecution, ApiError>`
 - **Wire**: `GET /v1/Flows/{FlowSid}/Executions/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `StudioV1FlowExecution`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `StudioV1Execution.FetchExecutionRequest` (2):
 
@@ -70,12 +72,12 @@ Accessor: `client.studioV1Execution` · Source: `src/resources/studio-v1-executi
 ### listExecution
 
 - **Server**: `default11` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listExecution(request: StudioV1Execution.ListExecutionRequest, options?: RequestOptions): ApiPromise<ListExecutionResponse, ResponseError>`
+- **Signature**: `listExecution(request: StudioV1Execution.ListExecutionRequest, options?: RequestOptions): ApiPromise<ListExecutionResponse, ApiError>`
 - **Wire**: `GET /v1/Flows/{FlowSid}/Executions`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListExecutionResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `StudioV1Execution.ListExecutionRequest` (6):
 
@@ -95,12 +97,13 @@ Accessor: `client.studioV1Execution` · Source: `src/resources/studio-v1-executi
 ### updateExecution
 
 - **Server**: `default11` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateExecution(request: StudioV1Execution.UpdateExecutionRequest, options?: RequestOptions): ApiPromise<StudioV1FlowExecution, ResponseError>`
+- **Signature**: `updateExecution(request: StudioV1Execution.UpdateExecutionRequest, options?: RequestOptions): ApiPromise<StudioV1FlowExecution, ApiError>`
 - **Wire**: `POST /v1/Flows/{FlowSid}/Executions/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `StudioV1FlowExecution`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `StudioV1Execution.UpdateExecutionRequest` (3):
 

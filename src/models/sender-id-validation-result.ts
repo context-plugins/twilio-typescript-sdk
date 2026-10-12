@@ -7,9 +7,13 @@ import {
 } from "./sender-id-validation-failure.js";
 
 export type SenderIdValidationResult = {
+  /** ISO 3166-1 alpha-2 standard Country Code */
   isoCountry: string;
+  /** Purpose for using Sender ID */
   purpose: SenderIdPurpose;
+  /** Sender ID string */
   senderId: string;
+  /** List of failures during the validation */
   failures: SenderIdValidationFailure[];
 };
 

@@ -1,6 +1,10 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT,
+ * SOLE_PROPRIETOR, GOVERNMENT. Required field., Type of Business.
+ */
 export const TollfreeVerificationEnumBusinessType = {
   PrivateProfit: "PRIVATE_PROFIT",
   PublicProfit: "PUBLIC_PROFIT",

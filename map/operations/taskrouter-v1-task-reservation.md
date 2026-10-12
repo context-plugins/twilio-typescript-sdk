@@ -4,17 +4,17 @@
 
 Accessor: `client.taskrouterV1TaskReservation` · Source: `src/resources/taskrouter-v1-task-reservation.ts` · 3 operations · Request types: namespace `TaskrouterV1TaskReservation`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchTaskReservation
 
 - **Server**: `default8` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchTaskReservation(request: TaskrouterV1TaskReservation.FetchTaskReservationRequest, options?: RequestOptions): ApiPromise<TaskrouterV1WorkspaceTaskTaskReservation, ResponseError>`
+- **Signature**: `fetchTaskReservation(request: TaskrouterV1TaskReservation.FetchTaskReservationRequest, options?: RequestOptions): ApiPromise<TaskrouterV1WorkspaceTaskTaskReservation, ApiError>`
 - **Wire**: `GET /v1/Workspaces/{WorkspaceSid}/Tasks/{TaskSid}/Reservations/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `TaskrouterV1WorkspaceTaskTaskReservation`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TaskrouterV1TaskReservation.FetchTaskReservationRequest` (3):
 
@@ -31,12 +31,12 @@ Accessor: `client.taskrouterV1TaskReservation` · Source: `src/resources/taskrou
 ### listTaskReservation
 
 - **Server**: `default8` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listTaskReservation(request: TaskrouterV1TaskReservation.ListTaskReservationRequest, options?: RequestOptions): ApiPromise<ListTaskReservationResponse, ResponseError>`
+- **Signature**: `listTaskReservation(request: TaskrouterV1TaskReservation.ListTaskReservationRequest, options?: RequestOptions): ApiPromise<ListTaskReservationResponse, ApiError>`
 - **Wire**: `GET /v1/Workspaces/{WorkspaceSid}/Tasks/{TaskSid}/Reservations`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListTaskReservationResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TaskrouterV1TaskReservation.ListTaskReservationRequest` (7):
 
@@ -58,12 +58,13 @@ Accessor: `client.taskrouterV1TaskReservation` · Source: `src/resources/taskrou
 ### updateTaskReservation
 
 - **Server**: `default8` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateTaskReservation(request: TaskrouterV1TaskReservation.UpdateTaskReservationRequest, options?: RequestOptions): ApiPromise<TaskrouterV1WorkspaceTaskTaskReservation, ResponseError>`
+- **Signature**: `updateTaskReservation(request: TaskrouterV1TaskReservation.UpdateTaskReservationRequest, options?: RequestOptions): ApiPromise<TaskrouterV1WorkspaceTaskTaskReservation, ApiError>`
 - **Wire**: `POST /v1/Workspaces/{WorkspaceSid}/Tasks/{TaskSid}/Reservations/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `TaskrouterV1WorkspaceTaskTaskReservation`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TaskrouterV1TaskReservation.UpdateTaskReservationRequest` (58):
 

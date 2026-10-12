@@ -4,17 +4,17 @@
 
 Accessor: `client.contentV2ContentAndApprovals` · Source: `src/resources/content-v2-content-and-approvals.ts` · 1 operation · Request types: namespace `ContentV2ContentAndApprovals`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### listContentAndApprovals2
 
 - **Server**: `default2` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listContentAndApprovals2(request: ContentV2ContentAndApprovals.ListContentAndApprovals2Request, options?: RequestOptions): ApiPromise<ListContentAndApprovalsResponse, ResponseError>`
+- **Signature**: `listContentAndApprovals2(request: ContentV2ContentAndApprovals.ListContentAndApprovals2Request, options?: RequestOptions): ApiPromise<ListContentAndApprovalsResponse, ApiError>`
 - **Wire**: `GET /v2/ContentAndApprovals`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListContentAndApprovalsResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ContentV2ContentAndApprovals.ListContentAndApprovals2Request` (12):
 

@@ -4,9 +4,13 @@ import { address1Schema, type Address1 } from "./address1.js";
 import { type11Schema, type Type11 } from "./type11.js";
 
 export type Participant = {
+  /** Display name for the Participant. */
   name?: string;
+  /** Type of Participant in the Conversation. */
   type?: Type11;
+  /** Resolved profile ID. */
   profileId?: string;
+  /** List of Communication addresses for the Participant. */
   addresses?: Address1[];
 };
 

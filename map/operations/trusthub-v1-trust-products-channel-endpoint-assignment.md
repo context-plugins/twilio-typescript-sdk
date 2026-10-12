@@ -4,17 +4,18 @@
 
 Accessor: `client.trusthubV1TrustProductsChannelEndpointAssignment` · Source: `src/resources/trusthub-v1-trust-products-channel-endpoint-assignment.ts` · 4 operations · Request types: namespace `TrusthubV1TrustProductsChannelEndpointAssignment`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createTrustProductChannelEndpointAssignment
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createTrustProductChannelEndpointAssignment(request: TrusthubV1TrustProductsChannelEndpointAssignment.CreateTrustProductChannelEndpointAssignmentRequest, options?: RequestOptions): ApiPromise<TrusthubV1TrustProductTrustProductChannelEndpointAssignment, ResponseError>`
+- **Signature**: `createTrustProductChannelEndpointAssignment(request: TrusthubV1TrustProductsChannelEndpointAssignment.CreateTrustProductChannelEndpointAssignmentRequest, options?: RequestOptions): ApiPromise<TrusthubV1TrustProductTrustProductChannelEndpointAssignment, ApiError>`
 - **Wire**: `POST /v1/TrustProducts/{TrustProductSid}/ChannelEndpointAssignments`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `TrusthubV1TrustProductTrustProductChannelEndpointAssignment`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1TrustProductsChannelEndpointAssignment.CreateTrustProductChannelEndpointAssignmentRequest` (3):
 
@@ -31,12 +32,13 @@ Accessor: `client.trusthubV1TrustProductsChannelEndpointAssignment` · Source: `
 ### deleteTrustProductChannelEndpointAssignment
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteTrustProductChannelEndpointAssignment(request: TrusthubV1TrustProductsChannelEndpointAssignment.DeleteTrustProductChannelEndpointAssignmentRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteTrustProductChannelEndpointAssignment(request: TrusthubV1TrustProductsChannelEndpointAssignment.DeleteTrustProductChannelEndpointAssignmentRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/TrustProducts/{TrustProductSid}/ChannelEndpointAssignments/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1TrustProductsChannelEndpointAssignment.DeleteTrustProductChannelEndpointAssignmentRequest` (2):
 
@@ -48,12 +50,12 @@ Accessor: `client.trusthubV1TrustProductsChannelEndpointAssignment` · Source: `
 ### fetchTrustProductChannelEndpointAssignment
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchTrustProductChannelEndpointAssignment(request: TrusthubV1TrustProductsChannelEndpointAssignment.FetchTrustProductChannelEndpointAssignmentRequest, options?: RequestOptions): ApiPromise<TrusthubV1TrustProductTrustProductChannelEndpointAssignment, ResponseError>`
+- **Signature**: `fetchTrustProductChannelEndpointAssignment(request: TrusthubV1TrustProductsChannelEndpointAssignment.FetchTrustProductChannelEndpointAssignmentRequest, options?: RequestOptions): ApiPromise<TrusthubV1TrustProductTrustProductChannelEndpointAssignment, ApiError>`
 - **Wire**: `GET /v1/TrustProducts/{TrustProductSid}/ChannelEndpointAssignments/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `TrusthubV1TrustProductTrustProductChannelEndpointAssignment`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1TrustProductsChannelEndpointAssignment.FetchTrustProductChannelEndpointAssignmentRequest` (2):
 
@@ -69,12 +71,12 @@ Accessor: `client.trusthubV1TrustProductsChannelEndpointAssignment` · Source: `
 ### listTrustProductChannelEndpointAssignment
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listTrustProductChannelEndpointAssignment(request: TrusthubV1TrustProductsChannelEndpointAssignment.ListTrustProductChannelEndpointAssignmentRequest, options?: RequestOptions): ApiPromise<ListTrustProductChannelEndpointAssignmentResponse, ResponseError>`
+- **Signature**: `listTrustProductChannelEndpointAssignment(request: TrusthubV1TrustProductsChannelEndpointAssignment.ListTrustProductChannelEndpointAssignmentRequest, options?: RequestOptions): ApiPromise<ListTrustProductChannelEndpointAssignmentResponse, ApiError>`
 - **Wire**: `GET /v1/TrustProducts/{TrustProductSid}/ChannelEndpointAssignments`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListTrustProductChannelEndpointAssignmentResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1TrustProductsChannelEndpointAssignment.ListTrustProductChannelEndpointAssignmentRequest` (6):
 

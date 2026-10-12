@@ -2,6 +2,10 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 import { cardActionSchema, type CardAction } from "./card-action.js";
 
+/**
+ * twilio/card is a structured template which can be used to send a series of related information.
+ * It must include a title and at least one additional field.
+ */
 export type TwilioCard = {
   title?: string;
   subtitle?: string;

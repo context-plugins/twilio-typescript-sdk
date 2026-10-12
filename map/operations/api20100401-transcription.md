@@ -4,16 +4,17 @@
 
 Accessor: `client.api20100401Transcription` · Source: `src/resources/api20100401-transcription.ts` · 3 operations · Request types: namespace `Api20100401Transcription`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### deleteTranscription
 
-- **Signature**: `deleteTranscription(request: Api20100401Transcription.DeleteTranscriptionRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteTranscription(request: Api20100401Transcription.DeleteTranscriptionRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /2010-04-01/Accounts/{AccountSid}/Transcriptions/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Transcription.DeleteTranscriptionRequest` (2):
 
@@ -24,12 +25,12 @@ Accessor: `client.api20100401Transcription` · Source: `src/resources/api2010040
 
 ### fetchTranscription
 
-- **Signature**: `fetchTranscription(request: Api20100401Transcription.FetchTranscriptionRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountTranscription, ResponseError>`
+- **Signature**: `fetchTranscription(request: Api20100401Transcription.FetchTranscriptionRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountTranscription, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Transcriptions/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ApiV2010AccountTranscription`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Transcription.FetchTranscriptionRequest` (2):
 
@@ -44,12 +45,12 @@ Accessor: `client.api20100401Transcription` · Source: `src/resources/api2010040
 
 ### listTranscription
 
-- **Signature**: `listTranscription(request: Api20100401Transcription.ListTranscriptionRequest, options?: RequestOptions): ApiPromise<ListTranscriptionResponse, ResponseError>`
+- **Signature**: `listTranscription(request: Api20100401Transcription.ListTranscriptionRequest, options?: RequestOptions): ApiPromise<ListTranscriptionResponse, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Transcriptions.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListTranscriptionResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Transcription.ListTranscriptionRequest` (4):
 

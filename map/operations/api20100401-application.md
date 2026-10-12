@@ -4,16 +4,17 @@
 
 Accessor: `client.api20100401Application` · Source: `src/resources/api20100401-application.ts` · 5 operations · Request types: namespace `Api20100401Application`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createApplication
 
-- **Signature**: `createApplication(request: Api20100401Application.CreateApplicationRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountApplication, ResponseError>`
+- **Signature**: `createApplication(request: Api20100401Application.CreateApplicationRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountApplication, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/Applications.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountApplication`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Application.CreateApplicationRequest` (17):
 
@@ -48,12 +49,13 @@ Accessor: `client.api20100401Application` · Source: `src/resources/api20100401-
 
 ### deleteApplication
 
-- **Signature**: `deleteApplication(request: Api20100401Application.DeleteApplicationRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteApplication(request: Api20100401Application.DeleteApplicationRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /2010-04-01/Accounts/{AccountSid}/Applications/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Application.DeleteApplicationRequest` (2):
 
@@ -64,12 +66,12 @@ Accessor: `client.api20100401Application` · Source: `src/resources/api20100401-
 
 ### fetchApplication
 
-- **Signature**: `fetchApplication(request: Api20100401Application.FetchApplicationRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountApplication, ResponseError>`
+- **Signature**: `fetchApplication(request: Api20100401Application.FetchApplicationRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountApplication, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Applications/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ApiV2010AccountApplication`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Application.FetchApplicationRequest` (2):
 
@@ -84,12 +86,12 @@ Accessor: `client.api20100401Application` · Source: `src/resources/api20100401-
 
 ### listApplication
 
-- **Signature**: `listApplication(request: Api20100401Application.ListApplicationRequest, options?: RequestOptions): ApiPromise<ListApplicationResponse, ResponseError>`
+- **Signature**: `listApplication(request: Api20100401Application.ListApplicationRequest, options?: RequestOptions): ApiPromise<ListApplicationResponse, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Applications.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListApplicationResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Application.ListApplicationRequest` (5):
 
@@ -107,12 +109,13 @@ Accessor: `client.api20100401Application` · Source: `src/resources/api20100401-
 
 ### updateApplication
 
-- **Signature**: `updateApplication(request: Api20100401Application.UpdateApplicationRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountApplication, ResponseError>`
+- **Signature**: `updateApplication(request: Api20100401Application.UpdateApplicationRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountApplication, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/Applications/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountApplication`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Application.UpdateApplicationRequest` (18):
 

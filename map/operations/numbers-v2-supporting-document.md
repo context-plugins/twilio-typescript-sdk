@@ -4,17 +4,18 @@
 
 Accessor: `client.numbersV2SupportingDocument` · Source: `src/resources/numbers-v2-supporting-document.ts` · 5 operations · Request types: namespace `NumbersV2SupportingDocument`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createSupportingDocument
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createSupportingDocument(request: NumbersV2SupportingDocument.CreateSupportingDocumentRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceSupportingDocument, ResponseError>`
+- **Signature**: `createSupportingDocument(request: NumbersV2SupportingDocument.CreateSupportingDocumentRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceSupportingDocument, ApiError>`
 - **Wire**: `POST /v2/RegulatoryCompliance/SupportingDocuments`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `NumbersV2RegulatoryComplianceSupportingDocument`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2SupportingDocument.CreateSupportingDocumentRequest` (3):
 
@@ -31,12 +32,13 @@ Accessor: `client.numbersV2SupportingDocument` · Source: `src/resources/numbers
 ### deleteSupportingDocument
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteSupportingDocument(request: NumbersV2SupportingDocument.DeleteSupportingDocumentRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteSupportingDocument(request: NumbersV2SupportingDocument.DeleteSupportingDocumentRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v2/RegulatoryCompliance/SupportingDocuments/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2SupportingDocument.DeleteSupportingDocumentRequest` (1):
 
@@ -47,12 +49,12 @@ Accessor: `client.numbersV2SupportingDocument` · Source: `src/resources/numbers
 ### fetchSupportingDocument
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchSupportingDocument(request: NumbersV2SupportingDocument.FetchSupportingDocumentRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceSupportingDocument, ResponseError>`
+- **Signature**: `fetchSupportingDocument(request: NumbersV2SupportingDocument.FetchSupportingDocumentRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceSupportingDocument, ApiError>`
 - **Wire**: `GET /v2/RegulatoryCompliance/SupportingDocuments/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `NumbersV2RegulatoryComplianceSupportingDocument`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2SupportingDocument.FetchSupportingDocumentRequest` (1):
 
@@ -67,12 +69,12 @@ Accessor: `client.numbersV2SupportingDocument` · Source: `src/resources/numbers
 ### listSupportingDocument
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listSupportingDocument(request: NumbersV2SupportingDocument.ListSupportingDocumentRequest, options?: RequestOptions): ApiPromise<ListSupportingDocumentResponse, ResponseError>`
+- **Signature**: `listSupportingDocument(request: NumbersV2SupportingDocument.ListSupportingDocumentRequest, options?: RequestOptions): ApiPromise<ListSupportingDocumentResponse, ApiError>`
 - **Wire**: `GET /v2/RegulatoryCompliance/SupportingDocuments`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListSupportingDocumentResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2SupportingDocument.ListSupportingDocumentRequest` (3):
 
@@ -89,12 +91,13 @@ Accessor: `client.numbersV2SupportingDocument` · Source: `src/resources/numbers
 ### updateSupportingDocument
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateSupportingDocument(request: NumbersV2SupportingDocument.UpdateSupportingDocumentRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceSupportingDocument, ResponseError>`
+- **Signature**: `updateSupportingDocument(request: NumbersV2SupportingDocument.UpdateSupportingDocumentRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceSupportingDocument, ApiError>`
 - **Wire**: `POST /v2/RegulatoryCompliance/SupportingDocuments/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `NumbersV2RegulatoryComplianceSupportingDocument`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2SupportingDocument.UpdateSupportingDocumentRequest` (3):
 

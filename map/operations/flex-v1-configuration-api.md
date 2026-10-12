@@ -4,17 +4,17 @@
 
 Accessor: `client.flexV1ConfigurationApi` · Source: `src/resources/flex-v1-configuration-api.ts` · 2 operations · Request types: namespace `FlexV1ConfigurationApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchConfiguration3
 
 - **Server**: `default13` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchConfiguration3(request: FlexV1ConfigurationApi.FetchConfiguration3Request, options?: RequestOptions): ApiPromise<FlexV1Configuration, ResponseError>`
+- **Signature**: `fetchConfiguration3(request: FlexV1ConfigurationApi.FetchConfiguration3Request, options?: RequestOptions): ApiPromise<FlexV1Configuration, ApiError>`
 - **Wire**: `GET /v1/Configuration`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `FlexV1Configuration`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `FlexV1ConfigurationApi.FetchConfiguration3Request` (1):
 
@@ -29,12 +29,13 @@ Accessor: `client.flexV1ConfigurationApi` · Source: `src/resources/flex-v1-conf
 ### updateConfiguration3
 
 - **Server**: `default13` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateConfiguration3(request: FlexV1ConfigurationApi.UpdateConfiguration3Request, options?: RequestOptions): ApiPromise<FlexV1Configuration, ResponseError>`
+- **Signature**: `updateConfiguration3(request: FlexV1ConfigurationApi.UpdateConfiguration3Request, options?: RequestOptions): ApiPromise<FlexV1Configuration, ApiError>`
 - **Wire**: `POST /v1/Configuration`
 - **Auth**: `accountSidAuthToken`
-- **Request body**: `application/json` — the `body` field, a bare top-level JSON map with no fixed keys
+- **Request body**: `application/json` — the `body` field, a bare top-level JSON map with no fixed keys. **Optional**: omit it and the request carries no body and no `Content-Type` header at all
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `FlexV1Configuration`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `FlexV1ConfigurationApi.UpdateConfiguration3Request` (1):
 

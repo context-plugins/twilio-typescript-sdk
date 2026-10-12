@@ -4,17 +4,17 @@
 
 Accessor: `client.insightsV1ConferenceApi` · Source: `src/resources/insights-v1-conference-api.ts` · 2 operations · Request types: namespace `InsightsV1ConferenceApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchConference2
 
 - **Server**: `default14` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchConference2(request: InsightsV1ConferenceApi.FetchConference2Request, options?: RequestOptions): ApiPromise<InsightsV1Conference, ResponseError>`
+- **Signature**: `fetchConference2(request: InsightsV1ConferenceApi.FetchConference2Request, options?: RequestOptions): ApiPromise<InsightsV1Conference, ApiError>`
 - **Wire**: `GET /v1/Conferences/{ConferenceSid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `InsightsV1Conference`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `InsightsV1ConferenceApi.FetchConference2Request` (1):
 
@@ -29,12 +29,12 @@ Accessor: `client.insightsV1ConferenceApi` · Source: `src/resources/insights-v1
 ### listConference2
 
 - **Server**: `default14` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listConference2(request: InsightsV1ConferenceApi.ListConference2Request, options?: RequestOptions): ApiPromise<ListConferenceResponse1, ResponseError>`
+- **Signature**: `listConference2(request: InsightsV1ConferenceApi.ListConference2Request, options?: RequestOptions): ApiPromise<ListConferenceResponse1, ApiError>`
 - **Wire**: `GET /v1/Conferences`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListConferenceResponse1`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `InsightsV1ConferenceApi.ListConference2Request` (13):
 

@@ -1,8 +1,8 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
 import * as s from "../core/validation/index.js";
 import { insightsV1CallSchema, type InsightsV1Call } from "../models/insights-v1-call.js";
 import type { Servers } from "../servers.js";
@@ -21,18 +21,20 @@ export class InsightsV1CallApi {
   fetchCall2(
     request: InsightsV1CallApi.FetchCall2Request,
     options?: RequestOptions,
-  ): ApiPromise<InsightsV1Call, ResponseError> {
-    return this.#rawClient.execute<InsightsV1Call, ResponseError>(
+  ): ApiPromise<InsightsV1Call, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default14("/v1/Voice/{Sid}"),
+        urlTemplate: this.#servers.default14("/v1/Voice/{Sid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "Sid", value: request.sid, schema: s.string() }],
+        query: [],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: insightsV1CallSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );

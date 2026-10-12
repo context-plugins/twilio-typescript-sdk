@@ -4,16 +4,17 @@
 
 Accessor: `client.api20100401IncomingPhoneNumberLocal` · Source: `src/resources/api20100401-incoming-phone-number-local.ts` · 2 operations · Request types: namespace `Api20100401IncomingPhoneNumberLocal`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createIncomingPhoneNumberLocal
 
-- **Signature**: `createIncomingPhoneNumberLocal(request: Api20100401IncomingPhoneNumberLocal.CreateIncomingPhoneNumberLocalRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberLocal, ResponseError>`
+- **Signature**: `createIncomingPhoneNumberLocal(request: Api20100401IncomingPhoneNumberLocal.CreateIncomingPhoneNumberLocalRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberLocal, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/Local.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberLocal`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401IncomingPhoneNumberLocal.CreateIncomingPhoneNumberLocalRequest` (24):
 
@@ -57,12 +58,12 @@ Accessor: `client.api20100401IncomingPhoneNumberLocal` · Source: `src/resources
 
 ### listIncomingPhoneNumberLocal
 
-- **Signature**: `listIncomingPhoneNumberLocal(request: Api20100401IncomingPhoneNumberLocal.ListIncomingPhoneNumberLocalRequest, options?: RequestOptions): ApiPromise<ListIncomingPhoneNumberLocalResponse, ResponseError>`
+- **Signature**: `listIncomingPhoneNumberLocal(request: Api20100401IncomingPhoneNumberLocal.ListIncomingPhoneNumberLocalRequest, options?: RequestOptions): ApiPromise<ListIncomingPhoneNumberLocalResponse, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/Local.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListIncomingPhoneNumberLocalResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401IncomingPhoneNumberLocal.ListIncomingPhoneNumberLocalRequest` (8):
 

@@ -4,17 +4,17 @@
 
 Accessor: `client.conversationsV1ConfigurationApi` · Source: `src/resources/conversations-v1-configuration-api.ts` · 4 operations · Request types: namespace `ConversationsV1ConfigurationApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchConfiguration
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchConfiguration(options?: RequestOptions): ApiPromise<ConversationsV1Configuration, ResponseError>`
+- **Signature**: `fetchConfiguration(options?: RequestOptions): ApiPromise<ConversationsV1Configuration, ApiError>`
 - **Wire**: `GET /v1/Configuration`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ConversationsV1Configuration`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 | Type | Schema value | Source |
 | --- | --- | --- |
@@ -23,12 +23,12 @@ Accessor: `client.conversationsV1ConfigurationApi` · Source: `src/resources/con
 ### fetchServiceConfiguration
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchServiceConfiguration(request: ConversationsV1ConfigurationApi.FetchServiceConfigurationRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceConfiguration, ResponseError>`
+- **Signature**: `fetchServiceConfiguration(request: ConversationsV1ConfigurationApi.FetchServiceConfigurationRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceConfiguration, ApiError>`
 - **Wire**: `GET /v1/Services/{ChatServiceSid}/Configuration`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ConversationsV1ServiceServiceConfiguration`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1ConfigurationApi.FetchServiceConfigurationRequest` (1):
 
@@ -43,12 +43,13 @@ Accessor: `client.conversationsV1ConfigurationApi` · Source: `src/resources/con
 ### updateConfiguration
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateConfiguration(request: ConversationsV1ConfigurationApi.UpdateConfigurationRequest, options?: RequestOptions): ApiPromise<ConversationsV1Configuration, ResponseError>`
+- **Signature**: `updateConfiguration(request: ConversationsV1ConfigurationApi.UpdateConfigurationRequest, options?: RequestOptions): ApiPromise<ConversationsV1Configuration, ApiError>`
 - **Wire**: `POST /v1/Configuration`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ConversationsV1Configuration`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1ConfigurationApi.UpdateConfigurationRequest` (4):
 
@@ -66,12 +67,13 @@ Accessor: `client.conversationsV1ConfigurationApi` · Source: `src/resources/con
 ### updateServiceConfiguration
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateServiceConfiguration(request: ConversationsV1ConfigurationApi.UpdateServiceConfigurationRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceConfiguration, ResponseError>`
+- **Signature**: `updateServiceConfiguration(request: ConversationsV1ConfigurationApi.UpdateServiceConfigurationRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceConfiguration, ApiError>`
 - **Wire**: `POST /v1/Services/{ChatServiceSid}/Configuration`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ConversationsV1ServiceServiceConfiguration`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1ConfigurationApi.UpdateServiceConfigurationRequest` (5):
 

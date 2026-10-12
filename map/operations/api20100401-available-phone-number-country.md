@@ -4,16 +4,16 @@
 
 Accessor: `client.api20100401AvailablePhoneNumberCountry` · Source: `src/resources/api20100401-available-phone-number-country.ts` · 2 operations · Request types: namespace `Api20100401AvailablePhoneNumberCountry`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchAvailablePhoneNumberCountry
 
-- **Signature**: `fetchAvailablePhoneNumberCountry(request: Api20100401AvailablePhoneNumberCountry.FetchAvailablePhoneNumberCountryRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountAvailablePhoneNumberCountry, ResponseError>`
+- **Signature**: `fetchAvailablePhoneNumberCountry(request: Api20100401AvailablePhoneNumberCountry.FetchAvailablePhoneNumberCountryRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountAvailablePhoneNumberCountry, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ApiV2010AccountAvailablePhoneNumberCountry`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401AvailablePhoneNumberCountry.FetchAvailablePhoneNumberCountryRequest` (2):
 
@@ -28,12 +28,12 @@ Accessor: `client.api20100401AvailablePhoneNumberCountry` · Source: `src/resour
 
 ### listAvailablePhoneNumberCountry
 
-- **Signature**: `listAvailablePhoneNumberCountry(request: Api20100401AvailablePhoneNumberCountry.ListAvailablePhoneNumberCountryRequest, options?: RequestOptions): ApiPromise<ListAvailablePhoneNumberCountryResponse, ResponseError>`
+- **Signature**: `listAvailablePhoneNumberCountry(request: Api20100401AvailablePhoneNumberCountry.ListAvailablePhoneNumberCountryRequest, options?: RequestOptions): ApiPromise<ListAvailablePhoneNumberCountryResponse, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListAvailablePhoneNumberCountryResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401AvailablePhoneNumberCountry.ListAvailablePhoneNumberCountryRequest` (4):
 

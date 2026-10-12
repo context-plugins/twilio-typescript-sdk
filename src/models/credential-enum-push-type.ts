@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The type of push-notification service the credential is for. Can be: `fcm`, `gcm`, or `apn`. */
 export const CredentialEnumPushType = {
   Apn: "apn",
   Gcm: "gcm",

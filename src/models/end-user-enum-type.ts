@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The type of end user of the Bundle resource - can be `individual` or `business`. */
 export const EndUserEnumType = {
   Individual: "individual",
   Business: "business",

@@ -4,17 +4,18 @@
 
 Accessor: `client.proxyV1MessageInteraction` · Source: `src/resources/proxy-v1-message-interaction.ts` · 3 operations · Request types: namespace `ProxyV1MessageInteraction`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createMessageInteraction
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createMessageInteraction(request: ProxyV1MessageInteraction.CreateMessageInteractionRequest, options?: RequestOptions): ApiPromise<ProxyV1ServiceSessionParticipantMessageInteraction, ResponseError>`
+- **Signature**: `createMessageInteraction(request: ProxyV1MessageInteraction.CreateMessageInteractionRequest, options?: RequestOptions): ApiPromise<ProxyV1ServiceSessionParticipantMessageInteraction, ApiError>`
 - **Wire**: `POST /v1/Services/{ServiceSid}/Sessions/{SessionSid}/Participants/{ParticipantSid}/MessageInteractions`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ProxyV1ServiceSessionParticipantMessageInteraction`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1MessageInteraction.CreateMessageInteractionRequest` (5):
 
@@ -33,12 +34,12 @@ Accessor: `client.proxyV1MessageInteraction` · Source: `src/resources/proxy-v1-
 ### fetchMessageInteraction
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchMessageInteraction(request: ProxyV1MessageInteraction.FetchMessageInteractionRequest, options?: RequestOptions): ApiPromise<ProxyV1ServiceSessionParticipantMessageInteraction, ResponseError>`
+- **Signature**: `fetchMessageInteraction(request: ProxyV1MessageInteraction.FetchMessageInteractionRequest, options?: RequestOptions): ApiPromise<ProxyV1ServiceSessionParticipantMessageInteraction, ApiError>`
 - **Wire**: `GET /v1/Services/{ServiceSid}/Sessions/{SessionSid}/Participants/{ParticipantSid}/MessageInteractions/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ProxyV1ServiceSessionParticipantMessageInteraction`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1MessageInteraction.FetchMessageInteractionRequest` (4):
 
@@ -56,12 +57,12 @@ Accessor: `client.proxyV1MessageInteraction` · Source: `src/resources/proxy-v1-
 ### listMessageInteraction
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listMessageInteraction(request: ProxyV1MessageInteraction.ListMessageInteractionRequest, options?: RequestOptions): ApiPromise<ListMessageInteractionResponse, ResponseError>`
+- **Signature**: `listMessageInteraction(request: ProxyV1MessageInteraction.ListMessageInteractionRequest, options?: RequestOptions): ApiPromise<ListMessageInteractionResponse, ApiError>`
 - **Wire**: `GET /v1/Services/{ServiceSid}/Sessions/{SessionSid}/Participants/{ParticipantSid}/MessageInteractions`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListMessageInteractionResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1MessageInteraction.ListMessageInteractionRequest` (6):
 

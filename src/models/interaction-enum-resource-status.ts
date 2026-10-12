@@ -1,6 +1,10 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * The inbound resource status of the Interaction. Will always be `delivered` for messages and
+ * `in-progress` for calls.
+ */
 export const InteractionEnumResourceStatus = {
   Accepted: "accepted",
   Answered: "answered",

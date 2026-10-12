@@ -4,17 +4,18 @@
 
 Accessor: `client.trusthubV1CustomerProfilesEvaluations` · Source: `src/resources/trusthub-v1-customer-profiles-evaluations.ts` · 3 operations · Request types: namespace `TrusthubV1CustomerProfilesEvaluations`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createCustomerProfileEvaluation
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createCustomerProfileEvaluation(request: TrusthubV1CustomerProfilesEvaluations.CreateCustomerProfileEvaluationRequest, options?: RequestOptions): ApiPromise<TrusthubV1CustomerProfileCustomerProfileEvaluation, ResponseError>`
+- **Signature**: `createCustomerProfileEvaluation(request: TrusthubV1CustomerProfilesEvaluations.CreateCustomerProfileEvaluationRequest, options?: RequestOptions): ApiPromise<TrusthubV1CustomerProfileCustomerProfileEvaluation, ApiError>`
 - **Wire**: `POST /v1/CustomerProfiles/{CustomerProfileSid}/Evaluations`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `TrusthubV1CustomerProfileCustomerProfileEvaluation`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1CustomerProfilesEvaluations.CreateCustomerProfileEvaluationRequest` (2):
 
@@ -30,12 +31,12 @@ Accessor: `client.trusthubV1CustomerProfilesEvaluations` · Source: `src/resourc
 ### fetchCustomerProfileEvaluation
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchCustomerProfileEvaluation(request: TrusthubV1CustomerProfilesEvaluations.FetchCustomerProfileEvaluationRequest, options?: RequestOptions): ApiPromise<TrusthubV1CustomerProfileCustomerProfileEvaluation, ResponseError>`
+- **Signature**: `fetchCustomerProfileEvaluation(request: TrusthubV1CustomerProfilesEvaluations.FetchCustomerProfileEvaluationRequest, options?: RequestOptions): ApiPromise<TrusthubV1CustomerProfileCustomerProfileEvaluation, ApiError>`
 - **Wire**: `GET /v1/CustomerProfiles/{CustomerProfileSid}/Evaluations/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `TrusthubV1CustomerProfileCustomerProfileEvaluation`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1CustomerProfilesEvaluations.FetchCustomerProfileEvaluationRequest` (2):
 
@@ -51,12 +52,12 @@ Accessor: `client.trusthubV1CustomerProfilesEvaluations` · Source: `src/resourc
 ### listCustomerProfileEvaluation
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listCustomerProfileEvaluation(request: TrusthubV1CustomerProfilesEvaluations.ListCustomerProfileEvaluationRequest, options?: RequestOptions): ApiPromise<ListCustomerProfileEvaluationResponse, ResponseError>`
+- **Signature**: `listCustomerProfileEvaluation(request: TrusthubV1CustomerProfilesEvaluations.ListCustomerProfileEvaluationRequest, options?: RequestOptions): ApiPromise<ListCustomerProfileEvaluationResponse, ApiError>`
 - **Wire**: `GET /v1/CustomerProfiles/{CustomerProfileSid}/Evaluations`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListCustomerProfileEvaluationResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1CustomerProfilesEvaluations.ListCustomerProfileEvaluationRequest` (4):
 

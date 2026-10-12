@@ -4,17 +4,18 @@
 
 Accessor: `client.numbersV1PortingPortInApi` · Source: `src/resources/numbers-v1-porting-port-in-api.ts` · 4 operations · Request types: namespace `NumbersV1PortingPortInApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createPortingPortIn
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createPortingPortIn(request: NumbersV1PortingPortInApi.CreatePortingPortInRequest, options?: RequestOptions): ApiPromise<NumbersV1PortingPortIn, ResponseError>`
+- **Signature**: `createPortingPortIn(request: NumbersV1PortingPortInApi.CreatePortingPortInRequest, options?: RequestOptions): ApiPromise<NumbersV1PortingPortIn, ApiError>`
 - **Wire**: `POST /v1/Porting/PortIn`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/json` — the `body` field
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `NumbersV1PortingPortIn`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV1PortingPortInApi.CreatePortingPortInRequest` (1):
 
@@ -30,12 +31,13 @@ Accessor: `client.numbersV1PortingPortInApi` · Source: `src/resources/numbers-v
 ### deletePortingPortIn
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deletePortingPortIn(request: NumbersV1PortingPortInApi.DeletePortingPortInRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deletePortingPortIn(request: NumbersV1PortingPortInApi.DeletePortingPortInRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Porting/PortIn/{PortInRequestSid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV1PortingPortInApi.DeletePortingPortInRequest` (1):
 
@@ -46,12 +48,12 @@ Accessor: `client.numbersV1PortingPortInApi` · Source: `src/resources/numbers-v
 ### fetchPortingPortIn
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchPortingPortIn(request: NumbersV1PortingPortInApi.FetchPortingPortInRequest, options?: RequestOptions): ApiPromise<NumbersV1PortingPortIn, ResponseError>`
+- **Signature**: `fetchPortingPortIn(request: NumbersV1PortingPortInApi.FetchPortingPortInRequest, options?: RequestOptions): ApiPromise<NumbersV1PortingPortIn, ApiError>`
 - **Wire**: `GET /v1/Porting/PortIn/{PortInRequestSid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `NumbersV1PortingPortIn`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV1PortingPortInApi.FetchPortingPortInRequest` (1):
 
@@ -66,12 +68,12 @@ Accessor: `client.numbersV1PortingPortInApi` · Source: `src/resources/numbers-v
 ### listPortInRequests
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listPortInRequests(request: NumbersV1PortingPortInApi.ListPortInRequestsRequest, options?: RequestOptions): ApiPromise<ListPortInRequestsResponse, ResponseError>`
+- **Signature**: `listPortInRequests(request: NumbersV1PortingPortInApi.ListPortInRequestsRequest, options?: RequestOptions): ApiPromise<ListPortInRequestsResponse, ApiError>`
 - **Wire**: `GET /v1/Porting/PortIn/PortInRequests`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListPortInRequestsResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV1PortingPortInApi.ListPortInRequestsRequest` (6):
 

@@ -6,11 +6,18 @@ import {
 } from "./interaction-channel-participant-enum-type.js";
 
 export type FlexV1InteractionInteractionChannelInteractionChannelParticipant = {
+  /**
+   * The unique string created by Twilio to identify an Interaction Channel Participant resource.
+   */
   sid?: string | null;
+  /** Participant type. Can be: `agent`, `customer`, `supervisor`, `external`, `unknown` */
   type?: InteractionChannelParticipantEnumType;
+  /** The Interaction Sid for this channel. */
   interactionSid?: string | null;
+  /** The Channel Sid for this Participant. */
   channelSid?: string | null;
   url?: string | null;
+  /** The Participant's routing properties. */
   routingProperties?: Record<string, unknown> | null;
 };
 

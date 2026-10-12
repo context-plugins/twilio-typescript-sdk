@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The status of this conference. Can be: `init`, `in-progress`, or `completed`. */
 export const ConferenceEnumStatus = {
   Init: "init",
   InProgress: "in-progress",

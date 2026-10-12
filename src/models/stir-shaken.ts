@@ -4,9 +4,13 @@ import { answerRateSchema, type AnswerRate } from "./answer-rate.js";
 import { callCountSchema, type CallCount } from "./call-count.js";
 import { percentageSchema, type Percentage } from "./percentage.js";
 
+/** Metrics related to STIR/SHAKEN attestation A, B, and C for the report period. */
 export type StirShaken = {
+  /** Total number of calls for each STIR/SHAKEN attestation category. */
   callCount?: CallCount;
+  /** Percentage of calls for each STIR/SHAKEN attestation category. */
   percentage?: Percentage;
+  /** Answer rate for each STIR/SHAKEN attestation category. */
   answerRate?: AnswerRate;
 };
 

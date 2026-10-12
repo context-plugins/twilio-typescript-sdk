@@ -4,17 +4,17 @@
 
 Accessor: `client.insightsV1Annotation` · Source: `src/resources/insights-v1-annotation.ts` · 2 operations · Request types: namespace `InsightsV1Annotation`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchAnnotation
 
 - **Server**: `default14` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchAnnotation(request: InsightsV1Annotation.FetchAnnotationRequest, options?: RequestOptions): ApiPromise<InsightsV1CallAnnotation, ResponseError>`
+- **Signature**: `fetchAnnotation(request: InsightsV1Annotation.FetchAnnotationRequest, options?: RequestOptions): ApiPromise<InsightsV1CallAnnotation, ApiError>`
 - **Wire**: `GET /v1/Voice/{CallSid}/Annotation`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `InsightsV1CallAnnotation`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `InsightsV1Annotation.FetchAnnotationRequest` (1):
 
@@ -29,12 +29,13 @@ Accessor: `client.insightsV1Annotation` · Source: `src/resources/insights-v1-an
 ### updateAnnotation
 
 - **Server**: `default14` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateAnnotation(request: InsightsV1Annotation.UpdateAnnotationRequest, options?: RequestOptions): ApiPromise<InsightsV1CallAnnotation, ResponseError>`
+- **Signature**: `updateAnnotation(request: InsightsV1Annotation.UpdateAnnotationRequest, options?: RequestOptions): ApiPromise<InsightsV1CallAnnotation, ApiError>`
 - **Wire**: `POST /v1/Voice/{CallSid}/Annotation`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `InsightsV1CallAnnotation`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `InsightsV1Annotation.UpdateAnnotationRequest` (8):
 

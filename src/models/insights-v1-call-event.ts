@@ -4,16 +4,48 @@ import { eventEnumLevelSchema, type EventEnumLevel } from "./event-enum-level.js
 import { eventEnumTwilioEdgeSchema, type EventEnumTwilioEdge } from "./event-enum-twilio-edge.js";
 
 export type InsightsV1CallEvent = {
+  /** Event time. */
   timestamp?: string | null;
+  /** The unique SID identifier of the Call. */
   callSid?: string | null;
+  /** The unique SID identifier of the Account. */
   accountSid?: string | null;
   edge?: EventEnumTwilioEdge;
+  /** Event group. */
   group?: string | null;
   level?: EventEnumLevel;
+  /** Event name. */
   name?: string | null;
+  /**
+   * `object` Represents the connection between Twilio and our immediate carrier partners. The
+   * events here describe the call lifecycle as reported by Twilio's carrier media gateways. See
+   * [Details: Call
+   * Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties)
+   * for the object properties.
+   */
   carrierEdge?: Record<string, unknown> | null;
+  /**
+   * `object` Represents the Twilio media gateway for SIP interface and SIP trunking calls. The
+   * events here describe the call lifecycle as reported by Twilio's public media gateways. See
+   * [Details: Call
+   * Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties)
+   * for the object properties.
+   */
   sipEdge?: Record<string, unknown> | null;
+  /**
+   * `object` Represents the Voice SDK running locally in the browser or in the Android/iOS
+   * application. The events here are emitted by the Voice SDK in response to certain call progress
+   * events, network changes, or call quality conditions. See [Details: Call
+   * Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties)
+   * for the object properties.
+   */
   sdkEdge?: Record<string, unknown> | null;
+  /**
+   * `object` Represents the Twilio media gateway for Client calls. The events here describe the
+   * call lifecycle as reported by Twilio's Voice SDK media gateways. See [Details: Call
+   * Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties)
+   * for the object properties.
+   */
   clientEdge?: Record<string, unknown> | null;
 };
 

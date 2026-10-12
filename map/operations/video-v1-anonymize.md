@@ -4,17 +4,18 @@
 
 Accessor: `client.videoV1Anonymize` · Source: `src/resources/video-v1-anonymize.ts` · 1 operation · Request types: namespace `VideoV1Anonymize`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### updateRoomParticipantAnonymize
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateRoomParticipantAnonymize(request: VideoV1Anonymize.UpdateRoomParticipantAnonymizeRequest, options?: RequestOptions): ApiPromise<VideoV1RoomRoomParticipantRoomParticipantAnonymize, ResponseError>`
+- **Signature**: `updateRoomParticipantAnonymize(request: VideoV1Anonymize.UpdateRoomParticipantAnonymizeRequest, options?: RequestOptions): ApiPromise<VideoV1RoomRoomParticipantRoomParticipantAnonymize, ApiError>`
 - **Wire**: `POST /v1/Rooms/{RoomSid}/Participants/{Sid}/Anonymize`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `VideoV1RoomRoomParticipantRoomParticipantAnonymize`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1Anonymize.UpdateRoomParticipantAnonymizeRequest` (2):
 

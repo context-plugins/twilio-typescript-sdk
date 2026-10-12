@@ -3,13 +3,16 @@ import type { Schema } from "../core/validation/schema.js";
 import { transcriptionSchema, type Transcription } from "./transcription.js";
 
 export type ContentTranscription = {
-  type: "TRANSCRIPTION";
+  /** Content type discriminator. @default "TRANSCRIPTION" */
+  type?: "TRANSCRIPTION";
+  /** Transcribed text. */
   text: string;
+  /** Transcription metadata. */
   transcription?: Transcription;
 };
 
 export const contentTranscriptionSchema: Schema<ContentTranscription> = s.object<ContentTranscription>({
-  type: s.literal("TRANSCRIPTION"),
+  type: s.defaulted(s.literal("TRANSCRIPTION"), "TRANSCRIPTION"),
   text: s.string(),
   transcription: s.optional(s.lazy(() => transcriptionSchema)),
 });

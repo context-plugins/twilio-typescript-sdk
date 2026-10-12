@@ -4,16 +4,17 @@
 
 Accessor: `client.api20100401UserDefinedMessage` · Source: `src/resources/api20100401-user-defined-message.ts` · 1 operation · Request types: namespace `Api20100401UserDefinedMessage`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createUserDefinedMessage
 
-- **Signature**: `createUserDefinedMessage(request: Api20100401UserDefinedMessage.CreateUserDefinedMessageRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountCallUserDefinedMessage, ResponseError>`
+- **Signature**: `createUserDefinedMessage(request: Api20100401UserDefinedMessage.CreateUserDefinedMessageRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountCallUserDefinedMessage, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/UserDefinedMessages.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountCallUserDefinedMessage`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401UserDefinedMessage.CreateUserDefinedMessageRequest` (4):
 

@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The type of the Transfer. Can be: `cold`, `warm`. */
 export const InteractionTransferEnumTransferType = {
   Warm: "warm",
   Cold: "cold",

@@ -1,6 +1,10 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * When a brand is registered, TCR will attempt to verify the identity of the brand based on the
+ * supplied information.
+ */
 export const BrandRegistrationsEnumIdentityStatus = {
   SelfDeclared: "SELF_DECLARED",
   Unverified: "UNVERIFIED",

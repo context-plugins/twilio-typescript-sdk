@@ -14,9 +14,13 @@ import {
 } from "./messaging-v2-channels-sender-webhook.js";
 
 export type MessagingV2ChannelsSenderRequestsCreate = {
+  /** The ID of the sender in `whatsapp:<E.164_PHONE_NUMBER>` format. */
   senderId: string | null;
+  /** The configuration settings for creating a sender. */
   configuration?: MessagingV2ChannelsSenderConfiguration | null;
+  /** The configuration settings for webhooks. */
   webhook?: MessagingV2ChannelsSenderWebhook | null;
+  /** The profile information for the sender. */
   profile?: MessagingV2ChannelsSenderProfile | null;
 };
 

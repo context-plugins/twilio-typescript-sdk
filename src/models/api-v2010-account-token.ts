@@ -3,12 +3,28 @@ import type { Schema } from "../core/validation/schema.js";
 import { iceServerSchema, type IceServer } from "./ice-server.js";
 
 export type ApiV2010AccountToken = {
+  /**
+   * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Token
+   * resource.
+   */
   accountSid?: string | null;
+  /**
+   * The date and time in GMT that the resource was created specified in [RFC
+   * 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+   */
   dateCreated?: string | null;
+  /**
+   * The date and time in GMT that the resource was last updated specified in [RFC
+   * 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+   */
   dateUpdated?: string | null;
+  /** An array representing the ephemeral credentials and the STUN and TURN server URIs. */
   iceServers?: IceServer[] | null;
+  /** The temporary password that the username will use when authenticating with Twilio. */
   password?: string | null;
+  /** The duration in seconds for which the username and password are valid. */
   ttl?: string | null;
+  /** The temporary username that uniquely identifies a Token. */
   username?: string | null;
 };
 

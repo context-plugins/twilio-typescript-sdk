@@ -12,7 +12,7 @@ export type CallSummaryCrelayTokenStats = {
 
 export const callSummaryCrelayTokenStatsSchema: Schema<CallSummaryCrelayTokenStats> =
   s.object<CallSummaryCrelayTokenStats>({
-    total: s.optional(s.number()),
+    total: s.optional(s.int()),
     tokensPerSecond: s.optional(s.lazy(() => callSummaryCrelayRateStatsSchema)),
     _keysMap: {
       tokensPerSecond: "tokens_per_second",

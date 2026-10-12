@@ -4,17 +4,18 @@
 
 Accessor: `client.messagingV1BrandVetting` · Source: `src/resources/messaging-v1-brand-vetting.ts` · 3 operations · Request types: namespace `MessagingV1BrandVetting`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createBrandVetting
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createBrandVetting(request: MessagingV1BrandVetting.CreateBrandVettingRequest, options?: RequestOptions): ApiPromise<MessagingV1BrandRegistrationsBrandVetting, ResponseError>`
+- **Signature**: `createBrandVetting(request: MessagingV1BrandVetting.CreateBrandVettingRequest, options?: RequestOptions): ApiPromise<MessagingV1BrandRegistrationsBrandVetting, ApiError>`
 - **Wire**: `POST /v1/a2p/BrandRegistrations/{BrandSid}/Vettings`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `MessagingV1BrandRegistrationsBrandVetting`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1BrandVetting.CreateBrandVettingRequest` (3):
 
@@ -32,12 +33,12 @@ Accessor: `client.messagingV1BrandVetting` · Source: `src/resources/messaging-v
 ### fetchBrandVetting
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchBrandVetting(request: MessagingV1BrandVetting.FetchBrandVettingRequest, options?: RequestOptions): ApiPromise<MessagingV1BrandRegistrationsBrandVetting, ResponseError>`
+- **Signature**: `fetchBrandVetting(request: MessagingV1BrandVetting.FetchBrandVettingRequest, options?: RequestOptions): ApiPromise<MessagingV1BrandRegistrationsBrandVetting, ApiError>`
 - **Wire**: `GET /v1/a2p/BrandRegistrations/{BrandSid}/Vettings/{BrandVettingSid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `MessagingV1BrandRegistrationsBrandVetting`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1BrandVetting.FetchBrandVettingRequest` (2):
 
@@ -53,12 +54,12 @@ Accessor: `client.messagingV1BrandVetting` · Source: `src/resources/messaging-v
 ### listBrandVetting
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listBrandVetting(request: MessagingV1BrandVetting.ListBrandVettingRequest, options?: RequestOptions): ApiPromise<ListBrandVettingResponse, ResponseError>`
+- **Signature**: `listBrandVetting(request: MessagingV1BrandVetting.ListBrandVettingRequest, options?: RequestOptions): ApiPromise<ListBrandVettingResponse, ApiError>`
 - **Wire**: `GET /v1/a2p/BrandRegistrations/{BrandSid}/Vettings`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListBrandVettingResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1BrandVetting.ListBrandVettingRequest` (2):
 

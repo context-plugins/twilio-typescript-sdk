@@ -1,8 +1,8 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
 import * as s from "../core/validation/index.js";
 import {
   messagingV1DomainConfigMessagingServiceSchema,
@@ -24,18 +24,22 @@ export class MessagingV1DomainConfigMessagingServiceApi {
   fetchDomainConfigMessagingService(
     request: MessagingV1DomainConfigMessagingServiceApi.FetchDomainConfigMessagingServiceRequest,
     options?: RequestOptions,
-  ): ApiPromise<MessagingV1DomainConfigMessagingService, ResponseError> {
-    return this.#rawClient.execute<MessagingV1DomainConfigMessagingService, ResponseError>(
+  ): ApiPromise<MessagingV1DomainConfigMessagingService, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default1("/v1/LinkShortening/MessagingService/{MessagingServiceSid}/DomainConfig"),
+        urlTemplate: this.#servers.default1(
+          "/v1/LinkShortening/MessagingService/{MessagingServiceSid}/DomainConfig",
+        ),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "MessagingServiceSid", value: request.messagingServiceSid, schema: s.string() }],
+        query: [],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: messagingV1DomainConfigMessagingServiceSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -44,6 +48,10 @@ export class MessagingV1DomainConfigMessagingServiceApi {
 
 export namespace MessagingV1DomainConfigMessagingServiceApi {
   export type FetchDomainConfigMessagingServiceRequest = {
+    /**
+     * Unique string used to identify the Messaging service that this domain should be associated
+     * with.
+     */
     messagingServiceSid: string;
   };
 }

@@ -1,27 +1,7 @@
 export { TwilioSdkClient } from "./client.js";
-export { DEFAULT_CLIENT_OPTIONS, type ClientOptions } from "./client-options.js";
+export type { ClientOptions } from "./client-options.js";
 
 export type { BasicAuthCredentials } from "./core/auth/credentials.js";
-
-export { ServerEnvironment, DEFAULT_SERVER_OPTIONS } from "./servers.js";
-export type {
-  ServerOptions,
-  DefaultServerOptions,
-  Default1ServerOptions,
-  Default2ServerOptions,
-  Default3ServerOptions,
-  Default4ServerOptions,
-  Default5ServerOptions,
-  Default6ServerOptions,
-  Default7ServerOptions,
-  Default8ServerOptions,
-  Default9ServerOptions,
-  Default10ServerOptions,
-  Default11ServerOptions,
-  Default12ServerOptions,
-  Default13ServerOptions,
-  Default14ServerOptions,
-} from "./servers.js";
 
 export { Api20100401Account } from "./resources/api20100401-account.js";
 export { Api20100401AddOnResult } from "./resources/api20100401-add-on-result.js";
@@ -3965,16 +3945,35 @@ export {
 
 export {
   CoreError as TwilioSdkError,
+  ResponseError,
+  DecodeError,
+  EncodeError,
   ConnectionError,
   TimeoutError,
-  AbortError,
-  SdkError,
   AuthError,
+  ConfigurationError,
 } from "./core/errors.js";
-export { ResponseError } from "./core/response-error.js";
+export { ApiError } from "./core/api-error.js";
 export { SchemaError } from "./core/validation/schema-error.js";
+export {
+  defaultLoggingOptions,
+  type LoggingOptions,
+  type RequestLoggingOptions,
+  type Logger,
+  type LogDetails,
+  type HttpRequestDetails,
+  type RequestHeadersDetails,
+  type RequestBodyDetails,
+  type HttpResponseDetails,
+  type ResponseHeadersDetails,
+  type HttpRetryingDetails,
+  type HttpFailedDetails,
+  type LogLevel,
+} from "./core/logging.js";
 export type { ApiPromise, ApiResult } from "./core/api-promise.js";
-export type { RequestOptions } from "./core/api-request.js";
+export type { HttpMethod, RequestOptions } from "./core/api-request.js";
+export type { RetryOptions, RequestRetryOptions, RetryAttempt, RetryReason } from "./core/retry.js";
+export type { BinaryContent, BinaryData, BinaryErrorContent, FileData, FileInput } from "./core/binary.js";
 export type { ErrorKind } from "./core/errors.js";
-export type { ErrorPayload, Declared } from "./core/response-error.js";
+export type { ErrorPayload, Declared, Undeclared } from "./core/api-error.js";
 export type { Schema, EnumSchema, Encoded } from "./core/validation/schema.js";

@@ -4,17 +4,17 @@
 
 Accessor: `client.conversationsV1Notification` · Source: `src/resources/conversations-v1-notification.ts` · 2 operations · Request types: namespace `ConversationsV1Notification`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchServiceNotification
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchServiceNotification(request: ConversationsV1Notification.FetchServiceNotificationRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceConfigurationServiceNotification, ResponseError>`
+- **Signature**: `fetchServiceNotification(request: ConversationsV1Notification.FetchServiceNotificationRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceConfigurationServiceNotification, ApiError>`
 - **Wire**: `GET /v1/Services/{ChatServiceSid}/Configuration/Notifications`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ConversationsV1ServiceServiceConfigurationServiceNotification`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1Notification.FetchServiceNotificationRequest` (1):
 
@@ -29,12 +29,13 @@ Accessor: `client.conversationsV1Notification` · Source: `src/resources/convers
 ### updateServiceNotification
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateServiceNotification(request: ConversationsV1Notification.UpdateServiceNotificationRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceConfigurationServiceNotification, ResponseError>`
+- **Signature**: `updateServiceNotification(request: ConversationsV1Notification.UpdateServiceNotificationRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceConfigurationServiceNotification, ApiError>`
 - **Wire**: `POST /v1/Services/{ChatServiceSid}/Configuration/Notifications`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ConversationsV1ServiceServiceConfigurationServiceNotification`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1Notification.UpdateServiceNotificationRequest` (14):
 

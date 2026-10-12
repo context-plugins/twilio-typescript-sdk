@@ -4,17 +4,18 @@
 
 Accessor: `client.proxyV1ServiceApi` · Source: `src/resources/proxy-v1-service-api.ts` · 5 operations · Request types: namespace `ProxyV1ServiceApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createService4
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createService4(request: ProxyV1ServiceApi.CreateService4Request, options?: RequestOptions): ApiPromise<ProxyV1Service, ResponseError>`
+- **Signature**: `createService4(request: ProxyV1ServiceApi.CreateService4Request, options?: RequestOptions): ApiPromise<ProxyV1Service, ApiError>`
 - **Wire**: `POST /v1/Services`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ProxyV1Service`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1ServiceApi.CreateService4Request` (8):
 
@@ -38,12 +39,13 @@ Accessor: `client.proxyV1ServiceApi` · Source: `src/resources/proxy-v1-service-
 ### deleteService4
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteService4(request: ProxyV1ServiceApi.DeleteService4Request, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteService4(request: ProxyV1ServiceApi.DeleteService4Request, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Services/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1ServiceApi.DeleteService4Request` (1):
 
@@ -54,12 +56,12 @@ Accessor: `client.proxyV1ServiceApi` · Source: `src/resources/proxy-v1-service-
 ### fetchService4
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchService4(request: ProxyV1ServiceApi.FetchService4Request, options?: RequestOptions): ApiPromise<ProxyV1Service, ResponseError>`
+- **Signature**: `fetchService4(request: ProxyV1ServiceApi.FetchService4Request, options?: RequestOptions): ApiPromise<ProxyV1Service, ApiError>`
 - **Wire**: `GET /v1/Services/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ProxyV1Service`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1ServiceApi.FetchService4Request` (1):
 
@@ -74,12 +76,12 @@ Accessor: `client.proxyV1ServiceApi` · Source: `src/resources/proxy-v1-service-
 ### listService4
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listService4(request: ProxyV1ServiceApi.ListService4Request, options?: RequestOptions): ApiPromise<ListServiceResponse3, ResponseError>`
+- **Signature**: `listService4(request: ProxyV1ServiceApi.ListService4Request, options?: RequestOptions): ApiPromise<ListServiceResponse3, ApiError>`
 - **Wire**: `GET /v1/Services`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListServiceResponse3`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1ServiceApi.ListService4Request` (3):
 
@@ -96,12 +98,13 @@ Accessor: `client.proxyV1ServiceApi` · Source: `src/resources/proxy-v1-service-
 ### updateService3
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateService3(request: ProxyV1ServiceApi.UpdateService3Request, options?: RequestOptions): ApiPromise<ProxyV1Service, ResponseError>`
+- **Signature**: `updateService3(request: ProxyV1ServiceApi.UpdateService3Request, options?: RequestOptions): ApiPromise<ProxyV1Service, ApiError>`
 - **Wire**: `POST /v1/Services/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ProxyV1Service`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1ServiceApi.UpdateService3Request` (9):
 

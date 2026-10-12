@@ -4,17 +4,18 @@
 
 Accessor: `client.videoV1RoomApi` · Source: `src/resources/video-v1-room-api.ts` · 4 operations · Request types: namespace `VideoV1RoomApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createRoom
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createRoom(request: VideoV1RoomApi.CreateRoomRequest, options?: RequestOptions): ApiPromise<VideoV1Room, ResponseError>`
+- **Signature**: `createRoom(request: VideoV1RoomApi.CreateRoomRequest, options?: RequestOptions): ApiPromise<VideoV1Room, ApiError>`
 - **Wire**: `POST /v1/Rooms`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `VideoV1Room`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1RoomApi.CreateRoomRequest` (17):
 
@@ -48,12 +49,12 @@ Accessor: `client.videoV1RoomApi` · Source: `src/resources/video-v1-room-api.ts
 ### fetchRoom
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchRoom(request: VideoV1RoomApi.FetchRoomRequest, options?: RequestOptions): ApiPromise<VideoV1Room, ResponseError>`
+- **Signature**: `fetchRoom(request: VideoV1RoomApi.FetchRoomRequest, options?: RequestOptions): ApiPromise<VideoV1Room, ApiError>`
 - **Wire**: `GET /v1/Rooms/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `VideoV1Room`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1RoomApi.FetchRoomRequest` (1):
 
@@ -68,12 +69,12 @@ Accessor: `client.videoV1RoomApi` · Source: `src/resources/video-v1-room-api.ts
 ### listRoom
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listRoom(request: VideoV1RoomApi.ListRoomRequest, options?: RequestOptions): ApiPromise<ListRoomResponse, ResponseError>`
+- **Signature**: `listRoom(request: VideoV1RoomApi.ListRoomRequest, options?: RequestOptions): ApiPromise<ListRoomResponse, ApiError>`
 - **Wire**: `GET /v1/Rooms`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListRoomResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1RoomApi.ListRoomRequest` (7):
 
@@ -95,12 +96,13 @@ Accessor: `client.videoV1RoomApi` · Source: `src/resources/video-v1-room-api.ts
 ### updateRoom
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateRoom(request: VideoV1RoomApi.UpdateRoomRequest, options?: RequestOptions): ApiPromise<VideoV1Room, ResponseError>`
+- **Signature**: `updateRoom(request: VideoV1RoomApi.UpdateRoomRequest, options?: RequestOptions): ApiPromise<VideoV1Room, ApiError>`
 - **Wire**: `POST /v1/Rooms/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `VideoV1Room`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1RoomApi.UpdateRoomRequest` (2):
 

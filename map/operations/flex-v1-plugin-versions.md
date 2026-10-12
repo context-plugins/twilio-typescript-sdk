@@ -4,17 +4,18 @@
 
 Accessor: `client.flexV1PluginVersions` · Source: `src/resources/flex-v1-plugin-versions.ts` · 3 operations · Request types: namespace `FlexV1PluginVersions`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createPluginVersion
 
 - **Server**: `default13` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createPluginVersion(request: FlexV1PluginVersions.CreatePluginVersionRequest, options?: RequestOptions): ApiPromise<FlexV1PluginPluginVersion, ResponseError>`
+- **Signature**: `createPluginVersion(request: FlexV1PluginVersions.CreatePluginVersionRequest, options?: RequestOptions): ApiPromise<FlexV1PluginPluginVersion, ApiError>`
 - **Wire**: `POST /v1/PluginService/Plugins/{PluginSid}/Versions`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `FlexV1PluginPluginVersion`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `FlexV1PluginVersions.CreatePluginVersionRequest` (8):
 
@@ -36,12 +37,12 @@ Accessor: `client.flexV1PluginVersions` · Source: `src/resources/flex-v1-plugin
 ### fetchPluginVersion
 
 - **Server**: `default13` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchPluginVersion(request: FlexV1PluginVersions.FetchPluginVersionRequest, options?: RequestOptions): ApiPromise<FlexV1PluginPluginVersion, ResponseError>`
+- **Signature**: `fetchPluginVersion(request: FlexV1PluginVersions.FetchPluginVersionRequest, options?: RequestOptions): ApiPromise<FlexV1PluginPluginVersion, ApiError>`
 - **Wire**: `GET /v1/PluginService/Plugins/{PluginSid}/Versions/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `FlexV1PluginPluginVersion`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `FlexV1PluginVersions.FetchPluginVersionRequest` (3):
 
@@ -58,12 +59,12 @@ Accessor: `client.flexV1PluginVersions` · Source: `src/resources/flex-v1-plugin
 ### listPluginVersion
 
 - **Server**: `default13` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listPluginVersion(request: FlexV1PluginVersions.ListPluginVersionRequest, options?: RequestOptions): ApiPromise<ListPluginVersionResponse, ResponseError>`
+- **Signature**: `listPluginVersion(request: FlexV1PluginVersions.ListPluginVersionRequest, options?: RequestOptions): ApiPromise<ListPluginVersionResponse, ApiError>`
 - **Wire**: `GET /v1/PluginService/Plugins/{PluginSid}/Versions`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListPluginVersionResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `FlexV1PluginVersions.ListPluginVersionRequest` (5):
 

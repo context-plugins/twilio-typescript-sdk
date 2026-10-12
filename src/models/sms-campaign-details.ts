@@ -7,6 +7,7 @@ import {
   type TollfreeVerificationEnumUseCaseCategory,
 } from "./tollfree-verification-enum-use-case-category.js";
 
+/** SMS campaign details for the application. */
 export type SmsCampaignDetails = {
   campaignName?: string;
   campaignBrandWebsite?: string;

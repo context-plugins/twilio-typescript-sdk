@@ -4,6 +4,7 @@ import { paginationMetaSchema, type PaginationMeta } from "./pagination-meta.js"
 import { senderIdCountrySchema, type SenderIdCountry } from "./sender-id-country.js";
 
 export type SenderIdCountriesResponsePage = {
+  /** List of countries associated with the Sender ID. */
   results?: SenderIdCountry[];
   meta?: PaginationMeta;
 };

@@ -4,16 +4,17 @@
 
 Accessor: `client.api20100401Address` · Source: `src/resources/api20100401-address.ts` · 5 operations · Request types: namespace `Api20100401Address`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createAddress
 
-- **Signature**: `createAddress(request: Api20100401Address.CreateAddressRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountAddress, ResponseError>`
+- **Signature**: `createAddress(request: Api20100401Address.CreateAddressRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountAddress, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/Addresses.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountAddress`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Address.CreateAddressRequest` (11):
 
@@ -37,12 +38,13 @@ Accessor: `client.api20100401Address` · Source: `src/resources/api20100401-addr
 
 ### deleteAddress
 
-- **Signature**: `deleteAddress(request: Api20100401Address.DeleteAddressRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteAddress(request: Api20100401Address.DeleteAddressRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /2010-04-01/Accounts/{AccountSid}/Addresses/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Address.DeleteAddressRequest` (2):
 
@@ -53,12 +55,12 @@ Accessor: `client.api20100401Address` · Source: `src/resources/api20100401-addr
 
 ### fetchAddress
 
-- **Signature**: `fetchAddress(request: Api20100401Address.FetchAddressRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountAddress, ResponseError>`
+- **Signature**: `fetchAddress(request: Api20100401Address.FetchAddressRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountAddress, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Addresses/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ApiV2010AccountAddress`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Address.FetchAddressRequest` (2):
 
@@ -73,12 +75,12 @@ Accessor: `client.api20100401Address` · Source: `src/resources/api20100401-addr
 
 ### listAddress
 
-- **Signature**: `listAddress(request: Api20100401Address.ListAddressRequest, options?: RequestOptions): ApiPromise<ListAddressResponse, ResponseError>`
+- **Signature**: `listAddress(request: Api20100401Address.ListAddressRequest, options?: RequestOptions): ApiPromise<ListAddressResponse, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Addresses.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListAddressResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Address.ListAddressRequest` (8):
 
@@ -99,12 +101,13 @@ Accessor: `client.api20100401Address` · Source: `src/resources/api20100401-addr
 
 ### updateAddress
 
-- **Signature**: `updateAddress(request: Api20100401Address.UpdateAddressRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountAddress, ResponseError>`
+- **Signature**: `updateAddress(request: Api20100401Address.UpdateAddressRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountAddress, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/Addresses/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountAddress`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Address.UpdateAddressRequest` (11):
 

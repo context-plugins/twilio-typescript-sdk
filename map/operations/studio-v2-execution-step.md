@@ -4,17 +4,17 @@
 
 Accessor: `client.studioV2ExecutionStep` · Source: `src/resources/studio-v2-execution-step.ts` · 2 operations · Request types: namespace `StudioV2ExecutionStep`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchExecutionStep2
 
 - **Server**: `default11` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchExecutionStep2(request: StudioV2ExecutionStep.FetchExecutionStep2Request, options?: RequestOptions): ApiPromise<StudioV1FlowExecutionExecutionStep, ResponseError>`
+- **Signature**: `fetchExecutionStep2(request: StudioV2ExecutionStep.FetchExecutionStep2Request, options?: RequestOptions): ApiPromise<StudioV1FlowExecutionExecutionStep, ApiError>`
 - **Wire**: `GET /v2/Flows/{FlowSid}/Executions/{ExecutionSid}/Steps/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `StudioV1FlowExecutionExecutionStep`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `StudioV2ExecutionStep.FetchExecutionStep2Request` (3):
 
@@ -31,12 +31,12 @@ Accessor: `client.studioV2ExecutionStep` · Source: `src/resources/studio-v2-exe
 ### listExecutionStep2
 
 - **Server**: `default11` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listExecutionStep2(request: StudioV2ExecutionStep.ListExecutionStep2Request, options?: RequestOptions): ApiPromise<ListExecutionStepResponse, ResponseError>`
+- **Signature**: `listExecutionStep2(request: StudioV2ExecutionStep.ListExecutionStep2Request, options?: RequestOptions): ApiPromise<ListExecutionStepResponse, ApiError>`
 - **Wire**: `GET /v2/Flows/{FlowSid}/Executions/{ExecutionSid}/Steps`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListExecutionStepResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `StudioV2ExecutionStep.ListExecutionStep2Request` (5):
 

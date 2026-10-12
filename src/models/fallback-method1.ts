@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The HTTP method for the fallback webhook. */
 export const FallbackMethod1 = {
   Post: "POST",
   Put: "PUT",

@@ -3,6 +3,7 @@ import type { Schema } from "../../core/validation/schema.js";
 import { contentText1Schema, type ContentText1 } from "../content-text1.js";
 import { contentTranscription1Schema, type ContentTranscription1 } from "../content-transcription1.js";
 
+/** The content of the Communication. */
 export type Content2 = ContentText1 | ContentTranscription1;
 
 export const content2Schema: Schema<Content2> = s.of<Content2>(

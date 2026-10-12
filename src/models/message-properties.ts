@@ -2,8 +2,11 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type MessageProperties = {
+  /** The keyword type in format KeywordType.Locale (e.g., STOP.ENGLISH, HELP.FRENCH) */
   keywordType: string;
+  /** The message type identifier (typically country codes or special identifiers) */
   messageType: string;
+  /** The actual opt-out message text to be sent */
   message: string;
 };
 

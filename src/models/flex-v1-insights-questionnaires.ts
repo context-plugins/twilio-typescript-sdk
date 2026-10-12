@@ -2,11 +2,20 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type FlexV1InsightsQuestionnaires = {
+  /**
+   * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Flex
+   * Insights resource and owns this resource.
+   */
   accountSid?: string | null;
+  /** The sid of this questionnaire */
   questionnaireSid?: string | null;
+  /** The name of this category. */
   name?: string | null;
+  /** The description of this questionnaire */
   description?: string | null;
+  /** The flag to enable or disable questionnaire */
   active?: boolean | null;
+  /** The list of questions with category for a questionnaire */
   questions?: Record<string, unknown>[] | null;
   url?: string | null;
 };

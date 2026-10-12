@@ -1,6 +1,10 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * Current state of this conversation. Can be either `initializing`, `active`, `inactive` or
+ * `closed` and defaults to `active`
+ */
 export const ServiceConversationEnumState = {
   Inactive: "inactive",
   Active: "active",

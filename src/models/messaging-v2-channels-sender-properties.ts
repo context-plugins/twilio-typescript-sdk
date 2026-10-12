@@ -1,8 +1,11 @@
 import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
+/** The additional properties for the sender. */
 export type MessagingV2ChannelsSenderProperties = {
+  /** The quality rating of the sender. */
   qualityRating?: string | null;
+  /** The messaging limit of the sender. */
   messagingLimit?: string | null;
 };
 

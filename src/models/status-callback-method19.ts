@@ -1,6 +1,10 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * The HTTP method Twilio uses when sending `status_callback` requests. Possible values are `GET`
+ * and `POST`. Default is `POST`.
+ */
 export const StatusCallbackMethod19 = {
   Get: "GET",
   Post: "POST",

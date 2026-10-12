@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** Source via which the request came from. Can be Twilsock. */
 export const StatsTwilsockRatelimitingerrorsEnumSource = {
   Twilsock: "TWILSOCK",
 } as const;

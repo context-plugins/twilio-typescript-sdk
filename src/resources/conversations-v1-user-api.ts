@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import { confirmationSchema, type Confirmation } from "../models/confirmation.js";
 import {
@@ -28,22 +29,38 @@ export class ConversationsV1UserApi {
     this.#auth = auth;
   }
 
+  /**
+   * Add a new conversation user to your service
+   *
+   * @remarks
+   * Add a new conversation user to your service
+   *
+   * @returns Created
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   createServiceUser(
     request: ConversationsV1UserApi.CreateServiceUserRequest,
     options?: RequestOptions,
-  ): ApiPromise<ConversationsV1ServiceServiceUser, ResponseError> {
-    return this.#rawClient.execute<ConversationsV1ServiceServiceUser, ResponseError>(
+  ): ApiPromise<ConversationsV1ServiceServiceUser, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default7("/v1/Services/{ChatServiceSid}/Users"),
+        urlTemplate: this.#servers.default7("/v1/Services/{ChatServiceSid}/Users"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "ChatServiceSid", value: request.chatServiceSid, schema: s.string() }],
+        query: [],
         headers: [
           {
             name: "X-Twilio-Webhook-Enabled",
             value: request.xTwilioWebhookEnabled,
             schema: s.optional(s.lazy(() => confirmationSchema)),
           },
+          { name: "Idempotency-Key", value: uuid(), schema: s.string() },
         ],
         body: {
           kind: "formUrlEncoded",
@@ -57,27 +74,44 @@ export class ConversationsV1UserApi {
       },
       {
         success: { kind: "json", schema: conversationsV1ServiceServiceUserSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Add a new conversation user to your account's default service
+   *
+   * @remarks
+   * Add a new conversation user to your account's default service
+   *
+   * @returns Created
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   createUser(
     request: ConversationsV1UserApi.CreateUserRequest,
     options?: RequestOptions,
-  ): ApiPromise<ConversationsV1User, ResponseError> {
-    return this.#rawClient.execute<ConversationsV1User, ResponseError>(
+  ): ApiPromise<ConversationsV1User, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default7("/v1/Users"),
+        urlTemplate: this.#servers.default7("/v1/Users"),
         auth: this.#auth.accountSidAuthToken,
+        pathParams: [],
+        query: [],
         headers: [
           {
             name: "X-Twilio-Webhook-Enabled",
             value: request.xTwilioWebhookEnabled,
             schema: s.optional(s.lazy(() => confirmationSchema)),
           },
+          { name: "Idempotency-Key", value: uuid(), schema: s.string() },
         ],
         body: {
           kind: "formUrlEncoded",
@@ -91,180 +125,291 @@ export class ConversationsV1UserApi {
       },
       {
         success: { kind: "json", schema: conversationsV1UserSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Remove a conversation user from your service
+   *
+   * @remarks
+   * Remove a conversation user from your service
+   *
+   * @returns The resource was deleted successfully.
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   deleteServiceUser(
     request: ConversationsV1UserApi.DeleteServiceUserRequest,
     options?: RequestOptions,
-  ): ApiPromise<undefined, ResponseError> {
-    return this.#rawClient.execute<undefined, ResponseError>(
+  ): ApiPromise<undefined, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "DELETE",
-        url: this.#servers.default7("/v1/Services/{ChatServiceSid}/Users/{Sid}"),
+        urlTemplate: this.#servers.default7("/v1/Services/{ChatServiceSid}/Users/{Sid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           { name: "ChatServiceSid", value: request.chatServiceSid, schema: s.string() },
           { name: "Sid", value: request.sid, schema: s.string() },
         ],
+        query: [],
         headers: [
           {
             name: "X-Twilio-Webhook-Enabled",
             value: request.xTwilioWebhookEnabled,
             schema: s.optional(s.lazy(() => confirmationSchema)),
           },
+          { name: "Idempotency-Key", value: uuid(), schema: s.string() },
         ],
         body: { kind: "empty" },
       },
       {
         success: { kind: "empty" },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Remove a conversation user from your account's default service
+   *
+   * @remarks
+   * Remove a conversation user from your account's default service
+   *
+   * @returns The resource was deleted successfully.
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   deleteUser(
     request: ConversationsV1UserApi.DeleteUserRequest,
     options?: RequestOptions,
-  ): ApiPromise<undefined, ResponseError> {
-    return this.#rawClient.execute<undefined, ResponseError>(
+  ): ApiPromise<undefined, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "DELETE",
-        url: this.#servers.default7("/v1/Users/{Sid}"),
+        urlTemplate: this.#servers.default7("/v1/Users/{Sid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "Sid", value: request.sid, schema: s.string() }],
+        query: [],
         headers: [
           {
             name: "X-Twilio-Webhook-Enabled",
             value: request.xTwilioWebhookEnabled,
             schema: s.optional(s.lazy(() => confirmationSchema)),
           },
+          { name: "Idempotency-Key", value: uuid(), schema: s.string() },
         ],
         body: { kind: "empty" },
       },
       {
         success: { kind: "empty" },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Fetch a conversation user from your service
+   *
+   * @remarks
+   * Fetch a conversation user from your service
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   fetchServiceUser(
     request: ConversationsV1UserApi.FetchServiceUserRequest,
     options?: RequestOptions,
-  ): ApiPromise<ConversationsV1ServiceServiceUser, ResponseError> {
-    return this.#rawClient.execute<ConversationsV1ServiceServiceUser, ResponseError>(
+  ): ApiPromise<ConversationsV1ServiceServiceUser, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default7("/v1/Services/{ChatServiceSid}/Users/{Sid}"),
+        urlTemplate: this.#servers.default7("/v1/Services/{ChatServiceSid}/Users/{Sid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           { name: "ChatServiceSid", value: request.chatServiceSid, schema: s.string() },
           { name: "Sid", value: request.sid, schema: s.string() },
         ],
+        query: [],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: conversationsV1ServiceServiceUserSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Fetch a conversation user from your account's default service
+   *
+   * @remarks
+   * Fetch a conversation user from your account's default service
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   fetchUser(
     request: ConversationsV1UserApi.FetchUserRequest,
     options?: RequestOptions,
-  ): ApiPromise<ConversationsV1User, ResponseError> {
-    return this.#rawClient.execute<ConversationsV1User, ResponseError>(
+  ): ApiPromise<ConversationsV1User, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default7("/v1/Users/{Sid}"),
+        urlTemplate: this.#servers.default7("/v1/Users/{Sid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "Sid", value: request.sid, schema: s.string() }],
+        query: [],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: conversationsV1UserSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Retrieve a list of all conversation users in your service
+   *
+   * @remarks
+   * Retrieve a list of all conversation users in your service
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   listServiceUser(
     request: ConversationsV1UserApi.ListServiceUserRequest,
     options?: RequestOptions,
-  ): ApiPromise<ListServiceUserResponse, ResponseError> {
-    return this.#rawClient.execute<ListServiceUserResponse, ResponseError>(
+  ): ApiPromise<ListServiceUserResponse, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default7("/v1/Services/{ChatServiceSid}/Users"),
+        urlTemplate: this.#servers.default7("/v1/Services/{ChatServiceSid}/Users"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "ChatServiceSid", value: request.chatServiceSid, schema: s.string() }],
         query: [
-          { name: "PageSize", value: request.pageSize, schema: s.optional(s.number()) },
-          { name: "Page", value: request.page, schema: s.optional(s.number()) },
+          { name: "PageSize", value: request.pageSize, schema: s.optional(s.int()) },
+          { name: "Page", value: request.page, schema: s.optional(s.int()) },
           { name: "PageToken", value: request.pageToken, schema: s.optional(s.string()) },
         ],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: listServiceUserResponseSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Retrieve a list of all conversation users in your account's default service
+   *
+   * @remarks
+   * Retrieve a list of all conversation users in your account's default service
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   listUser(
     request: ConversationsV1UserApi.ListUserRequest,
     options?: RequestOptions,
-  ): ApiPromise<ListUserResponse, ResponseError> {
-    return this.#rawClient.execute<ListUserResponse, ResponseError>(
+  ): ApiPromise<ListUserResponse, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default7("/v1/Users"),
+        urlTemplate: this.#servers.default7("/v1/Users"),
         auth: this.#auth.accountSidAuthToken,
+        pathParams: [],
         query: [
-          { name: "PageSize", value: request.pageSize, schema: s.optional(s.number()) },
-          { name: "Page", value: request.page, schema: s.optional(s.number()) },
+          { name: "PageSize", value: request.pageSize, schema: s.optional(s.int()) },
+          { name: "Page", value: request.page, schema: s.optional(s.int()) },
           { name: "PageToken", value: request.pageToken, schema: s.optional(s.string()) },
         ],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: listUserResponseSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Update an existing conversation user in your service
+   *
+   * @remarks
+   * Update an existing conversation user in your service
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   updateServiceUser(
     request: ConversationsV1UserApi.UpdateServiceUserRequest,
     options?: RequestOptions,
-  ): ApiPromise<ConversationsV1ServiceServiceUser, ResponseError> {
-    return this.#rawClient.execute<ConversationsV1ServiceServiceUser, ResponseError>(
+  ): ApiPromise<ConversationsV1ServiceServiceUser, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default7("/v1/Services/{ChatServiceSid}/Users/{Sid}"),
+        urlTemplate: this.#servers.default7("/v1/Services/{ChatServiceSid}/Users/{Sid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           { name: "ChatServiceSid", value: request.chatServiceSid, schema: s.string() },
           { name: "Sid", value: request.sid, schema: s.string() },
         ],
+        query: [],
         headers: [
           {
             name: "X-Twilio-Webhook-Enabled",
             value: request.xTwilioWebhookEnabled,
             schema: s.optional(s.lazy(() => confirmationSchema)),
           },
+          { name: "Idempotency-Key", value: uuid(), schema: s.string() },
         ],
         body: {
           kind: "formUrlEncoded",
@@ -277,28 +422,44 @@ export class ConversationsV1UserApi {
       },
       {
         success: { kind: "json", schema: conversationsV1ServiceServiceUserSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Update an existing conversation user in your account's default service
+   *
+   * @remarks
+   * Update an existing conversation user in your account's default service
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   updateUser(
     request: ConversationsV1UserApi.UpdateUserRequest,
     options?: RequestOptions,
-  ): ApiPromise<ConversationsV1User, ResponseError> {
-    return this.#rawClient.execute<ConversationsV1User, ResponseError>(
+  ): ApiPromise<ConversationsV1User, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default7("/v1/Users/{Sid}"),
+        urlTemplate: this.#servers.default7("/v1/Users/{Sid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "Sid", value: request.sid, schema: s.string() }],
+        query: [],
         headers: [
           {
             name: "X-Twilio-Webhook-Enabled",
             value: request.xTwilioWebhookEnabled,
             schema: s.optional(s.lazy(() => confirmationSchema)),
           },
+          { name: "Idempotency-Key", value: uuid(), schema: s.string() },
         ],
         body: {
           kind: "formUrlEncoded",
@@ -311,7 +472,7 @@ export class ConversationsV1UserApi {
       },
       {
         success: { kind: "json", schema: conversationsV1UserSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -320,69 +481,176 @@ export class ConversationsV1UserApi {
 
 export namespace ConversationsV1UserApi {
   export type CreateServiceUserRequest = {
+    /**
+     * The SID of the [Conversation
+     * Service](https://www.twilio.com/docs/conversations/api/service-resource) the User resource is
+     * associated with.
+     */
     chatServiceSid: string;
+    /** The X-Twilio-Webhook-Enabled HTTP request header */
     xTwilioWebhookEnabled?: Confirmation;
+    /**
+     * The application-defined string that uniquely identifies the resource's User within the
+     * [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource). This
+     * value is often a username or an email address, and is case-sensitive.
+     */
     identity: string;
+    /** The string that you assigned to describe the resource. */
     friendlyName?: string;
+    /**
+     * The JSON Object string that stores application-specific data. If attributes have not been
+     * set, `{}` is returned.
+     */
     attributes?: string;
+    /**
+     * The SID of a service-level
+     * [Role](https://www.twilio.com/docs/conversations/api/role-resource) to assign to the user.
+     */
     roleSid?: string;
   };
 
   export type CreateUserRequest = {
+    /** The X-Twilio-Webhook-Enabled HTTP request header */
     xTwilioWebhookEnabled?: Confirmation;
+    /**
+     * The application-defined string that uniquely identifies the resource's User within the
+     * [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource). This
+     * value is often a username or an email address, and is case-sensitive.
+     */
     identity: string;
+    /** The string that you assigned to describe the resource. */
     friendlyName?: string;
+    /**
+     * The JSON Object string that stores application-specific data. If attributes have not been
+     * set, `{}` is returned.
+     */
     attributes?: string;
+    /**
+     * The SID of a service-level
+     * [Role](https://www.twilio.com/docs/conversations/api/role-resource) to assign to the user.
+     */
     roleSid?: string;
   };
 
   export type DeleteServiceUserRequest = {
+    /**
+     * The SID of the [Conversation
+     * Service](https://www.twilio.com/docs/conversations/api/service-resource) to delete the User
+     * resource from.
+     */
     chatServiceSid: string;
+    /**
+     * The SID of the User resource to delete. This value can be either the `sid` or the `identity`
+     * of the User resource to delete.
+     */
     sid: string;
+    /** The X-Twilio-Webhook-Enabled HTTP request header */
     xTwilioWebhookEnabled?: Confirmation;
   };
 
   export type DeleteUserRequest = {
+    /**
+     * The SID of the User resource to delete. This value can be either the `sid` or the `identity`
+     * of the User resource to delete.
+     */
     sid: string;
+    /** The X-Twilio-Webhook-Enabled HTTP request header */
     xTwilioWebhookEnabled?: Confirmation;
   };
 
   export type FetchServiceUserRequest = {
+    /**
+     * The SID of the [Conversation
+     * Service](https://www.twilio.com/docs/conversations/api/service-resource) to fetch the User
+     * resource from.
+     */
     chatServiceSid: string;
+    /**
+     * The SID of the User resource to fetch. This value can be either the `sid` or the `identity`
+     * of the User resource to fetch.
+     */
     sid: string;
   };
 
   export type FetchUserRequest = {
+    /**
+     * The SID of the User resource to fetch. This value can be either the `sid` or the `identity`
+     * of the User resource to fetch.
+     */
     sid: string;
   };
 
   export type ListServiceUserRequest = {
+    /**
+     * The SID of the [Conversation
+     * Service](https://www.twilio.com/docs/conversations/api/service-resource) to read the User
+     * resources from.
+     */
     chatServiceSid: string;
+    /** How many resources to return in each list page. The default is 50, and the maximum is 50. */
     pageSize?: number;
+    /** The page index. This value is simply for client state. */
     page?: number;
+    /** The page token. This is provided by the API. */
     pageToken?: string;
   };
 
   export type ListUserRequest = {
+    /** How many resources to return in each list page. The default is 50, and the maximum is 50. */
     pageSize?: number;
+    /** The page index. This value is simply for client state. */
     page?: number;
+    /** The page token. This is provided by the API. */
     pageToken?: string;
   };
 
   export type UpdateServiceUserRequest = {
+    /**
+     * The SID of the [Conversation
+     * Service](https://www.twilio.com/docs/conversations/api/service-resource) the User resource is
+     * associated with.
+     */
     chatServiceSid: string;
+    /**
+     * The SID of the User resource to update. This value can be either the `sid` or the `identity`
+     * of the User resource to update.
+     */
     sid: string;
+    /** The X-Twilio-Webhook-Enabled HTTP request header */
     xTwilioWebhookEnabled?: Confirmation;
+    /** The string that you assigned to describe the resource. */
     friendlyName?: string;
+    /**
+     * The JSON Object string that stores application-specific data. If attributes have not been
+     * set, `{}` is returned.
+     */
     attributes?: string;
+    /**
+     * The SID of a service-level
+     * [Role](https://www.twilio.com/docs/conversations/api/role-resource) to assign to the user.
+     */
     roleSid?: string;
   };
 
   export type UpdateUserRequest = {
+    /**
+     * The SID of the User resource to update. This value can be either the `sid` or the `identity`
+     * of the User resource to update.
+     */
     sid: string;
+    /** The X-Twilio-Webhook-Enabled HTTP request header */
     xTwilioWebhookEnabled?: Confirmation;
+    /** The string that you assigned to describe the resource. */
     friendlyName?: string;
+    /**
+     * The JSON Object string that stores application-specific data. If attributes have not been
+     * set, `{}` is returned.
+     */
     attributes?: string;
+    /**
+     * The SID of a service-level
+     * [Role](https://www.twilio.com/docs/conversations/api/role-resource) to assign to the user.
+     */
     roleSid?: string;
   };
 }

@@ -2,8 +2,11 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type ResumeInquiryResponse = {
+  /** Persona inquiry ID (existing or new) */
   inquiryId: string;
+  /** Persona session token (always new, expires in 24 hours) */
   inquirySessionToken: string;
+  /** Bundle SID */
   bundleSid: string;
 };
 

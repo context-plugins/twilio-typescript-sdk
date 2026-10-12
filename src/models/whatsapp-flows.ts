@@ -1,6 +1,10 @@
 import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
+/**
+ * whatsapp/flows templates allow you to send multiple messages in a set order with text or select
+ * options
+ */
 export type WhatsappFlows = {
   body: string;
   buttonText: string;

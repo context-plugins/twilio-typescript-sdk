@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
+/** Compliance keywords for the application. */
 export type ComplianceKeywords = {
   help?: string;
   stop?: string;

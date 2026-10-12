@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import { flexV1PluginReleaseSchema, type FlexV1PluginRelease } from "../models/flex-v1-plugin-release.js";
 import {
@@ -25,13 +26,18 @@ export class FlexV1PluginReleaseApi {
   createPluginRelease(
     request: FlexV1PluginReleaseApi.CreatePluginReleaseRequest,
     options?: RequestOptions,
-  ): ApiPromise<FlexV1PluginRelease, ResponseError> {
-    return this.#rawClient.execute<FlexV1PluginRelease, ResponseError>(
+  ): ApiPromise<FlexV1PluginRelease, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default13("/v1/PluginService/Releases"),
+        urlTemplate: this.#servers.default13("/v1/PluginService/Releases"),
         auth: this.#auth.accountSidAuthToken,
-        headers: [{ name: "Flex-Metadata", value: request.flexMetadata, schema: s.optional(s.string()) }],
+        pathParams: [],
+        query: [],
+        headers: [
+          { name: "Flex-Metadata", value: request.flexMetadata, schema: s.optional(s.string()) },
+          { name: "Idempotency-Key", value: uuid(), schema: s.string() },
+        ],
         body: {
           kind: "formUrlEncoded",
           value: [{ name: "ConfigurationId", value: request.configurationId, schema: s.string() }],
@@ -39,7 +45,7 @@ export class FlexV1PluginReleaseApi {
       },
       {
         success: { kind: "json", schema: flexV1PluginReleaseSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -48,19 +54,20 @@ export class FlexV1PluginReleaseApi {
   fetchPluginRelease(
     request: FlexV1PluginReleaseApi.FetchPluginReleaseRequest,
     options?: RequestOptions,
-  ): ApiPromise<FlexV1PluginRelease, ResponseError> {
-    return this.#rawClient.execute<FlexV1PluginRelease, ResponseError>(
+  ): ApiPromise<FlexV1PluginRelease, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default13("/v1/PluginService/Releases/{Sid}"),
+        urlTemplate: this.#servers.default13("/v1/PluginService/Releases/{Sid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "Sid", value: request.sid, schema: s.string() }],
+        query: [],
         headers: [{ name: "Flex-Metadata", value: request.flexMetadata, schema: s.optional(s.string()) }],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: flexV1PluginReleaseSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -69,15 +76,16 @@ export class FlexV1PluginReleaseApi {
   listPluginRelease(
     request: FlexV1PluginReleaseApi.ListPluginReleaseRequest,
     options?: RequestOptions,
-  ): ApiPromise<ListPluginReleaseResponse, ResponseError> {
-    return this.#rawClient.execute<ListPluginReleaseResponse, ResponseError>(
+  ): ApiPromise<ListPluginReleaseResponse, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default13("/v1/PluginService/Releases"),
+        urlTemplate: this.#servers.default13("/v1/PluginService/Releases"),
         auth: this.#auth.accountSidAuthToken,
+        pathParams: [],
         query: [
-          { name: "PageSize", value: request.pageSize, schema: s.optional(s.number()) },
-          { name: "Page", value: request.page, schema: s.optional(s.number()) },
+          { name: "PageSize", value: request.pageSize, schema: s.optional(s.int()) },
+          { name: "Page", value: request.page, schema: s.optional(s.int()) },
           { name: "PageToken", value: request.pageToken, schema: s.optional(s.string()) },
         ],
         headers: [{ name: "Flex-Metadata", value: request.flexMetadata, schema: s.optional(s.string()) }],
@@ -85,7 +93,7 @@ export class FlexV1PluginReleaseApi {
       },
       {
         success: { kind: "json", schema: listPluginReleaseResponseSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -94,19 +102,29 @@ export class FlexV1PluginReleaseApi {
 
 export namespace FlexV1PluginReleaseApi {
   export type CreatePluginReleaseRequest = {
+    /** The Flex-Metadata HTTP request header */
     flexMetadata?: string;
+    /** The SID or the Version of the Flex Plugin Configuration to release. */
     configurationId: string;
   };
 
   export type FetchPluginReleaseRequest = {
+    /** The SID of the Flex Plugin Release resource to fetch. */
     sid: string;
+    /** The Flex-Metadata HTTP request header */
     flexMetadata?: string;
   };
 
   export type ListPluginReleaseRequest = {
+    /**
+     * How many resources to return in each list page. The default is 50, and the maximum is 1000.
+     */
     pageSize?: number;
+    /** The page index. This value is simply for client state. */
     page?: number;
+    /** The page token. This is provided by the API. */
     pageToken?: string;
+    /** The Flex-Metadata HTTP request header */
     flexMetadata?: string;
   };
 }

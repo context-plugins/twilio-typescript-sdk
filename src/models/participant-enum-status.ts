@@ -1,6 +1,10 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * The status of the participant's call in a session. Can be: `queued`, `connecting`, `ringing`,
+ * `connected`, `complete`, or `failed`.
+ */
 export const ParticipantEnumStatus = {
   Queued: "queued",
   Connecting: "connecting",

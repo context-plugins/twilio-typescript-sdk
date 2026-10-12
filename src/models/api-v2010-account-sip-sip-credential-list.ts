@@ -2,12 +2,30 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type ApiV2010AccountSipSipCredentialList = {
+  /**
+   * The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) that owns this
+   * resource.
+   */
   accountSid?: string | null;
+  /**
+   * The date that this resource was created, given as GMT in [RFC
+   * 2822](https://www.php.net/manual/en/class.datetime.php#datetime.constants.rfc2822) format.
+   */
   dateCreated?: string | null;
+  /**
+   * The date that this resource was last updated, given as GMT in [RFC
+   * 2822](https://www.php.net/manual/en/class.datetime.php#datetime.constants.rfc2822) format.
+   */
   dateUpdated?: string | null;
+  /**
+   * A human readable descriptive text that describes the CredentialList, up to 64 characters long.
+   */
   friendlyName?: string | null;
+  /** A 34 character string that uniquely identifies this resource. */
   sid?: string | null;
+  /** A list of credentials associated with this credential list. */
   subresourceUris?: Record<string, unknown> | null;
+  /** The URI for this resource, relative to `https://api.twilio.com`. */
   uri?: string | null;
 };
 

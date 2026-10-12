@@ -9,15 +9,16 @@ export type ShortCodeApplicationResponsePage = {
   perPage?: number;
   hasNext?: boolean;
   hasPrev?: boolean;
+  /** List of Short Code Applications. */
   results?: ShortCodeApplication[];
 };
 
 export const shortCodeApplicationResponsePageSchema: Schema<ShortCodeApplicationResponsePage> =
   s.object<ShortCodeApplicationResponsePage>({
-    totalElements: s.optional(s.number()),
-    totalPages: s.optional(s.number()),
-    currentPage: s.optional(s.number()),
-    perPage: s.optional(s.number()),
+    totalElements: s.optional(s.int()),
+    totalPages: s.optional(s.int()),
+    currentPage: s.optional(s.int()),
+    perPage: s.optional(s.int()),
     hasNext: s.optional(s.boolean()),
     hasPrev: s.optional(s.boolean()),
     results: s.optional(s.array(s.lazy(() => shortCodeApplicationSchema))),

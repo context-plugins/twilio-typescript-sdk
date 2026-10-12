@@ -7,23 +7,44 @@ import { flagsSchema, type Flags } from "./flags.js";
 import { geographySchema, type Geography } from "./geography.js";
 
 export type NumbersV1AvailablePhoneNumber = {
+  /** The phone number in E.164 format. */
   did?: string | null;
+  /** The unique string that identifies the inventory DID resource. */
   inventoryDidSid?: string | null;
+  /** A human-readable phone number in national format. */
   friendlyName?: string | null;
+  /** The type of phone number. Can be Local, Mobile, TollFree, etc. */
   type?: string | null;
+  /** The North American Numbering Plan (NANP) area code of the phone number. */
   npa?: string | null;
+  /** The three-digit exchange code of the phone number. */
   nxx?: string | null;
+  /** Whether the phone number is locked for purchase. */
   locked?: boolean | null;
+  /** The Unix timestamp when the phone number lock expires. */
   lockedUntil?: number | null;
+  /**
+   * The set of Boolean properties that describes the SMS, MMS, Voice, and Fax capabilities of the
+   * phone number.
+   */
   capabilities?: Capabilities1 | null;
+  /** The geographic information associated with the phone number. */
   geography?: Geography | null;
+  /** The type of Address resource the phone number requires. */
   addressRequirements?: string | null;
+  /** The certifications required for the phone number. */
   certifications?: Certifications | null;
+  /** The billing information for the phone number. */
   billing?: Billing | null;
+  /** The date and time in GMT when the resource was created specified in ISO 8601 format. */
   dateCreated?: Date | null;
+  /** The date and time in GMT when the resource was last updated specified in ISO 8601 format. */
   dateUpdated?: Date | null;
+  /** Whether the phone number is in beta. */
   beta?: boolean | null;
+  /** Whether the phone number can handle emergency calls. */
   voiceEmergencyCapable?: boolean | null;
+  /** The flags that describe the phone number features. */
   flags?: Flags | null;
 };
 
@@ -36,7 +57,7 @@ export const numbersV1AvailablePhoneNumberSchema: Schema<NumbersV1AvailablePhone
     npa: s.optionalNullable(s.string()),
     nxx: s.optionalNullable(s.string()),
     locked: s.optionalNullable(s.boolean()),
-    lockedUntil: s.optionalNullable(s.number()),
+    lockedUntil: s.optionalNullable(s.int()),
     capabilities: s.optionalNullable(s.lazy(() => capabilities1Schema)),
     geography: s.optionalNullable(s.lazy(() => geographySchema)),
     addressRequirements: s.optionalNullable(s.string()),

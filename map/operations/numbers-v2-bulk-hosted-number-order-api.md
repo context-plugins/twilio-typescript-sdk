@@ -4,17 +4,18 @@
 
 Accessor: `client.numbersV2BulkHostedNumberOrderApi` · Source: `src/resources/numbers-v2-bulk-hosted-number-order-api.ts` · 2 operations · Request types: namespace `NumbersV2BulkHostedNumberOrderApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createBulkHostedNumberOrder
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createBulkHostedNumberOrder(request: NumbersV2BulkHostedNumberOrderApi.CreateBulkHostedNumberOrderRequest, options?: RequestOptions): ApiPromise<NumbersV2BulkHostedNumberOrder, ResponseError>`
+- **Signature**: `createBulkHostedNumberOrder(request: NumbersV2BulkHostedNumberOrderApi.CreateBulkHostedNumberOrderRequest, options?: RequestOptions): ApiPromise<NumbersV2BulkHostedNumberOrder, ApiError>`
 - **Wire**: `POST /v2/HostedNumber/Orders/Bulk`
 - **Auth**: `accountSidAuthToken`
-- **Request body**: `application/json` — the `body` field, a bare top-level JSON map with no fixed keys
+- **Request body**: `application/json` — the `body` field, a bare top-level JSON map with no fixed keys. **Optional**: omit it and the request carries no body and no `Content-Type` header at all
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `NumbersV2BulkHostedNumberOrder`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2BulkHostedNumberOrderApi.CreateBulkHostedNumberOrderRequest` (1):
 
@@ -29,12 +30,12 @@ Accessor: `client.numbersV2BulkHostedNumberOrderApi` · Source: `src/resources/n
 ### fetchBulkHostedNumberOrder
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchBulkHostedNumberOrder(request: NumbersV2BulkHostedNumberOrderApi.FetchBulkHostedNumberOrderRequest, options?: RequestOptions): ApiPromise<NumbersV2BulkHostedNumberOrder, ResponseError>`
+- **Signature**: `fetchBulkHostedNumberOrder(request: NumbersV2BulkHostedNumberOrderApi.FetchBulkHostedNumberOrderRequest, options?: RequestOptions): ApiPromise<NumbersV2BulkHostedNumberOrder, ApiError>`
 - **Wire**: `GET /v2/HostedNumber/Orders/Bulk/{BulkHostingSid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `NumbersV2BulkHostedNumberOrder`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2BulkHostedNumberOrderApi.FetchBulkHostedNumberOrderRequest` (2):
 

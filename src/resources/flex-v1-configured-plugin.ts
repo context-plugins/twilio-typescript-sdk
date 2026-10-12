@@ -1,8 +1,8 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
 import * as s from "../core/validation/index.js";
 import {
   flexV1PluginConfigurationConfiguredPluginSchema,
@@ -28,11 +28,11 @@ export class FlexV1ConfiguredPlugin {
   fetchConfiguredPlugin(
     request: FlexV1ConfiguredPlugin.FetchConfiguredPluginRequest,
     options?: RequestOptions,
-  ): ApiPromise<FlexV1PluginConfigurationConfiguredPlugin, ResponseError> {
-    return this.#rawClient.execute<FlexV1PluginConfigurationConfiguredPlugin, ResponseError>(
+  ): ApiPromise<FlexV1PluginConfigurationConfiguredPlugin, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default13(
+        urlTemplate: this.#servers.default13(
           "/v1/PluginService/Configurations/{ConfigurationSid}/Plugins/{PluginSid}",
         ),
         auth: this.#auth.accountSidAuthToken,
@@ -40,12 +40,13 @@ export class FlexV1ConfiguredPlugin {
           { name: "ConfigurationSid", value: request.configurationSid, schema: s.string() },
           { name: "PluginSid", value: request.pluginSid, schema: s.string() },
         ],
+        query: [],
         headers: [{ name: "Flex-Metadata", value: request.flexMetadata, schema: s.optional(s.string()) }],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: flexV1PluginConfigurationConfiguredPluginSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -54,16 +55,16 @@ export class FlexV1ConfiguredPlugin {
   listConfiguredPlugin(
     request: FlexV1ConfiguredPlugin.ListConfiguredPluginRequest,
     options?: RequestOptions,
-  ): ApiPromise<ListConfiguredPluginResponse, ResponseError> {
-    return this.#rawClient.execute<ListConfiguredPluginResponse, ResponseError>(
+  ): ApiPromise<ListConfiguredPluginResponse, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default13("/v1/PluginService/Configurations/{ConfigurationSid}/Plugins"),
+        urlTemplate: this.#servers.default13("/v1/PluginService/Configurations/{ConfigurationSid}/Plugins"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "ConfigurationSid", value: request.configurationSid, schema: s.string() }],
         query: [
-          { name: "PageSize", value: request.pageSize, schema: s.optional(s.number()) },
-          { name: "Page", value: request.page, schema: s.optional(s.number()) },
+          { name: "PageSize", value: request.pageSize, schema: s.optional(s.int()) },
+          { name: "Page", value: request.page, schema: s.optional(s.int()) },
           { name: "PageToken", value: request.pageToken, schema: s.optional(s.string()) },
         ],
         headers: [{ name: "Flex-Metadata", value: request.flexMetadata, schema: s.optional(s.string()) }],
@@ -71,7 +72,7 @@ export class FlexV1ConfiguredPlugin {
       },
       {
         success: { kind: "json", schema: listConfiguredPluginResponseSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -80,16 +81,26 @@ export class FlexV1ConfiguredPlugin {
 
 export namespace FlexV1ConfiguredPlugin {
   export type FetchConfiguredPluginRequest = {
+    /** The SID of the Flex Plugin Configuration the resource to belongs to. */
     configurationSid: string;
+    /** The unique string that we created to identify the Flex Plugin resource. */
     pluginSid: string;
+    /** The Flex-Metadata HTTP request header */
     flexMetadata?: string;
   };
 
   export type ListConfiguredPluginRequest = {
+    /** The SID of the Flex Plugin Configuration the resource to belongs to. */
     configurationSid: string;
+    /**
+     * How many resources to return in each list page. The default is 50, and the maximum is 1000.
+     */
     pageSize?: number;
+    /** The page index. This value is simply for client state. */
     page?: number;
+    /** The page token. This is provided by the API. */
     pageToken?: string;
+    /** The Flex-Metadata HTTP request header */
     flexMetadata?: string;
   };
 }

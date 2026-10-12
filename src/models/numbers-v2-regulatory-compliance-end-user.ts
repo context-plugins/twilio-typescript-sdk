@@ -3,13 +3,33 @@ import type { Schema } from "../core/validation/schema.js";
 import { endUserEnumTypeSchema, type EndUserEnumType } from "./end-user-enum-type.js";
 
 export type NumbersV2RegulatoryComplianceEndUser = {
+  /** The unique string created by Twilio to identify the End User resource. */
   sid?: string | null;
+  /**
+   * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the End User
+   * resource.
+   */
   accountSid?: string | null;
+  /** The string that you assigned to describe the resource. */
   friendlyName?: string | null;
+  /** The type of end user of the Bundle resource - can be `individual` or `business`. */
   type?: EndUserEnumType;
+  /**
+   * The set of parameters that are the attributes of the End Users resource which are listed in the
+   * End User Types.
+   */
   attributes?: Record<string, unknown> | null;
+  /**
+   * The date and time in GMT when the resource was created specified in [ISO
+   * 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+   */
   dateCreated?: Date | null;
+  /**
+   * The date and time in GMT when the resource was last updated specified in [ISO
+   * 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+   */
   dateUpdated?: Date | null;
+  /** The absolute URL of the End User resource. */
   url?: string | null;
 };
 

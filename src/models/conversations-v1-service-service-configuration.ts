@@ -2,12 +2,36 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type ConversationsV1ServiceServiceConfiguration = {
+  /** The unique string that we created to identify the Service configuration resource. */
   chatServiceSid?: string | null;
+  /**
+   * The conversation-level role assigned to a conversation creator when they join a new
+   * conversation. See [Conversation
+   * Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles.
+   */
   defaultConversationCreatorRoleSid?: string | null;
+  /**
+   * The conversation-level role assigned to users when they are added to a conversation. See
+   * [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info
+   * about roles.
+   */
   defaultConversationRoleSid?: string | null;
+  /**
+   * The service-level role assigned to users when they are added to the service. See [Conversation
+   * Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles.
+   */
   defaultChatServiceRoleSid?: string | null;
+  /** An absolute API resource URL for this service configuration. */
   url?: string | null;
+  /**
+   * Contains an absolute API resource URL to access the push notifications configuration of this
+   * service.
+   */
   links?: Record<string, unknown> | null;
+  /**
+   * Whether the [Reachability Indicator](https://www.twilio.com/docs/conversations/reachability) is
+   * enabled for this Conversations Service. The default is `false`.
+   */
   reachabilityEnabled?: boolean | null;
 };
 

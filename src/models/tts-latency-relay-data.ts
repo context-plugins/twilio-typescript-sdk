@@ -3,14 +3,16 @@ import type { Schema } from "../core/validation/schema.js";
 import { latencyEventSchema, type LatencyEvent } from "./latency-event.js";
 
 export type TtsLatencyRelayData = {
+  /** Session id of the conversation relay. */
   sessionId: string;
+  /** Sequence number of the event. */
   sequenceNumber: number;
   ttsLatency: LatencyEvent;
 };
 
 export const ttsLatencyRelayDataSchema: Schema<TtsLatencyRelayData> = s.object<TtsLatencyRelayData>({
   sessionId: s.string(),
-  sequenceNumber: s.number(),
+  sequenceNumber: s.int(),
   ttsLatency: latencyEventSchema,
   _keysMap: {
     sessionId: "session_id",

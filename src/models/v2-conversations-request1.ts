@@ -3,7 +3,9 @@ import type { Schema } from "../core/validation/schema.js";
 import { status7Schema, type Status7 } from "./status7.js";
 
 export type V2ConversationsRequest1 = {
+  /** The name of the Conversation. */
   name?: string;
+  /** The state of the Conversation. */
   status: Status7;
 };
 

@@ -3,8 +3,11 @@ import type { Schema } from "../core/validation/schema.js";
 import { senderIdPurposeSchema, type SenderIdPurpose } from "./sender-id-purpose.js";
 
 export type ValidateSenderId = {
+  /** ISO 3166-1 alpha-2 standard Country Code */
   isoCountry: string;
+  /** Purpose for using Sender ID */
   purpose: SenderIdPurpose;
+  /** Sender ID string */
   senderId: string;
 };
 

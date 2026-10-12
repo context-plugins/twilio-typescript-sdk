@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** End status of the call wrap up event. */
 export const EndStatus = {
   Unknown: "unknown",
   Failure: "failure",

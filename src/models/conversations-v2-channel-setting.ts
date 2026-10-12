@@ -9,8 +9,14 @@ import {
   type ConversationsV2StatusTimeouts,
 } from "./conversations-v2-status-timeouts.js";
 
+/** Configuration settings for a specific channel type. */
 export type ConversationsV2ChannelSetting = {
+  /** Timeout settings for channel status transitions. */
   statusTimeouts?: ConversationsV2StatusTimeouts;
+  /**
+   * Array of capture rules with from/to addresses and optional metadata. Use `*` for wildcard
+   * matching in either direction.
+   */
   captureRules?: ConversationsV2CaptureRule[];
 };
 

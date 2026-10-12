@@ -4,17 +4,18 @@
 
 Accessor: `client.contentv1ContentApi` · Source: `src/resources/contentv1-content-api.ts` · 5 operations · Request types: namespace `Contentv1ContentApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createContent
 
 - **Server**: `default2` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createContent(request: Contentv1ContentApi.CreateContentRequest, options?: RequestOptions): ApiPromise<ContentV1Content, ResponseError>`
+- **Signature**: `createContent(request: Contentv1ContentApi.CreateContentRequest, options?: RequestOptions): ApiPromise<ContentV1Content, ApiError>`
 - **Wire**: `POST /v1/Content`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/json` — the `body` field
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ContentV1Content`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Contentv1ContentApi.CreateContentRequest` (1):
 
@@ -30,12 +31,13 @@ Accessor: `client.contentv1ContentApi` · Source: `src/resources/contentv1-conte
 ### deleteContent
 
 - **Server**: `default2` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteContent(request: Contentv1ContentApi.DeleteContentRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteContent(request: Contentv1ContentApi.DeleteContentRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Content/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Contentv1ContentApi.DeleteContentRequest` (1):
 
@@ -46,12 +48,12 @@ Accessor: `client.contentv1ContentApi` · Source: `src/resources/contentv1-conte
 ### fetchContent
 
 - **Server**: `default2` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchContent(request: Contentv1ContentApi.FetchContentRequest, options?: RequestOptions): ApiPromise<ContentV1Content, ResponseError>`
+- **Signature**: `fetchContent(request: Contentv1ContentApi.FetchContentRequest, options?: RequestOptions): ApiPromise<ContentV1Content, ApiError>`
 - **Wire**: `GET /v1/Content/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ContentV1Content`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Contentv1ContentApi.FetchContentRequest` (1):
 
@@ -66,12 +68,12 @@ Accessor: `client.contentv1ContentApi` · Source: `src/resources/contentv1-conte
 ### listContent
 
 - **Server**: `default2` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listContent(request: Contentv1ContentApi.ListContentRequest, options?: RequestOptions): ApiPromise<ListContentResponse, ResponseError>`
+- **Signature**: `listContent(request: Contentv1ContentApi.ListContentRequest, options?: RequestOptions): ApiPromise<ListContentResponse, ApiError>`
 - **Wire**: `GET /v1/Content`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListContentResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Contentv1ContentApi.ListContentRequest` (3):
 
@@ -88,12 +90,13 @@ Accessor: `client.contentv1ContentApi` · Source: `src/resources/contentv1-conte
 ### updateContent
 
 - **Server**: `default2` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateContent(request: Contentv1ContentApi.UpdateContentRequest, options?: RequestOptions): ApiPromise<ContentV1Content, ResponseError>`
+- **Signature**: `updateContent(request: Contentv1ContentApi.UpdateContentRequest, options?: RequestOptions): ApiPromise<ContentV1Content, ApiError>`
 - **Wire**: `PUT /v1/Content/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/json` — the `body` field
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ContentV1Content`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Contentv1ContentApi.UpdateContentRequest` (2):
 

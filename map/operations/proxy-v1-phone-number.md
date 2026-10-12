@@ -4,17 +4,18 @@
 
 Accessor: `client.proxyV1PhoneNumber` · Source: `src/resources/proxy-v1-phone-number.ts` · 5 operations · Request types: namespace `ProxyV1PhoneNumber`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createPhoneNumber2
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createPhoneNumber2(request: ProxyV1PhoneNumber.CreatePhoneNumber2Request, options?: RequestOptions): ApiPromise<ProxyV1ServicePhoneNumber, ResponseError>`
+- **Signature**: `createPhoneNumber2(request: ProxyV1PhoneNumber.CreatePhoneNumber2Request, options?: RequestOptions): ApiPromise<ProxyV1ServicePhoneNumber, ApiError>`
 - **Wire**: `POST /v1/Services/{ServiceSid}/PhoneNumbers`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ProxyV1ServicePhoneNumber`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1PhoneNumber.CreatePhoneNumber2Request` (4):
 
@@ -32,12 +33,13 @@ Accessor: `client.proxyV1PhoneNumber` · Source: `src/resources/proxy-v1-phone-n
 ### deletePhoneNumber2
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deletePhoneNumber2(request: ProxyV1PhoneNumber.DeletePhoneNumber2Request, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deletePhoneNumber2(request: ProxyV1PhoneNumber.DeletePhoneNumber2Request, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Services/{ServiceSid}/PhoneNumbers/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1PhoneNumber.DeletePhoneNumber2Request` (2):
 
@@ -49,12 +51,12 @@ Accessor: `client.proxyV1PhoneNumber` · Source: `src/resources/proxy-v1-phone-n
 ### fetchPhoneNumber4
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchPhoneNumber4(request: ProxyV1PhoneNumber.FetchPhoneNumber4Request, options?: RequestOptions): ApiPromise<ProxyV1ServicePhoneNumber, ResponseError>`
+- **Signature**: `fetchPhoneNumber4(request: ProxyV1PhoneNumber.FetchPhoneNumber4Request, options?: RequestOptions): ApiPromise<ProxyV1ServicePhoneNumber, ApiError>`
 - **Wire**: `GET /v1/Services/{ServiceSid}/PhoneNumbers/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ProxyV1ServicePhoneNumber`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1PhoneNumber.FetchPhoneNumber4Request` (2):
 
@@ -70,12 +72,12 @@ Accessor: `client.proxyV1PhoneNumber` · Source: `src/resources/proxy-v1-phone-n
 ### listPhoneNumber2
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listPhoneNumber2(request: ProxyV1PhoneNumber.ListPhoneNumber2Request, options?: RequestOptions): ApiPromise<ListPhoneNumberResponse1, ResponseError>`
+- **Signature**: `listPhoneNumber2(request: ProxyV1PhoneNumber.ListPhoneNumber2Request, options?: RequestOptions): ApiPromise<ListPhoneNumberResponse1, ApiError>`
 - **Wire**: `GET /v1/Services/{ServiceSid}/PhoneNumbers`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListPhoneNumberResponse1`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1PhoneNumber.ListPhoneNumber2Request` (4):
 
@@ -93,12 +95,13 @@ Accessor: `client.proxyV1PhoneNumber` · Source: `src/resources/proxy-v1-phone-n
 ### updatePhoneNumber
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updatePhoneNumber(request: ProxyV1PhoneNumber.UpdatePhoneNumberRequest, options?: RequestOptions): ApiPromise<ProxyV1ServicePhoneNumber, ResponseError>`
+- **Signature**: `updatePhoneNumber(request: ProxyV1PhoneNumber.UpdatePhoneNumberRequest, options?: RequestOptions): ApiPromise<ProxyV1ServicePhoneNumber, ApiError>`
 - **Wire**: `POST /v1/Services/{ServiceSid}/PhoneNumbers/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ProxyV1ServicePhoneNumber`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1PhoneNumber.UpdatePhoneNumberRequest` (3):
 

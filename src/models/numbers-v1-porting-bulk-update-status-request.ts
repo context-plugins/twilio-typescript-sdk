@@ -7,6 +7,7 @@ import {
 } from "./port-in-phone-number-request.js";
 
 export type NumbersV1PortingBulkUpdateStatusRequest = {
+  /** The new status to set for the port in request. */
   newStatus: NewStatus;
   portInPhoneNumberRequests: PortInPhoneNumberRequest[];
 };

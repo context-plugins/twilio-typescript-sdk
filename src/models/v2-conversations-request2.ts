@@ -7,8 +7,14 @@ import {
 import { status7Schema, type Status7 } from "./status7.js";
 
 export type V2ConversationsRequest2 = {
+  /** The name of the Conversation. */
   name?: string;
+  /** The state of the Conversation. */
   status?: Status7;
+  /**
+   * Partial configuration update for an existing conversation. Only statusCallbacks can be
+   * modified.
+   */
   configuration?: ConversationsV2PatchConversationConfiguration;
 };
 

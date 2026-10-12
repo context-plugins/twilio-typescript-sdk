@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import {
   listTollfreeVerificationResponseSchema,
@@ -49,15 +50,32 @@ export class MessagingV1TollfreeVerificationApi {
     this.#auth = auth;
   }
 
+  /**
+   * Create a tollfree verification
+   *
+   * @remarks
+   * Create a tollfree verification
+   *
+   * @returns Created
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   createTollfreeVerification(
     request: MessagingV1TollfreeVerificationApi.CreateTollfreeVerificationRequest,
     options?: RequestOptions,
-  ): ApiPromise<MessagingV1TollfreeVerification, ResponseError> {
-    return this.#rawClient.execute<MessagingV1TollfreeVerification, ResponseError>(
+  ): ApiPromise<MessagingV1TollfreeVerification, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default1("/v1/Tollfree/Verifications"),
+        urlTemplate: this.#servers.default1("/v1/Tollfree/Verifications"),
         auth: this.#auth.accountSidAuthToken,
+        pathParams: [],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: {
           kind: "formUrlEncoded",
           value: [
@@ -177,61 +195,108 @@ export class MessagingV1TollfreeVerificationApi {
       },
       {
         success: { kind: "json", schema: messagingV1TollfreeVerificationSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Delete a tollfree verification
+   *
+   * @remarks
+   * Delete a tollfree verification
+   *
+   * @returns The resource was deleted successfully.
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   deleteTollfreeVerification(
     request: MessagingV1TollfreeVerificationApi.DeleteTollfreeVerificationRequest,
     options?: RequestOptions,
-  ): ApiPromise<undefined, ResponseError> {
-    return this.#rawClient.execute<undefined, ResponseError>(
+  ): ApiPromise<undefined, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "DELETE",
-        url: this.#servers.default1("/v1/Tollfree/Verifications/{Sid}"),
+        urlTemplate: this.#servers.default1("/v1/Tollfree/Verifications/{Sid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "Sid", value: request.sid, schema: s.string() }],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: { kind: "empty" },
       },
       {
         success: { kind: "empty" },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Retrieve a tollfree verification
+   *
+   * @remarks
+   * Retrieve a tollfree verification
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   fetchTollfreeVerification(
     request: MessagingV1TollfreeVerificationApi.FetchTollfreeVerificationRequest,
     options?: RequestOptions,
-  ): ApiPromise<MessagingV1TollfreeVerification, ResponseError> {
-    return this.#rawClient.execute<MessagingV1TollfreeVerification, ResponseError>(
+  ): ApiPromise<MessagingV1TollfreeVerification, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default1("/v1/Tollfree/Verifications/{Sid}"),
+        urlTemplate: this.#servers.default1("/v1/Tollfree/Verifications/{Sid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "Sid", value: request.sid, schema: s.string() }],
+        query: [],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: messagingV1TollfreeVerificationSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * List tollfree verifications
+   *
+   * @remarks
+   * List tollfree verifications
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   listTollfreeVerification(
     request: MessagingV1TollfreeVerificationApi.ListTollfreeVerificationRequest,
     options?: RequestOptions,
-  ): ApiPromise<ListTollfreeVerificationResponse, ResponseError> {
-    return this.#rawClient.execute<ListTollfreeVerificationResponse, ResponseError>(
+  ): ApiPromise<ListTollfreeVerificationResponse, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default1("/v1/Tollfree/Verifications"),
+        urlTemplate: this.#servers.default1("/v1/Tollfree/Verifications"),
         auth: this.#auth.accountSidAuthToken,
+        pathParams: [],
         query: [
           {
             name: "TollfreePhoneNumberSid",
@@ -245,8 +310,8 @@ export class MessagingV1TollfreeVerificationApi {
           },
           { name: "ExternalReferenceId", value: request.externalReferenceId, schema: s.optional(s.string()) },
           { name: "IncludeSubAccounts", value: request.includeSubAccounts, schema: s.optional(s.boolean()) },
-          { name: "PageSize", value: request.pageSize, schema: s.optional(s.number()) },
-          { name: "Page", value: request.page, schema: s.optional(s.number()) },
+          { name: "PageSize", value: request.pageSize, schema: s.optional(s.int()) },
+          { name: "Page", value: request.page, schema: s.optional(s.int()) },
           { name: "PageToken", value: request.pageToken, schema: s.optional(s.string()) },
           {
             name: "TrustProductSid",
@@ -254,26 +319,43 @@ export class MessagingV1TollfreeVerificationApi {
             schema: s.optional(s.array(s.string())),
           },
         ],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: listTollfreeVerificationResponseSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Edit a tollfree verification
+   *
+   * @remarks
+   * Edit a tollfree verification
+   *
+   * @returns Accepted
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   updateTollfreeVerification(
     request: MessagingV1TollfreeVerificationApi.UpdateTollfreeVerificationRequest,
     options?: RequestOptions,
-  ): ApiPromise<MessagingV1TollfreeVerification, ResponseError> {
-    return this.#rawClient.execute<MessagingV1TollfreeVerification, ResponseError>(
+  ): ApiPromise<MessagingV1TollfreeVerification, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default1("/v1/Tollfree/Verifications/{Sid}"),
+        urlTemplate: this.#servers.default1("/v1/Tollfree/Verifications/{Sid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "Sid", value: request.sid, schema: s.string() }],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: {
           kind: "formUrlEncoded",
           value: [
@@ -401,7 +483,7 @@ export class MessagingV1TollfreeVerificationApi {
       },
       {
         success: { kind: "json", schema: messagingV1TollfreeVerificationSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -410,100 +492,231 @@ export class MessagingV1TollfreeVerificationApi {
 
 export namespace MessagingV1TollfreeVerificationApi {
   export type CreateTollfreeVerificationRequest = {
+    /** The name of the business or organization using the Tollfree number. */
     businessName: string;
+    /** The website of the business or organization using the Tollfree number. */
     businessWebsite: string;
+    /** The email address to receive the notification about the verification result. . */
     notificationEmail: string;
+    /** The category of the use case for the Tollfree Number. List as many as are applicable. */
     useCaseCategories: TollfreeVerificationEnumUseCaseCategory[] | null;
+    /** Use this to further explain how messaging is used by the business or organization. */
     useCaseSummary: string;
+    /** An example of message content, i.e. a sample message. */
     productionMessageSample: string;
+    /**
+     * Link to an image that shows the opt-in workflow. Multiple images allowed and must be a
+     * publicly hosted URL.
+     */
     optInImageUrls: string[];
+    /** Describe how a user opts-in to text messages. */
     optInType: TollfreeVerificationEnumOptInType;
+    /** Estimate monthly volume of messages from the Tollfree Number. */
     messageVolume: string;
+    /** The SID of the Phone Number associated with the Tollfree Verification. */
     tollfreePhoneNumberSid: string;
+    /** Customer's Profile Bundle BundleSid. */
     customerProfileSid?: string;
+    /** The address of the business or organization using the Tollfree number. */
     businessStreetAddress?: string;
+    /** The address of the business or organization using the Tollfree number. */
     businessStreetAddress2?: string;
+    /** The city of the business or organization using the Tollfree number. */
     businessCity?: string;
+    /** The state/province/region of the business or organization using the Tollfree number. */
     businessStateProvinceRegion?: string;
+    /** The postal code of the business or organization using the Tollfree number. */
     businessPostalCode?: string;
+    /** The country of the business or organization using the Tollfree number. */
     businessCountry?: string;
+    /** Additional information to be provided for verification. */
     additionalInformation?: string;
+    /** The first name of the contact for the business or organization using the Tollfree number. */
     businessContactFirstName?: string;
+    /** The last name of the contact for the business or organization using the Tollfree number. */
     businessContactLastName?: string;
+    /**
+     * The email address of the contact for the business or organization using the Tollfree number.
+     */
     businessContactEmail?: string;
+    /**
+     * The E.164 formatted phone number of the contact for the business or organization using the
+     * Tollfree number.
+     */
     businessContactPhone?: string;
+    /**
+     * An optional external reference ID supplied by customer and echoed back on status retrieval.
+     */
     externalReferenceId?: string;
+    /**
+     * A legally recognized business registration number. Required for all business types except
+     * SOLE_PROPRIETOR.
+     */
     businessRegistrationNumber?: string;
+    /**
+     * The organizational authority for business registrations. Required for all business types
+     * except SOLE_PROPRIETOR.
+     */
     businessRegistrationAuthority?: TollfreeVerificationEnumBusinessRegistrationAuthority | null;
+    /**
+     * The country where the business is registered. Required for all business types except
+     * SOLE_PROPRIETOR.
+     */
     businessRegistrationCountry?: string;
+    /**
+     * The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT,
+     * SOLE_PROPRIETOR, GOVERNMENT. Required field.
+     */
     businessType?: TollfreeVerificationEnumBusinessType | null;
+    /** The E.164 formatted number associated with the business. */
     businessRegistrationPhoneNumber?: string;
+    /**
+     * Trade name, sub entity, or downstream business name of business being submitted for
+     * verification
+     */
     doingBusinessAs?: string;
+    /** The confirmation message sent to users when they opt in to receive messages. */
     optInConfirmationMessage?: string;
+    /** A sample help message provided to users. */
     helpMessageSample?: string;
+    /** The URL to the privacy policy for the business or organization. */
     privacyPolicyUrl?: string;
+    /** The URL to the terms and conditions for the business or organization. */
     termsAndConditionsUrl?: string;
+    /** Indicates if the content is age gated. */
     ageGatedContent?: boolean;
+    /** List of keywords that users can text in to opt in to receive messages. */
     optInKeywords?: string[];
+    /** The third-party political vetting provider. */
     vettingProvider?: TollfreeVerificationEnumVettingProvider | null;
+    /** The unique ID of the vetting */
     vettingId?: string;
   };
 
   export type DeleteTollfreeVerificationRequest = {
+    /** The unique string to identify Tollfree Verification. */
     sid: string;
   };
 
   export type FetchTollfreeVerificationRequest = {
+    /** A unique string identifying a Tollfree Verification. */
     sid: string;
   };
 
   export type ListTollfreeVerificationRequest = {
+    /** The SID of the Phone Number associated with the Tollfree Verification. */
     tollfreePhoneNumberSid?: string;
+    /** The compliance status of the Tollfree Verification record. */
     status?: TollfreeVerificationEnumStatus;
+    /** Customer supplied reference id for the Tollfree Verification record. */
     externalReferenceId?: string;
+    /** Whether to include Tollfree Verifications from sub accounts in list response. */
     includeSubAccounts?: boolean;
+    /**
+     * How many resources to return in each list page. The default is 50, and the maximum is 1000.
+     */
     pageSize?: number;
+    /** The page index. This value is simply for client state. */
     page?: number;
+    /** The page token. This is provided by the API. */
     pageToken?: string;
+    /** The trust product sids / tollfree bundle sids of tollfree verifications */
     trustProductSid?: string[];
   };
 
   export type UpdateTollfreeVerificationRequest = {
+    /** The unique string to identify Tollfree Verification. */
     sid: string;
+    /** The name of the business or organization using the Tollfree number. */
     businessName?: string;
+    /** The website of the business or organization using the Tollfree number. */
     businessWebsite?: string;
+    /** The email address to receive the notification about the verification result. . */
     notificationEmail?: string;
+    /** The category of the use case for the Tollfree Number. List as many as are applicable. */
     useCaseCategories?: TollfreeVerificationEnumUseCaseCategory[] | null;
+    /** Use this to further explain how messaging is used by the business or organization. */
     useCaseSummary?: string;
+    /** An example of message content, i.e. a sample message. */
     productionMessageSample?: string;
+    /**
+     * Link to an image that shows the opt-in workflow. Multiple images allowed and must be a
+     * publicly hosted URL.
+     */
     optInImageUrls?: string[];
+    /** Describe how a user opts-in to text messages. */
     optInType?: TollfreeVerificationEnumOptInType;
+    /** Estimate monthly volume of messages from the Tollfree Number. */
     messageVolume?: string;
+    /** The address of the business or organization using the Tollfree number. */
     businessStreetAddress?: string;
+    /** The address of the business or organization using the Tollfree number. */
     businessStreetAddress2?: string;
+    /** The city of the business or organization using the Tollfree number. */
     businessCity?: string;
+    /** The state/province/region of the business or organization using the Tollfree number. */
     businessStateProvinceRegion?: string;
+    /** The postal code of the business or organization using the Tollfree number. */
     businessPostalCode?: string;
+    /** The country of the business or organization using the Tollfree number. */
     businessCountry?: string;
+    /** Additional information to be provided for verification. */
     additionalInformation?: string;
+    /** The first name of the contact for the business or organization using the Tollfree number. */
     businessContactFirstName?: string;
+    /** The last name of the contact for the business or organization using the Tollfree number. */
     businessContactLastName?: string;
+    /**
+     * The email address of the contact for the business or organization using the Tollfree number.
+     */
     businessContactEmail?: string;
+    /**
+     * The E.164 formatted phone number of the contact for the business or organization using the
+     * Tollfree number.
+     */
     businessContactPhone?: string;
+    /**
+     * Describe why the verification is being edited. If the verification was rejected because of a
+     * technical issue, such as the website being down, and the issue has been resolved this
+     * parameter should be set to something similar to 'Website fixed'.
+     */
     editReason?: string;
+    /** A legally recognized business registration number */
     businessRegistrationNumber?: string;
+    /**
+     * The organizational authority for business registrations. Required for all business types
+     * except SOLE_PROPRIETOR.
+     */
     businessRegistrationAuthority?: TollfreeVerificationEnumBusinessRegistrationAuthority | null;
+    /** Country business is registered in */
     businessRegistrationCountry?: string;
+    /**
+     * The type of business, valid values are PRIVATE_PROFIT, PUBLIC_PROFIT, NON_PROFIT,
+     * SOLE_PROPRIETOR, GOVERNMENT. Required field.
+     */
     businessType?: TollfreeVerificationEnumBusinessType | null;
+    /** The E.164 formatted number associated with the business. */
     businessRegistrationPhoneNumber?: string;
+    /**
+     * Trade name, sub entity, or downstream business name of business being submitted for
+     * verification
+     */
     doingBusinessAs?: string;
+    /** The confirmation message sent to users when they opt in to receive messages. */
     optInConfirmationMessage?: string;
+    /** A sample help message provided to users. */
     helpMessageSample?: string;
+    /** The URL to the privacy policy for the business or organization. */
     privacyPolicyUrl?: string;
+    /** The URL to the terms and conditions for the business or organization. */
     termsAndConditionsUrl?: string;
+    /** Indicates if the content is age gated. */
     ageGatedContent?: boolean;
+    /** List of keywords that users can text in to opt in to receive messages. */
     optInKeywords?: string[];
+    /** The third-party political vetting provider. */
     vettingProvider?: TollfreeVerificationEnumVettingProvider | null;
+    /** The unique ID of the vetting */
     vettingId?: string;
   };
 }

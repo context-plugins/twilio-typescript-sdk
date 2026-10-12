@@ -4,9 +4,13 @@ import { configuration3Schema, type Configuration3 } from "./configuration3.js";
 import { participantSchema, type Participant } from "./participant.js";
 
 export type V2ConversationsRequest = {
+  /** The ID of an existing configuration. */
   configurationId: string;
+  /** The name of the conversation. */
   name?: string;
+  /** Conversation configuration settings. */
   configuration?: Configuration3;
+  /** Optional list of Participants to create with the Conversation. */
   participants?: Participant[];
 };
 

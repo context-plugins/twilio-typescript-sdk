@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import {
   flexV1PluginConfigurationSchema,
@@ -28,13 +29,18 @@ export class FlexV1PluginConfigurationApi {
   createPluginConfiguration(
     request: FlexV1PluginConfigurationApi.CreatePluginConfigurationRequest,
     options?: RequestOptions,
-  ): ApiPromise<FlexV1PluginConfiguration, ResponseError> {
-    return this.#rawClient.execute<FlexV1PluginConfiguration, ResponseError>(
+  ): ApiPromise<FlexV1PluginConfiguration, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default13("/v1/PluginService/Configurations"),
+        urlTemplate: this.#servers.default13("/v1/PluginService/Configurations"),
         auth: this.#auth.accountSidAuthToken,
-        headers: [{ name: "Flex-Metadata", value: request.flexMetadata, schema: s.optional(s.string()) }],
+        pathParams: [],
+        query: [],
+        headers: [
+          { name: "Flex-Metadata", value: request.flexMetadata, schema: s.optional(s.string()) },
+          { name: "Idempotency-Key", value: uuid(), schema: s.string() },
+        ],
         body: {
           kind: "formUrlEncoded",
           value: [
@@ -50,7 +56,7 @@ export class FlexV1PluginConfigurationApi {
       },
       {
         success: { kind: "json", schema: flexV1PluginConfigurationSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -59,19 +65,20 @@ export class FlexV1PluginConfigurationApi {
   fetchPluginConfiguration(
     request: FlexV1PluginConfigurationApi.FetchPluginConfigurationRequest,
     options?: RequestOptions,
-  ): ApiPromise<FlexV1PluginConfiguration, ResponseError> {
-    return this.#rawClient.execute<FlexV1PluginConfiguration, ResponseError>(
+  ): ApiPromise<FlexV1PluginConfiguration, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default13("/v1/PluginService/Configurations/{Sid}"),
+        urlTemplate: this.#servers.default13("/v1/PluginService/Configurations/{Sid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "Sid", value: request.sid, schema: s.string() }],
+        query: [],
         headers: [{ name: "Flex-Metadata", value: request.flexMetadata, schema: s.optional(s.string()) }],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: flexV1PluginConfigurationSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -80,15 +87,16 @@ export class FlexV1PluginConfigurationApi {
   listPluginConfiguration(
     request: FlexV1PluginConfigurationApi.ListPluginConfigurationRequest,
     options?: RequestOptions,
-  ): ApiPromise<ListPluginConfigurationResponse, ResponseError> {
-    return this.#rawClient.execute<ListPluginConfigurationResponse, ResponseError>(
+  ): ApiPromise<ListPluginConfigurationResponse, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default13("/v1/PluginService/Configurations"),
+        urlTemplate: this.#servers.default13("/v1/PluginService/Configurations"),
         auth: this.#auth.accountSidAuthToken,
+        pathParams: [],
         query: [
-          { name: "PageSize", value: request.pageSize, schema: s.optional(s.number()) },
-          { name: "Page", value: request.page, schema: s.optional(s.number()) },
+          { name: "PageSize", value: request.pageSize, schema: s.optional(s.int()) },
+          { name: "Page", value: request.page, schema: s.optional(s.int()) },
           { name: "PageToken", value: request.pageToken, schema: s.optional(s.string()) },
         ],
         headers: [{ name: "Flex-Metadata", value: request.flexMetadata, schema: s.optional(s.string()) }],
@@ -96,7 +104,7 @@ export class FlexV1PluginConfigurationApi {
       },
       {
         success: { kind: "json", schema: listPluginConfigurationResponseSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -105,21 +113,36 @@ export class FlexV1PluginConfigurationApi {
 
 export namespace FlexV1PluginConfigurationApi {
   export type CreatePluginConfigurationRequest = {
+    /** The Flex-Metadata HTTP request header */
     flexMetadata?: string;
+    /** The Flex Plugin Configuration's name. */
     name: string;
+    /**
+     * A list of objects that describe the plugin versions included in the configuration. Each
+     * object contains the sid of the plugin version.
+     */
     plugins?: Record<string, unknown>[];
+    /** The Flex Plugin Configuration's description. */
     description?: string;
   };
 
   export type FetchPluginConfigurationRequest = {
+    /** The SID of the Flex Plugin Configuration resource to fetch. */
     sid: string;
+    /** The Flex-Metadata HTTP request header */
     flexMetadata?: string;
   };
 
   export type ListPluginConfigurationRequest = {
+    /**
+     * How many resources to return in each list page. The default is 50, and the maximum is 1000.
+     */
     pageSize?: number;
+    /** The page index. This value is simply for client state. */
     page?: number;
+    /** The page token. This is provided by the API. */
     pageToken?: string;
+    /** The Flex-Metadata HTTP request header */
     flexMetadata?: string;
   };
 }

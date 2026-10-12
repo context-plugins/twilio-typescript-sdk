@@ -4,17 +4,18 @@
 
 Accessor: `client.messagingV1AlphaSender` · Source: `src/resources/messaging-v1-alpha-sender.ts` · 4 operations · Request types: namespace `MessagingV1AlphaSender`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createAlphaSender
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createAlphaSender(request: MessagingV1AlphaSender.CreateAlphaSenderRequest, options?: RequestOptions): ApiPromise<MessagingV1ServiceAlphaSender, ResponseError>`
+- **Signature**: `createAlphaSender(request: MessagingV1AlphaSender.CreateAlphaSenderRequest, options?: RequestOptions): ApiPromise<MessagingV1ServiceAlphaSender, ApiError>`
 - **Wire**: `POST /v1/Services/{ServiceSid}/AlphaSenders`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `MessagingV1ServiceAlphaSender`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1AlphaSender.CreateAlphaSenderRequest` (2):
 
@@ -30,12 +31,13 @@ Accessor: `client.messagingV1AlphaSender` · Source: `src/resources/messaging-v1
 ### deleteAlphaSender
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteAlphaSender(request: MessagingV1AlphaSender.DeleteAlphaSenderRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteAlphaSender(request: MessagingV1AlphaSender.DeleteAlphaSenderRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Services/{ServiceSid}/AlphaSenders/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1AlphaSender.DeleteAlphaSenderRequest` (2):
 
@@ -47,12 +49,12 @@ Accessor: `client.messagingV1AlphaSender` · Source: `src/resources/messaging-v1
 ### fetchAlphaSender
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchAlphaSender(request: MessagingV1AlphaSender.FetchAlphaSenderRequest, options?: RequestOptions): ApiPromise<MessagingV1ServiceAlphaSender, ResponseError>`
+- **Signature**: `fetchAlphaSender(request: MessagingV1AlphaSender.FetchAlphaSenderRequest, options?: RequestOptions): ApiPromise<MessagingV1ServiceAlphaSender, ApiError>`
 - **Wire**: `GET /v1/Services/{ServiceSid}/AlphaSenders/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `MessagingV1ServiceAlphaSender`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1AlphaSender.FetchAlphaSenderRequest` (2):
 
@@ -68,12 +70,12 @@ Accessor: `client.messagingV1AlphaSender` · Source: `src/resources/messaging-v1
 ### listAlphaSender
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listAlphaSender(request: MessagingV1AlphaSender.ListAlphaSenderRequest, options?: RequestOptions): ApiPromise<ListAlphaSenderResponse, ResponseError>`
+- **Signature**: `listAlphaSender(request: MessagingV1AlphaSender.ListAlphaSenderRequest, options?: RequestOptions): ApiPromise<ListAlphaSenderResponse, ApiError>`
 - **Wire**: `GET /v1/Services/{ServiceSid}/AlphaSenders`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListAlphaSenderResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1AlphaSender.ListAlphaSenderRequest` (4):
 

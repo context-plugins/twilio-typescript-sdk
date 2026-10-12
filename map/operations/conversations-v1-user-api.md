@@ -4,17 +4,18 @@
 
 Accessor: `client.conversationsV1UserApi` · Source: `src/resources/conversations-v1-user-api.ts` · 10 operations · Request types: namespace `ConversationsV1UserApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createServiceUser
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createServiceUser(request: ConversationsV1UserApi.CreateServiceUserRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceUser, ResponseError>`
+- **Signature**: `createServiceUser(request: ConversationsV1UserApi.CreateServiceUserRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceUser, ApiError>`
 - **Wire**: `POST /v1/Services/{ChatServiceSid}/Users`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ConversationsV1ServiceServiceUser`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1UserApi.CreateServiceUserRequest` (6):
 
@@ -35,12 +36,13 @@ Accessor: `client.conversationsV1UserApi` · Source: `src/resources/conversation
 ### createUser
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createUser(request: ConversationsV1UserApi.CreateUserRequest, options?: RequestOptions): ApiPromise<ConversationsV1User, ResponseError>`
+- **Signature**: `createUser(request: ConversationsV1UserApi.CreateUserRequest, options?: RequestOptions): ApiPromise<ConversationsV1User, ApiError>`
 - **Wire**: `POST /v1/Users`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ConversationsV1User`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1UserApi.CreateUserRequest` (5):
 
@@ -60,12 +62,13 @@ Accessor: `client.conversationsV1UserApi` · Source: `src/resources/conversation
 ### deleteServiceUser
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteServiceUser(request: ConversationsV1UserApi.DeleteServiceUserRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteServiceUser(request: ConversationsV1UserApi.DeleteServiceUserRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Services/{ChatServiceSid}/Users/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1UserApi.DeleteServiceUserRequest` (3):
 
@@ -82,12 +85,13 @@ Accessor: `client.conversationsV1UserApi` · Source: `src/resources/conversation
 ### deleteUser
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteUser(request: ConversationsV1UserApi.DeleteUserRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteUser(request: ConversationsV1UserApi.DeleteUserRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Users/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1UserApi.DeleteUserRequest` (2):
 
@@ -103,12 +107,12 @@ Accessor: `client.conversationsV1UserApi` · Source: `src/resources/conversation
 ### fetchServiceUser
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchServiceUser(request: ConversationsV1UserApi.FetchServiceUserRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceUser, ResponseError>`
+- **Signature**: `fetchServiceUser(request: ConversationsV1UserApi.FetchServiceUserRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceUser, ApiError>`
 - **Wire**: `GET /v1/Services/{ChatServiceSid}/Users/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ConversationsV1ServiceServiceUser`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1UserApi.FetchServiceUserRequest` (2):
 
@@ -124,12 +128,12 @@ Accessor: `client.conversationsV1UserApi` · Source: `src/resources/conversation
 ### fetchUser
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchUser(request: ConversationsV1UserApi.FetchUserRequest, options?: RequestOptions): ApiPromise<ConversationsV1User, ResponseError>`
+- **Signature**: `fetchUser(request: ConversationsV1UserApi.FetchUserRequest, options?: RequestOptions): ApiPromise<ConversationsV1User, ApiError>`
 - **Wire**: `GET /v1/Users/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ConversationsV1User`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1UserApi.FetchUserRequest` (1):
 
@@ -144,12 +148,12 @@ Accessor: `client.conversationsV1UserApi` · Source: `src/resources/conversation
 ### listServiceUser
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listServiceUser(request: ConversationsV1UserApi.ListServiceUserRequest, options?: RequestOptions): ApiPromise<ListServiceUserResponse, ResponseError>`
+- **Signature**: `listServiceUser(request: ConversationsV1UserApi.ListServiceUserRequest, options?: RequestOptions): ApiPromise<ListServiceUserResponse, ApiError>`
 - **Wire**: `GET /v1/Services/{ChatServiceSid}/Users`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListServiceUserResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1UserApi.ListServiceUserRequest` (4):
 
@@ -167,12 +171,12 @@ Accessor: `client.conversationsV1UserApi` · Source: `src/resources/conversation
 ### listUser
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listUser(request: ConversationsV1UserApi.ListUserRequest, options?: RequestOptions): ApiPromise<ListUserResponse, ResponseError>`
+- **Signature**: `listUser(request: ConversationsV1UserApi.ListUserRequest, options?: RequestOptions): ApiPromise<ListUserResponse, ApiError>`
 - **Wire**: `GET /v1/Users`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListUserResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1UserApi.ListUserRequest` (3):
 
@@ -189,12 +193,13 @@ Accessor: `client.conversationsV1UserApi` · Source: `src/resources/conversation
 ### updateServiceUser
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateServiceUser(request: ConversationsV1UserApi.UpdateServiceUserRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceUser, ResponseError>`
+- **Signature**: `updateServiceUser(request: ConversationsV1UserApi.UpdateServiceUserRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceUser, ApiError>`
 - **Wire**: `POST /v1/Services/{ChatServiceSid}/Users/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ConversationsV1ServiceServiceUser`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1UserApi.UpdateServiceUserRequest` (6):
 
@@ -215,12 +220,13 @@ Accessor: `client.conversationsV1UserApi` · Source: `src/resources/conversation
 ### updateUser
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateUser(request: ConversationsV1UserApi.UpdateUserRequest, options?: RequestOptions): ApiPromise<ConversationsV1User, ResponseError>`
+- **Signature**: `updateUser(request: ConversationsV1UserApi.UpdateUserRequest, options?: RequestOptions): ApiPromise<ConversationsV1User, ApiError>`
 - **Wire**: `POST /v1/Users/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ConversationsV1User`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1UserApi.UpdateUserRequest` (5):
 

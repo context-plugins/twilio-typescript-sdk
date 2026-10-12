@@ -1,8 +1,10 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError, type Declared, type ErrorDecoders, type ErrorPayload } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError, type Declared, type ErrorDecoders } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
+import * as s from "../core/validation/index.js";
 import {
   accountsCallsRecordingsSidJson201041408Error1Schema,
   type AccountsCallsRecordingsSidJson201041408Error1,
@@ -28,6 +30,23 @@ export class NumbersV1SenderIdRegistration {
     this.#auth = auth;
   }
 
+  /**
+   * Create Sender ID Registration
+   *
+   * @remarks
+   * Creates a new sender ID registration and initializes an embedded Persona inquiry session.
+   * Returns registration details and embedded session credentials for rendering the Compliance
+   * Embeddable UI.
+   *
+   * @returns Created
+   *
+   * @throws {@link NumbersV1SenderIdRegistration.CreateSenderIdRegistrationError} when the API
+   * answers with an error status — narrow on `err.payload.kind`
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   createSenderIdRegistration(
     request: NumbersV1SenderIdRegistration.CreateSenderIdRegistrationRequest,
     options?: RequestOptions,
@@ -38,8 +57,11 @@ export class NumbersV1SenderIdRegistration {
     return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default5("/v1/SenderIdRegistrations"),
+        urlTemplate: this.#servers.default5("/v1/SenderIdRegistrations"),
         auth: this.#auth.accountSidAuthToken,
+        pathParams: [],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: { kind: "json", value: request.body, schema: numbersV1CreateEmbeddedRegistrationRequestSchema },
       },
       {
@@ -56,13 +78,18 @@ export namespace NumbersV1SenderIdRegistration {
     body: NumbersV1CreateEmbeddedRegistrationRequest;
   };
 
-  export class CreateSenderIdRegistrationError extends ResponseError<
-    | Declared<"accountsCallsRecordingsSidJson201041408Error1", AccountsCallsRecordingsSidJson201041408Error1>
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error12",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-  > {
+  export class CreateSenderIdRegistrationError extends ApiError {
+    declare readonly payload: ErrorPayload<
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error1",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error12",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+    >;
+
     static readonly errors: ErrorDecoders<CreateSenderIdRegistrationError> = [
       {
         on: 400,

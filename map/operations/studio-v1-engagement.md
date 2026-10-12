@@ -4,17 +4,18 @@
 
 Accessor: `client.studioV1Engagement` · Source: `src/resources/studio-v1-engagement.ts` · 4 operations · Request types: namespace `StudioV1Engagement`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createEngagement
 
 - **Server**: `default11` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createEngagement(request: StudioV1Engagement.CreateEngagementRequest, options?: RequestOptions): ApiPromise<StudioV1FlowEngagement, ResponseError>`
+- **Signature**: `createEngagement(request: StudioV1Engagement.CreateEngagementRequest, options?: RequestOptions): ApiPromise<StudioV1FlowEngagement, ApiError>`
 - **Wire**: `POST /v1/Flows/{FlowSid}/Engagements`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `StudioV1FlowEngagement`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `StudioV1Engagement.CreateEngagementRequest` (4):
 
@@ -32,12 +33,13 @@ Accessor: `client.studioV1Engagement` · Source: `src/resources/studio-v1-engage
 ### deleteEngagement
 
 - **Server**: `default11` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteEngagement(request: StudioV1Engagement.DeleteEngagementRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteEngagement(request: StudioV1Engagement.DeleteEngagementRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Flows/{FlowSid}/Engagements/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `StudioV1Engagement.DeleteEngagementRequest` (2):
 
@@ -49,12 +51,12 @@ Accessor: `client.studioV1Engagement` · Source: `src/resources/studio-v1-engage
 ### fetchEngagement
 
 - **Server**: `default11` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchEngagement(request: StudioV1Engagement.FetchEngagementRequest, options?: RequestOptions): ApiPromise<StudioV1FlowEngagement, ResponseError>`
+- **Signature**: `fetchEngagement(request: StudioV1Engagement.FetchEngagementRequest, options?: RequestOptions): ApiPromise<StudioV1FlowEngagement, ApiError>`
 - **Wire**: `GET /v1/Flows/{FlowSid}/Engagements/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `StudioV1FlowEngagement`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `StudioV1Engagement.FetchEngagementRequest` (2):
 
@@ -70,12 +72,12 @@ Accessor: `client.studioV1Engagement` · Source: `src/resources/studio-v1-engage
 ### listEngagement
 
 - **Server**: `default11` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listEngagement(request: StudioV1Engagement.ListEngagementRequest, options?: RequestOptions): ApiPromise<ListEngagementResponse, ResponseError>`
+- **Signature**: `listEngagement(request: StudioV1Engagement.ListEngagementRequest, options?: RequestOptions): ApiPromise<ListEngagementResponse, ApiError>`
 - **Wire**: `GET /v1/Flows/{FlowSid}/Engagements`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListEngagementResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `StudioV1Engagement.ListEngagementRequest` (4):
 

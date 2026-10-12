@@ -4,17 +4,18 @@
 
 Accessor: `client.numbersV1EligibilityApi` · Source: `src/resources/numbers-v1-eligibility-api.ts` · 1 operation · Request types: namespace `NumbersV1EligibilityApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createEligibility
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createEligibility(request: NumbersV1EligibilityApi.CreateEligibilityRequest, options?: RequestOptions): ApiPromise<NumbersV1Eligibility, ResponseError>`
+- **Signature**: `createEligibility(request: NumbersV1EligibilityApi.CreateEligibilityRequest, options?: RequestOptions): ApiPromise<NumbersV1Eligibility, ApiError>`
 - **Wire**: `POST /v1/HostedNumber/Eligibility`
 - **Auth**: `accountSidAuthToken`
-- **Request body**: `application/json` — the `body` field, a bare top-level JSON map with no fixed keys
+- **Request body**: `application/json` — the `body` field, a bare top-level JSON map with no fixed keys. **Optional**: omit it and the request carries no body and no `Content-Type` header at all
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `NumbersV1Eligibility`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV1EligibilityApi.CreateEligibilityRequest` (1):
 

@@ -5,6 +5,7 @@ import { paymentFrequencySchema, type PaymentFrequency } from "./payment-frequen
 import { requestTypeSchema, type RequestType } from "./request-type.js";
 import { trafficTypeSchema, type TrafficType } from "./traffic-type.js";
 
+/** Setup configuration for the application. */
 export type Setup1 = {
   requestType?: RequestType;
   trafficType?: TrafficType;

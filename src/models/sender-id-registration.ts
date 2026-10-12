@@ -4,12 +4,19 @@ import { senderIdPurposeSchema, type SenderIdPurpose } from "./sender-id-purpose
 import { status2Schema, type Status2 } from "./status2.js";
 
 export type SenderIdRegistration = {
+  /** Sender ID Registration Application SID */
   applicationSid: string;
+  /** Owning Account SID of the Sender ID */
   accountSid: string;
+  /** Status of the Sender ID Registration Application */
   status: Status2;
+  /** List of Sender ID Registration information */
   registrationInfo: Record<string, unknown>[];
+  /** Purpose for using Sender ID */
   purpose?: SenderIdPurpose;
+  /** Whether registering on behalf of subsidiary */
   companySubsidiary?: boolean;
+  /** List of emails to send Sender ID Application updates */
   emailsForNotification: string[];
 };
 

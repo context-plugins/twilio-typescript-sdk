@@ -13,7 +13,9 @@ import { simSwapInfoSchema, type SimSwapInfo } from "./sim-swap-info.js";
 import { smsPumpingRiskInfoSchema, type SmsPumpingRiskInfo } from "./sms-pumping-risk-info.js";
 
 export type LookupBatchResponse = {
+  /** Unique identifier used to match request with response */
   correlationId?: string;
+  /** Twilio error code in case that the request to downstream fails */
   twilioErrorCode?: number;
   callingCountryCode?: string;
   countryCode?: string;
@@ -35,7 +37,7 @@ export type LookupBatchResponse = {
 
 export const lookupBatchResponseSchema: Schema<LookupBatchResponse> = s.object<LookupBatchResponse>({
   correlationId: s.optional(s.string()),
-  twilioErrorCode: s.optional(s.number()),
+  twilioErrorCode: s.optional(s.int()),
   callingCountryCode: s.optional(s.string()),
   countryCode: s.optional(s.string()),
   phoneNumber: s.optional(s.string()),

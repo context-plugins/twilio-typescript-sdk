@@ -4,17 +4,18 @@
 
 Accessor: `client.conversationsV1RoleApi` · Source: `src/resources/conversations-v1-role-api.ts` · 10 operations · Request types: namespace `ConversationsV1RoleApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createRole
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createRole(request: ConversationsV1RoleApi.CreateRoleRequest, options?: RequestOptions): ApiPromise<ConversationsV1Role, ResponseError>`
+- **Signature**: `createRole(request: ConversationsV1RoleApi.CreateRoleRequest, options?: RequestOptions): ApiPromise<ConversationsV1Role, ApiError>`
 - **Wire**: `POST /v1/Roles`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ConversationsV1Role`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1RoleApi.CreateRoleRequest` (3):
 
@@ -32,12 +33,13 @@ Accessor: `client.conversationsV1RoleApi` · Source: `src/resources/conversation
 ### createServiceRole
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createServiceRole(request: ConversationsV1RoleApi.CreateServiceRoleRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceRole, ResponseError>`
+- **Signature**: `createServiceRole(request: ConversationsV1RoleApi.CreateServiceRoleRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceRole, ApiError>`
 - **Wire**: `POST /v1/Services/{ChatServiceSid}/Roles`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ConversationsV1ServiceServiceRole`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1RoleApi.CreateServiceRoleRequest` (4):
 
@@ -56,12 +58,13 @@ Accessor: `client.conversationsV1RoleApi` · Source: `src/resources/conversation
 ### deleteRole
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteRole(request: ConversationsV1RoleApi.DeleteRoleRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteRole(request: ConversationsV1RoleApi.DeleteRoleRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Roles/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1RoleApi.DeleteRoleRequest` (1):
 
@@ -72,12 +75,13 @@ Accessor: `client.conversationsV1RoleApi` · Source: `src/resources/conversation
 ### deleteServiceRole
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteServiceRole(request: ConversationsV1RoleApi.DeleteServiceRoleRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteServiceRole(request: ConversationsV1RoleApi.DeleteServiceRoleRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Services/{ChatServiceSid}/Roles/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1RoleApi.DeleteServiceRoleRequest` (2):
 
@@ -89,12 +93,12 @@ Accessor: `client.conversationsV1RoleApi` · Source: `src/resources/conversation
 ### fetchRole
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchRole(request: ConversationsV1RoleApi.FetchRoleRequest, options?: RequestOptions): ApiPromise<ConversationsV1Role, ResponseError>`
+- **Signature**: `fetchRole(request: ConversationsV1RoleApi.FetchRoleRequest, options?: RequestOptions): ApiPromise<ConversationsV1Role, ApiError>`
 - **Wire**: `GET /v1/Roles/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ConversationsV1Role`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1RoleApi.FetchRoleRequest` (1):
 
@@ -109,12 +113,12 @@ Accessor: `client.conversationsV1RoleApi` · Source: `src/resources/conversation
 ### fetchServiceRole
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchServiceRole(request: ConversationsV1RoleApi.FetchServiceRoleRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceRole, ResponseError>`
+- **Signature**: `fetchServiceRole(request: ConversationsV1RoleApi.FetchServiceRoleRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceRole, ApiError>`
 - **Wire**: `GET /v1/Services/{ChatServiceSid}/Roles/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ConversationsV1ServiceServiceRole`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1RoleApi.FetchServiceRoleRequest` (2):
 
@@ -130,12 +134,12 @@ Accessor: `client.conversationsV1RoleApi` · Source: `src/resources/conversation
 ### listRole
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listRole(request: ConversationsV1RoleApi.ListRoleRequest, options?: RequestOptions): ApiPromise<ListRoleResponse, ResponseError>`
+- **Signature**: `listRole(request: ConversationsV1RoleApi.ListRoleRequest, options?: RequestOptions): ApiPromise<ListRoleResponse, ApiError>`
 - **Wire**: `GET /v1/Roles`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListRoleResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1RoleApi.ListRoleRequest` (3):
 
@@ -152,12 +156,12 @@ Accessor: `client.conversationsV1RoleApi` · Source: `src/resources/conversation
 ### listServiceRole
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listServiceRole(request: ConversationsV1RoleApi.ListServiceRoleRequest, options?: RequestOptions): ApiPromise<ListServiceRoleResponse, ResponseError>`
+- **Signature**: `listServiceRole(request: ConversationsV1RoleApi.ListServiceRoleRequest, options?: RequestOptions): ApiPromise<ListServiceRoleResponse, ApiError>`
 - **Wire**: `GET /v1/Services/{ChatServiceSid}/Roles`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListServiceRoleResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1RoleApi.ListServiceRoleRequest` (4):
 
@@ -175,12 +179,13 @@ Accessor: `client.conversationsV1RoleApi` · Source: `src/resources/conversation
 ### updateRole
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateRole(request: ConversationsV1RoleApi.UpdateRoleRequest, options?: RequestOptions): ApiPromise<ConversationsV1Role, ResponseError>`
+- **Signature**: `updateRole(request: ConversationsV1RoleApi.UpdateRoleRequest, options?: RequestOptions): ApiPromise<ConversationsV1Role, ApiError>`
 - **Wire**: `POST /v1/Roles/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ConversationsV1Role`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1RoleApi.UpdateRoleRequest` (2):
 
@@ -196,12 +201,13 @@ Accessor: `client.conversationsV1RoleApi` · Source: `src/resources/conversation
 ### updateServiceRole
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateServiceRole(request: ConversationsV1RoleApi.UpdateServiceRoleRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceRole, ResponseError>`
+- **Signature**: `updateServiceRole(request: ConversationsV1RoleApi.UpdateServiceRoleRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceRole, ApiError>`
 - **Wire**: `POST /v1/Services/{ChatServiceSid}/Roles/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ConversationsV1ServiceServiceRole`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1RoleApi.UpdateServiceRoleRequest` (3):
 

@@ -6,6 +6,7 @@ import { content2Schema, type Content2 } from "./unions/content2.js";
 
 export type V2ConversationsCommunicationsRequest = {
   author: Author;
+  /** The content of the Communication. */
   content: Content2;
   channelId?: string;
   recipients: Recipient2[];

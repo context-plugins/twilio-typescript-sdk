@@ -1,6 +1,10 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * Brand Registration status. One of "PENDING", "APPROVED", "FAILED", "IN_REVIEW",
+ * "DELETION_PENDING", "DELETION_FAILED", "SUSPENDED".
+ */
 export const BrandRegistrationsEnumStatus = {
   Pending: "PENDING",
   Approved: "APPROVED",

@@ -1,9 +1,19 @@
 import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
+/**
+ * Defines a capture rule with from and to addresses. Supports wildcard `*` for omnidirectional
+ * matching.
+ */
 export type ConversationsV2CaptureRule = {
+  /** The from address. Use `*` for wildcard to match any from address. */
   from: string;
+  /** The to address. Use `*` for wildcard to match any to address. */
   to: string;
+  /**
+   * Additional matching criteria for the capture rule. For voice calls, can include `callType`
+   * (`PSTN`, `SIP`, and similar).
+   */
   metadata?: Record<string, string>;
 };
 

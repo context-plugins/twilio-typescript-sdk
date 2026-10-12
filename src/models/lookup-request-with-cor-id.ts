@@ -9,6 +9,7 @@ import {
 import { riskParametersSchema, type RiskParameters } from "./risk-parameters.js";
 
 export type LookupRequestWithCorId = {
+  /** Unique identifier used to match request with response */
   correlationId?: string;
   phoneNumber: string;
   fields?: Field[];

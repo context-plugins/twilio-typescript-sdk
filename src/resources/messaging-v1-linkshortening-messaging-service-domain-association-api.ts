@@ -1,8 +1,8 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
 import * as s from "../core/validation/index.js";
 import {
   messagingV1LinkshorteningMessagingServiceDomainAssociationSchema,
@@ -24,18 +24,22 @@ export class MessagingV1LinkshorteningMessagingServiceDomainAssociationApi {
   fetchLinkshorteningMessagingServiceDomainAssociation(
     request: MessagingV1LinkshorteningMessagingServiceDomainAssociationApi.FetchLinkshorteningMessagingServiceDomainAssociationRequest,
     options?: RequestOptions,
-  ): ApiPromise<MessagingV1LinkshorteningMessagingServiceDomainAssociation, ResponseError> {
-    return this.#rawClient.execute<MessagingV1LinkshorteningMessagingServiceDomainAssociation, ResponseError>(
+  ): ApiPromise<MessagingV1LinkshorteningMessagingServiceDomainAssociation, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default1("/v1/LinkShortening/MessagingServices/{MessagingServiceSid}/Domain"),
+        urlTemplate: this.#servers.default1(
+          "/v1/LinkShortening/MessagingServices/{MessagingServiceSid}/Domain",
+        ),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "MessagingServiceSid", value: request.messagingServiceSid, schema: s.string() }],
+        query: [],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: messagingV1LinkshorteningMessagingServiceDomainAssociationSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -44,6 +48,10 @@ export class MessagingV1LinkshorteningMessagingServiceDomainAssociationApi {
 
 export namespace MessagingV1LinkshorteningMessagingServiceDomainAssociationApi {
   export type FetchLinkshorteningMessagingServiceDomainAssociationRequest = {
+    /**
+     * Unique string used to identify the Messaging service that this domain should be associated
+     * with.
+     */
     messagingServiceSid: string;
   };
 }

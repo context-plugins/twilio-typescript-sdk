@@ -4,17 +4,18 @@
 
 Accessor: `client.proxyV1Interaction` · Source: `src/resources/proxy-v1-interaction.ts` · 3 operations · Request types: namespace `ProxyV1Interaction`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### deleteInteraction
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteInteraction(request: ProxyV1Interaction.DeleteInteractionRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteInteraction(request: ProxyV1Interaction.DeleteInteractionRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Services/{ServiceSid}/Sessions/{SessionSid}/Interactions/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1Interaction.DeleteInteractionRequest` (3):
 
@@ -27,12 +28,12 @@ Accessor: `client.proxyV1Interaction` · Source: `src/resources/proxy-v1-interac
 ### fetchInteraction
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchInteraction(request: ProxyV1Interaction.FetchInteractionRequest, options?: RequestOptions): ApiPromise<ProxyV1ServiceSessionInteraction, ResponseError>`
+- **Signature**: `fetchInteraction(request: ProxyV1Interaction.FetchInteractionRequest, options?: RequestOptions): ApiPromise<ProxyV1ServiceSessionInteraction, ApiError>`
 - **Wire**: `GET /v1/Services/{ServiceSid}/Sessions/{SessionSid}/Interactions/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ProxyV1ServiceSessionInteraction`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1Interaction.FetchInteractionRequest` (3):
 
@@ -49,12 +50,12 @@ Accessor: `client.proxyV1Interaction` · Source: `src/resources/proxy-v1-interac
 ### listInteraction
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listInteraction(request: ProxyV1Interaction.ListInteractionRequest, options?: RequestOptions): ApiPromise<ListInteractionResponse, ResponseError>`
+- **Signature**: `listInteraction(request: ProxyV1Interaction.ListInteractionRequest, options?: RequestOptions): ApiPromise<ListInteractionResponse, ApiError>`
 - **Wire**: `GET /v1/Services/{ServiceSid}/Sessions/{SessionSid}/Interactions`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListInteractionResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1Interaction.ListInteractionRequest` (5):
 

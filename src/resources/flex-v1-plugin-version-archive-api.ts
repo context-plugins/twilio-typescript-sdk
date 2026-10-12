@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import {
   flexV1PluginVersionArchiveSchema,
@@ -24,22 +25,26 @@ export class FlexV1PluginVersionArchiveApi {
   updatePluginVersionArchive(
     request: FlexV1PluginVersionArchiveApi.UpdatePluginVersionArchiveRequest,
     options?: RequestOptions,
-  ): ApiPromise<FlexV1PluginVersionArchive, ResponseError> {
-    return this.#rawClient.execute<FlexV1PluginVersionArchive, ResponseError>(
+  ): ApiPromise<FlexV1PluginVersionArchive, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default13("/v1/PluginService/Plugins/{PluginSid}/Versions/{Sid}/Archive"),
+        urlTemplate: this.#servers.default13("/v1/PluginService/Plugins/{PluginSid}/Versions/{Sid}/Archive"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           { name: "PluginSid", value: request.pluginSid, schema: s.string() },
           { name: "Sid", value: request.sid, schema: s.string() },
         ],
-        headers: [{ name: "Flex-Metadata", value: request.flexMetadata, schema: s.optional(s.string()) }],
+        query: [],
+        headers: [
+          { name: "Flex-Metadata", value: request.flexMetadata, schema: s.optional(s.string()) },
+          { name: "Idempotency-Key", value: uuid(), schema: s.string() },
+        ],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: flexV1PluginVersionArchiveSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -48,8 +53,11 @@ export class FlexV1PluginVersionArchiveApi {
 
 export namespace FlexV1PluginVersionArchiveApi {
   export type UpdatePluginVersionArchiveRequest = {
+    /** The SID of the Flex Plugin the resource to belongs to. */
     pluginSid: string;
+    /** The SID of the Flex Plugin Version resource to archive. */
     sid: string;
+    /** The Flex-Metadata HTTP request header */
     flexMetadata?: string;
   };
 }

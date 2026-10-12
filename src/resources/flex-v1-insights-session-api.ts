@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import {
   flexV1InsightsSessionSchema,
@@ -21,21 +22,40 @@ export class FlexV1InsightsSessionApi {
     this.#auth = auth;
   }
 
+  /**
+   * To obtain session details for fetching reports and dashboards
+   *
+   * @remarks
+   * To obtain session details for fetching reports and dashboards
+   *
+   * @returns Created
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   createInsightsSession(
     request: FlexV1InsightsSessionApi.CreateInsightsSessionRequest,
     options?: RequestOptions,
-  ): ApiPromise<FlexV1InsightsSession, ResponseError> {
-    return this.#rawClient.execute<FlexV1InsightsSession, ResponseError>(
+  ): ApiPromise<FlexV1InsightsSession, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default13("/v1/Insights/Session"),
+        urlTemplate: this.#servers.default13("/v1/Insights/Session"),
         auth: this.#auth.accountSidAuthToken,
-        headers: [{ name: "Authorization", value: request.authorization, schema: s.optional(s.string()) }],
+        pathParams: [],
+        query: [],
+        headers: [
+          { name: "Authorization", value: request.authorization, schema: s.optional(s.string()) },
+          { name: "Idempotency-Key", value: uuid(), schema: s.string() },
+        ],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: flexV1InsightsSessionSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -44,6 +64,7 @@ export class FlexV1InsightsSessionApi {
 
 export namespace FlexV1InsightsSessionApi {
   export type CreateInsightsSessionRequest = {
+    /** The Authorization HTTP request header */
     authorization?: string;
   };
 }

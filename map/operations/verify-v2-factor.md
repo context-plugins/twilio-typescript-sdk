@@ -4,17 +4,18 @@
 
 Accessor: `client.verifyV2Factor` · Source: `src/resources/verify-v2-factor.ts` · 4 operations · Request types: namespace `VerifyV2Factor`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### deleteFactor
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteFactor(request: VerifyV2Factor.DeleteFactorRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteFactor(request: VerifyV2Factor.DeleteFactorRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v2/Services/{ServiceSid}/Entities/{Identity}/Factors/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2Factor.DeleteFactorRequest` (3):
 
@@ -27,12 +28,12 @@ Accessor: `client.verifyV2Factor` · Source: `src/resources/verify-v2-factor.ts`
 ### fetchFactor
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchFactor(request: VerifyV2Factor.FetchFactorRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceEntityFactor, ResponseError>`
+- **Signature**: `fetchFactor(request: VerifyV2Factor.FetchFactorRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceEntityFactor, ApiError>`
 - **Wire**: `GET /v2/Services/{ServiceSid}/Entities/{Identity}/Factors/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `VerifyV2ServiceEntityFactor`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2Factor.FetchFactorRequest` (3):
 
@@ -49,12 +50,12 @@ Accessor: `client.verifyV2Factor` · Source: `src/resources/verify-v2-factor.ts`
 ### listFactor
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listFactor(request: VerifyV2Factor.ListFactorRequest, options?: RequestOptions): ApiPromise<ListFactorResponse, ResponseError>`
+- **Signature**: `listFactor(request: VerifyV2Factor.ListFactorRequest, options?: RequestOptions): ApiPromise<ListFactorResponse, ApiError>`
 - **Wire**: `GET /v2/Services/{ServiceSid}/Entities/{Identity}/Factors`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListFactorResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2Factor.ListFactorRequest` (5):
 
@@ -73,12 +74,13 @@ Accessor: `client.verifyV2Factor` · Source: `src/resources/verify-v2-factor.ts`
 ### updateFactor
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateFactor(request: VerifyV2Factor.UpdateFactorRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceEntityFactor, ResponseError>`
+- **Signature**: `updateFactor(request: VerifyV2Factor.UpdateFactorRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceEntityFactor, ApiError>`
 - **Wire**: `POST /v2/Services/{ServiceSid}/Entities/{Identity}/Factors/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `VerifyV2ServiceEntityFactor`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2Factor.UpdateFactorRequest` (12):
 

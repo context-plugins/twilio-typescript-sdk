@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import {
   listPhoneNumberResponseSchema,
@@ -25,16 +26,29 @@ export class MessagingV1PhoneNumber {
     this.#auth = auth;
   }
 
+  /**
+   * A Messaging Service resource to add, fetch or remove phone numbers from a Messaging Service.
+   *
+   * @returns Created
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   createPhoneNumber(
     request: MessagingV1PhoneNumber.CreatePhoneNumberRequest,
     options?: RequestOptions,
-  ): ApiPromise<MessagingV1ServicePhoneNumber, ResponseError> {
-    return this.#rawClient.execute<MessagingV1ServicePhoneNumber, ResponseError>(
+  ): ApiPromise<MessagingV1ServicePhoneNumber, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default1("/v1/Services/{ServiceSid}/PhoneNumbers"),
+        urlTemplate: this.#servers.default1("/v1/Services/{ServiceSid}/PhoneNumbers"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "ServiceSid", value: request.serviceSid, schema: s.string() }],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: {
           kind: "formUrlEncoded",
           value: [{ name: "PhoneNumberSid", value: request.phoneNumberSid, schema: s.string() }],
@@ -42,78 +56,116 @@ export class MessagingV1PhoneNumber {
       },
       {
         success: { kind: "json", schema: messagingV1ServicePhoneNumberSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * A Messaging Service resource to add, fetch or remove phone numbers from a Messaging Service.
+   *
+   * @returns The resource was deleted successfully.
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   deletePhoneNumber(
     request: MessagingV1PhoneNumber.DeletePhoneNumberRequest,
     options?: RequestOptions,
-  ): ApiPromise<undefined, ResponseError> {
-    return this.#rawClient.execute<undefined, ResponseError>(
+  ): ApiPromise<undefined, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "DELETE",
-        url: this.#servers.default1("/v1/Services/{ServiceSid}/PhoneNumbers/{Sid}"),
+        urlTemplate: this.#servers.default1("/v1/Services/{ServiceSid}/PhoneNumbers/{Sid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           { name: "ServiceSid", value: request.serviceSid, schema: s.string() },
           { name: "Sid", value: request.sid, schema: s.string() },
         ],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: { kind: "empty" },
       },
       {
         success: { kind: "empty" },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * A Messaging Service resource to add, fetch or remove phone numbers from a Messaging Service.
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   fetchPhoneNumber(
     request: MessagingV1PhoneNumber.FetchPhoneNumberRequest,
     options?: RequestOptions,
-  ): ApiPromise<MessagingV1ServicePhoneNumber, ResponseError> {
-    return this.#rawClient.execute<MessagingV1ServicePhoneNumber, ResponseError>(
+  ): ApiPromise<MessagingV1ServicePhoneNumber, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default1("/v1/Services/{ServiceSid}/PhoneNumbers/{Sid}"),
+        urlTemplate: this.#servers.default1("/v1/Services/{ServiceSid}/PhoneNumbers/{Sid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           { name: "ServiceSid", value: request.serviceSid, schema: s.string() },
           { name: "Sid", value: request.sid, schema: s.string() },
         ],
+        query: [],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: messagingV1ServicePhoneNumberSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * A Messaging Service resource to add, fetch or remove phone numbers from a Messaging Service.
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   listPhoneNumber(
     request: MessagingV1PhoneNumber.ListPhoneNumberRequest,
     options?: RequestOptions,
-  ): ApiPromise<ListPhoneNumberResponse, ResponseError> {
-    return this.#rawClient.execute<ListPhoneNumberResponse, ResponseError>(
+  ): ApiPromise<ListPhoneNumberResponse, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default1("/v1/Services/{ServiceSid}/PhoneNumbers"),
+        urlTemplate: this.#servers.default1("/v1/Services/{ServiceSid}/PhoneNumbers"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "ServiceSid", value: request.serviceSid, schema: s.string() }],
         query: [
-          { name: "PageSize", value: request.pageSize, schema: s.optional(s.number()) },
-          { name: "Page", value: request.page, schema: s.optional(s.number()) },
+          { name: "PageSize", value: request.pageSize, schema: s.optional(s.int()) },
+          { name: "Page", value: request.page, schema: s.optional(s.int()) },
           { name: "PageToken", value: request.pageToken, schema: s.optional(s.string()) },
         ],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: listPhoneNumberResponseSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -122,24 +174,48 @@ export class MessagingV1PhoneNumber {
 
 export namespace MessagingV1PhoneNumber {
   export type CreatePhoneNumberRequest = {
+    /**
+     * The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to create
+     * the resource under.
+     */
     serviceSid: string;
+    /** The SID of the Phone Number being added to the Service. */
     phoneNumberSid: string;
   };
 
   export type DeletePhoneNumberRequest = {
+    /**
+     * The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to delete
+     * the resource from.
+     */
     serviceSid: string;
+    /** The SID of the PhoneNumber resource to delete. */
     sid: string;
   };
 
   export type FetchPhoneNumberRequest = {
+    /**
+     * The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to fetch the
+     * resource from.
+     */
     serviceSid: string;
+    /** The SID of the PhoneNumber resource to fetch. */
     sid: string;
   };
 
   export type ListPhoneNumberRequest = {
+    /**
+     * The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) to read the
+     * resources from.
+     */
     serviceSid: string;
+    /**
+     * How many resources to return in each list page. The default is 50, and the maximum is 1000.
+     */
     pageSize?: number;
+    /** The page index. This value is simply for client state. */
     page?: number;
+    /** The page token. This is provided by the API. */
     pageToken?: string;
   };
 }

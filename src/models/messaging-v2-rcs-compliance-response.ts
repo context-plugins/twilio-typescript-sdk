@@ -5,8 +5,14 @@ import {
   type MessagingV2RcsComplianceCountryResponse,
 } from "./messaging-v2-rcs-compliance-country-response.js";
 
+/** The KYC compliance information. This section consists of response to the request launch. */
 export type MessagingV2RcsComplianceResponse = {
+  /**
+   * The default compliance registration SID (e.g., from CR-Google) that applies to all countries
+   * unless overridden in the `countries` array.
+   */
   registrationSid: string;
+  /** A list of country-specific compliance details. */
   countries?: MessagingV2RcsComplianceCountryResponse[];
 };
 

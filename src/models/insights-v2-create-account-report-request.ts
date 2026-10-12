@@ -4,6 +4,10 @@ import { reportFilterSchema, type ReportFilter } from "./report-filter.js";
 import { timeRangeSchema, type TimeRange } from "./time-range.js";
 
 export type InsightsV2CreateAccountReportRequest = {
+  /**
+   * Optional start and end date time for the report window. Defaults to the most recent 7 days when
+   * omitted.
+   */
   timeRange?: TimeRange;
   filters?: ReportFilter[];
 };

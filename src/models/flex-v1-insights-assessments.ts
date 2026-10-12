@@ -2,17 +2,29 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type FlexV1InsightsAssessments = {
+  /** The unique SID identifier of the Account. */
   accountSid?: string | null;
+  /** The SID of the assessment */
   assessmentSid?: string | null;
+  /** Offset of the conversation */
   offset?: string | null;
+  /** The flag indicating if this assessment is part of report */
   report?: boolean | null;
+  /** The weightage given to this comment */
   weight?: string | null;
+  /** The id of the Agent */
   agentId?: string | null;
+  /** Segment Id of conversation */
   segmentId?: string | null;
+  /** The name of the user. */
   userName?: string | null;
+  /** The email id of the user. */
   userEmail?: string | null;
+  /** The answer text selected by user */
   answerText?: string | null;
+  /** The id of the answer selected by user */
   answerId?: string | null;
+  /** Assessment Details associated with an assessment */
   assessment?: Record<string, unknown> | null;
   timestamp?: string | null;
   url?: string | null;

@@ -7,17 +7,50 @@ import {
 import { conferenceEnumStatusSchema, type ConferenceEnumStatus } from "./conference-enum-status.js";
 
 export type ApiV2010AccountConference = {
+  /**
+   * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created this
+   * Conference resource.
+   */
   accountSid?: string | null;
+  /**
+   * The date and time in UTC that this resource was created specified in [RFC
+   * 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+   */
   dateCreated?: string | null;
+  /**
+   * The date and time in UTC that this resource was last updated, specified in [RFC
+   * 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+   */
   dateUpdated?: string | null;
+  /** The API version used to create this conference. */
   apiVersion?: string | null;
+  /**
+   * A string that you assigned to describe this conference room. Maximum length is 128 characters.
+   */
   friendlyName?: string | null;
+  /**
+   * A string that represents the Twilio Region where the conference audio was mixed. May be `us1`,
+   * `us2`, `ie1`, `de1`, `sg1`, `br1`, `au1`, and `jp1`. Basic conference audio will always be
+   * mixed in `us1`. Global Conference audio will be mixed nearest to the majority of participants.
+   */
   region?: string | null;
+  /** The unique, Twilio-provided string used to identify this Conference resource. */
   sid?: string | null;
+  /** The status of this conference. Can be: `init`, `in-progress`, or `completed`. */
   status?: ConferenceEnumStatus;
+  /** The URI of this resource, relative to `https://api.twilio.com`. */
   uri?: string | null;
+  /** A list of related resources identified by their URIs relative to `https://api.twilio.com`. */
   subresourceUris?: Record<string, unknown> | null;
+  /**
+   * The reason why a conference ended. When a conference is in progress, will be `null`. When
+   * conference is completed, can be: `conference-ended-via-api`,
+   * `participant-with-end-conference-on-exit-left`,
+   * `participant-with-end-conference-on-exit-kicked`, `last-participant-kicked`, or
+   * `last-participant-left`.
+   */
   reasonConferenceEnded?: ConferenceEnumReasonConferenceEnded;
+  /** The call SID that caused the conference to end. */
   callSidEndingConference?: string | null;
 };
 

@@ -4,17 +4,18 @@
 
 Accessor: `client.numbersV2HostedNumberOrderApi` · Source: `src/resources/numbers-v2-hosted-number-order-api.ts` · 5 operations · Request types: namespace `NumbersV2HostedNumberOrderApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createHostedNumberOrder
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createHostedNumberOrder(request: NumbersV2HostedNumberOrderApi.CreateHostedNumberOrderRequest, options?: RequestOptions): ApiPromise<NumbersV2HostedNumberOrder, ResponseError>`
+- **Signature**: `createHostedNumberOrder(request: NumbersV2HostedNumberOrderApi.CreateHostedNumberOrderRequest, options?: RequestOptions): ApiPromise<NumbersV2HostedNumberOrder, ApiError>`
 - **Wire**: `POST /v2/HostedNumber/Orders`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `NumbersV2HostedNumberOrder`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2HostedNumberOrderApi.CreateHostedNumberOrderRequest` (16):
 
@@ -45,12 +46,13 @@ Accessor: `client.numbersV2HostedNumberOrderApi` · Source: `src/resources/numbe
 ### deleteHostedNumberOrder
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteHostedNumberOrder(request: NumbersV2HostedNumberOrderApi.DeleteHostedNumberOrderRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteHostedNumberOrder(request: NumbersV2HostedNumberOrderApi.DeleteHostedNumberOrderRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v2/HostedNumber/Orders/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2HostedNumberOrderApi.DeleteHostedNumberOrderRequest` (1):
 
@@ -61,12 +63,12 @@ Accessor: `client.numbersV2HostedNumberOrderApi` · Source: `src/resources/numbe
 ### fetchHostedNumberOrder
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchHostedNumberOrder(request: NumbersV2HostedNumberOrderApi.FetchHostedNumberOrderRequest, options?: RequestOptions): ApiPromise<NumbersV2HostedNumberOrder, ResponseError>`
+- **Signature**: `fetchHostedNumberOrder(request: NumbersV2HostedNumberOrderApi.FetchHostedNumberOrderRequest, options?: RequestOptions): ApiPromise<NumbersV2HostedNumberOrder, ApiError>`
 - **Wire**: `GET /v2/HostedNumber/Orders/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `NumbersV2HostedNumberOrder`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2HostedNumberOrderApi.FetchHostedNumberOrderRequest` (1):
 
@@ -81,12 +83,12 @@ Accessor: `client.numbersV2HostedNumberOrderApi` · Source: `src/resources/numbe
 ### listHostedNumberOrder
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listHostedNumberOrder(request: NumbersV2HostedNumberOrderApi.ListHostedNumberOrderRequest, options?: RequestOptions): ApiPromise<ListHostedNumberOrderResponse, ResponseError>`
+- **Signature**: `listHostedNumberOrder(request: NumbersV2HostedNumberOrderApi.ListHostedNumberOrderRequest, options?: RequestOptions): ApiPromise<ListHostedNumberOrderResponse, ApiError>`
 - **Wire**: `GET /v2/HostedNumber/Orders`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListHostedNumberOrderResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2HostedNumberOrderApi.ListHostedNumberOrderRequest` (8):
 
@@ -109,12 +111,13 @@ Accessor: `client.numbersV2HostedNumberOrderApi` · Source: `src/resources/numbe
 ### updateHostedNumberOrder
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateHostedNumberOrder(request: NumbersV2HostedNumberOrderApi.UpdateHostedNumberOrderRequest, options?: RequestOptions): ApiPromise<NumbersV2HostedNumberOrder, ResponseError>`
+- **Signature**: `updateHostedNumberOrder(request: NumbersV2HostedNumberOrderApi.UpdateHostedNumberOrderRequest, options?: RequestOptions): ApiPromise<NumbersV2HostedNumberOrder, ApiError>`
 - **Wire**: `POST /v2/HostedNumber/Orders/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `NumbersV2HostedNumberOrder`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2HostedNumberOrderApi.UpdateHostedNumberOrderRequest` (4):
 

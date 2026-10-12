@@ -4,17 +4,18 @@
 
 Accessor: `client.proxyV1Participant` · Source: `src/resources/proxy-v1-participant.ts` · 4 operations · Request types: namespace `ProxyV1Participant`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createParticipant2
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createParticipant2(request: ProxyV1Participant.CreateParticipant2Request, options?: RequestOptions): ApiPromise<ProxyV1ServiceSessionParticipant, ResponseError>`
+- **Signature**: `createParticipant2(request: ProxyV1Participant.CreateParticipant2Request, options?: RequestOptions): ApiPromise<ProxyV1ServiceSessionParticipant, ApiError>`
 - **Wire**: `POST /v1/Services/{ServiceSid}/Sessions/{SessionSid}/Participants`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ProxyV1ServiceSessionParticipant`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1Participant.CreateParticipant2Request` (6):
 
@@ -34,12 +35,13 @@ Accessor: `client.proxyV1Participant` · Source: `src/resources/proxy-v1-partici
 ### deleteParticipant2
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteParticipant2(request: ProxyV1Participant.DeleteParticipant2Request, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteParticipant2(request: ProxyV1Participant.DeleteParticipant2Request, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Services/{ServiceSid}/Sessions/{SessionSid}/Participants/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1Participant.DeleteParticipant2Request` (3):
 
@@ -52,12 +54,12 @@ Accessor: `client.proxyV1Participant` · Source: `src/resources/proxy-v1-partici
 ### fetchParticipant3
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchParticipant3(request: ProxyV1Participant.FetchParticipant3Request, options?: RequestOptions): ApiPromise<ProxyV1ServiceSessionParticipant, ResponseError>`
+- **Signature**: `fetchParticipant3(request: ProxyV1Participant.FetchParticipant3Request, options?: RequestOptions): ApiPromise<ProxyV1ServiceSessionParticipant, ApiError>`
 - **Wire**: `GET /v1/Services/{ServiceSid}/Sessions/{SessionSid}/Participants/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ProxyV1ServiceSessionParticipant`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1Participant.FetchParticipant3Request` (3):
 
@@ -74,12 +76,12 @@ Accessor: `client.proxyV1Participant` · Source: `src/resources/proxy-v1-partici
 ### listParticipant2
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listParticipant2(request: ProxyV1Participant.ListParticipant2Request, options?: RequestOptions): ApiPromise<ListParticipantResponse1, ResponseError>`
+- **Signature**: `listParticipant2(request: ProxyV1Participant.ListParticipant2Request, options?: RequestOptions): ApiPromise<ListParticipantResponse1, ApiError>`
 - **Wire**: `GET /v1/Services/{ServiceSid}/Sessions/{SessionSid}/Participants`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListParticipantResponse1`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1Participant.ListParticipant2Request` (5):
 

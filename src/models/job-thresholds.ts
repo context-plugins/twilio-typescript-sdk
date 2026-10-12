@@ -6,5 +6,5 @@ export type JobThresholds = {
 };
 
 export const jobThresholdsSchema: Schema<JobThresholds> = s.object<JobThresholds>({
-  error: s.optionalNullable(s.number()),
+  error: s.optionalNullable(s.float64()),
 });

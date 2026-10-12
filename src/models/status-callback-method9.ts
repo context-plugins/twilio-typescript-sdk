@@ -1,6 +1,11 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * The HTTP method we should use when requesting the `status_callback` URL. Can be: `GET` or `POST`
+ * and the default is `POST`. If an `application_sid` parameter is present, this parameter is
+ * ignored.
+ */
 export const StatusCallbackMethod9 = {
   Get: "GET",
   Post: "POST",

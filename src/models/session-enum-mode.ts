@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The Mode of the Session. Can be: `message-only`, `voice-only`, or `voice-and-message`. */
 export const SessionEnumMode = {
   MessageOnly: "message-only",
   VoiceOnly: "voice-only",

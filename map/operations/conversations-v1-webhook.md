@@ -4,17 +4,18 @@
 
 Accessor: `client.conversationsV1Webhook` · Source: `src/resources/conversations-v1-webhook.ts` · 14 operations · Request types: namespace `ConversationsV1Webhook`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createConversationScopedWebhook
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createConversationScopedWebhook(request: ConversationsV1Webhook.CreateConversationScopedWebhookRequest, options?: RequestOptions): ApiPromise<ConversationsV1ConversationConversationScopedWebhook, ResponseError>`
+- **Signature**: `createConversationScopedWebhook(request: ConversationsV1Webhook.CreateConversationScopedWebhookRequest, options?: RequestOptions): ApiPromise<ConversationsV1ConversationConversationScopedWebhook, ApiError>`
 - **Wire**: `POST /v1/Conversations/{ConversationSid}/Webhooks`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ConversationsV1ConversationConversationScopedWebhook`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1Webhook.CreateConversationScopedWebhookRequest` (8):
 
@@ -38,12 +39,13 @@ Accessor: `client.conversationsV1Webhook` · Source: `src/resources/conversation
 ### createServiceConversationScopedWebhook
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createServiceConversationScopedWebhook(request: ConversationsV1Webhook.CreateServiceConversationScopedWebhookRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceConversationServiceConversationScopedWebhook, ResponseError>`
+- **Signature**: `createServiceConversationScopedWebhook(request: ConversationsV1Webhook.CreateServiceConversationScopedWebhookRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceConversationServiceConversationScopedWebhook, ApiError>`
 - **Wire**: `POST /v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Webhooks`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ConversationsV1ServiceServiceConversationServiceConversationScopedWebhook`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1Webhook.CreateServiceConversationScopedWebhookRequest` (9):
 
@@ -68,12 +70,13 @@ Accessor: `client.conversationsV1Webhook` · Source: `src/resources/conversation
 ### deleteConversationScopedWebhook
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteConversationScopedWebhook(request: ConversationsV1Webhook.DeleteConversationScopedWebhookRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteConversationScopedWebhook(request: ConversationsV1Webhook.DeleteConversationScopedWebhookRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Conversations/{ConversationSid}/Webhooks/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1Webhook.DeleteConversationScopedWebhookRequest` (2):
 
@@ -85,12 +88,13 @@ Accessor: `client.conversationsV1Webhook` · Source: `src/resources/conversation
 ### deleteServiceConversationScopedWebhook
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteServiceConversationScopedWebhook(request: ConversationsV1Webhook.DeleteServiceConversationScopedWebhookRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteServiceConversationScopedWebhook(request: ConversationsV1Webhook.DeleteServiceConversationScopedWebhookRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Webhooks/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1Webhook.DeleteServiceConversationScopedWebhookRequest` (3):
 
@@ -103,12 +107,12 @@ Accessor: `client.conversationsV1Webhook` · Source: `src/resources/conversation
 ### fetchConfigurationWebhook
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchConfigurationWebhook(options?: RequestOptions): ApiPromise<ConversationsV1ConfigurationConfigurationWebhook, ResponseError>`
+- **Signature**: `fetchConfigurationWebhook(options?: RequestOptions): ApiPromise<ConversationsV1ConfigurationConfigurationWebhook, ApiError>`
 - **Wire**: `GET /v1/Configuration/Webhooks`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ConversationsV1ConfigurationConfigurationWebhook`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 | Type | Schema value | Source |
 | --- | --- | --- |
@@ -117,12 +121,12 @@ Accessor: `client.conversationsV1Webhook` · Source: `src/resources/conversation
 ### fetchConversationScopedWebhook
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchConversationScopedWebhook(request: ConversationsV1Webhook.FetchConversationScopedWebhookRequest, options?: RequestOptions): ApiPromise<ConversationsV1ConversationConversationScopedWebhook, ResponseError>`
+- **Signature**: `fetchConversationScopedWebhook(request: ConversationsV1Webhook.FetchConversationScopedWebhookRequest, options?: RequestOptions): ApiPromise<ConversationsV1ConversationConversationScopedWebhook, ApiError>`
 - **Wire**: `GET /v1/Conversations/{ConversationSid}/Webhooks/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ConversationsV1ConversationConversationScopedWebhook`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1Webhook.FetchConversationScopedWebhookRequest` (2):
 
@@ -138,12 +142,12 @@ Accessor: `client.conversationsV1Webhook` · Source: `src/resources/conversation
 ### fetchServiceConversationScopedWebhook
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchServiceConversationScopedWebhook(request: ConversationsV1Webhook.FetchServiceConversationScopedWebhookRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceConversationServiceConversationScopedWebhook, ResponseError>`
+- **Signature**: `fetchServiceConversationScopedWebhook(request: ConversationsV1Webhook.FetchServiceConversationScopedWebhookRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceConversationServiceConversationScopedWebhook, ApiError>`
 - **Wire**: `GET /v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Webhooks/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ConversationsV1ServiceServiceConversationServiceConversationScopedWebhook`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1Webhook.FetchServiceConversationScopedWebhookRequest` (3):
 
@@ -160,12 +164,12 @@ Accessor: `client.conversationsV1Webhook` · Source: `src/resources/conversation
 ### fetchServiceWebhookConfiguration
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchServiceWebhookConfiguration(request: ConversationsV1Webhook.FetchServiceWebhookConfigurationRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceConfigurationServiceWebhookConfiguration, ResponseError>`
+- **Signature**: `fetchServiceWebhookConfiguration(request: ConversationsV1Webhook.FetchServiceWebhookConfigurationRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceConfigurationServiceWebhookConfiguration, ApiError>`
 - **Wire**: `GET /v1/Services/{ChatServiceSid}/Configuration/Webhooks`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ConversationsV1ServiceServiceConfigurationServiceWebhookConfiguration`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1Webhook.FetchServiceWebhookConfigurationRequest` (1):
 
@@ -180,12 +184,12 @@ Accessor: `client.conversationsV1Webhook` · Source: `src/resources/conversation
 ### listConversationScopedWebhook
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listConversationScopedWebhook(request: ConversationsV1Webhook.ListConversationScopedWebhookRequest, options?: RequestOptions): ApiPromise<ListConversationScopedWebhookResponse, ResponseError>`
+- **Signature**: `listConversationScopedWebhook(request: ConversationsV1Webhook.ListConversationScopedWebhookRequest, options?: RequestOptions): ApiPromise<ListConversationScopedWebhookResponse, ApiError>`
 - **Wire**: `GET /v1/Conversations/{ConversationSid}/Webhooks`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListConversationScopedWebhookResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1Webhook.ListConversationScopedWebhookRequest` (4):
 
@@ -203,12 +207,12 @@ Accessor: `client.conversationsV1Webhook` · Source: `src/resources/conversation
 ### listServiceConversationScopedWebhook
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listServiceConversationScopedWebhook(request: ConversationsV1Webhook.ListServiceConversationScopedWebhookRequest, options?: RequestOptions): ApiPromise<ListServiceConversationScopedWebhookResponse, ResponseError>`
+- **Signature**: `listServiceConversationScopedWebhook(request: ConversationsV1Webhook.ListServiceConversationScopedWebhookRequest, options?: RequestOptions): ApiPromise<ListServiceConversationScopedWebhookResponse, ApiError>`
 - **Wire**: `GET /v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Webhooks`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListServiceConversationScopedWebhookResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1Webhook.ListServiceConversationScopedWebhookRequest` (5):
 
@@ -227,12 +231,13 @@ Accessor: `client.conversationsV1Webhook` · Source: `src/resources/conversation
 ### updateConfigurationWebhook
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateConfigurationWebhook(request: ConversationsV1Webhook.UpdateConfigurationWebhookRequest, options?: RequestOptions): ApiPromise<ConversationsV1ConfigurationConfigurationWebhook, ResponseError>`
+- **Signature**: `updateConfigurationWebhook(request: ConversationsV1Webhook.UpdateConfigurationWebhookRequest, options?: RequestOptions): ApiPromise<ConversationsV1ConfigurationConfigurationWebhook, ApiError>`
 - **Wire**: `POST /v1/Configuration/Webhooks`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ConversationsV1ConfigurationConfigurationWebhook`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1Webhook.UpdateConfigurationWebhookRequest` (5):
 
@@ -252,12 +257,13 @@ Accessor: `client.conversationsV1Webhook` · Source: `src/resources/conversation
 ### updateConversationScopedWebhook
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateConversationScopedWebhook(request: ConversationsV1Webhook.UpdateConversationScopedWebhookRequest, options?: RequestOptions): ApiPromise<ConversationsV1ConversationConversationScopedWebhook, ResponseError>`
+- **Signature**: `updateConversationScopedWebhook(request: ConversationsV1Webhook.UpdateConversationScopedWebhookRequest, options?: RequestOptions): ApiPromise<ConversationsV1ConversationConversationScopedWebhook, ApiError>`
 - **Wire**: `POST /v1/Conversations/{ConversationSid}/Webhooks/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ConversationsV1ConversationConversationScopedWebhook`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1Webhook.UpdateConversationScopedWebhookRequest` (7):
 
@@ -279,12 +285,13 @@ Accessor: `client.conversationsV1Webhook` · Source: `src/resources/conversation
 ### updateServiceConversationScopedWebhook
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateServiceConversationScopedWebhook(request: ConversationsV1Webhook.UpdateServiceConversationScopedWebhookRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceConversationServiceConversationScopedWebhook, ResponseError>`
+- **Signature**: `updateServiceConversationScopedWebhook(request: ConversationsV1Webhook.UpdateServiceConversationScopedWebhookRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceConversationServiceConversationScopedWebhook, ApiError>`
 - **Wire**: `POST /v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Webhooks/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ConversationsV1ServiceServiceConversationServiceConversationScopedWebhook`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1Webhook.UpdateServiceConversationScopedWebhookRequest` (8):
 
@@ -307,12 +314,13 @@ Accessor: `client.conversationsV1Webhook` · Source: `src/resources/conversation
 ### updateServiceWebhookConfiguration
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateServiceWebhookConfiguration(request: ConversationsV1Webhook.UpdateServiceWebhookConfigurationRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceConfigurationServiceWebhookConfiguration, ResponseError>`
+- **Signature**: `updateServiceWebhookConfiguration(request: ConversationsV1Webhook.UpdateServiceWebhookConfigurationRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceConfigurationServiceWebhookConfiguration, ApiError>`
 - **Wire**: `POST /v1/Services/{ChatServiceSid}/Configuration/Webhooks`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ConversationsV1ServiceServiceConfigurationServiceWebhookConfiguration`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1Webhook.UpdateServiceWebhookConfigurationRequest` (5):
 

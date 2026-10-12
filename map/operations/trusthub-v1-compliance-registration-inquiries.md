@@ -4,17 +4,18 @@
 
 Accessor: `client.trusthubV1ComplianceRegistrationInquiries` · Source: `src/resources/trusthub-v1-compliance-registration-inquiries.ts` · 2 operations · Request types: namespace `TrusthubV1ComplianceRegistrationInquiries`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createComplianceRegistration
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createComplianceRegistration(request: TrusthubV1ComplianceRegistrationInquiries.CreateComplianceRegistrationRequest, options?: RequestOptions): ApiPromise<TrusthubV1ComplianceRegistration, ResponseError>`
+- **Signature**: `createComplianceRegistration(request: TrusthubV1ComplianceRegistrationInquiries.CreateComplianceRegistrationRequest, options?: RequestOptions): ApiPromise<TrusthubV1ComplianceRegistration, ApiError>`
 - **Wire**: `POST /v1/ComplianceInquiries/Registration/RegulatoryCompliance/GB/Initialize`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `TrusthubV1ComplianceRegistration`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1ComplianceRegistrationInquiries.CreateComplianceRegistrationRequest` (39):
 
@@ -71,12 +72,13 @@ Accessor: `client.trusthubV1ComplianceRegistrationInquiries` · Source: `src/res
 ### updateComplianceRegistration
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateComplianceRegistration(request: TrusthubV1ComplianceRegistrationInquiries.UpdateComplianceRegistrationRequest, options?: RequestOptions): ApiPromise<TrusthubV1ComplianceRegistration, ResponseError>`
+- **Signature**: `updateComplianceRegistration(request: TrusthubV1ComplianceRegistrationInquiries.UpdateComplianceRegistrationRequest, options?: RequestOptions): ApiPromise<TrusthubV1ComplianceRegistration, ApiError>`
 - **Wire**: `POST /v1/ComplianceInquiries/Registration/{RegistrationId}/RegulatoryCompliance/GB/Initialize`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `TrusthubV1ComplianceRegistration`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1ComplianceRegistrationInquiries.UpdateComplianceRegistrationRequest` (3):
 

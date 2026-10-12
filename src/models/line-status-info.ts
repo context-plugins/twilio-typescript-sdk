@@ -8,7 +8,7 @@ export type LineStatusInfo = {
 
 export const lineStatusInfoSchema: Schema<LineStatusInfo> = s.object<LineStatusInfo>({
   status: s.optional(s.string()),
-  errorCode: s.optional(s.number()),
+  errorCode: s.optional(s.int()),
   _keysMap: {
     errorCode: "error_code",
   },

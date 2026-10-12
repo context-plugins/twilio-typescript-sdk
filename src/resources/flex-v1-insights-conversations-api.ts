@@ -1,8 +1,8 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
 import * as s from "../core/validation/index.js";
 import {
   listInsightsConversationsResponseSchema,
@@ -21,19 +21,34 @@ export class FlexV1InsightsConversationsApi {
     this.#auth = auth;
   }
 
+  /**
+   * To get conversation with segment id
+   *
+   * @remarks
+   * To get conversation with segment id
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   listInsightsConversations(
     request: FlexV1InsightsConversationsApi.ListInsightsConversationsRequest,
     options?: RequestOptions,
-  ): ApiPromise<ListInsightsConversationsResponse, ResponseError> {
-    return this.#rawClient.execute<ListInsightsConversationsResponse, ResponseError>(
+  ): ApiPromise<ListInsightsConversationsResponse, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default13("/v1/Insights/Conversations"),
+        urlTemplate: this.#servers.default13("/v1/Insights/Conversations"),
         auth: this.#auth.accountSidAuthToken,
+        pathParams: [],
         query: [
           { name: "SegmentId", value: request.segmentId, schema: s.optional(s.string()) },
-          { name: "PageSize", value: request.pageSize, schema: s.optional(s.number()) },
-          { name: "Page", value: request.page, schema: s.optional(s.number()) },
+          { name: "PageSize", value: request.pageSize, schema: s.optional(s.int()) },
+          { name: "Page", value: request.page, schema: s.optional(s.int()) },
           { name: "PageToken", value: request.pageToken, schema: s.optional(s.string()) },
         ],
         headers: [{ name: "Authorization", value: request.authorization, schema: s.optional(s.string()) }],
@@ -41,7 +56,7 @@ export class FlexV1InsightsConversationsApi {
       },
       {
         success: { kind: "json", schema: listInsightsConversationsResponseSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -50,10 +65,17 @@ export class FlexV1InsightsConversationsApi {
 
 export namespace FlexV1InsightsConversationsApi {
   export type ListInsightsConversationsRequest = {
+    /** Unique Id of the segment for which conversation details needs to be fetched */
     segmentId?: string;
+    /**
+     * How many resources to return in each list page. The default is 50, and the maximum is 1000.
+     */
     pageSize?: number;
+    /** The page index. This value is simply for client state. */
     page?: number;
+    /** The page token. This is provided by the API. */
     pageToken?: string;
+    /** The Authorization HTTP request header */
     authorization?: string;
   };
 }

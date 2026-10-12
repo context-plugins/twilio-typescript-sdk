@@ -7,6 +7,6 @@ export type StatusTimeouts1 = {
 };
 
 export const statusTimeouts1Schema: Schema<StatusTimeouts1> = s.object<StatusTimeouts1>({
-  inactive: s.optional(s.number()),
-  closed: s.optional(s.number()),
+  inactive: s.optional(s.int()),
+  closed: s.optional(s.int()),
 });

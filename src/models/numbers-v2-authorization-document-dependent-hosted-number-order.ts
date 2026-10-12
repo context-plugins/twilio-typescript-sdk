@@ -7,23 +7,70 @@ import {
 } from "./dependent-hosted-number-order-enum-status.js";
 
 export type NumbersV2AuthorizationDocumentDependentHostedNumberOrder = {
+  /** A 34 character string that uniquely identifies this Authorization Document */
   sid?: string | null;
+  /**
+   * A 34 character string that uniquely identifies the bulk hosting request associated with this
+   * HostedNumberOrder.
+   */
   bulkHostingRequestSid?: string | null;
+  /**
+   * The next step you need to take to complete the hosted number order and request it successfully.
+   */
   nextStep?: string | null;
+  /** The unique SID identifier of the Account. */
   accountSid?: string | null;
+  /**
+   * A 34 character string that uniquely identifies the IncomingPhoneNumber resource created by this
+   * HostedNumberOrder.
+   */
   incomingPhoneNumberSid?: string | null;
+  /**
+   * A 34 character string that uniquely identifies the Address resource that represents the address
+   * of the owner of this phone number.
+   */
   addressSid?: string | null;
+  /**
+   * A 34 character string that uniquely identifies the LOA document associated with this
+   * HostedNumberOrder.
+   */
   signingDocumentSid?: string | null;
+  /** An E164 formatted phone number hosted by this HostedNumberOrder. */
   phoneNumber?: string | null;
+  /** A mapping of capabilities this hosted phone number will have enabled on Twilio's platform. */
   capabilities?: Capabilities | null;
+  /** A human readable description of this resource, up to 128 characters. */
   friendlyName?: string | null;
+  /**
+   * Status of an instance resource. It can hold one of the values: 1. opened 2. signing, 3. signed
+   * LOA, 4. canceled, 5. failed. See the section entitled [Status
+   * Values](https://www.twilio.com/docs/phone-numbers/hosted-numbers/hosted-numbers-api/authorization-document-resource#status-values)
+   * for more information on each of these statuses.
+   */
   status?: DependentHostedNumberOrderEnumStatus;
+  /** A message that explains why a hosted_number_order went to status "action-required" */
   failureReason?: string | null;
+  /**
+   * The date this resource was created, given as [GMT RFC
+   * 2822](http://www.ietf.org/rfc/rfc2822.txt) format.
+   */
   dateCreated?: Date | null;
+  /**
+   * The date that this resource was updated, given as [GMT RFC
+   * 2822](http://www.ietf.org/rfc/rfc2822.txt) format.
+   */
   dateUpdated?: Date | null;
+  /** Email of the owner of this phone number that is being hosted. */
   email?: string | null;
+  /**
+   * Email recipients who will be informed when an Authorization Document has been sent and signed
+   */
   ccEmails?: string[] | null;
+  /**
+   * The title of the person authorized to sign the Authorization Document for this phone number.
+   */
   contactTitle?: string | null;
+  /** The contact phone number of the person authorized to sign the Authorization Document. */
   contactPhoneNumber?: string | null;
 };
 

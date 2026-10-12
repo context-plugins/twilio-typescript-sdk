@@ -3,6 +3,7 @@ import type { Schema } from "../core/validation/schema.js";
 import { languagePropertiesSchema, type LanguageProperties } from "./language-properties.js";
 
 export type LocaleResponse = {
+  /** List of supported languages for opt-out configurations */
   languages: LanguageProperties[];
 };
 

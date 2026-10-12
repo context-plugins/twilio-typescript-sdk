@@ -4,7 +4,7 @@
 
 Accessor: `client.verifyV2Verification` · Source: `src/resources/verify-v2-verification.ts` · 3 operations · Request and error types: namespace `VerifyV2Verification`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createVerification
 
@@ -13,8 +13,9 @@ Accessor: `client.verifyV2Verification` · Source: `src/resources/verify-v2-veri
 - **Wire**: `POST /v2/Services/{ServiceSid}/Verifications`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `VerifyV2ServiceVerification`
-- **Error**: `VerifyV2Verification.CreateVerificationError` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `VerifyV2Verification.CreateVerificationError` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"accountsCallsRecordingsSidJson201041408Error1"` [429] `AccountsCallsRecordingsSidJson201041408Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `VerifyV2Verification.CreateVerificationRequest` (19):
@@ -50,12 +51,12 @@ Accessor: `client.verifyV2Verification` · Source: `src/resources/verify-v2-veri
 ### fetchVerification
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchVerification(request: VerifyV2Verification.FetchVerificationRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceVerification, ResponseError>`
+- **Signature**: `fetchVerification(request: VerifyV2Verification.FetchVerificationRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceVerification, ApiError>`
 - **Wire**: `GET /v2/Services/{ServiceSid}/Verifications/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `VerifyV2ServiceVerification`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2Verification.FetchVerificationRequest` (2):
 
@@ -71,12 +72,13 @@ Accessor: `client.verifyV2Verification` · Source: `src/resources/verify-v2-veri
 ### updateVerification
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateVerification(request: VerifyV2Verification.UpdateVerificationRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceVerification, ResponseError>`
+- **Signature**: `updateVerification(request: VerifyV2Verification.UpdateVerificationRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceVerification, ApiError>`
 - **Wire**: `POST /v2/Services/{ServiceSid}/Verifications/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `VerifyV2ServiceVerification`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2Verification.UpdateVerificationRequest` (3):
 

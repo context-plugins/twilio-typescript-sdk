@@ -1,8 +1,8 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
 import * as s from "../core/validation/index.js";
 import {
   insightsV1ConferenceConferenceParticipantSchema,
@@ -25,14 +25,28 @@ export class InsightsV1ConferenceParticipant {
     this.#auth = auth;
   }
 
+  /**
+   * Get a specific Conference Participant Summary for a Conference.
+   *
+   * @remarks
+   * Get a specific Conference Participant Summary for a Conference.
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   fetchConferenceParticipant(
     request: InsightsV1ConferenceParticipant.FetchConferenceParticipantRequest,
     options?: RequestOptions,
-  ): ApiPromise<InsightsV1ConferenceConferenceParticipant, ResponseError> {
-    return this.#rawClient.execute<InsightsV1ConferenceConferenceParticipant, ResponseError>(
+  ): ApiPromise<InsightsV1ConferenceConferenceParticipant, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default14("/v1/Conferences/{ConferenceSid}/Participants/{ParticipantSid}"),
+        urlTemplate: this.#servers.default14("/v1/Conferences/{ConferenceSid}/Participants/{ParticipantSid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           { name: "ConferenceSid", value: request.conferenceSid, schema: s.string() },
@@ -42,39 +56,55 @@ export class InsightsV1ConferenceParticipant {
           { name: "Events", value: request.events, schema: s.optional(s.string()) },
           { name: "Metrics", value: request.metrics, schema: s.optional(s.string()) },
         ],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: insightsV1ConferenceConferenceParticipantSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Get a list of Conference Participants Summaries for a Conference.
+   *
+   * @remarks
+   * Get a list of Conference Participants Summaries for a Conference.
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   listConferenceParticipant(
     request: InsightsV1ConferenceParticipant.ListConferenceParticipantRequest,
     options?: RequestOptions,
-  ): ApiPromise<ListConferenceParticipantResponse, ResponseError> {
-    return this.#rawClient.execute<ListConferenceParticipantResponse, ResponseError>(
+  ): ApiPromise<ListConferenceParticipantResponse, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default14("/v1/Conferences/{ConferenceSid}/Participants"),
+        urlTemplate: this.#servers.default14("/v1/Conferences/{ConferenceSid}/Participants"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "ConferenceSid", value: request.conferenceSid, schema: s.string() }],
         query: [
           { name: "ParticipantSid", value: request.participantSid, schema: s.optional(s.string()) },
           { name: "Label", value: request.label, schema: s.optional(s.string()) },
           { name: "Events", value: request.events, schema: s.optional(s.string()) },
-          { name: "PageSize", value: request.pageSize, schema: s.optional(s.number()) },
-          { name: "Page", value: request.page, schema: s.optional(s.number()) },
+          { name: "PageSize", value: request.pageSize, schema: s.optional(s.int()) },
+          { name: "Page", value: request.page, schema: s.optional(s.int()) },
           { name: "PageToken", value: request.pageToken, schema: s.optional(s.string()) },
         ],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: listConferenceParticipantResponseSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -83,19 +113,36 @@ export class InsightsV1ConferenceParticipant {
 
 export namespace InsightsV1ConferenceParticipant {
   export type FetchConferenceParticipantRequest = {
+    /** The unique SID identifier of the Conference. */
     conferenceSid: string;
+    /** The unique SID identifier of the Participant. */
     participantSid: string;
+    /**
+     * Conference events generated by application or participant activity; e.g. `hold`, `mute`, etc.
+     */
     events?: string;
+    /** Object. Contains participant call quality metrics. */
     metrics?: string;
   };
 
   export type ListConferenceParticipantRequest = {
+    /** The unique SID identifier of the Conference. */
     conferenceSid: string;
+    /** The unique SID identifier of the Participant. */
     participantSid?: string;
+    /** User-specified label for a participant. */
     label?: string;
+    /**
+     * Conference events generated by application or participant activity; e.g. `hold`, `mute`, etc.
+     */
     events?: string;
+    /**
+     * How many resources to return in each list page. The default is 50, and the maximum is 1000.
+     */
     pageSize?: number;
+    /** The page index. This value is simply for client state. */
     page?: number;
+    /** The page token. This is provided by the API. */
     pageToken?: string;
   };
 }

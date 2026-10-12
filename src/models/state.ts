@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The state of the application. */
 export const State = {
   Draft: "DRAFT",
   TwilioReview: "TWILIO_REVIEW",

@@ -1,6 +1,9 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * The set of permissions that you authorized for the Connect App. Can be: `get-all` or `post-all`.
+ */
 export const AuthorizedConnectAppEnumPermission = {
   GetAll: "get-all",
   PostAll: "post-all",

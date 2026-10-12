@@ -2,10 +2,15 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type OptOutConfig = {
+  /** The unique SID identifier for the opt-out configuration */
   optOutSid: string;
+  /** The SID of the account that owns this opt-out configuration */
   accountSid: string;
+  /** A human-readable name for the opt-out configuration */
   friendlyName?: string | null;
+  /** The date and time when the opt-out configuration was created */
   dateCreated?: Date | null;
+  /** The date and time when the opt-out configuration was last updated */
   dateUpdated?: Date | null;
 };
 

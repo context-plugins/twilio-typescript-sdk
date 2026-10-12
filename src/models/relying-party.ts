@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
+/** Contains the information of the party requesting the user for authentication */
 export type RelyingParty = {
   id?: string;
   name?: string;

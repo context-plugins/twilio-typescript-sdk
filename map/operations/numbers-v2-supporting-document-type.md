@@ -4,17 +4,17 @@
 
 Accessor: `client.numbersV2SupportingDocumentType` · Source: `src/resources/numbers-v2-supporting-document-type.ts` · 2 operations · Request types: namespace `NumbersV2SupportingDocumentType`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchSupportingDocumentType
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchSupportingDocumentType(request: NumbersV2SupportingDocumentType.FetchSupportingDocumentTypeRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceSupportingDocumentType, ResponseError>`
+- **Signature**: `fetchSupportingDocumentType(request: NumbersV2SupportingDocumentType.FetchSupportingDocumentTypeRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceSupportingDocumentType, ApiError>`
 - **Wire**: `GET /v2/RegulatoryCompliance/SupportingDocumentTypes/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `NumbersV2RegulatoryComplianceSupportingDocumentType`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2SupportingDocumentType.FetchSupportingDocumentTypeRequest` (1):
 
@@ -29,12 +29,12 @@ Accessor: `client.numbersV2SupportingDocumentType` · Source: `src/resources/num
 ### listSupportingDocumentType
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listSupportingDocumentType(request: NumbersV2SupportingDocumentType.ListSupportingDocumentTypeRequest, options?: RequestOptions): ApiPromise<ListSupportingDocumentTypeResponse, ResponseError>`
+- **Signature**: `listSupportingDocumentType(request: NumbersV2SupportingDocumentType.ListSupportingDocumentTypeRequest, options?: RequestOptions): ApiPromise<ListSupportingDocumentTypeResponse, ApiError>`
 - **Wire**: `GET /v2/RegulatoryCompliance/SupportingDocumentTypes`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListSupportingDocumentTypeResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2SupportingDocumentType.ListSupportingDocumentTypeRequest` (3):
 

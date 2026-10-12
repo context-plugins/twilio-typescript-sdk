@@ -4,17 +4,18 @@
 
 Accessor: `client.numbersV2AuthorizationDocumentApi` · Source: `src/resources/numbers-v2-authorization-document-api.ts` · 4 operations · Request types: namespace `NumbersV2AuthorizationDocumentApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createAuthorizationDocument
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createAuthorizationDocument(request: NumbersV2AuthorizationDocumentApi.CreateAuthorizationDocumentRequest, options?: RequestOptions): ApiPromise<NumbersV2AuthorizationDocument, ResponseError>`
+- **Signature**: `createAuthorizationDocument(request: NumbersV2AuthorizationDocumentApi.CreateAuthorizationDocumentRequest, options?: RequestOptions): ApiPromise<NumbersV2AuthorizationDocument, ApiError>`
 - **Wire**: `POST /v2/HostedNumber/AuthorizationDocuments`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `NumbersV2AuthorizationDocument`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2AuthorizationDocumentApi.CreateAuthorizationDocumentRequest` (6):
 
@@ -34,12 +35,13 @@ Accessor: `client.numbersV2AuthorizationDocumentApi` · Source: `src/resources/n
 ### deleteAuthorizationDocument
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteAuthorizationDocument(request: NumbersV2AuthorizationDocumentApi.DeleteAuthorizationDocumentRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteAuthorizationDocument(request: NumbersV2AuthorizationDocumentApi.DeleteAuthorizationDocumentRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v2/HostedNumber/AuthorizationDocuments/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2AuthorizationDocumentApi.DeleteAuthorizationDocumentRequest` (1):
 
@@ -50,12 +52,12 @@ Accessor: `client.numbersV2AuthorizationDocumentApi` · Source: `src/resources/n
 ### fetchAuthorizationDocument
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchAuthorizationDocument(request: NumbersV2AuthorizationDocumentApi.FetchAuthorizationDocumentRequest, options?: RequestOptions): ApiPromise<NumbersV2AuthorizationDocument, ResponseError>`
+- **Signature**: `fetchAuthorizationDocument(request: NumbersV2AuthorizationDocumentApi.FetchAuthorizationDocumentRequest, options?: RequestOptions): ApiPromise<NumbersV2AuthorizationDocument, ApiError>`
 - **Wire**: `GET /v2/HostedNumber/AuthorizationDocuments/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `NumbersV2AuthorizationDocument`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2AuthorizationDocumentApi.FetchAuthorizationDocumentRequest` (1):
 
@@ -70,12 +72,12 @@ Accessor: `client.numbersV2AuthorizationDocumentApi` · Source: `src/resources/n
 ### listAuthorizationDocument
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listAuthorizationDocument(request: NumbersV2AuthorizationDocumentApi.ListAuthorizationDocumentRequest, options?: RequestOptions): ApiPromise<ListAuthorizationDocumentResponse, ResponseError>`
+- **Signature**: `listAuthorizationDocument(request: NumbersV2AuthorizationDocumentApi.ListAuthorizationDocumentRequest, options?: RequestOptions): ApiPromise<ListAuthorizationDocumentResponse, ApiError>`
 - **Wire**: `GET /v2/HostedNumber/AuthorizationDocuments`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListAuthorizationDocumentResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2AuthorizationDocumentApi.ListAuthorizationDocumentRequest` (5):
 

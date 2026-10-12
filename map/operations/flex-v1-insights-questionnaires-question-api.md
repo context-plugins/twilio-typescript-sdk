@@ -4,17 +4,18 @@
 
 Accessor: `client.flexV1InsightsQuestionnairesQuestionApi` · Source: `src/resources/flex-v1-insights-questionnaires-question-api.ts` · 4 operations · Request types: namespace `FlexV1InsightsQuestionnairesQuestionApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createInsightsQuestionnairesQuestion
 
 - **Server**: `default13` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createInsightsQuestionnairesQuestion(request: FlexV1InsightsQuestionnairesQuestionApi.CreateInsightsQuestionnairesQuestionRequest, options?: RequestOptions): ApiPromise<FlexV1InsightsQuestionnairesQuestion, ResponseError>`
+- **Signature**: `createInsightsQuestionnairesQuestion(request: FlexV1InsightsQuestionnairesQuestionApi.CreateInsightsQuestionnairesQuestionRequest, options?: RequestOptions): ApiPromise<FlexV1InsightsQuestionnairesQuestion, ApiError>`
 - **Wire**: `POST /v1/Insights/QualityManagement/Questions`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `FlexV1InsightsQuestionnairesQuestion`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `FlexV1InsightsQuestionnairesQuestionApi.CreateInsightsQuestionnairesQuestionRequest` (6):
 
@@ -34,12 +35,13 @@ Accessor: `client.flexV1InsightsQuestionnairesQuestionApi` · Source: `src/resou
 ### deleteInsightsQuestionnairesQuestion
 
 - **Server**: `default13` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteInsightsQuestionnairesQuestion(request: FlexV1InsightsQuestionnairesQuestionApi.DeleteInsightsQuestionnairesQuestionRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteInsightsQuestionnairesQuestion(request: FlexV1InsightsQuestionnairesQuestionApi.DeleteInsightsQuestionnairesQuestionRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Insights/QualityManagement/Questions/{QuestionSid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `FlexV1InsightsQuestionnairesQuestionApi.DeleteInsightsQuestionnairesQuestionRequest` (2):
 
@@ -51,12 +53,12 @@ Accessor: `client.flexV1InsightsQuestionnairesQuestionApi` · Source: `src/resou
 ### listInsightsQuestionnairesQuestion
 
 - **Server**: `default13` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listInsightsQuestionnairesQuestion(request: FlexV1InsightsQuestionnairesQuestionApi.ListInsightsQuestionnairesQuestionRequest, options?: RequestOptions): ApiPromise<ListInsightsQuestionnairesQuestionResponse, ResponseError>`
+- **Signature**: `listInsightsQuestionnairesQuestion(request: FlexV1InsightsQuestionnairesQuestionApi.ListInsightsQuestionnairesQuestionRequest, options?: RequestOptions): ApiPromise<ListInsightsQuestionnairesQuestionResponse, ApiError>`
 - **Wire**: `GET /v1/Insights/QualityManagement/Questions`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListInsightsQuestionnairesQuestionResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `FlexV1InsightsQuestionnairesQuestionApi.ListInsightsQuestionnairesQuestionRequest` (5):
 
@@ -75,12 +77,13 @@ Accessor: `client.flexV1InsightsQuestionnairesQuestionApi` · Source: `src/resou
 ### updateInsightsQuestionnairesQuestion
 
 - **Server**: `default13` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateInsightsQuestionnairesQuestion(request: FlexV1InsightsQuestionnairesQuestionApi.UpdateInsightsQuestionnairesQuestionRequest, options?: RequestOptions): ApiPromise<FlexV1InsightsQuestionnairesQuestion, ResponseError>`
+- **Signature**: `updateInsightsQuestionnairesQuestion(request: FlexV1InsightsQuestionnairesQuestionApi.UpdateInsightsQuestionnairesQuestionRequest, options?: RequestOptions): ApiPromise<FlexV1InsightsQuestionnairesQuestion, ApiError>`
 - **Wire**: `POST /v1/Insights/QualityManagement/Questions/{QuestionSid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `FlexV1InsightsQuestionnairesQuestion`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `FlexV1InsightsQuestionnairesQuestionApi.UpdateInsightsQuestionnairesQuestionRequest` (7):
 

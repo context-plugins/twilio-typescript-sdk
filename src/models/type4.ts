@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** Type of interruption event. */
 export const Type4 = {
   Dtmf: "DTMF",
   Speech: "SPEECH",

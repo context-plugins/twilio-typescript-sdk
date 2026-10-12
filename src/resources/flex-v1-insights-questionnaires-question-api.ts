@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import {
   flexV1InsightsQuestionnairesQuestionSchema,
@@ -25,16 +26,35 @@ export class FlexV1InsightsQuestionnairesQuestionApi {
     this.#auth = auth;
   }
 
+  /**
+   * To create a question for a Category
+   *
+   * @remarks
+   * To create a question for a Category
+   *
+   * @returns Created
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   createInsightsQuestionnairesQuestion(
     request: FlexV1InsightsQuestionnairesQuestionApi.CreateInsightsQuestionnairesQuestionRequest,
     options?: RequestOptions,
-  ): ApiPromise<FlexV1InsightsQuestionnairesQuestion, ResponseError> {
-    return this.#rawClient.execute<FlexV1InsightsQuestionnairesQuestion, ResponseError>(
+  ): ApiPromise<FlexV1InsightsQuestionnairesQuestion, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default13("/v1/Insights/QualityManagement/Questions"),
+        urlTemplate: this.#servers.default13("/v1/Insights/QualityManagement/Questions"),
         auth: this.#auth.accountSidAuthToken,
-        headers: [{ name: "Authorization", value: request.authorization, schema: s.optional(s.string()) }],
+        pathParams: [],
+        query: [],
+        headers: [
+          { name: "Authorization", value: request.authorization, schema: s.optional(s.string()) },
+          { name: "Idempotency-Key", value: uuid(), schema: s.string() },
+        ],
         body: {
           kind: "formUrlEncoded",
           value: [
@@ -48,7 +68,7 @@ export class FlexV1InsightsQuestionnairesQuestionApi {
       },
       {
         success: { kind: "json", schema: flexV1InsightsQuestionnairesQuestionSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -57,37 +77,56 @@ export class FlexV1InsightsQuestionnairesQuestionApi {
   deleteInsightsQuestionnairesQuestion(
     request: FlexV1InsightsQuestionnairesQuestionApi.DeleteInsightsQuestionnairesQuestionRequest,
     options?: RequestOptions,
-  ): ApiPromise<undefined, ResponseError> {
-    return this.#rawClient.execute<undefined, ResponseError>(
+  ): ApiPromise<undefined, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "DELETE",
-        url: this.#servers.default13("/v1/Insights/QualityManagement/Questions/{QuestionSid}"),
+        urlTemplate: this.#servers.default13("/v1/Insights/QualityManagement/Questions/{QuestionSid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "QuestionSid", value: request.questionSid, schema: s.string() }],
-        headers: [{ name: "Authorization", value: request.authorization, schema: s.optional(s.string()) }],
+        query: [],
+        headers: [
+          { name: "Authorization", value: request.authorization, schema: s.optional(s.string()) },
+          { name: "Idempotency-Key", value: uuid(), schema: s.string() },
+        ],
         body: { kind: "empty" },
       },
       {
         success: { kind: "empty" },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * To get all the question for the given categories
+   *
+   * @remarks
+   * To get all the question for the given categories
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   listInsightsQuestionnairesQuestion(
     request: FlexV1InsightsQuestionnairesQuestionApi.ListInsightsQuestionnairesQuestionRequest,
     options?: RequestOptions,
-  ): ApiPromise<ListInsightsQuestionnairesQuestionResponse, ResponseError> {
-    return this.#rawClient.execute<ListInsightsQuestionnairesQuestionResponse, ResponseError>(
+  ): ApiPromise<ListInsightsQuestionnairesQuestionResponse, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default13("/v1/Insights/QualityManagement/Questions"),
+        urlTemplate: this.#servers.default13("/v1/Insights/QualityManagement/Questions"),
         auth: this.#auth.accountSidAuthToken,
+        pathParams: [],
         query: [
           { name: "CategorySid", value: request.categorySid, schema: s.optional(s.array(s.string())) },
-          { name: "PageSize", value: request.pageSize, schema: s.optional(s.number()) },
-          { name: "Page", value: request.page, schema: s.optional(s.number()) },
+          { name: "PageSize", value: request.pageSize, schema: s.optional(s.int()) },
+          { name: "Page", value: request.page, schema: s.optional(s.int()) },
           { name: "PageToken", value: request.pageToken, schema: s.optional(s.string()) },
         ],
         headers: [{ name: "Authorization", value: request.authorization, schema: s.optional(s.string()) }],
@@ -95,23 +134,41 @@ export class FlexV1InsightsQuestionnairesQuestionApi {
       },
       {
         success: { kind: "json", schema: listInsightsQuestionnairesQuestionResponseSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * To update the question
+   *
+   * @remarks
+   * To update the question
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   updateInsightsQuestionnairesQuestion(
     request: FlexV1InsightsQuestionnairesQuestionApi.UpdateInsightsQuestionnairesQuestionRequest,
     options?: RequestOptions,
-  ): ApiPromise<FlexV1InsightsQuestionnairesQuestion, ResponseError> {
-    return this.#rawClient.execute<FlexV1InsightsQuestionnairesQuestion, ResponseError>(
+  ): ApiPromise<FlexV1InsightsQuestionnairesQuestion, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default13("/v1/Insights/QualityManagement/Questions/{QuestionSid}"),
+        urlTemplate: this.#servers.default13("/v1/Insights/QualityManagement/Questions/{QuestionSid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "QuestionSid", value: request.questionSid, schema: s.string() }],
-        headers: [{ name: "Authorization", value: request.authorization, schema: s.optional(s.string()) }],
+        query: [],
+        headers: [
+          { name: "Authorization", value: request.authorization, schema: s.optional(s.string()) },
+          { name: "Idempotency-Key", value: uuid(), schema: s.string() },
+        ],
         body: {
           kind: "formUrlEncoded",
           value: [
@@ -125,7 +182,7 @@ export class FlexV1InsightsQuestionnairesQuestionApi {
       },
       {
         success: { kind: "json", schema: flexV1InsightsQuestionnairesQuestionSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -134,34 +191,56 @@ export class FlexV1InsightsQuestionnairesQuestionApi {
 
 export namespace FlexV1InsightsQuestionnairesQuestionApi {
   export type CreateInsightsQuestionnairesQuestionRequest = {
+    /** The Authorization HTTP request header */
     authorization?: string;
+    /** The SID of the category */
     categorySid: string;
+    /** The question. */
     question: string;
+    /** The answer_set for the question. */
     answerSetId: string;
+    /** The flag to enable for disable NA for answer. */
     allowNa: boolean;
+    /** The description for the question. */
     description?: string;
   };
 
   export type DeleteInsightsQuestionnairesQuestionRequest = {
+    /** The SID of the question */
     questionSid: string;
+    /** The Authorization HTTP request header */
     authorization?: string;
   };
 
   export type ListInsightsQuestionnairesQuestionRequest = {
+    /** The list of category SIDs */
     categorySid?: string[];
+    /**
+     * How many resources to return in each list page. The default is 50, and the maximum is 1000.
+     */
     pageSize?: number;
+    /** The page index. This value is simply for client state. */
     page?: number;
+    /** The page token. This is provided by the API. */
     pageToken?: string;
+    /** The Authorization HTTP request header */
     authorization?: string;
   };
 
   export type UpdateInsightsQuestionnairesQuestionRequest = {
+    /** The SID of the question */
     questionSid: string;
+    /** The Authorization HTTP request header */
     authorization?: string;
+    /** The flag to enable for disable NA for answer. */
     allowNa: boolean;
+    /** The SID of the category */
     categorySid?: string;
+    /** The question. */
     question?: string;
+    /** The description for the question. */
     description?: string;
+    /** The answer_set for the question. */
     answerSetId?: string;
   };
 }

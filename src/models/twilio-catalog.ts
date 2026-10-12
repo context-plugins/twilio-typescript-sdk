@@ -2,6 +2,10 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 import { catalogItemSchema, type CatalogItem } from "./catalog-item.js";
 
+/**
+ * twilio/catalog type lets recipients view list of catalog products, ask questions about products,
+ * order products.
+ */
 export type TwilioCatalog = {
   title?: string;
   body: string;

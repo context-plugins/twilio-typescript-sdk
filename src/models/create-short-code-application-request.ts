@@ -4,8 +4,11 @@ import { businessInformationSchema, type BusinessInformation } from "./business-
 import { setupSchema, type Setup } from "./setup.js";
 
 export type CreateShortCodeApplicationRequest = {
+  /** The friendly name for the short code application. */
   friendlyName: string;
+  /** The ISO country code. */
   isoCountry: string;
+  /** Business information associated with the application. */
   businessInformation: BusinessInformation;
   setup: Setup;
 };

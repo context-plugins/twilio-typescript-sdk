@@ -4,16 +4,17 @@
 
 Accessor: `client.api20100401Participant` · Source: `src/resources/api20100401-participant.ts` · 5 operations · Request types: namespace `Api20100401Participant`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createParticipant
 
-- **Signature**: `createParticipant(request: Api20100401Participant.CreateParticipantRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountConferenceParticipant, ResponseError>`
+- **Signature**: `createParticipant(request: Api20100401Participant.CreateParticipantRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountConferenceParticipant, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountConferenceParticipant`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Participant.CreateParticipantRequest` (53):
 
@@ -85,12 +86,13 @@ Accessor: `client.api20100401Participant` · Source: `src/resources/api20100401-
 
 ### deleteParticipant
 
-- **Signature**: `deleteParticipant(request: Api20100401Participant.DeleteParticipantRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteParticipant(request: Api20100401Participant.DeleteParticipantRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Participant.DeleteParticipantRequest` (3):
 
@@ -102,12 +104,12 @@ Accessor: `client.api20100401Participant` · Source: `src/resources/api20100401-
 
 ### fetchParticipant
 
-- **Signature**: `fetchParticipant(request: Api20100401Participant.FetchParticipantRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountConferenceParticipant, ResponseError>`
+- **Signature**: `fetchParticipant(request: Api20100401Participant.FetchParticipantRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountConferenceParticipant, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ApiV2010AccountConferenceParticipant`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Participant.FetchParticipantRequest` (3):
 
@@ -123,12 +125,12 @@ Accessor: `client.api20100401Participant` · Source: `src/resources/api20100401-
 
 ### listParticipant
 
-- **Signature**: `listParticipant(request: Api20100401Participant.ListParticipantRequest, options?: RequestOptions): ApiPromise<ListParticipantResponse, ResponseError>`
+- **Signature**: `listParticipant(request: Api20100401Participant.ListParticipantRequest, options?: RequestOptions): ApiPromise<ListParticipantResponse, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListParticipantResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Participant.ListParticipantRequest` (8):
 
@@ -149,12 +151,13 @@ Accessor: `client.api20100401Participant` · Source: `src/resources/api20100401-
 
 ### updateParticipant
 
-- **Signature**: `updateParticipant(request: Api20100401Participant.UpdateParticipantRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountConferenceParticipant, ResponseError>`
+- **Signature**: `updateParticipant(request: Api20100401Participant.UpdateParticipantRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountConferenceParticipant, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountConferenceParticipant`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Participant.UpdateParticipantRequest` (15):
 

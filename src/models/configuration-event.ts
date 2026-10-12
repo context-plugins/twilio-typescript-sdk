@@ -3,7 +3,9 @@ import type { Schema } from "../core/validation/schema.js";
 import { languagesSchema, type Languages } from "./languages.js";
 
 export type ConfigurationEvent = {
+  /** Key-value pairs for configuration settings. */
   configurations?: Record<string, string>;
+  /** Key-value pairs for language configurations. */
   languages?: Record<string, Languages>;
 };
 

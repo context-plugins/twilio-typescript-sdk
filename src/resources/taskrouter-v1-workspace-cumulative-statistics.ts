@@ -1,8 +1,8 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
 import * as s from "../core/validation/index.js";
 import {
   taskrouterV1WorkspaceWorkspaceCumulativeStatisticsSchema,
@@ -24,25 +24,26 @@ export class TaskrouterV1WorkspaceCumulativeStatistics {
   fetchWorkspaceCumulativeStatistics(
     request: TaskrouterV1WorkspaceCumulativeStatistics.FetchWorkspaceCumulativeStatisticsRequest,
     options?: RequestOptions,
-  ): ApiPromise<TaskrouterV1WorkspaceWorkspaceCumulativeStatistics, ResponseError> {
-    return this.#rawClient.execute<TaskrouterV1WorkspaceWorkspaceCumulativeStatistics, ResponseError>(
+  ): ApiPromise<TaskrouterV1WorkspaceWorkspaceCumulativeStatistics, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default8("/v1/Workspaces/{WorkspaceSid}/CumulativeStatistics"),
+        urlTemplate: this.#servers.default8("/v1/Workspaces/{WorkspaceSid}/CumulativeStatistics"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "WorkspaceSid", value: request.workspaceSid, schema: s.string() }],
         query: [
           { name: "EndDate", value: request.endDate, schema: s.optional(s.dateTime()) },
-          { name: "Minutes", value: request.minutes, schema: s.optional(s.number()) },
+          { name: "Minutes", value: request.minutes, schema: s.optional(s.int()) },
           { name: "StartDate", value: request.startDate, schema: s.optional(s.dateTime()) },
           { name: "TaskChannel", value: request.taskChannel, schema: s.optional(s.string()) },
           { name: "SplitByWaitTime", value: request.splitByWaitTime, schema: s.optional(s.string()) },
         ],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: taskrouterV1WorkspaceWorkspaceCumulativeStatisticsSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -51,11 +52,38 @@ export class TaskrouterV1WorkspaceCumulativeStatistics {
 
 export namespace TaskrouterV1WorkspaceCumulativeStatistics {
   export type FetchWorkspaceCumulativeStatisticsRequest = {
+    /** The SID of the Workspace to fetch. */
     workspaceSid: string;
+    /**
+     * Only include usage that occurred on or before this date, specified in GMT as an [ISO
+     * 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time.
+     */
     endDate?: Date;
+    /**
+     * Only calculate statistics since this many minutes in the past. The default 15 minutes. This
+     * is helpful for displaying statistics for the last 15 minutes, 240 minutes (4 hours), and 480
+     * minutes (8 hours) to see trends.
+     */
     minutes?: number;
+    /**
+     * Only calculate statistics from this date and time and later, specified in [ISO
+     * 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+     */
     startDate?: Date;
+    /**
+     * Only calculate cumulative statistics on this TaskChannel. Can be the TaskChannel's SID or its
+     * `unique_name`, such as `voice`, `sms`, or `default`.
+     */
     taskChannel?: string;
+    /**
+     * A comma separated list of values that describes the thresholds, in seconds, to calculate
+     * statistics on. For each threshold specified, the number of Tasks canceled and reservations
+     * accepted above and below the specified thresholds in seconds are computed. For example,
+     * `5,30` would show splits of Tasks that were canceled or accepted before and after 5 seconds
+     * and before and after 30 seconds. This can be used to show short abandoned Tasks or Tasks that
+     * failed to meet an SLA. TaskRouter will calculate statistics on up to 10,000 Tasks for any
+     * given threshold.
+     */
     splitByWaitTime?: string;
   };
 }

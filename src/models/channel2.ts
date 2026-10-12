@@ -1,6 +1,10 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * Channel type for sending communications. Note: VOICE is receive-only and not supported for send
+ * operations.
+ */
 export const Channel2 = {
   Sms: "SMS",
   Rcs: "RCS",

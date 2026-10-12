@@ -4,17 +4,18 @@
 
 Accessor: `client.verifyV2MessagingConfiguration` · Source: `src/resources/verify-v2-messaging-configuration.ts` · 5 operations · Request types: namespace `VerifyV2MessagingConfiguration`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createMessagingConfiguration
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createMessagingConfiguration(request: VerifyV2MessagingConfiguration.CreateMessagingConfigurationRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceMessagingConfiguration, ResponseError>`
+- **Signature**: `createMessagingConfiguration(request: VerifyV2MessagingConfiguration.CreateMessagingConfigurationRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceMessagingConfiguration, ApiError>`
 - **Wire**: `POST /v2/Services/{ServiceSid}/MessagingConfigurations`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `VerifyV2ServiceMessagingConfiguration`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2MessagingConfiguration.CreateMessagingConfigurationRequest` (3):
 
@@ -31,12 +32,13 @@ Accessor: `client.verifyV2MessagingConfiguration` · Source: `src/resources/veri
 ### deleteMessagingConfiguration
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteMessagingConfiguration(request: VerifyV2MessagingConfiguration.DeleteMessagingConfigurationRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteMessagingConfiguration(request: VerifyV2MessagingConfiguration.DeleteMessagingConfigurationRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v2/Services/{ServiceSid}/MessagingConfigurations/{Country}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2MessagingConfiguration.DeleteMessagingConfigurationRequest` (2):
 
@@ -48,12 +50,12 @@ Accessor: `client.verifyV2MessagingConfiguration` · Source: `src/resources/veri
 ### fetchMessagingConfiguration
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchMessagingConfiguration(request: VerifyV2MessagingConfiguration.FetchMessagingConfigurationRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceMessagingConfiguration, ResponseError>`
+- **Signature**: `fetchMessagingConfiguration(request: VerifyV2MessagingConfiguration.FetchMessagingConfigurationRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceMessagingConfiguration, ApiError>`
 - **Wire**: `GET /v2/Services/{ServiceSid}/MessagingConfigurations/{Country}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `VerifyV2ServiceMessagingConfiguration`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2MessagingConfiguration.FetchMessagingConfigurationRequest` (2):
 
@@ -69,12 +71,12 @@ Accessor: `client.verifyV2MessagingConfiguration` · Source: `src/resources/veri
 ### listMessagingConfiguration
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listMessagingConfiguration(request: VerifyV2MessagingConfiguration.ListMessagingConfigurationRequest, options?: RequestOptions): ApiPromise<ListMessagingConfigurationResponse, ResponseError>`
+- **Signature**: `listMessagingConfiguration(request: VerifyV2MessagingConfiguration.ListMessagingConfigurationRequest, options?: RequestOptions): ApiPromise<ListMessagingConfigurationResponse, ApiError>`
 - **Wire**: `GET /v2/Services/{ServiceSid}/MessagingConfigurations`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListMessagingConfigurationResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2MessagingConfiguration.ListMessagingConfigurationRequest` (4):
 
@@ -92,12 +94,13 @@ Accessor: `client.verifyV2MessagingConfiguration` · Source: `src/resources/veri
 ### updateMessagingConfiguration
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateMessagingConfiguration(request: VerifyV2MessagingConfiguration.UpdateMessagingConfigurationRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceMessagingConfiguration, ResponseError>`
+- **Signature**: `updateMessagingConfiguration(request: VerifyV2MessagingConfiguration.UpdateMessagingConfigurationRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceMessagingConfiguration, ApiError>`
 - **Wire**: `POST /v2/Services/{ServiceSid}/MessagingConfigurations/{Country}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `VerifyV2ServiceMessagingConfiguration`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2MessagingConfiguration.UpdateMessagingConfigurationRequest` (3):
 

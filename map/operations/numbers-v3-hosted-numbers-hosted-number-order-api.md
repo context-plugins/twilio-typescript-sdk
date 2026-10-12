@@ -4,17 +4,18 @@
 
 Accessor: `client.numbersV3HostedNumbersHostedNumberOrderApi` · Source: `src/resources/numbers-v3-hosted-numbers-hosted-number-order-api.ts` · 1 operation · Request types: namespace `NumbersV3HostedNumbersHostedNumberOrderApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createHostedNumbersHostedNumberOrder
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createHostedNumbersHostedNumberOrder(request: NumbersV3HostedNumbersHostedNumberOrderApi.CreateHostedNumbersHostedNumberOrderRequestParams, options?: RequestOptions): ApiPromise<NumbersV3HostedNumbersHostedNumberOrder, ResponseError>`
+- **Signature**: `createHostedNumbersHostedNumberOrder(request: NumbersV3HostedNumbersHostedNumberOrderApi.CreateHostedNumbersHostedNumberOrderRequestParams, options?: RequestOptions): ApiPromise<NumbersV3HostedNumbersHostedNumberOrder, ApiError>`
 - **Wire**: `POST /v3/HostedNumbers/HostedNumberOrders`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `NumbersV3HostedNumbersHostedNumberOrder`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV3HostedNumbersHostedNumberOrderApi.CreateHostedNumbersHostedNumberOrderRequestParams` (17):
 

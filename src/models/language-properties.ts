@@ -3,7 +3,9 @@ import type { Schema } from "../core/validation/schema.js";
 import { keySchema, type Key } from "./key.js";
 
 export type LanguageProperties = {
+  /** The language key/identifier (typically uppercase) */
   key: Key;
+  /** Human-readable display name for the language */
   friendlyName: string;
 };
 

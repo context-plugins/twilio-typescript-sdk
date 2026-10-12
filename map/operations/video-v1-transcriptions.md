@@ -4,17 +4,18 @@
 
 Accessor: `client.videoV1Transcriptions` · Source: `src/resources/video-v1-transcriptions.ts` · 4 operations · Request types: namespace `VideoV1Transcriptions`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createRoomTranscriptions
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createRoomTranscriptions(request: VideoV1Transcriptions.CreateRoomTranscriptionsRequest, options?: RequestOptions): ApiPromise<VideoV1RoomRoomTranscriptions, ResponseError>`
+- **Signature**: `createRoomTranscriptions(request: VideoV1Transcriptions.CreateRoomTranscriptionsRequest, options?: RequestOptions): ApiPromise<VideoV1RoomRoomTranscriptions, ApiError>`
 - **Wire**: `POST /v1/Rooms/{RoomSid}/Transcriptions`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `VideoV1RoomRoomTranscriptions`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1Transcriptions.CreateRoomTranscriptionsRequest` (2):
 
@@ -30,12 +31,12 @@ Accessor: `client.videoV1Transcriptions` · Source: `src/resources/video-v1-tran
 ### fetchRoomTranscriptions
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchRoomTranscriptions(request: VideoV1Transcriptions.FetchRoomTranscriptionsRequest, options?: RequestOptions): ApiPromise<VideoV1RoomRoomTranscriptions, ResponseError>`
+- **Signature**: `fetchRoomTranscriptions(request: VideoV1Transcriptions.FetchRoomTranscriptionsRequest, options?: RequestOptions): ApiPromise<VideoV1RoomRoomTranscriptions, ApiError>`
 - **Wire**: `GET /v1/Rooms/{RoomSid}/Transcriptions/{Ttid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `VideoV1RoomRoomTranscriptions`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1Transcriptions.FetchRoomTranscriptionsRequest` (2):
 
@@ -51,12 +52,12 @@ Accessor: `client.videoV1Transcriptions` · Source: `src/resources/video-v1-tran
 ### listRoomTranscriptions
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listRoomTranscriptions(request: VideoV1Transcriptions.ListRoomTranscriptionsRequest, options?: RequestOptions): ApiPromise<ListRoomTranscriptionsResponse, ResponseError>`
+- **Signature**: `listRoomTranscriptions(request: VideoV1Transcriptions.ListRoomTranscriptionsRequest, options?: RequestOptions): ApiPromise<ListRoomTranscriptionsResponse, ApiError>`
 - **Wire**: `GET /v1/Rooms/{RoomSid}/Transcriptions`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListRoomTranscriptionsResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1Transcriptions.ListRoomTranscriptionsRequest` (4):
 
@@ -74,12 +75,13 @@ Accessor: `client.videoV1Transcriptions` · Source: `src/resources/video-v1-tran
 ### updateRoomTranscriptions
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateRoomTranscriptions(request: VideoV1Transcriptions.UpdateRoomTranscriptionsRequest, options?: RequestOptions): ApiPromise<VideoV1RoomRoomTranscriptions, ResponseError>`
+- **Signature**: `updateRoomTranscriptions(request: VideoV1Transcriptions.UpdateRoomTranscriptionsRequest, options?: RequestOptions): ApiPromise<VideoV1RoomRoomTranscriptions, ApiError>`
 - **Wire**: `POST /v1/Rooms/{RoomSid}/Transcriptions/{Ttid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `VideoV1RoomRoomTranscriptions`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1Transcriptions.UpdateRoomTranscriptionsRequest` (4):
 

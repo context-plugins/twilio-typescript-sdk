@@ -4,17 +4,18 @@
 
 Accessor: `client.verifyV2Bucket` · Source: `src/resources/verify-v2-bucket.ts` · 5 operations · Request types: namespace `VerifyV2Bucket`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createBucket
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createBucket(request: VerifyV2Bucket.CreateBucketRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceRateLimitBucket, ResponseError>`
+- **Signature**: `createBucket(request: VerifyV2Bucket.CreateBucketRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceRateLimitBucket, ApiError>`
 - **Wire**: `POST /v2/Services/{ServiceSid}/RateLimits/{RateLimitSid}/Buckets`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `VerifyV2ServiceRateLimitBucket`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2Bucket.CreateBucketRequest` (4):
 
@@ -32,12 +33,13 @@ Accessor: `client.verifyV2Bucket` · Source: `src/resources/verify-v2-bucket.ts`
 ### deleteBucket
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteBucket(request: VerifyV2Bucket.DeleteBucketRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteBucket(request: VerifyV2Bucket.DeleteBucketRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v2/Services/{ServiceSid}/RateLimits/{RateLimitSid}/Buckets/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2Bucket.DeleteBucketRequest` (3):
 
@@ -50,12 +52,12 @@ Accessor: `client.verifyV2Bucket` · Source: `src/resources/verify-v2-bucket.ts`
 ### fetchBucket
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchBucket(request: VerifyV2Bucket.FetchBucketRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceRateLimitBucket, ResponseError>`
+- **Signature**: `fetchBucket(request: VerifyV2Bucket.FetchBucketRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceRateLimitBucket, ApiError>`
 - **Wire**: `GET /v2/Services/{ServiceSid}/RateLimits/{RateLimitSid}/Buckets/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `VerifyV2ServiceRateLimitBucket`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2Bucket.FetchBucketRequest` (3):
 
@@ -72,12 +74,12 @@ Accessor: `client.verifyV2Bucket` · Source: `src/resources/verify-v2-bucket.ts`
 ### listBucket
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listBucket(request: VerifyV2Bucket.ListBucketRequest, options?: RequestOptions): ApiPromise<ListBucketResponse, ResponseError>`
+- **Signature**: `listBucket(request: VerifyV2Bucket.ListBucketRequest, options?: RequestOptions): ApiPromise<ListBucketResponse, ApiError>`
 - **Wire**: `GET /v2/Services/{ServiceSid}/RateLimits/{RateLimitSid}/Buckets`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListBucketResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2Bucket.ListBucketRequest` (5):
 
@@ -96,12 +98,13 @@ Accessor: `client.verifyV2Bucket` · Source: `src/resources/verify-v2-bucket.ts`
 ### updateBucket
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateBucket(request: VerifyV2Bucket.UpdateBucketRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceRateLimitBucket, ResponseError>`
+- **Signature**: `updateBucket(request: VerifyV2Bucket.UpdateBucketRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceRateLimitBucket, ApiError>`
 - **Wire**: `POST /v2/Services/{ServiceSid}/RateLimits/{RateLimitSid}/Buckets/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `VerifyV2ServiceRateLimitBucket`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2Bucket.UpdateBucketRequest` (5):
 

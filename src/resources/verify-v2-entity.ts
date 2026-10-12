@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import { listEntityResponseSchema, type ListEntityResponse } from "../models/list-entity-response.js";
 import {
@@ -22,16 +23,32 @@ export class VerifyV2Entity {
     this.#auth = auth;
   }
 
+  /**
+   * Create a new Entity for the Service
+   *
+   * @remarks
+   * Create a new Entity for the Service
+   *
+   * @returns Created
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   createEntity(
     request: VerifyV2Entity.CreateEntityRequest,
     options?: RequestOptions,
-  ): ApiPromise<VerifyV2ServiceEntity, ResponseError> {
-    return this.#rawClient.execute<VerifyV2ServiceEntity, ResponseError>(
+  ): ApiPromise<VerifyV2ServiceEntity, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default3("/v2/Services/{ServiceSid}/Entities"),
+        urlTemplate: this.#servers.default3("/v2/Services/{ServiceSid}/Entities"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "ServiceSid", value: request.serviceSid, schema: s.string() }],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: {
           kind: "formUrlEncoded",
           value: [{ name: "Identity", value: request.identity, schema: s.string() }],
@@ -39,78 +56,125 @@ export class VerifyV2Entity {
       },
       {
         success: { kind: "json", schema: verifyV2ServiceEntitySchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Delete a specific Entity.
+   *
+   * @remarks
+   * Delete a specific Entity.
+   *
+   * @returns The resource was deleted successfully.
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   deleteEntity(
     request: VerifyV2Entity.DeleteEntityRequest,
     options?: RequestOptions,
-  ): ApiPromise<undefined, ResponseError> {
-    return this.#rawClient.execute<undefined, ResponseError>(
+  ): ApiPromise<undefined, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "DELETE",
-        url: this.#servers.default3("/v2/Services/{ServiceSid}/Entities/{Identity}"),
+        urlTemplate: this.#servers.default3("/v2/Services/{ServiceSid}/Entities/{Identity}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           { name: "ServiceSid", value: request.serviceSid, schema: s.string() },
           { name: "Identity", value: request.identity, schema: s.string() },
         ],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: { kind: "empty" },
       },
       {
         success: { kind: "empty" },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Fetch a specific Entity.
+   *
+   * @remarks
+   * Fetch a specific Entity.
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   fetchEntity(
     request: VerifyV2Entity.FetchEntityRequest,
     options?: RequestOptions,
-  ): ApiPromise<VerifyV2ServiceEntity, ResponseError> {
-    return this.#rawClient.execute<VerifyV2ServiceEntity, ResponseError>(
+  ): ApiPromise<VerifyV2ServiceEntity, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default3("/v2/Services/{ServiceSid}/Entities/{Identity}"),
+        urlTemplate: this.#servers.default3("/v2/Services/{ServiceSid}/Entities/{Identity}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           { name: "ServiceSid", value: request.serviceSid, schema: s.string() },
           { name: "Identity", value: request.identity, schema: s.string() },
         ],
+        query: [],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: verifyV2ServiceEntitySchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Retrieve a list of all Entities for a Service.
+   *
+   * @remarks
+   * Retrieve a list of all Entities for a Service.
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   listEntity(
     request: VerifyV2Entity.ListEntityRequest,
     options?: RequestOptions,
-  ): ApiPromise<ListEntityResponse, ResponseError> {
-    return this.#rawClient.execute<ListEntityResponse, ResponseError>(
+  ): ApiPromise<ListEntityResponse, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default3("/v2/Services/{ServiceSid}/Entities"),
+        urlTemplate: this.#servers.default3("/v2/Services/{ServiceSid}/Entities"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "ServiceSid", value: request.serviceSid, schema: s.string() }],
         query: [
-          { name: "PageSize", value: request.pageSize, schema: s.optional(s.number()) },
-          { name: "Page", value: request.page, schema: s.optional(s.number()) },
+          { name: "PageSize", value: request.pageSize, schema: s.optional(s.int()) },
+          { name: "Page", value: request.page, schema: s.optional(s.int()) },
           { name: "PageToken", value: request.pageToken, schema: s.optional(s.string()) },
         ],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: listEntityResponseSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -119,24 +183,51 @@ export class VerifyV2Entity {
 
 export namespace VerifyV2Entity {
   export type CreateEntityRequest = {
+    /** The unique SID identifier of the Service. */
     serviceSid: string;
+    /**
+     * The unique external identifier for the Entity of the Service. This identifier should be
+     * immutable, not PII, length between 8 and 64 characters, and generated by your external
+     * system, such as your user's UUID, GUID, or SID. It can only contain dash (-) separated
+     * alphanumeric characters.
+     */
     identity: string;
   };
 
   export type DeleteEntityRequest = {
+    /** The unique SID identifier of the Service. */
     serviceSid: string;
+    /**
+     * The unique external identifier for the Entity of the Service. This identifier should be
+     * immutable, not PII, length between 8 and 64 characters, and generated by your external
+     * system, such as your user's UUID, GUID, or SID. It can only contain dash (-) separated
+     * alphanumeric characters.
+     */
     identity: string;
   };
 
   export type FetchEntityRequest = {
+    /** The unique SID identifier of the Service. */
     serviceSid: string;
+    /**
+     * The unique external identifier for the Entity of the Service. This identifier should be
+     * immutable, not PII, length between 8 and 64 characters, and generated by your external
+     * system, such as your user's UUID, GUID, or SID. It can only contain dash (-) separated
+     * alphanumeric characters.
+     */
     identity: string;
   };
 
   export type ListEntityRequest = {
+    /** The unique SID identifier of the Service. */
     serviceSid: string;
+    /**
+     * How many resources to return in each list page. The default is 50, and the maximum is 1000.
+     */
     pageSize?: number;
+    /** The page index. This value is simply for client state. */
     page?: number;
+    /** The page token. This is provided by the API. */
     pageToken?: string;
   };
 }

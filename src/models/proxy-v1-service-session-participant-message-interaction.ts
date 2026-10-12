@@ -10,25 +10,63 @@ import {
 } from "./message-interaction-enum-type.js";
 
 export type ProxyV1ServiceSessionParticipantMessageInteraction = {
+  /** The unique string that we created to identify the MessageInteraction resource. */
   sid?: string | null;
+  /** The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) resource. */
   sessionSid?: string | null;
+  /** The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) resource. */
   serviceSid?: string | null;
+  /**
+   * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the
+   * MessageInteraction resource.
+   */
   accountSid?: string | null;
+  /**
+   * A JSON string that includes the message body sent to the participant. (e.g. `{"body":
+   * "hello"}`)
+   */
   data?: string | null;
+  /** The Type of Message Interaction. This value is always `message`. */
   type?: MessageInteractionEnumType;
+  /** The SID of the [Participant](https://www.twilio.com/docs/proxy/api/participant) resource. */
   participantSid?: string | null;
+  /** Always empty for created Message Interactions. */
   inboundParticipantSid?: string | null;
+  /** Always empty for created Message Interactions. */
   inboundResourceSid?: string | null;
+  /** Always empty for created Message Interactions. */
   inboundResourceStatus?: MessageInteractionEnumResourceStatus;
+  /** Always empty for created Message Interactions. */
   inboundResourceType?: string | null;
+  /** Always empty for created Message Interactions. */
   inboundResourceUrl?: string | null;
+  /**
+   * The SID of the outbound [Participant](https://www.twilio.com/docs/proxy/api/participant)
+   * resource.
+   */
   outboundParticipantSid?: string | null;
+  /**
+   * The SID of the outbound [Message](https://www.twilio.com/docs/sms/api/message-resource)
+   * resource.
+   */
   outboundResourceSid?: string | null;
+  /** Always empty for created Message Interactions. */
   outboundResourceStatus?: MessageInteractionEnumResourceStatus;
+  /** The outbound resource type. This value is always `Message`. */
   outboundResourceType?: string | null;
+  /** The URL of the Twilio message resource. */
   outboundResourceUrl?: string | null;
+  /**
+   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the resource
+   * was created.
+   */
   dateCreated?: Date | null;
+  /**
+   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the resource
+   * was last updated.
+   */
   dateUpdated?: Date | null;
+  /** The absolute URL of the MessageInteraction resource. */
   url?: string | null;
 };
 

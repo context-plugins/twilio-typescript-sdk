@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The verification status of the Supporting Document resource. */
 export const SupportingDocumentEnumStatus1 = {
   Draft: "DRAFT",
   PendingReview: "PENDING_REVIEW",

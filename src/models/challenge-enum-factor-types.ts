@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The Factor Type of this Challenge. Currently `push` and `totp` are supported. */
 export const ChallengeEnumFactorTypes = {
   Push: "push",
   Totp: "totp",

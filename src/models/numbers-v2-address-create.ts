@@ -2,18 +2,31 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type NumbersV2AddressCreate = {
+  /** A human-readable description of this resource, up to 64 characters. */
   friendlyName?: string | null;
+  /** The name of the customer associated with this address. */
   customerName?: string | null;
+  /** The street address. */
   street: string;
+  /** The additional street address information. */
   streetSecondary?: string | null;
+  /** The locality or city of this address. */
   locality?: string | null;
+  /** The state or region of this address. */
   region?: string | null;
+  /** The postal code of this address. */
   postalCode?: string | null;
+  /** The ISO country code of this address. */
   isoCountry: string;
+  /** The source system that created this address. */
   source?: string | null;
+  /** Whether to force validation of the address. */
   forceValidation?: boolean | null;
+  /** Whether to bypass validation of the address. */
   bypassValidation?: boolean | null;
+  /** Whether to automatically correct the address. */
   autoCorrectAddress?: boolean | null;
+  /** Whether this address is enabled for emergency services. */
   emergencyEnabled?: boolean | null;
 };
 

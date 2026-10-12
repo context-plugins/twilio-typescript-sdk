@@ -2,19 +2,33 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type FlexV2FlexUser = {
+  /** The unique SID of the account that created the resource. */
   accountSid?: string | null;
+  /** The unique ID created by Twilio to identify a Flex instance. */
   instanceSid?: string | null;
+  /** The unique SID identifier of the Twilio Unified User. */
   userSid?: string | null;
+  /** The unique SID identifier of the Flex User. */
   flexUserSid?: string | null;
+  /** The unique SID identifier of the worker. */
   workerSid?: string | null;
+  /** The unique SID identifier of the workspace. */
   workspaceSid?: string | null;
+  /** The unique SID identifier of the Flex Team. */
   flexTeamSid?: string | null;
+  /** Username of the User. */
   username?: string | null;
+  /** Email of the User. */
   email?: string | null;
+  /** The locale preference of the user. */
   locale?: string | null;
+  /** The roles of the user. */
   roles?: string[] | null;
+  /** The date that this user was created, given in ISO 8601 format. */
   createdDate?: Date | null;
+  /** The date that this user was updated, given in ISO 8601 format. */
   updatedDate?: Date | null;
+  /** The current version of the user. @default 0 */
   version?: number;
   url?: string | null;
 };
@@ -33,7 +47,7 @@ export const flexV2FlexUserSchema: Schema<FlexV2FlexUser> = s.object<FlexV2FlexU
   roles: s.optionalNullable(s.array(s.string())),
   createdDate: s.optionalNullable(s.dateTime()),
   updatedDate: s.optionalNullable(s.dateTime()),
-  version: s.optional(s.number()),
+  version: s.defaulted(s.int(), 0),
   url: s.optionalNullable(s.string()),
   _keysMap: {
     accountSid: "account_sid",

@@ -4,17 +4,18 @@
 
 Accessor: `client.trusthubV1TrustProductsEvaluations` · Source: `src/resources/trusthub-v1-trust-products-evaluations.ts` · 3 operations · Request types: namespace `TrusthubV1TrustProductsEvaluations`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createTrustProductEvaluation
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createTrustProductEvaluation(request: TrusthubV1TrustProductsEvaluations.CreateTrustProductEvaluationRequest, options?: RequestOptions): ApiPromise<TrusthubV1TrustProductTrustProductEvaluation, ResponseError>`
+- **Signature**: `createTrustProductEvaluation(request: TrusthubV1TrustProductsEvaluations.CreateTrustProductEvaluationRequest, options?: RequestOptions): ApiPromise<TrusthubV1TrustProductTrustProductEvaluation, ApiError>`
 - **Wire**: `POST /v1/TrustProducts/{TrustProductSid}/Evaluations`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `TrusthubV1TrustProductTrustProductEvaluation`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1TrustProductsEvaluations.CreateTrustProductEvaluationRequest` (2):
 
@@ -30,12 +31,12 @@ Accessor: `client.trusthubV1TrustProductsEvaluations` · Source: `src/resources/
 ### fetchTrustProductEvaluation
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchTrustProductEvaluation(request: TrusthubV1TrustProductsEvaluations.FetchTrustProductEvaluationRequest, options?: RequestOptions): ApiPromise<TrusthubV1TrustProductTrustProductEvaluation, ResponseError>`
+- **Signature**: `fetchTrustProductEvaluation(request: TrusthubV1TrustProductsEvaluations.FetchTrustProductEvaluationRequest, options?: RequestOptions): ApiPromise<TrusthubV1TrustProductTrustProductEvaluation, ApiError>`
 - **Wire**: `GET /v1/TrustProducts/{TrustProductSid}/Evaluations/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `TrusthubV1TrustProductTrustProductEvaluation`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1TrustProductsEvaluations.FetchTrustProductEvaluationRequest` (2):
 
@@ -51,12 +52,12 @@ Accessor: `client.trusthubV1TrustProductsEvaluations` · Source: `src/resources/
 ### listTrustProductEvaluation
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listTrustProductEvaluation(request: TrusthubV1TrustProductsEvaluations.ListTrustProductEvaluationRequest, options?: RequestOptions): ApiPromise<ListTrustProductEvaluationResponse, ResponseError>`
+- **Signature**: `listTrustProductEvaluation(request: TrusthubV1TrustProductsEvaluations.ListTrustProductEvaluationRequest, options?: RequestOptions): ApiPromise<ListTrustProductEvaluationResponse, ApiError>`
 - **Wire**: `GET /v1/TrustProducts/{TrustProductSid}/Evaluations`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListTrustProductEvaluationResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1TrustProductsEvaluations.ListTrustProductEvaluationRequest` (4):
 

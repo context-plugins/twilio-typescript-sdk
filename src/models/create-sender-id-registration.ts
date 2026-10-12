@@ -3,11 +3,19 @@ import type { Schema } from "../core/validation/schema.js";
 import { senderIdPurposeSchema, type SenderIdPurpose } from "./sender-id-purpose.js";
 
 export type CreateSenderIdRegistration = {
+  /** List of Iso countries */
   isoCountries?: string[];
+  /** Whether registering on behalf of subsidiary */
   companySubsidiary: boolean;
+  /** Business profile Bundle sid used for the application */
   businessProfileSid?: string;
+  /**
+   * Identity sid used for the application. It must be of IdentityType 'sender_id_customer_profile'
+   */
   identitySid?: string;
+  /** Address sid used for the application */
   addressSid?: string;
+  /** Purpose for using Sender ID */
   purpose: SenderIdPurpose;
 };
 

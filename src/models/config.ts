@@ -9,6 +9,7 @@ import { relyingPartySchema, type RelyingParty } from "./relying-party.js";
 import { userVerificationSchema, type UserVerification } from "./user-verification.js";
 
 export type Config = {
+  /** Contains the information of the party requesting the user for authentication */
   relyingParty?: RelyingParty;
   authenticatorAttachment?: AuthenticatorAttachment1;
   discoverableCredentials?: DiscoverableCredentials;

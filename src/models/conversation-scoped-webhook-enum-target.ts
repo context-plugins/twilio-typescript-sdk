@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The target of this webhook: `webhook`, `studio`, `trigger` */
 export const ConversationScopedWebhookEnumTarget = {
   Webhook: "webhook",
   Trigger: "trigger",

@@ -26,32 +26,58 @@ import {
 } from "./conference-participant-enum-region.js";
 
 export type InsightsV1ConferenceConferenceParticipant = {
+  /** SID for this participant. */
   participantSid?: string | null;
+  /** The user-specified label of this participant. */
   label?: string | null;
+  /** The unique SID identifier of the Conference. */
   conferenceSid?: string | null;
+  /** Unique SID identifier of the call that generated the Participant resource. */
   callSid?: string | null;
+  /** The unique SID identifier of the Account. */
   accountSid?: string | null;
   callDirection?: ConferenceParticipantEnumCallDirection;
+  /** Caller ID of the calling party. */
   from?: string | null;
+  /** Called party. */
   to?: string | null;
   callStatus?: ConferenceParticipantEnumCallStatus;
+  /** ISO alpha-2 country code of the participant based on caller ID or called number. */
   countryCode?: string | null;
+  /**
+   * Boolean. Indicates whether participant had startConferenceOnEnter=true or
+   * endConferenceOnExit=true.
+   */
   isModerator?: boolean | null;
+  /** ISO 8601 timestamp of participant join event. */
   joinTime?: Date | null;
+  /** ISO 8601 timestamp of participant leave event. */
   leaveTime?: Date | null;
+  /** Participant durations in seconds. */
   durationSeconds?: number | null;
+  /** Add Participant API only. Estimated time in queue at call creation. */
   outboundQueueLength?: number | null;
+  /** Add Participant API only. Actual time in queue in seconds. */
   outboundTimeInQueue?: number | null;
   jitterBufferSize?: ConferenceParticipantEnumJitterBufferSize;
+  /** Boolean. Indicated whether participant was a coach. */
   isCoach?: boolean | null;
+  /** Call SIDs coached by this participant. */
   coachedParticipants?: string[] | null;
   participantRegion?: ConferenceParticipantEnumRegion;
   conferenceRegion?: ConferenceParticipantEnumRegion;
   callType?: ConferenceParticipantEnumCallType;
   processingState?: ConferenceParticipantEnumProcessingState;
+  /** Participant properties and metadata. */
   properties?: Record<string, unknown> | null;
+  /**
+   * Object containing information of actions taken by participants. Contains a dictionary of URL
+   * links to nested resources of this Conference Participant.
+   */
   events?: Record<string, unknown> | null;
+  /** Object. Contains participant call quality metrics. */
   metrics?: Record<string, unknown> | null;
+  /** The URL of this resource. */
   url?: string | null;
 };
 
@@ -70,9 +96,9 @@ export const insightsV1ConferenceConferenceParticipantSchema: Schema<InsightsV1C
     isModerator: s.optionalNullable(s.boolean()),
     joinTime: s.optionalNullable(s.dateTime()),
     leaveTime: s.optionalNullable(s.dateTime()),
-    durationSeconds: s.optionalNullable(s.number()),
-    outboundQueueLength: s.optionalNullable(s.number()),
-    outboundTimeInQueue: s.optionalNullable(s.number()),
+    durationSeconds: s.optionalNullable(s.int()),
+    outboundQueueLength: s.optionalNullable(s.int()),
+    outboundTimeInQueue: s.optionalNullable(s.int()),
     jitterBufferSize: s.optional(s.lazy(() => conferenceParticipantEnumJitterBufferSizeSchema)),
     isCoach: s.optionalNullable(s.boolean()),
     coachedParticipants: s.optionalNullable(s.array(s.string())),

@@ -35,31 +35,56 @@ import {
 } from "./video-room-summary-enum-twilio-realm.js";
 
 export type InsightsV1VideoRoomSummary = {
+  /** Account SID associated with this room. */
   accountSid?: string | null;
+  /** Unique identifier for the room. */
   roomSid?: string | null;
+  /** Room friendly name. */
   roomName?: string | null;
+  /** Creation time of the room. */
   createTime?: Date | null;
+  /** End time for the room. */
   endTime?: Date | null;
   roomType?: VideoRoomSummaryEnumRoomType;
   roomStatus?: VideoRoomSummaryEnumRoomStatus;
+  /** Webhook provided for status callbacks. */
   statusCallback?: string | null;
+  /** HTTP method provided for status callback URL. */
   statusCallbackMethod?: AmdStatusCallbackMethod | null;
   createdMethod?: VideoRoomSummaryEnumCreatedMethod;
   endReason?: VideoRoomSummaryEnumEndReason;
+  /** Max number of total participants allowed by the application settings. */
   maxParticipants?: number | null;
+  /**
+   * Number of participants. May include duplicate identities for participants who left and
+   * rejoined.
+   */
   uniqueParticipants?: number | null;
+  /** Unique number of participant identities. */
   uniqueParticipantIdentities?: number | null;
+  /** Actual number of concurrent participants. */
   concurrentParticipants?: number | null;
+  /**
+   * Maximum number of participants allowed in the room at the same time allowed by the application
+   * settings.
+   */
   maxConcurrentParticipants?: number | null;
+  /** Codecs used by participants in the room. Can be `VP8`, `H264`, or `VP9`. */
   codecs?: VideoRoomSummaryEnumCodec[] | null;
   mediaRegion?: VideoRoomSummaryEnumTwilioRealm;
+  /** Total room duration from create time to end time. */
   durationSec?: number | null;
+  /** Combined amount of participant time in the room. */
   totalParticipantDurationSec?: number | null;
+  /** Combined amount of recorded seconds for participants in the room. */
   totalRecordingDurationSec?: number | null;
   processingState?: VideoRoomSummaryEnumProcessingState;
+  /** Boolean indicating if recording is enabled for the room. */
   recordingEnabled?: boolean | null;
   edgeLocation?: VideoRoomSummaryEnumEdgeLocation;
+  /** URL for the room resource. */
   url?: string | null;
+  /** Room subresources. */
   links?: Record<string, unknown> | null;
 };
 
@@ -76,16 +101,16 @@ export const insightsV1VideoRoomSummarySchema: Schema<InsightsV1VideoRoomSummary
     statusCallbackMethod: s.optionalNullable(s.lazy(() => amdStatusCallbackMethodSchema)),
     createdMethod: s.optional(s.lazy(() => videoRoomSummaryEnumCreatedMethodSchema)),
     endReason: s.optional(s.lazy(() => videoRoomSummaryEnumEndReasonSchema)),
-    maxParticipants: s.optionalNullable(s.number()),
-    uniqueParticipants: s.optionalNullable(s.number()),
-    uniqueParticipantIdentities: s.optionalNullable(s.number()),
-    concurrentParticipants: s.optionalNullable(s.number()),
-    maxConcurrentParticipants: s.optionalNullable(s.number()),
+    maxParticipants: s.optionalNullable(s.int()),
+    uniqueParticipants: s.optionalNullable(s.int()),
+    uniqueParticipantIdentities: s.optionalNullable(s.int()),
+    concurrentParticipants: s.optionalNullable(s.int()),
+    maxConcurrentParticipants: s.optionalNullable(s.int()),
     codecs: s.optionalNullable(s.array(s.lazy(() => videoRoomSummaryEnumCodecSchema))),
     mediaRegion: s.optional(s.lazy(() => videoRoomSummaryEnumTwilioRealmSchema)),
-    durationSec: s.optionalNullable(s.number()),
-    totalParticipantDurationSec: s.optionalNullable(s.number()),
-    totalRecordingDurationSec: s.optionalNullable(s.number()),
+    durationSec: s.optionalNullable(s.int()),
+    totalParticipantDurationSec: s.optionalNullable(s.int()),
+    totalRecordingDurationSec: s.optionalNullable(s.int()),
     processingState: s.optional(s.lazy(() => videoRoomSummaryEnumProcessingStateSchema)),
     recordingEnabled: s.optionalNullable(s.boolean()),
     edgeLocation: s.optional(s.lazy(() => videoRoomSummaryEnumEdgeLocationSchema)),

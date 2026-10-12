@@ -3,14 +3,41 @@ import type { Schema } from "../core/validation/schema.js";
 import { roleEnumRoleTypeSchema, type RoleEnumRoleType } from "./role-enum-role-type.js";
 
 export type ConversationsV1Role = {
+  /** The unique string that we created to identify the Role resource. */
   sid?: string | null;
+  /**
+   * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Role
+   * resource.
+   */
   accountSid?: string | null;
+  /**
+   * The SID of the [Conversation
+   * Service](https://www.twilio.com/docs/conversations/api/service-resource) the Role resource is
+   * associated with.
+   */
   chatServiceSid?: string | null;
+  /** The string that you assigned to describe the resource. */
   friendlyName?: string | null;
+  /**
+   * The type of role. Can be: `conversation` for
+   * [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) roles or
+   * `service` for [Conversation
+   * Service](https://www.twilio.com/docs/conversations/api/service-resource) roles.
+   */
   type?: RoleEnumRoleType;
+  /** An array of the permissions the role has been granted. */
   permissions?: string[] | null;
+  /**
+   * The date and time in GMT when the resource was created specified in [ISO
+   * 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+   */
   dateCreated?: Date | null;
+  /**
+   * The date and time in GMT when the resource was last updated specified in [ISO
+   * 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+   */
   dateUpdated?: Date | null;
+  /** An absolute API resource URL for this user role. */
   url?: string | null;
 };
 

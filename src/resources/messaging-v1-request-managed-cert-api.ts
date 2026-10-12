@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import {
   messagingV1RequestManagedCertSchema,
@@ -24,18 +25,20 @@ export class MessagingV1RequestManagedCertApi {
   updateRequestManagedCert(
     request: MessagingV1RequestManagedCertApi.UpdateRequestManagedCertRequest,
     options?: RequestOptions,
-  ): ApiPromise<MessagingV1RequestManagedCert, ResponseError> {
-    return this.#rawClient.execute<MessagingV1RequestManagedCert, ResponseError>(
+  ): ApiPromise<MessagingV1RequestManagedCert, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default1("/v1/LinkShortening/Domains/{DomainSid}/RequestManagedCert"),
+        urlTemplate: this.#servers.default1("/v1/LinkShortening/Domains/{DomainSid}/RequestManagedCert"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "DomainSid", value: request.domainSid, schema: s.string() }],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: messagingV1RequestManagedCertSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -44,6 +47,9 @@ export class MessagingV1RequestManagedCertApi {
 
 export namespace MessagingV1RequestManagedCertApi {
   export type UpdateRequestManagedCertRequest = {
+    /**
+     * Unique string used to identify the domain that this certificate should be associated with.
+     */
     domainSid: string;
   };
 }

@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import {
   apiV2010AccountSipSipDomainSipIpAccessControlListMappingSchema,
@@ -25,14 +26,28 @@ export class Api20100401IpAccessControlListMapping {
     this.#auth = auth;
   }
 
+  /**
+   * Create a new IpAccessControlListMapping resource.
+   *
+   * @remarks
+   * Create a new IpAccessControlListMapping resource.
+   *
+   * @returns Created
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   createSipIpAccessControlListMapping(
     request: Api20100401IpAccessControlListMapping.CreateSipIpAccessControlListMappingRequest,
     options?: RequestOptions,
-  ): ApiPromise<ApiV2010AccountSipSipDomainSipIpAccessControlListMapping, ResponseError> {
-    return this.#rawClient.execute<ApiV2010AccountSipSipDomainSipIpAccessControlListMapping, ResponseError>(
+  ): ApiPromise<ApiV2010AccountSipSipDomainSipIpAccessControlListMapping, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default(
+        urlTemplate: this.#servers.default(
           "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/IpAccessControlListMappings.json",
         ),
         auth: this.#auth.accountSidAuthToken,
@@ -40,6 +55,8 @@ export class Api20100401IpAccessControlListMapping {
           { name: "AccountSid", value: request.accountSid, schema: s.string() },
           { name: "DomainSid", value: request.domainSid, schema: s.string() },
         ],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: {
           kind: "formUrlEncoded",
           value: [
@@ -49,20 +66,34 @@ export class Api20100401IpAccessControlListMapping {
       },
       {
         success: { kind: "json", schema: apiV2010AccountSipSipDomainSipIpAccessControlListMappingSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Delete an IpAccessControlListMapping resource.
+   *
+   * @remarks
+   * Delete an IpAccessControlListMapping resource.
+   *
+   * @returns The resource was deleted successfully.
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   deleteSipIpAccessControlListMapping(
     request: Api20100401IpAccessControlListMapping.DeleteSipIpAccessControlListMappingRequest,
     options?: RequestOptions,
-  ): ApiPromise<undefined, ResponseError> {
-    return this.#rawClient.execute<undefined, ResponseError>(
+  ): ApiPromise<undefined, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "DELETE",
-        url: this.#servers.default(
+        urlTemplate: this.#servers.default(
           "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/IpAccessControlListMappings/{Sid}.json",
         ),
         auth: this.#auth.accountSidAuthToken,
@@ -71,24 +102,40 @@ export class Api20100401IpAccessControlListMapping {
           { name: "DomainSid", value: request.domainSid, schema: s.string() },
           { name: "Sid", value: request.sid, schema: s.string() },
         ],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: { kind: "empty" },
       },
       {
         success: { kind: "empty" },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Fetch an IpAccessControlListMapping resource.
+   *
+   * @remarks
+   * Fetch an IpAccessControlListMapping resource.
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   fetchSipIpAccessControlListMapping(
     request: Api20100401IpAccessControlListMapping.FetchSipIpAccessControlListMappingRequest,
     options?: RequestOptions,
-  ): ApiPromise<ApiV2010AccountSipSipDomainSipIpAccessControlListMapping, ResponseError> {
-    return this.#rawClient.execute<ApiV2010AccountSipSipDomainSipIpAccessControlListMapping, ResponseError>(
+  ): ApiPromise<ApiV2010AccountSipSipDomainSipIpAccessControlListMapping, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default(
+        urlTemplate: this.#servers.default(
           "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/IpAccessControlListMappings/{Sid}.json",
         ),
         auth: this.#auth.accountSidAuthToken,
@@ -97,24 +144,40 @@ export class Api20100401IpAccessControlListMapping {
           { name: "DomainSid", value: request.domainSid, schema: s.string() },
           { name: "Sid", value: request.sid, schema: s.string() },
         ],
+        query: [],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: apiV2010AccountSipSipDomainSipIpAccessControlListMappingSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Retrieve a list of IpAccessControlListMapping resources.
+   *
+   * @remarks
+   * Retrieve a list of IpAccessControlListMapping resources.
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   listSipIpAccessControlListMapping(
     request: Api20100401IpAccessControlListMapping.ListSipIpAccessControlListMappingRequest,
     options?: RequestOptions,
-  ): ApiPromise<ListSipIpAccessControlListMappingResponse, ResponseError> {
-    return this.#rawClient.execute<ListSipIpAccessControlListMappingResponse, ResponseError>(
+  ): ApiPromise<ListSipIpAccessControlListMappingResponse, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default(
+        urlTemplate: this.#servers.default(
           "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/IpAccessControlListMappings.json",
         ),
         auth: this.#auth.accountSidAuthToken,
@@ -123,15 +186,16 @@ export class Api20100401IpAccessControlListMapping {
           { name: "DomainSid", value: request.domainSid, schema: s.string() },
         ],
         query: [
-          { name: "PageSize", value: request.pageSize, schema: s.optional(s.number()) },
-          { name: "Page", value: request.page, schema: s.optional(s.number()) },
+          { name: "PageSize", value: request.pageSize, schema: s.optional(s.int()) },
+          { name: "Page", value: request.page, schema: s.optional(s.int()) },
           { name: "PageToken", value: request.pageToken, schema: s.optional(s.string()) },
         ],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: listSipIpAccessControlListMappingResponseSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -140,28 +204,44 @@ export class Api20100401IpAccessControlListMapping {
 
 export namespace Api20100401IpAccessControlListMapping {
   export type CreateSipIpAccessControlListMappingRequest = {
+    /** The unique id of the Account that is responsible for this resource. */
     accountSid: string;
+    /** A 34 character string that uniquely identifies the SIP domain. */
     domainSid: string;
+    /** The unique id of the IP access control list to map to the SIP domain. */
     ipAccessControlListSid: string;
   };
 
   export type DeleteSipIpAccessControlListMappingRequest = {
+    /** The unique id of the Account that is responsible for this resource. */
     accountSid: string;
+    /** A 34 character string that uniquely identifies the SIP domain. */
     domainSid: string;
+    /** A 34 character string that uniquely identifies the resource to delete. */
     sid: string;
   };
 
   export type FetchSipIpAccessControlListMappingRequest = {
+    /** The unique id of the Account that is responsible for this resource. */
     accountSid: string;
+    /** A 34 character string that uniquely identifies the SIP domain. */
     domainSid: string;
+    /** A 34 character string that uniquely identifies the resource to fetch. */
     sid: string;
   };
 
   export type ListSipIpAccessControlListMappingRequest = {
+    /** The unique id of the Account that is responsible for this resource. */
     accountSid: string;
+    /** A 34 character string that uniquely identifies the SIP domain. */
     domainSid: string;
+    /**
+     * How many resources to return in each list page. The default is 50, and the maximum is 1000.
+     */
     pageSize?: number;
+    /** The page index. This value is simply for client state. */
     page?: number;
+    /** The page token. This is provided by the API. */
     pageToken?: string;
   };
 }

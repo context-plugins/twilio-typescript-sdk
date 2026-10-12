@@ -8,7 +8,7 @@ export type Transcription1 = {
 };
 
 export const transcription1Schema: Schema<Transcription1> = s.object<Transcription1>({
-  channel: s.optional(s.number()),
-  confidence: s.optional(s.number()),
+  channel: s.optional(s.int()),
+  confidence: s.optional(s.float64()),
   engine: s.optional(s.string()),
 });

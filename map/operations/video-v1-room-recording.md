@@ -4,17 +4,18 @@
 
 Accessor: `client.videoV1RoomRecording` · Source: `src/resources/video-v1-room-recording.ts` · 3 operations · Request types: namespace `VideoV1RoomRecording`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### deleteRoomRecording
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteRoomRecording(request: VideoV1RoomRecording.DeleteRoomRecordingRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteRoomRecording(request: VideoV1RoomRecording.DeleteRoomRecordingRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Rooms/{RoomSid}/Recordings/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1RoomRecording.DeleteRoomRecordingRequest` (2):
 
@@ -26,12 +27,12 @@ Accessor: `client.videoV1RoomRecording` · Source: `src/resources/video-v1-room-
 ### fetchRoomRecording
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchRoomRecording(request: VideoV1RoomRecording.FetchRoomRecordingRequest, options?: RequestOptions): ApiPromise<VideoV1RoomRoomRecording, ResponseError>`
+- **Signature**: `fetchRoomRecording(request: VideoV1RoomRecording.FetchRoomRecordingRequest, options?: RequestOptions): ApiPromise<VideoV1RoomRoomRecording, ApiError>`
 - **Wire**: `GET /v1/Rooms/{RoomSid}/Recordings/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `VideoV1RoomRoomRecording`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1RoomRecording.FetchRoomRecordingRequest` (2):
 
@@ -47,12 +48,12 @@ Accessor: `client.videoV1RoomRecording` · Source: `src/resources/video-v1-room-
 ### listRoomRecording
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listRoomRecording(request: VideoV1RoomRecording.ListRoomRecordingRequest, options?: RequestOptions): ApiPromise<ListRoomRecordingResponse, ResponseError>`
+- **Signature**: `listRoomRecording(request: VideoV1RoomRecording.ListRoomRecordingRequest, options?: RequestOptions): ApiPromise<ListRoomRecordingResponse, ApiError>`
 - **Wire**: `GET /v1/Rooms/{RoomSid}/Recordings`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListRoomRecordingResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1RoomRecording.ListRoomRecordingRequest` (8):
 

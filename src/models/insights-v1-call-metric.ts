@@ -7,14 +7,27 @@ import {
 import { metricEnumTwilioEdgeSchema, type MetricEnumTwilioEdge } from "./metric-enum-twilio-edge.js";
 
 export type InsightsV1CallMetric = {
+  /**
+   * Timestamp of metric sample. Samples are taken every 10 seconds and contain the metrics for the
+   * previous 10 seconds.
+   */
   timestamp?: string | null;
+  /** The unique SID identifier of the Call. */
   callSid?: string | null;
+  /** The unique SID identifier of the Account. */
   accountSid?: string | null;
   edge?: MetricEnumTwilioEdge;
   direction?: MetricEnumStreamDirection;
+  /** Contains metrics and properties for the Twilio media gateway of a PSTN call. */
   carrierEdge?: Record<string, unknown> | null;
+  /**
+   * Contains metrics and properties for the Twilio media gateway of a SIP Interface or Trunking
+   * call.
+   */
   sipEdge?: Record<string, unknown> | null;
+  /** Contains metrics and properties for the SDK sensor library for Client calls. */
   sdkEdge?: Record<string, unknown> | null;
+  /** Contains metrics and properties for the Twilio media gateway of a Client call. */
   clientEdge?: Record<string, unknown> | null;
 };
 

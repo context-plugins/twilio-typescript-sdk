@@ -2,7 +2,9 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type MessagingV1LinkshorteningMessagingServiceDomainAssociation = {
+  /** The unique string that we created to identify the Domain resource. */
   domainSid?: string | null;
+  /** The unique string that identifies the messaging service */
   messagingServiceSid?: string | null;
   url?: string | null;
 };

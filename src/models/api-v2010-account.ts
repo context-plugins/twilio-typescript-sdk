@@ -4,15 +4,33 @@ import { accountEnumStatusSchema, type AccountEnumStatus } from "./account-enum-
 import { accountEnumTypeSchema, type AccountEnumType } from "./account-enum-type.js";
 
 export type ApiV2010Account = {
+  /**
+   * The authorization token for this account. This token should be kept a secret, so no sharing.
+   */
   authToken?: string | null;
+  /** The date that this account was created, in GMT in RFC 2822 format */
   dateCreated?: string | null;
+  /** The date that this account was last updated, in GMT in RFC 2822 format. */
   dateUpdated?: string | null;
+  /**
+   * A human readable description of this account, up to 64 characters long. By default the
+   * FriendlyName is your email address.
+   */
   friendlyName?: string | null;
+  /**
+   * The unique 34 character id that represents the parent of this account. The OwnerAccountSid of a
+   * parent account is it's own sid.
+   */
   ownerAccountSid?: string | null;
+  /** A 34 character string that uniquely identifies this resource. */
   sid?: string | null;
+  /** The status of this account. Usually `active`, but can be `suspended` or `closed`. */
   status?: AccountEnumStatus;
+  /** A Map of various subresources available for the given Account Instance */
   subresourceUris?: Record<string, unknown> | null;
+  /** The type of this account. Either `Trial` or `Full` if it's been upgraded */
   type?: AccountEnumType;
+  /** The URI for this resource, relative to `https://api.twilio.com` */
   uri?: string | null;
 };
 

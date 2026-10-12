@@ -4,17 +4,18 @@
 
 Accessor: `client.flexV1InteractionApi` · Source: `src/resources/flex-v1-interaction-api.ts` · 3 operations · Request types: namespace `FlexV1InteractionApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createInteraction
 
 - **Server**: `default13` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createInteraction(request: FlexV1InteractionApi.CreateInteractionRequest, options?: RequestOptions): ApiPromise<FlexV1Interaction, ResponseError>`
+- **Signature**: `createInteraction(request: FlexV1InteractionApi.CreateInteractionRequest, options?: RequestOptions): ApiPromise<FlexV1Interaction, ApiError>`
 - **Wire**: `POST /v1/Interactions`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `FlexV1Interaction`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `FlexV1InteractionApi.CreateInteractionRequest` (4):
 
@@ -32,12 +33,12 @@ Accessor: `client.flexV1InteractionApi` · Source: `src/resources/flex-v1-intera
 ### fetchInteraction2
 
 - **Server**: `default13` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchInteraction2(request: FlexV1InteractionApi.FetchInteraction2Request, options?: RequestOptions): ApiPromise<FlexV1Interaction, ResponseError>`
+- **Signature**: `fetchInteraction2(request: FlexV1InteractionApi.FetchInteraction2Request, options?: RequestOptions): ApiPromise<FlexV1Interaction, ApiError>`
 - **Wire**: `GET /v1/Interactions/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `FlexV1Interaction`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `FlexV1InteractionApi.FetchInteraction2Request` (1):
 
@@ -52,12 +53,13 @@ Accessor: `client.flexV1InteractionApi` · Source: `src/resources/flex-v1-intera
 ### updateInteraction
 
 - **Server**: `default13` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateInteraction(request: FlexV1InteractionApi.UpdateInteractionRequest, options?: RequestOptions): ApiPromise<FlexV1Interaction, ResponseError>`
+- **Signature**: `updateInteraction(request: FlexV1InteractionApi.UpdateInteractionRequest, options?: RequestOptions): ApiPromise<FlexV1Interaction, ApiError>`
 - **Wire**: `POST /v1/Interactions/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `FlexV1Interaction`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `FlexV1InteractionApi.UpdateInteractionRequest` (2):
 

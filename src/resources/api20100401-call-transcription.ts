@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import {
   apiV2010AccountCallRealtimeTranscriptionSchema,
@@ -33,19 +34,37 @@ export class Api20100401CallTranscription {
     this.#auth = auth;
   }
 
+  /**
+   * Create a Transcription
+   *
+   * @remarks
+   * Create a Transcription
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   createRealtimeTranscription(
     request: Api20100401CallTranscription.CreateRealtimeTranscriptionRequest,
     options?: RequestOptions,
-  ): ApiPromise<ApiV2010AccountCallRealtimeTranscription, ResponseError> {
-    return this.#rawClient.execute<ApiV2010AccountCallRealtimeTranscription, ResponseError>(
+  ): ApiPromise<ApiV2010AccountCallRealtimeTranscription, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default("/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Transcriptions.json"),
+        urlTemplate: this.#servers.default(
+          "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Transcriptions.json",
+        ),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           { name: "AccountSid", value: request.accountSid, schema: s.string() },
           { name: "CallSid", value: request.callSid, schema: s.string() },
         ],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: {
           kind: "formUrlEncoded",
           value: [
@@ -104,20 +123,36 @@ export class Api20100401CallTranscription {
       },
       {
         success: { kind: "json", schema: apiV2010AccountCallRealtimeTranscriptionSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Stop a Transcription using either the SID of the Transcription resource or the `name` used when
+   * creating the resource
+   *
+   * @remarks
+   * Stop a Transcription using either the SID of the Transcription resource or the `name` used when
+   * creating the resource
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   updateRealtimeTranscription(
     request: Api20100401CallTranscription.UpdateRealtimeTranscriptionRequest,
     options?: RequestOptions,
-  ): ApiPromise<ApiV2010AccountCallRealtimeTranscription, ResponseError> {
-    return this.#rawClient.execute<ApiV2010AccountCallRealtimeTranscription, ResponseError>(
+  ): ApiPromise<ApiV2010AccountCallRealtimeTranscription, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default(
+        urlTemplate: this.#servers.default(
           "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Transcriptions/{Sid}.json",
         ),
         auth: this.#auth.accountSidAuthToken,
@@ -126,6 +161,8 @@ export class Api20100401CallTranscription {
           { name: "CallSid", value: request.callSid, schema: s.string() },
           { name: "Sid", value: request.sid, schema: s.string() },
         ],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: {
           kind: "formUrlEncoded",
           value: [
@@ -135,7 +172,7 @@ export class Api20100401CallTranscription {
       },
       {
         success: { kind: "json", schema: apiV2010AccountCallRealtimeTranscriptionSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -144,31 +181,91 @@ export class Api20100401CallTranscription {
 
 export namespace Api20100401CallTranscription {
   export type CreateRealtimeTranscriptionRequest = {
+    /**
+     * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created this
+     * Transcription resource.
+     */
     accountSid: string;
+    /**
+     * The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Transcription
+     * resource is associated with.
+     */
     callSid: string;
+    /**
+     * The user-specified name of this Transcription, if one was given when the Transcription was
+     * created. This may be used to stop the Transcription.
+     */
     name?: string;
+    /** One of `inbound_track`, `outbound_track`, `both_tracks`. */
     track?: RealtimeTranscriptionEnumTrack;
+    /** Absolute URL of the status callback. */
     statusCallbackUrl?: string;
+    /** The http method for the status_callback (one of GET, POST). */
     statusCallbackMethod?: StatusCallbackMethod17;
+    /** Friendly name given to the Inbound Track */
     inboundTrackLabel?: string;
+    /** Friendly name given to the Outbound Track */
     outboundTrackLabel?: string;
+    /** Indicates if partial results are going to be sent to the customer */
     partialResults?: boolean;
+    /**
+     * Language code used by the transcription engine, specified in
+     * [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) format
+     */
     languageCode?: string;
+    /** Definition of the transcription engine to be used, among those supported by Twilio */
     transcriptionEngine?: string;
+    /**
+     * indicates if the server will attempt to filter out profanities, replacing all but the initial
+     * character in each filtered word with asterisks
+     */
     profanityFilter?: boolean;
+    /** Recognition model used by the transcription engine, among those supported by the provider */
     speechModel?: string;
+    /**
+     * A Phrase contains words and phrase "hints" so that the speech recognition engine is more
+     * likely to recognize them.
+     */
     hints?: string;
+    /** The provider will add punctuation to recognition result */
     enableAutomaticPunctuation?: boolean;
+    /**
+     * The SID or unique name of the [Intelligence
+     * Service](https://www.twilio.com/docs/conversational-intelligence/api/service-resource) for
+     * persisting transcripts and running post-call Language Operators
+     */
     intelligenceService?: string;
+    /**
+     * The ID of the Conversations Configuration for customizing conversation behavior in
+     * Intelligence Service
+     */
     conversationConfiguration?: string;
+    /**
+     * The ID of the Conversation for associating this Transcription with an existing Conversation
+     * in Intelligence Service
+     */
     conversationId?: string;
+    /**
+     * The ID of the RealTimeTranscription Configuration for configuring all the non-default
+     * behaviors in one go.
+     */
     transcriptionConfigurationId?: string;
+    /** Whether the callback includes raw provider data. */
     enableProviderData?: boolean;
   };
 
   export type UpdateRealtimeTranscriptionRequest = {
+    /**
+     * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created this
+     * Transcription resource.
+     */
     accountSid: string;
+    /**
+     * The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Transcription
+     * resource is associated with.
+     */
     callSid: string;
+    /** The SID of the Transcription resource, or the `name` used when creating the resource */
     sid: string;
     status: RealtimeTranscriptionEnumUpdateStatus;
   };

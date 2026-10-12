@@ -4,16 +4,17 @@
 
 Accessor: `client.api20100401CallRecording` · Source: `src/resources/api20100401-call-recording.ts` · 5 operations · Request and error types: namespace `Api20100401CallRecording`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createCallRecording
 
-- **Signature**: `createCallRecording(request: Api20100401CallRecording.CreateCallRecordingRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountCallCallRecording, ResponseError>`
+- **Signature**: `createCallRecording(request: Api20100401CallRecording.CreateCallRecordingRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountCallCallRecording, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Recordings.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountCallCallRecording`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401CallRecording.CreateCallRecordingRequest` (9):
 
@@ -36,12 +37,13 @@ Accessor: `client.api20100401CallRecording` · Source: `src/resources/api2010040
 
 ### deleteCallRecording
 
-- **Signature**: `deleteCallRecording(request: Api20100401CallRecording.DeleteCallRecordingRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteCallRecording(request: Api20100401CallRecording.DeleteCallRecordingRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Recordings/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401CallRecording.DeleteCallRecordingRequest` (3):
 
@@ -53,12 +55,12 @@ Accessor: `client.api20100401CallRecording` · Source: `src/resources/api2010040
 
 ### fetchCallRecording
 
-- **Signature**: `fetchCallRecording(request: Api20100401CallRecording.FetchCallRecordingRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountCallCallRecording, ResponseError>`
+- **Signature**: `fetchCallRecording(request: Api20100401CallRecording.FetchCallRecordingRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountCallCallRecording, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Recordings/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ApiV2010AccountCallCallRecording`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401CallRecording.FetchCallRecordingRequest` (3):
 
@@ -74,12 +76,12 @@ Accessor: `client.api20100401CallRecording` · Source: `src/resources/api2010040
 
 ### listCallRecording
 
-- **Signature**: `listCallRecording(request: Api20100401CallRecording.ListCallRecordingRequest, options?: RequestOptions): ApiPromise<ListCallRecordingResponse, ResponseError>`
+- **Signature**: `listCallRecording(request: Api20100401CallRecording.ListCallRecordingRequest, options?: RequestOptions): ApiPromise<ListCallRecordingResponse, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Recordings.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListCallRecordingResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401CallRecording.ListCallRecordingRequest` (8):
 
@@ -104,8 +106,9 @@ Accessor: `client.api20100401CallRecording` · Source: `src/resources/api2010040
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Recordings/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountCallCallRecording`
-- **Error**: `Api20100401CallRecording.UpdateCallRecordingError` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `Api20100401CallRecording.UpdateCallRecordingError` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"accountsCallsRecordingsSidJson201041408Error1"` [408] `AccountsCallsRecordingsSidJson201041408Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `Api20100401CallRecording.UpdateCallRecordingRequest` (5):

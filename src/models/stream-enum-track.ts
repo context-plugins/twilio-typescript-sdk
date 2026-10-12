@@ -1,6 +1,10 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * The tracks to be included in the Stream. Possible values are `inbound_track`, `outbound_track`,
+ * `both_tracks`. Default value is `inbound_track`.
+ */
 export const StreamEnumTrack = {
   InboundTrack: "inbound_track",
   OutboundTrack: "outbound_track",

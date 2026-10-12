@@ -1,7 +1,9 @@
 import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
+/** Conversation configuration settings. */
 export type Configuration3 = {
+  /** A list of Conversational Intelligence configuration IDs. */
   intelligenceConfigurationIds?: string[];
 };
 

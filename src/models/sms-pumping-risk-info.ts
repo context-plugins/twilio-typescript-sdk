@@ -15,8 +15,8 @@ export const smsPumpingRiskInfoSchema: Schema<SmsPumpingRiskInfo> = s.object<Sms
   numberBlocked: s.optional(s.boolean()),
   numberBlockedDate: s.optional(s.dateTime()),
   numberBlockedLast3Months: s.optional(s.boolean()),
-  smsPumpingRiskScore: s.optional(s.number()),
-  errorCode: s.optional(s.number()),
+  smsPumpingRiskScore: s.optional(s.int()),
+  errorCode: s.optional(s.int()),
   _keysMap: {
     carrierRiskCategory: "carrier_risk_category",
     numberBlocked: "number_blocked",

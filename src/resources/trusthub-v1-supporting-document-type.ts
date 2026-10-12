@@ -1,8 +1,8 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
 import * as s from "../core/validation/index.js";
 import {
   listSupportingDocumentTypeResponse1Schema,
@@ -25,45 +25,77 @@ export class TrusthubV1SupportingDocumentType {
     this.#auth = auth;
   }
 
+  /**
+   * Fetch a specific Supporting Document Type Instance.
+   *
+   * @remarks
+   * Fetch a specific Supporting Document Type Instance.
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   fetchSupportingDocumentType2(
     request: TrusthubV1SupportingDocumentType.FetchSupportingDocumentType2Request,
     options?: RequestOptions,
-  ): ApiPromise<NumbersV2RegulatoryComplianceEndUserType, ResponseError> {
-    return this.#rawClient.execute<NumbersV2RegulatoryComplianceEndUserType, ResponseError>(
+  ): ApiPromise<NumbersV2RegulatoryComplianceEndUserType, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default9("/v1/SupportingDocumentTypes/{Sid}"),
+        urlTemplate: this.#servers.default9("/v1/SupportingDocumentTypes/{Sid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "Sid", value: request.sid, schema: s.string() }],
+        query: [],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: numbersV2RegulatoryComplianceEndUserTypeSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Retrieve a list of all Supporting Document Types.
+   *
+   * @remarks
+   * Retrieve a list of all Supporting Document Types.
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   listSupportingDocumentType2(
     request: TrusthubV1SupportingDocumentType.ListSupportingDocumentType2Request,
     options?: RequestOptions,
-  ): ApiPromise<ListSupportingDocumentTypeResponse1, ResponseError> {
-    return this.#rawClient.execute<ListSupportingDocumentTypeResponse1, ResponseError>(
+  ): ApiPromise<ListSupportingDocumentTypeResponse1, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default9("/v1/SupportingDocumentTypes"),
+        urlTemplate: this.#servers.default9("/v1/SupportingDocumentTypes"),
         auth: this.#auth.accountSidAuthToken,
+        pathParams: [],
         query: [
-          { name: "PageSize", value: request.pageSize, schema: s.optional(s.number()) },
-          { name: "Page", value: request.page, schema: s.optional(s.number()) },
+          { name: "PageSize", value: request.pageSize, schema: s.optional(s.int()) },
+          { name: "Page", value: request.page, schema: s.optional(s.int()) },
           { name: "PageToken", value: request.pageToken, schema: s.optional(s.string()) },
         ],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: listSupportingDocumentTypeResponse1Schema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -72,12 +104,18 @@ export class TrusthubV1SupportingDocumentType {
 
 export namespace TrusthubV1SupportingDocumentType {
   export type FetchSupportingDocumentType2Request = {
+    /** The unique string that identifies the Supporting Document Type resource. */
     sid: string;
   };
 
   export type ListSupportingDocumentType2Request = {
+    /**
+     * How many resources to return in each list page. The default is 50, and the maximum is 1000.
+     */
     pageSize?: number;
+    /** The page index. This value is simply for client state. */
     page?: number;
+    /** The page token. This is provided by the API. */
     pageToken?: string;
   };
 }

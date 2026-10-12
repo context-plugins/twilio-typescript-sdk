@@ -2,8 +2,11 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type CreateRegistrationResponse = {
+  /** Bundle SID (same as bundle_sid in KYC Orchestration) */
   bundleSid: string;
+  /** Persona inquiry ID */
   inquiryId: string;
+  /** Persona session token for embedding Persona UI */
   inquirySessionToken: string;
 };
 

@@ -4,14 +4,33 @@ import { conversationsV2AddressSchema, type ConversationsV2Address } from "./con
 import { type2Schema, type Type2 } from "./type2.js";
 
 export type ConversationsV2Participant = {
+  /** Participant ID. */
   id: string;
+  /** Conversation ID. */
   conversationId: string;
+  /** Account ID. */
   accountId: string;
+  /** Participant display name. */
   name: string;
+  /** Type of Participant in the Conversation. */
   type?: Type2;
+  /**
+   * Profile ID. Note: This field is only resolved for `CUSTOMER` participant types, not for
+   * `HUMAN_AGENT` or `AI_AGENT` participants.
+   */
   profileId?: string;
+  /**
+   * Communication addresses for this Participant. Address format varies by channel:
+   * - SMS/VOICE: E.164 phone number (such as "+18005550100")
+   * - EMAIL: Email address (such as "user@example.com")
+   * - WHATSAPP: Phone number with whatsapp prefix (such as "whatsapp:+18005550100")
+   * - RCS: Sender ID or phone number with rcs prefix (such as "rcs:brand_acme_agent" or
+   *   "rcs:+18005550100")
+   */
   addresses?: ConversationsV2Address[];
+  /** Timestamp when this Participant was created. */
   createdAt?: Date;
+  /** Timestamp when this Participant was last updated. */
   updatedAt?: Date;
 };
 

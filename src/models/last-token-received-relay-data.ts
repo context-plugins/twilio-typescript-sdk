@@ -3,7 +3,9 @@ import type { Schema } from "../core/validation/schema.js";
 import { lastTokenReceivedEventSchema, type LastTokenReceivedEvent } from "./last-token-received-event.js";
 
 export type LastTokenReceivedRelayData = {
+  /** Session id of the conversation relay. */
   sessionId: string;
+  /** Sequence number of the event. */
   sequenceNumber: number;
   lastTokenReceived: LastTokenReceivedEvent;
 };
@@ -11,7 +13,7 @@ export type LastTokenReceivedRelayData = {
 export const lastTokenReceivedRelayDataSchema: Schema<LastTokenReceivedRelayData> =
   s.object<LastTokenReceivedRelayData>({
     sessionId: s.string(),
-    sequenceNumber: s.number(),
+    sequenceNumber: s.int(),
     lastTokenReceived: lastTokenReceivedEventSchema,
     _keysMap: {
       sessionId: "session_id",

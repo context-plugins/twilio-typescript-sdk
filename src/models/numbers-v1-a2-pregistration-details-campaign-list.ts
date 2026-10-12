@@ -6,7 +6,9 @@ import {
 } from "./numbers-v1-a2-pregistration-details.js";
 
 export type NumbersV1A2PRegistrationDetailsCampaignList = {
+  /** List of A2P registration details for numbers in the campaign */
   data: NumbersV1A2PRegistrationDetails[];
+  /** Token for pagination to retrieve the next page of results */
   nextToken?: string | null;
 };
 

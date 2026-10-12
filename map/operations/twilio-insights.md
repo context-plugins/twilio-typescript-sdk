@@ -4,7 +4,7 @@
 
 Accessor: `client.twilioInsights` · Source: `src/resources/twilio-insights.ts` · 3 operations · Request and error types: namespace `TwilioInsights`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createQueryResults
 
@@ -13,8 +13,9 @@ Accessor: `client.twilioInsights` · Source: `src/resources/twilio-insights.ts` 
 - **Wire**: `POST /v3/InsightsDomains/Conversations/Query`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/json` — the `body` field
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `InsightsQueryResponse`
-- **Error**: `TwilioInsights.CreateQueryResultsError` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `TwilioInsights.CreateQueryResultsError` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"v3InsightsDomainsConversationsQuery400Error1"` [400] `V3InsightsDomainsConversationsQuery400Error1` · `"v3InsightsDomainsConversationsQuery429Error1"` [429] `V3InsightsDomainsConversationsQuery429Error1` · `"v3InsightsDomainsConversationsQuery500Error1"` [500] `V3InsightsDomainsConversationsQuery500Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `TwilioInsights.CreateQueryResultsRequest` (2):
@@ -40,7 +41,7 @@ Accessor: `client.twilioInsights` · Source: `src/resources/twilio-insights.ts` 
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `InsightsMetadataResponse`
-- **Error**: `TwilioInsights.FetchMetadataError` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `TwilioInsights.FetchMetadataError` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"v3InsightsDomainsConversationsMetadata400Error1"` [400] `V3InsightsDomainsConversationsMetadata400Error1` · `"v3InsightsDomainsConversationsMetadata429Error1"` [429] `V3InsightsDomainsConversationsMetadata429Error1` · `"v3InsightsDomainsConversationsMetadata500Error1"` [500] `V3InsightsDomainsConversationsMetadata500Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 | Type | Schema value | Source |
@@ -58,7 +59,7 @@ Accessor: `client.twilioInsights` · Source: `src/resources/twilio-insights.ts` 
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `InsightsQueryResponse`
-- **Error**: `TwilioInsights.FetchQueryResultsError` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `TwilioInsights.FetchQueryResultsError` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"v3InsightsDomainsConversationsQuery400Error1"` [400] `V3InsightsDomainsConversationsQuery400Error1` · `"v3InsightsDomainsConversationsQuery429Error1"` [429] `V3InsightsDomainsConversationsQuery429Error1` · `"v3InsightsDomainsConversationsQuery500Error1"` [500] `V3InsightsDomainsConversationsQuery500Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `TwilioInsights.FetchQueryResultsRequest` (1):

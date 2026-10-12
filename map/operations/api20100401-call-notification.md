@@ -4,16 +4,16 @@
 
 Accessor: `client.api20100401CallNotification` · Source: `src/resources/api20100401-call-notification.ts` · 2 operations · Request types: namespace `Api20100401CallNotification`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchCallNotification
 
-- **Signature**: `fetchCallNotification(request: Api20100401CallNotification.FetchCallNotificationRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountCallCallNotificationInstance, ResponseError>`
+- **Signature**: `fetchCallNotification(request: Api20100401CallNotification.FetchCallNotificationRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountCallCallNotificationInstance, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Notifications/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ApiV2010AccountCallCallNotificationInstance`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401CallNotification.FetchCallNotificationRequest` (3):
 
@@ -29,12 +29,12 @@ Accessor: `client.api20100401CallNotification` · Source: `src/resources/api2010
 
 ### listCallNotification
 
-- **Signature**: `listCallNotification(request: Api20100401CallNotification.ListCallNotificationRequest, options?: RequestOptions): ApiPromise<ListCallNotificationResponse, ResponseError>`
+- **Signature**: `listCallNotification(request: Api20100401CallNotification.ListCallNotificationRequest, options?: RequestOptions): ApiPromise<ListCallNotificationResponse, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Notifications.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListCallNotificationResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401CallNotification.ListCallNotificationRequest` (9):
 

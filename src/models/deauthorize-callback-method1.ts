@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The HTTP method to use when calling `deauthorize_callback_url`. */
 export const DeauthorizeCallbackMethod1 = {
   Get: "GET",
   Post: "POST",

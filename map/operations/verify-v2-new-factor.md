@@ -4,17 +4,18 @@
 
 Accessor: `client.verifyV2NewFactor` · Source: `src/resources/verify-v2-new-factor.ts` · 2 operations · Request types: namespace `VerifyV2NewFactor`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createNewFactor
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createNewFactor(request: VerifyV2NewFactor.CreateNewFactorRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceEntityNewFactor, ResponseError>`
+- **Signature**: `createNewFactor(request: VerifyV2NewFactor.CreateNewFactorRequest, options?: RequestOptions): ApiPromise<VerifyV2ServiceEntityNewFactor, ApiError>`
 - **Wire**: `POST /v2/Services/{ServiceSid}/Entities/{Identity}/Factors`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `VerifyV2ServiceEntityNewFactor`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2NewFactor.CreateNewFactorRequest` (16):
 
@@ -47,12 +48,13 @@ Accessor: `client.verifyV2NewFactor` · Source: `src/resources/verify-v2-new-fac
 ### createNewFactorPasskey
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createNewFactorPasskey(request: VerifyV2NewFactor.CreateNewFactorPasskeyRequest, options?: RequestOptions): ApiPromise<V2ServicesPasskeysFactorsResponse, ResponseError>`
+- **Signature**: `createNewFactorPasskey(request: VerifyV2NewFactor.CreateNewFactorPasskeyRequest, options?: RequestOptions): ApiPromise<V2ServicesPasskeysFactorsResponse, ApiError>`
 - **Wire**: `POST /v2/Services/{ServiceSid}/Passkeys/Factors`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/json` — the `body` field
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `V2ServicesPasskeysFactorsResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2NewFactor.CreateNewFactorPasskeyRequest` (2):
 

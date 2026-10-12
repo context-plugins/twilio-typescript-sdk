@@ -9,26 +9,47 @@ import { stateSchema, type State } from "./state.js";
 import { userSignUpSchema, type UserSignUp } from "./user-sign-up.js";
 
 export type CreateShortCodeApplicationResponse = {
+  /** The unique identifier of the Short Code Application. */
   sid?: string;
+  /** The Application Requirements SID. */
   applicationRequirementsSid?: string;
+  /** The version of the application requirements. */
   applicationRequirementsVersion?: number;
+  /** The Account SID associated with the application. */
   accountSid?: string;
+  /** The Bundle SID for regulatory compliance. */
   bundleSid?: string;
+  /** The reviewer of the application. */
   reviewer?: string;
+  /** The Zendesk ticket ID associated with the application. */
   zendeskTicketId?: string;
+  /** The friendly name of the application. */
   friendlyName?: string;
+  /** The notification emails for the application. */
   notificationEmails?: string[];
+  /** The ISO country code. */
   isoCountry?: string;
+  /** The state of the application. */
   state?: State;
+  /** Setup configuration for the application. */
   setup?: Setup1;
+  /** Business information associated with the application. */
   businessInformation?: BusinessInformation1;
+  /** User sign-up configuration for the application. */
   userSignUp?: UserSignUp;
+  /** Compliance keywords for the application. */
   complianceKeywords?: ComplianceKeywords;
+  /** Content examples for the application. */
   contentExamples?: ContentExamples;
+  /** SMS campaign details for the application. */
   smsCampaignDetails?: SmsCampaignDetails;
+  /** The date and time the application was created. */
   dateCreated?: Date;
+  /** The date and time the application was last updated. */
   dateUpdated?: Date;
+  /** The identity of the user who created the application. */
   createdBy?: string;
+  /** The identity of the user who last updated the application. */
   updatedBy?: string;
 };
 
@@ -36,7 +57,7 @@ export const createShortCodeApplicationResponseSchema: Schema<CreateShortCodeApp
   s.object<CreateShortCodeApplicationResponse>({
     sid: s.optional(s.string()),
     applicationRequirementsSid: s.optional(s.string()),
-    applicationRequirementsVersion: s.optional(s.number()),
+    applicationRequirementsVersion: s.optional(s.int()),
     accountSid: s.optional(s.string()),
     bundleSid: s.optional(s.string()),
     reviewer: s.optional(s.string()),

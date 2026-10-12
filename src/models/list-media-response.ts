@@ -18,13 +18,13 @@ export type ListMediaResponse = {
 };
 
 export const listMediaResponseSchema: Schema<ListMediaResponse> = s.object<ListMediaResponse>({
-  end: s.optional(s.number()),
+  end: s.optional(s.int()),
   firstPageUri: s.optional(s.string()),
   nextPageUri: s.optionalNullable(s.string()),
-  page: s.optional(s.number()),
-  pageSize: s.optional(s.number()),
+  page: s.optional(s.int()),
+  pageSize: s.optional(s.int()),
   previousPageUri: s.optionalNullable(s.string()),
-  start: s.optional(s.number()),
+  start: s.optional(s.int()),
   uri: s.optional(s.string()),
   mediaList: s.optional(s.array(s.lazy(() => apiV2010AccountMessageMediaSchema))),
   _keysMap: {

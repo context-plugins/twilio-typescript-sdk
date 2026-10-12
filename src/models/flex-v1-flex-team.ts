@@ -4,12 +4,15 @@ import type { Schema } from "../core/validation/schema.js";
 export type FlexV1FlexTeam = {
   teamSid?: string | null;
   friendlyName?: string | null;
+  /** @default 0 */
   memberCount?: number;
   description?: string | null;
+  /** @default 0 */
   level?: number;
   parentTeamSid?: string | null;
   dateCreated?: Date | null;
   dateUpdated?: Date | null;
+  /** @default 0 */
   version?: number;
   accountSid?: string | null;
   instanceSid?: string | null;
@@ -19,13 +22,13 @@ export type FlexV1FlexTeam = {
 export const flexV1FlexTeamSchema: Schema<FlexV1FlexTeam> = s.object<FlexV1FlexTeam>({
   teamSid: s.optionalNullable(s.string()),
   friendlyName: s.optionalNullable(s.string()),
-  memberCount: s.optional(s.number()),
+  memberCount: s.defaulted(s.int(), 0),
   description: s.optionalNullable(s.string()),
-  level: s.optional(s.number()),
+  level: s.defaulted(s.int(), 0),
   parentTeamSid: s.optionalNullable(s.string()),
   dateCreated: s.optionalNullable(s.dateTime()),
   dateUpdated: s.optionalNullable(s.dateTime()),
-  version: s.optional(s.number()),
+  version: s.defaulted(s.int(), 0),
   accountSid: s.optionalNullable(s.string()),
   instanceSid: s.optionalNullable(s.string()),
   url: s.optionalNullable(s.string()),

@@ -4,17 +4,18 @@
 
 Accessor: `client.verifyV2ServiceApi` · Source: `src/resources/verify-v2-service-api.ts` · 5 operations · Request types: namespace `VerifyV2ServiceApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createService2
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createService2(request: VerifyV2ServiceApi.CreateService2Request, options?: RequestOptions): ApiPromise<VerifyV2Service, ResponseError>`
+- **Signature**: `createService2(request: VerifyV2ServiceApi.CreateService2Request, options?: RequestOptions): ApiPromise<VerifyV2Service, ApiError>`
 - **Wire**: `POST /v2/Services`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `VerifyV2Service`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2ServiceApi.CreateService2Request` (26):
 
@@ -54,12 +55,13 @@ Accessor: `client.verifyV2ServiceApi` · Source: `src/resources/verify-v2-servic
 ### deleteService2
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteService2(request: VerifyV2ServiceApi.DeleteService2Request, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteService2(request: VerifyV2ServiceApi.DeleteService2Request, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v2/Services/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2ServiceApi.DeleteService2Request` (1):
 
@@ -70,12 +72,12 @@ Accessor: `client.verifyV2ServiceApi` · Source: `src/resources/verify-v2-servic
 ### fetchService2
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchService2(request: VerifyV2ServiceApi.FetchService2Request, options?: RequestOptions): ApiPromise<VerifyV2Service, ResponseError>`
+- **Signature**: `fetchService2(request: VerifyV2ServiceApi.FetchService2Request, options?: RequestOptions): ApiPromise<VerifyV2Service, ApiError>`
 - **Wire**: `GET /v2/Services/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `VerifyV2Service`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2ServiceApi.FetchService2Request` (1):
 
@@ -90,12 +92,12 @@ Accessor: `client.verifyV2ServiceApi` · Source: `src/resources/verify-v2-servic
 ### listService2
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listService2(request: VerifyV2ServiceApi.ListService2Request, options?: RequestOptions): ApiPromise<ListServiceResponse1, ResponseError>`
+- **Signature**: `listService2(request: VerifyV2ServiceApi.ListService2Request, options?: RequestOptions): ApiPromise<ListServiceResponse1, ApiError>`
 - **Wire**: `GET /v2/Services`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListServiceResponse1`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2ServiceApi.ListService2Request` (3):
 
@@ -112,12 +114,13 @@ Accessor: `client.verifyV2ServiceApi` · Source: `src/resources/verify-v2-servic
 ### updateService2
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateService2(request: VerifyV2ServiceApi.UpdateService2Request, options?: RequestOptions): ApiPromise<VerifyV2Service, ResponseError>`
+- **Signature**: `updateService2(request: VerifyV2ServiceApi.UpdateService2Request, options?: RequestOptions): ApiPromise<VerifyV2Service, ApiError>`
 - **Wire**: `POST /v2/Services/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `VerifyV2Service`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2ServiceApi.UpdateService2Request` (27):
 

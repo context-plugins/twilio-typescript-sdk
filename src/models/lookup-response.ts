@@ -14,11 +14,29 @@ import { smsPumpingRiskInfoSchema, type SmsPumpingRiskInfo } from "./sms-pumping
 import { validationErrorSchema, type ValidationError } from "./validation-error.js";
 
 export type LookupResponse = {
+  /** International dialing prefix of the phone number defined in the E.164 standard. */
   callingCountryCode?: string | null;
+  /** The phone number's [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). */
   countryCode?: string | null;
+  /**
+   * The phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which
+   * consists of a + followed by the country code and subscriber number.
+   */
   phoneNumber?: string | null;
+  /**
+   * The phone number in [national
+   * format](https://en.wikipedia.org/wiki/National_conventions_for_writing_telephone_numbers).
+   */
   nationalFormat?: string | null;
+  /**
+   * Boolean which indicates if the phone number is in a valid range that can be freely assigned by
+   * a carrier to a user.
+   */
   valid?: boolean;
+  /**
+   * Contains reasons why a phone number is invalid. Possible values: TOO_SHORT, TOO_LONG,
+   * INVALID_BUT_POSSIBLE, INVALID_COUNTRY_CODE, INVALID_LENGTH, NOT_A_NUMBER.
+   */
   validationErrors?: ValidationError[];
   callerName?: CallerNameInfo;
   simSwap?: SimSwapInfo;
@@ -28,8 +46,18 @@ export type LookupResponse = {
   identityMatch?: IdentityMatchInfo;
   reassignedNumber?: ReassignedNumberInfo;
   smsPumpingRisk?: SmsPumpingRiskInfo;
+  /**
+   * An object that contains information of a mobile phone number quality score. Quality score will
+   * return a risk score about the phone number.
+   */
   phoneNumberQualityScore?: Record<string, unknown>;
+  /**
+   * An object that contains pre fill information. pre_fill will return PII information associated
+   * with the phone number like first name, last name, address line, country code, state and postal
+   * code.
+   */
   preFill?: Record<string, unknown>;
+  /** The absolute URL of the resource. */
   url?: string;
 };
 

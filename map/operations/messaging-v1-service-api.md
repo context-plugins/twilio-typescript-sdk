@@ -4,17 +4,18 @@
 
 Accessor: `client.messagingV1ServiceApi` · Source: `src/resources/messaging-v1-service-api.ts` · 5 operations · Request types: namespace `MessagingV1ServiceApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createService
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createService(request: MessagingV1ServiceApi.CreateServiceRequest, options?: RequestOptions): ApiPromise<MessagingV1Service, ResponseError>`
+- **Signature**: `createService(request: MessagingV1ServiceApi.CreateServiceRequest, options?: RequestOptions): ApiPromise<MessagingV1Service, ApiError>`
 - **Wire**: `POST /v1/Services`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `MessagingV1Service`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1ServiceApi.CreateServiceRequest` (16):
 
@@ -46,12 +47,13 @@ Accessor: `client.messagingV1ServiceApi` · Source: `src/resources/messaging-v1-
 ### deleteService
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteService(request: MessagingV1ServiceApi.DeleteServiceRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteService(request: MessagingV1ServiceApi.DeleteServiceRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Services/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1ServiceApi.DeleteServiceRequest` (1):
 
@@ -62,12 +64,12 @@ Accessor: `client.messagingV1ServiceApi` · Source: `src/resources/messaging-v1-
 ### fetchService
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchService(request: MessagingV1ServiceApi.FetchServiceRequest, options?: RequestOptions): ApiPromise<MessagingV1Service, ResponseError>`
+- **Signature**: `fetchService(request: MessagingV1ServiceApi.FetchServiceRequest, options?: RequestOptions): ApiPromise<MessagingV1Service, ApiError>`
 - **Wire**: `GET /v1/Services/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `MessagingV1Service`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1ServiceApi.FetchServiceRequest` (1):
 
@@ -82,12 +84,12 @@ Accessor: `client.messagingV1ServiceApi` · Source: `src/resources/messaging-v1-
 ### listService
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listService(request: MessagingV1ServiceApi.ListServiceRequest, options?: RequestOptions): ApiPromise<ListServiceResponse, ResponseError>`
+- **Signature**: `listService(request: MessagingV1ServiceApi.ListServiceRequest, options?: RequestOptions): ApiPromise<ListServiceResponse, ApiError>`
 - **Wire**: `GET /v1/Services`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListServiceResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1ServiceApi.ListServiceRequest` (3):
 
@@ -104,12 +106,13 @@ Accessor: `client.messagingV1ServiceApi` · Source: `src/resources/messaging-v1-
 ### updateService
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateService(request: MessagingV1ServiceApi.UpdateServiceRequest, options?: RequestOptions): ApiPromise<MessagingV1Service, ResponseError>`
+- **Signature**: `updateService(request: MessagingV1ServiceApi.UpdateServiceRequest, options?: RequestOptions): ApiPromise<MessagingV1Service, ApiError>`
 - **Wire**: `POST /v1/Services/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `MessagingV1Service`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1ServiceApi.UpdateServiceRequest` (17):
 

@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The of the webhook type of the configuration to be deleted */
 export const PortingWebhookConfigurationDeleteEnumWebhookType = {
   PortIn: "PORT_IN",
   PortOut: "PORT_OUT",

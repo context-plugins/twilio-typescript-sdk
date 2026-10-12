@@ -4,17 +4,18 @@
 
 Accessor: `client.studioV2FlowValidateApi` · Source: `src/resources/studio-v2-flow-validate-api.ts` · 1 operation · Request types: namespace `StudioV2FlowValidateApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### updateFlowValidate
 
 - **Server**: `default11` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateFlowValidate(request: StudioV2FlowValidateApi.UpdateFlowValidateRequest, options?: RequestOptions): ApiPromise<StudioV2FlowValidate, ResponseError>`
+- **Signature**: `updateFlowValidate(request: StudioV2FlowValidateApi.UpdateFlowValidateRequest, options?: RequestOptions): ApiPromise<StudioV2FlowValidate, ApiError>`
 - **Wire**: `POST /v2/Flows/Validate`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `StudioV2FlowValidate`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `StudioV2FlowValidateApi.UpdateFlowValidateRequest` (4):
 

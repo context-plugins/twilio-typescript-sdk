@@ -4,17 +4,18 @@
 
 Accessor: `client.numbersV2BundleCloneApi` · Source: `src/resources/numbers-v2-bundle-clone-api.ts` · 1 operation · Request types: namespace `NumbersV2BundleCloneApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createBundleClone
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createBundleClone(request: NumbersV2BundleCloneApi.CreateBundleCloneRequest, options?: RequestOptions): ApiPromise<NumbersV2BundleClone, ResponseError>`
+- **Signature**: `createBundleClone(request: NumbersV2BundleCloneApi.CreateBundleCloneRequest, options?: RequestOptions): ApiPromise<NumbersV2BundleClone, ApiError>`
 - **Wire**: `POST /v2/RegulatoryCompliance/Bundles/{BundleSid}/Clones`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `NumbersV2BundleClone`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2BundleCloneApi.CreateBundleCloneRequest` (4):
 

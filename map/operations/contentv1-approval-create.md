@@ -4,17 +4,18 @@
 
 Accessor: `client.contentv1ApprovalCreate` · Source: `src/resources/contentv1-approval-create.ts` · 1 operation · Request types: namespace `Contentv1ApprovalCreate`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createApprovalCreate
 
 - **Server**: `default2` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createApprovalCreate(request: Contentv1ApprovalCreate.CreateApprovalCreateRequest, options?: RequestOptions): ApiPromise<ContentV1ContentApprovalCreate, ResponseError>`
+- **Signature**: `createApprovalCreate(request: Contentv1ApprovalCreate.CreateApprovalCreateRequest, options?: RequestOptions): ApiPromise<ContentV1ContentApprovalCreate, ApiError>`
 - **Wire**: `POST /v1/Content/{ContentSid}/ApprovalRequests/whatsapp`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/json` — the `body` field
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ContentV1ContentApprovalCreate`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Contentv1ApprovalCreate.CreateApprovalCreateRequest` (2):
 

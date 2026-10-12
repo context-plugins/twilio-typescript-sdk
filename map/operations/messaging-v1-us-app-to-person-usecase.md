@@ -4,17 +4,17 @@
 
 Accessor: `client.messagingV1UsAppToPersonUsecase` · Source: `src/resources/messaging-v1-us-app-to-person-usecase.ts` · 1 operation · Request types: namespace `MessagingV1UsAppToPersonUsecase`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchUsAppToPersonUsecase
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchUsAppToPersonUsecase(request: MessagingV1UsAppToPersonUsecase.FetchUsAppToPersonUsecaseRequest, options?: RequestOptions): ApiPromise<MessagingV1ServiceUsAppToPersonUsecase, ResponseError>`
+- **Signature**: `fetchUsAppToPersonUsecase(request: MessagingV1UsAppToPersonUsecase.FetchUsAppToPersonUsecaseRequest, options?: RequestOptions): ApiPromise<MessagingV1ServiceUsAppToPersonUsecase, ApiError>`
 - **Wire**: `GET /v1/Services/{MessagingServiceSid}/Compliance/Usa2p/Usecases`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `MessagingV1ServiceUsAppToPersonUsecase`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1UsAppToPersonUsecase.FetchUsAppToPersonUsecaseRequest` (2):
 

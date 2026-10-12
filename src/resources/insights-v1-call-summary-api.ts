@@ -1,8 +1,8 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
 import * as s from "../core/validation/index.js";
 import {
   insightsV1CallSummarySchema,
@@ -25,14 +25,28 @@ export class InsightsV1CallSummaryApi {
     this.#auth = auth;
   }
 
+  /**
+   * Get a specific Call Summary.
+   *
+   * @remarks
+   * Get a specific Call Summary.
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   fetchSummary(
     request: InsightsV1CallSummaryApi.FetchSummaryRequest,
     options?: RequestOptions,
-  ): ApiPromise<InsightsV1CallSummary, ResponseError> {
-    return this.#rawClient.execute<InsightsV1CallSummary, ResponseError>(
+  ): ApiPromise<InsightsV1CallSummary, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default14("/v1/Voice/{CallSid}/Summary"),
+        urlTemplate: this.#servers.default14("/v1/Voice/{CallSid}/Summary"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "CallSid", value: request.callSid, schema: s.string() }],
         query: [
@@ -42,11 +56,12 @@ export class InsightsV1CallSummaryApi {
             schema: s.optional(s.lazy(() => summaryEnumProcessingStateSchema)),
           },
         ],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: insightsV1CallSummarySchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -55,7 +70,9 @@ export class InsightsV1CallSummaryApi {
 
 export namespace InsightsV1CallSummaryApi {
   export type FetchSummaryRequest = {
+    /** The unique SID identifier of the Call. */
     callSid: string;
+    /** The Processing State of this Call Summary. One of `complete`, `partial` or `all`. */
     processingState?: SummaryEnumProcessingState;
   };
 }

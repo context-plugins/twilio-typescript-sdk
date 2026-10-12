@@ -4,16 +4,17 @@
 
 Accessor: `client.api20100401AddOnResult` · Source: `src/resources/api20100401-add-on-result.ts` · 3 operations · Request types: namespace `Api20100401AddOnResult`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### deleteRecordingAddOnResult
 
-- **Signature**: `deleteRecordingAddOnResult(request: Api20100401AddOnResult.DeleteRecordingAddOnResultRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteRecordingAddOnResult(request: Api20100401AddOnResult.DeleteRecordingAddOnResultRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401AddOnResult.DeleteRecordingAddOnResultRequest` (3):
 
@@ -25,12 +26,12 @@ Accessor: `client.api20100401AddOnResult` · Source: `src/resources/api20100401-
 
 ### fetchRecordingAddOnResult
 
-- **Signature**: `fetchRecordingAddOnResult(request: Api20100401AddOnResult.FetchRecordingAddOnResultRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountRecordingRecordingAddOnResult, ResponseError>`
+- **Signature**: `fetchRecordingAddOnResult(request: Api20100401AddOnResult.FetchRecordingAddOnResultRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountRecordingRecordingAddOnResult, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ApiV2010AccountRecordingRecordingAddOnResult`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401AddOnResult.FetchRecordingAddOnResultRequest` (3):
 
@@ -46,12 +47,12 @@ Accessor: `client.api20100401AddOnResult` · Source: `src/resources/api20100401-
 
 ### listRecordingAddOnResult
 
-- **Signature**: `listRecordingAddOnResult(request: Api20100401AddOnResult.ListRecordingAddOnResultRequest, options?: RequestOptions): ApiPromise<ListRecordingAddOnResultResponse, ResponseError>`
+- **Signature**: `listRecordingAddOnResult(request: Api20100401AddOnResult.ListRecordingAddOnResultRequest, options?: RequestOptions): ApiPromise<ListRecordingAddOnResultResponse, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListRecordingAddOnResultResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401AddOnResult.ListRecordingAddOnResultRequest` (5):
 

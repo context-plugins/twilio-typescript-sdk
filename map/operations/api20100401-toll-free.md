@@ -4,16 +4,16 @@
 
 Accessor: `client.api20100401TollFree` · Source: `src/resources/api20100401-toll-free.ts` · 1 operation · Request types: namespace `Api20100401TollFree`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### listAvailablePhoneNumberTollFree
 
-- **Signature**: `listAvailablePhoneNumberTollFree(request: Api20100401TollFree.ListAvailablePhoneNumberTollFreeRequest, options?: RequestOptions): ApiPromise<ListAvailablePhoneNumberTollFreeResponse, ResponseError>`
+- **Signature**: `listAvailablePhoneNumberTollFree(request: Api20100401TollFree.ListAvailablePhoneNumberTollFreeRequest, options?: RequestOptions): ApiPromise<ListAvailablePhoneNumberTollFreeResponse, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/TollFree.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListAvailablePhoneNumberTollFreeResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401TollFree.ListAvailablePhoneNumberTollFreeRequest` (23):
 

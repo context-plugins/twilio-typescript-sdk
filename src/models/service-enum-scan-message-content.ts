@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** Reserved. */
 export const ServiceEnumScanMessageContent = {
   Inherit: "inherit",
   Enable: "enable",

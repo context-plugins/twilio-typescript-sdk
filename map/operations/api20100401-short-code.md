@@ -4,16 +4,16 @@
 
 Accessor: `client.api20100401ShortCode` · Source: `src/resources/api20100401-short-code.ts` · 3 operations · Request types: namespace `Api20100401ShortCode`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchShortCode
 
-- **Signature**: `fetchShortCode(request: Api20100401ShortCode.FetchShortCodeRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountShortCode, ResponseError>`
+- **Signature**: `fetchShortCode(request: Api20100401ShortCode.FetchShortCodeRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountShortCode, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/SMS/ShortCodes/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ApiV2010AccountShortCode`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401ShortCode.FetchShortCodeRequest` (2):
 
@@ -28,12 +28,12 @@ Accessor: `client.api20100401ShortCode` · Source: `src/resources/api20100401-sh
 
 ### listShortCode
 
-- **Signature**: `listShortCode(request: Api20100401ShortCode.ListShortCodeRequest, options?: RequestOptions): ApiPromise<ListShortCodeResponse, ResponseError>`
+- **Signature**: `listShortCode(request: Api20100401ShortCode.ListShortCodeRequest, options?: RequestOptions): ApiPromise<ListShortCodeResponse, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/SMS/ShortCodes.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListShortCodeResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401ShortCode.ListShortCodeRequest` (6):
 
@@ -52,12 +52,13 @@ Accessor: `client.api20100401ShortCode` · Source: `src/resources/api20100401-sh
 
 ### updateShortCode
 
-- **Signature**: `updateShortCode(request: Api20100401ShortCode.UpdateShortCodeRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountShortCode, ResponseError>`
+- **Signature**: `updateShortCode(request: Api20100401ShortCode.UpdateShortCodeRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountShortCode, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/SMS/ShortCodes/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountShortCode`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401ShortCode.UpdateShortCodeRequest` (8):
 

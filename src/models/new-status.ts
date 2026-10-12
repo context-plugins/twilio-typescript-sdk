@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The new status to set for the port in request. */
 export const NewStatus = {
   InReview: "in_review",
   WaitingForSignature: "waiting_for_signature",

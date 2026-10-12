@@ -4,17 +4,18 @@
 
 Accessor: `client.messagingV1UsAppToPerson` · Source: `src/resources/messaging-v1-us-app-to-person.ts` · 5 operations · Request types: namespace `MessagingV1UsAppToPerson`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createUsAppToPerson
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createUsAppToPerson(request: MessagingV1UsAppToPerson.CreateUsAppToPersonRequest, options?: RequestOptions): ApiPromise<MessagingV1ServiceUsAppToPersonResponse, ResponseError>`
+- **Signature**: `createUsAppToPerson(request: MessagingV1UsAppToPerson.CreateUsAppToPersonRequest, options?: RequestOptions): ApiPromise<MessagingV1ServiceUsAppToPersonResponse, ApiError>`
 - **Wire**: `POST /v1/Services/{MessagingServiceSid}/Compliance/Usa2p`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `MessagingV1ServiceUsAppToPersonResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1UsAppToPerson.CreateUsAppToPersonRequest` (20):
 
@@ -48,12 +49,13 @@ Accessor: `client.messagingV1UsAppToPerson` · Source: `src/resources/messaging-
 ### deleteUsAppToPerson
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteUsAppToPerson(request: MessagingV1UsAppToPerson.DeleteUsAppToPersonRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteUsAppToPerson(request: MessagingV1UsAppToPerson.DeleteUsAppToPersonRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Services/{MessagingServiceSid}/Compliance/Usa2p/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1UsAppToPerson.DeleteUsAppToPersonRequest` (2):
 
@@ -65,12 +67,12 @@ Accessor: `client.messagingV1UsAppToPerson` · Source: `src/resources/messaging-
 ### fetchUsAppToPerson
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchUsAppToPerson(request: MessagingV1UsAppToPerson.FetchUsAppToPersonRequest, options?: RequestOptions): ApiPromise<MessagingV1ServiceUsAppToPersonResponse, ResponseError>`
+- **Signature**: `fetchUsAppToPerson(request: MessagingV1UsAppToPerson.FetchUsAppToPersonRequest, options?: RequestOptions): ApiPromise<MessagingV1ServiceUsAppToPersonResponse, ApiError>`
 - **Wire**: `GET /v1/Services/{MessagingServiceSid}/Compliance/Usa2p/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `MessagingV1ServiceUsAppToPersonResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1UsAppToPerson.FetchUsAppToPersonRequest` (3):
 
@@ -87,12 +89,12 @@ Accessor: `client.messagingV1UsAppToPerson` · Source: `src/resources/messaging-
 ### listUsAppToPerson
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listUsAppToPerson(request: MessagingV1UsAppToPerson.ListUsAppToPersonRequest, options?: RequestOptions): ApiPromise<ListUsAppToPersonResponse, ResponseError>`
+- **Signature**: `listUsAppToPerson(request: MessagingV1UsAppToPerson.ListUsAppToPersonRequest, options?: RequestOptions): ApiPromise<ListUsAppToPersonResponse, ApiError>`
 - **Wire**: `GET /v1/Services/{MessagingServiceSid}/Compliance/Usa2p`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListUsAppToPersonResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1UsAppToPerson.ListUsAppToPersonRequest` (5):
 
@@ -111,12 +113,13 @@ Accessor: `client.messagingV1UsAppToPerson` · Source: `src/resources/messaging-
 ### updateUsAppToPerson
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateUsAppToPerson(request: MessagingV1UsAppToPerson.UpdateUsAppToPersonRequest, options?: RequestOptions): ApiPromise<MessagingV1ServiceUsAppToPersonResponse, ResponseError>`
+- **Signature**: `updateUsAppToPerson(request: MessagingV1UsAppToPerson.UpdateUsAppToPersonRequest, options?: RequestOptions): ApiPromise<MessagingV1ServiceUsAppToPersonResponse, ApiError>`
 - **Wire**: `POST /v1/Services/{MessagingServiceSid}/Compliance/Usa2p/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `MessagingV1ServiceUsAppToPersonResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1UsAppToPerson.UpdateUsAppToPersonRequest` (12):
 

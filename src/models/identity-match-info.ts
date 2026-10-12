@@ -26,8 +26,8 @@ export const identityMatchInfoSchema: Schema<IdentityMatchInfo> = s.object<Ident
   addressCountryMatch: s.optional(s.string()),
   nationalIdMatch: s.optional(s.string()),
   dateOfBirthMatch: s.optional(s.string()),
-  summaryScore: s.optional(s.number()),
-  errorCode: s.optional(s.number()),
+  summaryScore: s.optional(s.int()),
+  errorCode: s.optional(s.int()),
   errorMessage: s.optional(s.string()),
   _keysMap: {
     firstNameMatch: "first_name_match",

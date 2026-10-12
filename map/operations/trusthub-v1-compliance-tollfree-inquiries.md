@@ -4,17 +4,18 @@
 
 Accessor: `client.trusthubV1ComplianceTollfreeInquiries` · Source: `src/resources/trusthub-v1-compliance-tollfree-inquiries.ts` · 1 operation · Request types: namespace `TrusthubV1ComplianceTollfreeInquiries`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createComplianceTollfreeInquiry
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createComplianceTollfreeInquiry(request: TrusthubV1ComplianceTollfreeInquiries.CreateComplianceTollfreeInquiryRequest, options?: RequestOptions): ApiPromise<TrusthubV1ComplianceTollfreeInquiry, ResponseError>`
+- **Signature**: `createComplianceTollfreeInquiry(request: TrusthubV1ComplianceTollfreeInquiries.CreateComplianceTollfreeInquiryRequest, options?: RequestOptions): ApiPromise<TrusthubV1ComplianceTollfreeInquiry, ApiError>`
 - **Wire**: `POST /v1/ComplianceInquiries/Tollfree/Initialize`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `TrusthubV1ComplianceTollfreeInquiry`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1ComplianceTollfreeInquiries.CreateComplianceTollfreeInquiryRequest` (38):
 

@@ -4,16 +4,16 @@
 
 Accessor: `client.api20100401Member` · Source: `src/resources/api20100401-member.ts` · 3 operations · Request types: namespace `Api20100401Member`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchMember
 
-- **Signature**: `fetchMember(request: Api20100401Member.FetchMemberRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountQueueMember, ResponseError>`
+- **Signature**: `fetchMember(request: Api20100401Member.FetchMemberRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountQueueMember, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Queues/{QueueSid}/Members/{CallSid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ApiV2010AccountQueueMember`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Member.FetchMemberRequest` (3):
 
@@ -29,12 +29,12 @@ Accessor: `client.api20100401Member` · Source: `src/resources/api20100401-membe
 
 ### listMember
 
-- **Signature**: `listMember(request: Api20100401Member.ListMemberRequest, options?: RequestOptions): ApiPromise<ListMemberResponse, ResponseError>`
+- **Signature**: `listMember(request: Api20100401Member.ListMemberRequest, options?: RequestOptions): ApiPromise<ListMemberResponse, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Queues/{QueueSid}/Members.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListMemberResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Member.ListMemberRequest` (5):
 
@@ -52,12 +52,13 @@ Accessor: `client.api20100401Member` · Source: `src/resources/api20100401-membe
 
 ### updateMember
 
-- **Signature**: `updateMember(request: Api20100401Member.UpdateMemberRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountQueueMember, ResponseError>`
+- **Signature**: `updateMember(request: Api20100401Member.UpdateMemberRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountQueueMember, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/Queues/{QueueSid}/Members/{CallSid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountQueueMember`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Member.UpdateMemberRequest` (5):
 

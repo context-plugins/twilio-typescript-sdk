@@ -4,11 +4,16 @@ import { originalLineTypeSchema, type OriginalLineType } from "./original-line-t
 import { overriddenLineTypeSchema, type OverriddenLineType } from "./overridden-line-type.js";
 
 export type OverridesResponse = {
+  /** The phone number for which the override was created */
   phoneNumber?: string;
+  /** The original line type */
   originalLineType?: OriginalLineType;
+  /** The new line type after the override */
   overriddenLineType?: OverriddenLineType;
+  /** The reason for the override */
   overrideReason?: string;
   overrideTimestamp?: Date;
+  /** The Account SID for the user who made the override */
   overriddenByAccountSid?: string;
 };
 

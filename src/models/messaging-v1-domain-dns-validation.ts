@@ -2,6 +2,7 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type MessagingV1DomainDnsValidation = {
+  /** The unique string that we created to identify the Domain resource. */
   domainSid?: string | null;
   isValid?: boolean | null;
   reason?: string | null;

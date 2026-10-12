@@ -2,7 +2,9 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type CaptureRule = {
+  /** The from address. Use '*' for wildcard. */
   from: string;
+  /** The to address. Use '*' for wildcard. */
   to: string;
   metadata?: Record<string, string>;
 };

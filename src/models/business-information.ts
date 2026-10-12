@@ -1,7 +1,9 @@
 import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
+/** Business information associated with the application. */
 export type BusinessInformation = {
+  /** The Compliance Profile SID for the customer-facing business profile. */
   customerFacingProfile: string;
 };
 

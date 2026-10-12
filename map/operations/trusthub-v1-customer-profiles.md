@@ -4,17 +4,18 @@
 
 Accessor: `client.trusthubV1CustomerProfiles` · Source: `src/resources/trusthub-v1-customer-profiles.ts` · 5 operations · Request types: namespace `TrusthubV1CustomerProfiles`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createCustomerProfile
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createCustomerProfile(request: TrusthubV1CustomerProfiles.CreateCustomerProfileRequest, options?: RequestOptions): ApiPromise<TrusthubV1CustomerProfile, ResponseError>`
+- **Signature**: `createCustomerProfile(request: TrusthubV1CustomerProfiles.CreateCustomerProfileRequest, options?: RequestOptions): ApiPromise<TrusthubV1CustomerProfile, ApiError>`
 - **Wire**: `POST /v1/CustomerProfiles`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `TrusthubV1CustomerProfile`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1CustomerProfiles.CreateCustomerProfileRequest` (4):
 
@@ -32,12 +33,13 @@ Accessor: `client.trusthubV1CustomerProfiles` · Source: `src/resources/trusthub
 ### deleteCustomerProfile
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteCustomerProfile(request: TrusthubV1CustomerProfiles.DeleteCustomerProfileRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteCustomerProfile(request: TrusthubV1CustomerProfiles.DeleteCustomerProfileRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/CustomerProfiles/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1CustomerProfiles.DeleteCustomerProfileRequest` (1):
 
@@ -48,12 +50,12 @@ Accessor: `client.trusthubV1CustomerProfiles` · Source: `src/resources/trusthub
 ### fetchCustomerProfile
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchCustomerProfile(request: TrusthubV1CustomerProfiles.FetchCustomerProfileRequest, options?: RequestOptions): ApiPromise<TrusthubV1CustomerProfile, ResponseError>`
+- **Signature**: `fetchCustomerProfile(request: TrusthubV1CustomerProfiles.FetchCustomerProfileRequest, options?: RequestOptions): ApiPromise<TrusthubV1CustomerProfile, ApiError>`
 - **Wire**: `GET /v1/CustomerProfiles/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `TrusthubV1CustomerProfile`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1CustomerProfiles.FetchCustomerProfileRequest` (1):
 
@@ -68,12 +70,12 @@ Accessor: `client.trusthubV1CustomerProfiles` · Source: `src/resources/trusthub
 ### listCustomerProfile
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listCustomerProfile(request: TrusthubV1CustomerProfiles.ListCustomerProfileRequest, options?: RequestOptions): ApiPromise<ListCustomerProfileResponse, ResponseError>`
+- **Signature**: `listCustomerProfile(request: TrusthubV1CustomerProfiles.ListCustomerProfileRequest, options?: RequestOptions): ApiPromise<ListCustomerProfileResponse, ApiError>`
 - **Wire**: `GET /v1/CustomerProfiles`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListCustomerProfileResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1CustomerProfiles.ListCustomerProfileRequest` (6):
 
@@ -94,12 +96,13 @@ Accessor: `client.trusthubV1CustomerProfiles` · Source: `src/resources/trusthub
 ### updateCustomerProfile
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateCustomerProfile(request: TrusthubV1CustomerProfiles.UpdateCustomerProfileRequest, options?: RequestOptions): ApiPromise<TrusthubV1CustomerProfile, ResponseError>`
+- **Signature**: `updateCustomerProfile(request: TrusthubV1CustomerProfiles.UpdateCustomerProfileRequest, options?: RequestOptions): ApiPromise<TrusthubV1CustomerProfile, ApiError>`
 - **Wire**: `POST /v1/CustomerProfiles/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `TrusthubV1CustomerProfile`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1CustomerProfiles.UpdateCustomerProfileRequest` (5):
 

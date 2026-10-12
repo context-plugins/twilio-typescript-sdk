@@ -4,17 +4,18 @@
 
 Accessor: `client.numbersV2Bundle` · Source: `src/resources/numbers-v2-bundle.ts` · 5 operations · Request types: namespace `NumbersV2Bundle`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createBundle
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createBundle(request: NumbersV2Bundle.CreateBundleRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceBundle, ResponseError>`
+- **Signature**: `createBundle(request: NumbersV2Bundle.CreateBundleRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceBundle, ApiError>`
 - **Wire**: `POST /v2/RegulatoryCompliance/Bundles`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `NumbersV2RegulatoryComplianceBundle`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2Bundle.CreateBundleRequest` (8):
 
@@ -37,12 +38,13 @@ Accessor: `client.numbersV2Bundle` · Source: `src/resources/numbers-v2-bundle.t
 ### deleteBundle
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteBundle(request: NumbersV2Bundle.DeleteBundleRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteBundle(request: NumbersV2Bundle.DeleteBundleRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v2/RegulatoryCompliance/Bundles/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2Bundle.DeleteBundleRequest` (1):
 
@@ -53,12 +55,12 @@ Accessor: `client.numbersV2Bundle` · Source: `src/resources/numbers-v2-bundle.t
 ### fetchBundle
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchBundle(request: NumbersV2Bundle.FetchBundleRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceBundle, ResponseError>`
+- **Signature**: `fetchBundle(request: NumbersV2Bundle.FetchBundleRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceBundle, ApiError>`
 - **Wire**: `GET /v2/RegulatoryCompliance/Bundles/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `NumbersV2RegulatoryComplianceBundle`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2Bundle.FetchBundleRequest` (1):
 
@@ -73,12 +75,12 @@ Accessor: `client.numbersV2Bundle` · Source: `src/resources/numbers-v2-bundle.t
 ### listBundle
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listBundle(request: NumbersV2Bundle.ListBundleRequest, options?: RequestOptions): ApiPromise<ListBundleResponse, ResponseError>`
+- **Signature**: `listBundle(request: NumbersV2Bundle.ListBundleRequest, options?: RequestOptions): ApiPromise<ListBundleResponse, ApiError>`
 - **Wire**: `GET /v2/RegulatoryCompliance/Bundles`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListBundleResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2Bundle.ListBundleRequest` (16):
 
@@ -112,12 +114,13 @@ Accessor: `client.numbersV2Bundle` · Source: `src/resources/numbers-v2-bundle.t
 ### updateBundle
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateBundle(request: NumbersV2Bundle.UpdateBundleRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceBundle, ResponseError>`
+- **Signature**: `updateBundle(request: NumbersV2Bundle.UpdateBundleRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceBundle, ApiError>`
 - **Wire**: `POST /v2/RegulatoryCompliance/Bundles/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `NumbersV2RegulatoryComplianceBundle`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2Bundle.UpdateBundleRequest` (5):
 

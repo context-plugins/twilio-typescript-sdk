@@ -6,6 +6,7 @@ import {
 } from "./conversations-v2-send-message-payload.js";
 
 export type ConversationsV2SendMessageActionRequest = {
+  /** Action type discriminator. Accepted values: SEND_MESSAGE. */
   type: string;
   payload: ConversationsV2SendMessagePayload;
 };

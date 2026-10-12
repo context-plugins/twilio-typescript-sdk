@@ -4,16 +4,17 @@
 
 Accessor: `client.api20100401CredentialListMapping` · Source: `src/resources/api20100401-credential-list-mapping.ts` · 4 operations · Request types: namespace `Api20100401CredentialListMapping`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createSipCredentialListMapping
 
-- **Signature**: `createSipCredentialListMapping(request: Api20100401CredentialListMapping.CreateSipCredentialListMappingRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountSipSipDomainSipCredentialListMapping, ResponseError>`
+- **Signature**: `createSipCredentialListMapping(request: Api20100401CredentialListMapping.CreateSipCredentialListMappingRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountSipSipDomainSipCredentialListMapping, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/CredentialListMappings.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountSipSipDomainSipCredentialListMapping`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401CredentialListMapping.CreateSipCredentialListMappingRequest` (3):
 
@@ -29,12 +30,13 @@ Accessor: `client.api20100401CredentialListMapping` · Source: `src/resources/ap
 
 ### deleteSipCredentialListMapping
 
-- **Signature**: `deleteSipCredentialListMapping(request: Api20100401CredentialListMapping.DeleteSipCredentialListMappingRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteSipCredentialListMapping(request: Api20100401CredentialListMapping.DeleteSipCredentialListMappingRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/CredentialListMappings/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401CredentialListMapping.DeleteSipCredentialListMappingRequest` (3):
 
@@ -46,12 +48,12 @@ Accessor: `client.api20100401CredentialListMapping` · Source: `src/resources/ap
 
 ### fetchSipCredentialListMapping
 
-- **Signature**: `fetchSipCredentialListMapping(request: Api20100401CredentialListMapping.FetchSipCredentialListMappingRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountSipSipDomainSipCredentialListMapping, ResponseError>`
+- **Signature**: `fetchSipCredentialListMapping(request: Api20100401CredentialListMapping.FetchSipCredentialListMappingRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountSipSipDomainSipCredentialListMapping, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/CredentialListMappings/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ApiV2010AccountSipSipDomainSipCredentialListMapping`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401CredentialListMapping.FetchSipCredentialListMappingRequest` (3):
 
@@ -67,12 +69,12 @@ Accessor: `client.api20100401CredentialListMapping` · Source: `src/resources/ap
 
 ### listSipCredentialListMapping
 
-- **Signature**: `listSipCredentialListMapping(request: Api20100401CredentialListMapping.ListSipCredentialListMappingRequest, options?: RequestOptions): ApiPromise<ListSipCredentialListMappingResponse, ResponseError>`
+- **Signature**: `listSipCredentialListMapping(request: Api20100401CredentialListMapping.ListSipCredentialListMappingRequest, options?: RequestOptions): ApiPromise<ListSipCredentialListMappingResponse, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/CredentialListMappings.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListSipCredentialListMappingResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401CredentialListMapping.ListSipCredentialListMappingRequest` (5):
 

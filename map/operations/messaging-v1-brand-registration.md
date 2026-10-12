@@ -4,17 +4,18 @@
 
 Accessor: `client.messagingV1BrandRegistration` · Source: `src/resources/messaging-v1-brand-registration.ts` · 4 operations · Request types: namespace `MessagingV1BrandRegistration`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createBrandRegistrations
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createBrandRegistrations(request: MessagingV1BrandRegistration.CreateBrandRegistrationsRequest, options?: RequestOptions): ApiPromise<MessagingV1BrandRegistrations, ResponseError>`
+- **Signature**: `createBrandRegistrations(request: MessagingV1BrandRegistration.CreateBrandRegistrationsRequest, options?: RequestOptions): ApiPromise<MessagingV1BrandRegistrations, ApiError>`
 - **Wire**: `POST /v1/a2p/BrandRegistrations`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `MessagingV1BrandRegistrations`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1BrandRegistration.CreateBrandRegistrationsRequest` (5):
 
@@ -33,12 +34,12 @@ Accessor: `client.messagingV1BrandRegistration` · Source: `src/resources/messag
 ### fetchBrandRegistrations
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchBrandRegistrations(request: MessagingV1BrandRegistration.FetchBrandRegistrationsRequest, options?: RequestOptions): ApiPromise<MessagingV1BrandRegistrations, ResponseError>`
+- **Signature**: `fetchBrandRegistrations(request: MessagingV1BrandRegistration.FetchBrandRegistrationsRequest, options?: RequestOptions): ApiPromise<MessagingV1BrandRegistrations, ApiError>`
 - **Wire**: `GET /v1/a2p/BrandRegistrations/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `MessagingV1BrandRegistrations`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1BrandRegistration.FetchBrandRegistrationsRequest` (1):
 
@@ -53,12 +54,12 @@ Accessor: `client.messagingV1BrandRegistration` · Source: `src/resources/messag
 ### listBrandRegistrations
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listBrandRegistrations(request: MessagingV1BrandRegistration.ListBrandRegistrationsRequest, options?: RequestOptions): ApiPromise<ListBrandRegistrationsResponse, ResponseError>`
+- **Signature**: `listBrandRegistrations(request: MessagingV1BrandRegistration.ListBrandRegistrationsRequest, options?: RequestOptions): ApiPromise<ListBrandRegistrationsResponse, ApiError>`
 - **Wire**: `GET /v1/a2p/BrandRegistrations`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListBrandRegistrationsResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1BrandRegistration.ListBrandRegistrationsRequest` (3):
 
@@ -75,12 +76,13 @@ Accessor: `client.messagingV1BrandRegistration` · Source: `src/resources/messag
 ### updateBrandRegistrations
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateBrandRegistrations(request: MessagingV1BrandRegistration.UpdateBrandRegistrationsRequest, options?: RequestOptions): ApiPromise<MessagingV1BrandRegistrations, ResponseError>`
+- **Signature**: `updateBrandRegistrations(request: MessagingV1BrandRegistration.UpdateBrandRegistrationsRequest, options?: RequestOptions): ApiPromise<MessagingV1BrandRegistrations, ApiError>`
 - **Wire**: `POST /v1/a2p/BrandRegistrations/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `MessagingV1BrandRegistrations`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1BrandRegistration.UpdateBrandRegistrationsRequest` (1):
 

@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** Purpose for using Sender ID */
 export const SenderIdPurpose = {
   Transactional: "TRANSACTIONAL",
   Promotional: "PROMOTIONAL",

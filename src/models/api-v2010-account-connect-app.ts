@@ -10,16 +10,33 @@ import {
 } from "./deauthorize-callback-method.js";
 
 export type ApiV2010AccountConnectApp = {
+  /**
+   * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the
+   * ConnectApp resource.
+   */
   accountSid?: string | null;
+  /**
+   * The URL we redirect the user to after we authenticate the user and obtain authorization to
+   * access the Connect App.
+   */
   authorizeRedirectUrl?: string | null;
+  /** The company name set for the Connect App. */
   companyName?: string | null;
+  /** The HTTP method we use to call `deauthorize_callback_url`. */
   deauthorizeCallbackMethod?: DeauthorizeCallbackMethod | null;
+  /** The URL we call using the `deauthorize_callback_method` to de-authorize the Connect App. */
   deauthorizeCallbackUrl?: string | null;
+  /** The description of the Connect App. */
   description?: string | null;
+  /** The string that you assigned to describe the resource. */
   friendlyName?: string | null;
+  /** The public URL where users can obtain more information about this Connect App. */
   homepageUrl?: string | null;
+  /** The set of permissions that your ConnectApp requests. */
   permissions?: ConnectAppEnumPermission[] | null;
+  /** The unique string that that we created to identify the ConnectApp resource. */
   sid?: string | null;
+  /** The URI of the resource, relative to `https://api.twilio.com`. */
   uri?: string | null;
 };
 

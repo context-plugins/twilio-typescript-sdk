@@ -4,17 +4,17 @@
 
 Accessor: `client.insightsV1Room` · Source: `src/resources/insights-v1-room.ts` · 2 operations · Request types: namespace `InsightsV1Room`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchVideoRoomSummary
 
 - **Server**: `default14` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchVideoRoomSummary(request: InsightsV1Room.FetchVideoRoomSummaryRequest, options?: RequestOptions): ApiPromise<InsightsV1VideoRoomSummary, ResponseError>`
+- **Signature**: `fetchVideoRoomSummary(request: InsightsV1Room.FetchVideoRoomSummaryRequest, options?: RequestOptions): ApiPromise<InsightsV1VideoRoomSummary, ApiError>`
 - **Wire**: `GET /v1/Video/Rooms/{RoomSid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `InsightsV1VideoRoomSummary`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `InsightsV1Room.FetchVideoRoomSummaryRequest` (1):
 
@@ -29,12 +29,12 @@ Accessor: `client.insightsV1Room` · Source: `src/resources/insights-v1-room.ts`
 ### listVideoRoomSummary
 
 - **Server**: `default14` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listVideoRoomSummary(request: InsightsV1Room.ListVideoRoomSummaryRequest, options?: RequestOptions): ApiPromise<ListVideoRoomSummaryResponse, ResponseError>`
+- **Signature**: `listVideoRoomSummary(request: InsightsV1Room.ListVideoRoomSummaryRequest, options?: RequestOptions): ApiPromise<ListVideoRoomSummaryResponse, ApiError>`
 - **Wire**: `GET /v1/Video/Rooms`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListVideoRoomSummaryResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `InsightsV1Room.ListVideoRoomSummaryRequest` (8):
 

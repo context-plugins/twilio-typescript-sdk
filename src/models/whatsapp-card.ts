@@ -2,6 +2,10 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 import { cardActionSchema, type CardAction } from "./card-action.js";
 
+/**
+ * whatsapp/card is a structured template which can be used to send a series of related information.
+ * It must include a body and at least one additional field.
+ */
 export type WhatsappCard = {
   body: string;
   footer?: string;

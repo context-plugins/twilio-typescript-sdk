@@ -8,7 +8,7 @@ export type CallForwardingInfo = {
 
 export const callForwardingInfoSchema: Schema<CallForwardingInfo> = s.object<CallForwardingInfo>({
   callForwardingEnabled: s.optional(s.boolean()),
-  errorCode: s.optional(s.number()),
+  errorCode: s.optional(s.int()),
   _keysMap: {
     callForwardingEnabled: "call_forwarding_enabled",
     errorCode: "error_code",

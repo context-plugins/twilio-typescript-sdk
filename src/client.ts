@@ -1,9 +1,12 @@
 import { buildAuthSchemes, type AuthSchemes } from "./auth-schemes.js";
-import { DEFAULT_CLIENT_OPTIONS, type ClientOptions } from "./client-options.js";
+import type { ClientOptions } from "./client-options.js";
+import { ApiError, type Declared, type ErrorDecoders, type ErrorPayload } from "./core/api-error.js";
 import type { ApiPromise } from "./core/api-promise.js";
 import type { RequestOptions } from "./core/api-request.js";
+import { buildCoreClientOptions } from "./core/client-options.js";
 import { RawClient } from "./core/raw-client.js";
-import { ResponseError, type Declared, type ErrorDecoders } from "./core/response-error.js";
+import * as host from "./core/runtime-environment.js";
+import { uuid } from "./core/uuid.js";
 import * as s from "./core/validation/index.js";
 import {
   accountsCallsRecordingsSidJson201041408Error1Schema,
@@ -355,6 +358,15 @@ import { VideoV1SubscribedTrack } from "./resources/video-v1-subscribed-track.js
 import { VideoV1Transcriptions } from "./resources/video-v1-transcriptions.js";
 import { buildServers, type Servers } from "./servers.js";
 
+/**
+ * This is the public Twilio REST API., Manage configurations, conversations, participants, and
+ * communications. Create configurations to define capture rules and channel settings, then use
+ * conversations to group related communications., This is the public Twilio REST API., This is the
+ * public Twilio REST API., This is the public Twilio REST API., This is the public Twilio REST
+ * API., This is the public Twilio REST API., This is the public Twilio REST API., This is the
+ * public Twilio REST API., This is the public Twilio REST API., This is the public Twilio REST
+ * API., This is the reference API for the rest-proxy server., Insights Domain V3 API.
+ */
 export class TwilioSdkClient {
   readonly #rawClient: RawClient;
   readonly #servers: Servers;
@@ -678,18 +690,22 @@ export class TwilioSdkClient {
   #insightsV1GetOutboundPhoneNumbersReport?: InsightsV1GetOutboundPhoneNumbersReport;
   #twilioInsights?: TwilioInsights;
 
-  constructor(clientOptions: Partial<ClientOptions> = {}) {
-    const options = { ...DEFAULT_CLIENT_OPTIONS, ...clientOptions };
-
+  constructor(options: ClientOptions = {}) {
     this.#rawClient = new RawClient({
-      timeout: options.timeout,
-      defaultHeaders: [],
+      ...buildCoreClientOptions(options, "TWILIO_SDK_CLIENT_LOG"),
+      defaultHeaders: [
+        { name: "User-Agent", value: "TwilioSdkClient/1.0.0 TypeScript", schema: s.string() },
+        { name: "X-APIMatic-Lang", value: "TypeScript", schema: s.string() },
+        { name: "X-APIMatic-Package-Version", value: "1.0.0", schema: s.string() },
+        { name: "X-APIMatic-Gen-Version", value: "4.0.0", schema: s.string() },
+        { name: "X-APIMatic-OS", value: host.operatingSystem(), schema: s.optional(s.string()) },
+        { name: "X-APIMatic-Runtime", value: host.runtimeDescription(), schema: s.optional(s.string()) },
+      ],
       defaultQuery: [],
       defaultPathParams: [],
-      fetch: options.fetch,
     });
 
-    this.#servers = buildServers(options.serverEnvironment, options.serverOptions);
+    this.#servers = buildServers(options);
 
     this.#auth = buildAuthSchemes(options);
   }
@@ -1371,6 +1387,9 @@ export class TwilioSdkClient {
     ));
   }
 
+  /**
+   * Send typing indicators to OTT channel recipients (WhatsApp, Apple Messages for Business).
+   */
   get messagingV3TypingIndicator(): MessagingV3TypingIndicator {
     return (this.#messagingV3TypingIndicator ??= new MessagingV3TypingIndicator(
       this.#rawClient,
@@ -1988,6 +2007,11 @@ export class TwilioSdkClient {
     ));
   }
 
+  /**
+   * A conversation configuration is the top-level object in Conversation Orchestrator. It contains
+   * the settings that define how Conversation Orchestrator captures traffic and connects to other
+   * services.
+   */
   get conversationsV2ConfigurationApi(): ConversationsV2ConfigurationApi {
     return (this.#conversationsV2ConfigurationApi ??= new ConversationsV2ConfigurationApi(
       this.#rawClient,
@@ -1996,6 +2020,11 @@ export class TwilioSdkClient {
     ));
   }
 
+  /**
+   * A conversation is a record of interactions between participants. It's the container for all
+   * communications that occur during an interaction, including voice calls, SMS messages, and other
+   * supported channels.
+   */
   get conversationsV2ConversationApi(): ConversationsV2ConversationApi {
     return (this.#conversationsV2ConversationApi ??= new ConversationsV2ConversationApi(
       this.#rawClient,
@@ -2004,6 +2033,10 @@ export class TwilioSdkClient {
     ));
   }
 
+  /**
+   * A participant represents an actor involved in a conversation. Conversation Orchestrator assigns
+   * each participant a type that identifies their role, such as customer, human agent, or AI agent.
+   */
   get conversationsV2ParticipantApi(): ConversationsV2ParticipantApi {
     return (this.#conversationsV2ParticipantApi ??= new ConversationsV2ParticipantApi(
       this.#rawClient,
@@ -2012,6 +2045,10 @@ export class TwilioSdkClient {
     ));
   }
 
+  /**
+   * A communication is the smallest unit of interaction within a conversation. Each communication
+   * represents a single event—such as an SMS message or a voice utterance.
+   */
   get conversationsV2CommunicationApi(): ConversationsV2CommunicationApi {
     return (this.#conversationsV2CommunicationApi ??= new ConversationsV2CommunicationApi(
       this.#rawClient,
@@ -2020,6 +2057,10 @@ export class TwilioSdkClient {
     ));
   }
 
+  /**
+   * Perform actions within a Conversation. Actions trigger side effects such as sending messages
+   * and return 202 Accepted.
+   */
   get conversationsV2ActionApi(): ConversationsV2ActionApi {
     return (this.#conversationsV2ActionApi ??= new ConversationsV2ActionApi(
       this.#rawClient,
@@ -2028,6 +2069,9 @@ export class TwilioSdkClient {
     ));
   }
 
+  /**
+   * Poll the status of a long-running operation.
+   */
   get conversationsV2Operation(): ConversationsV2Operation {
     return (this.#conversationsV2Operation ??= new ConversationsV2Operation(
       this.#rawClient,
@@ -2885,29 +2929,68 @@ export class TwilioSdkClient {
     ));
   }
 
+  /**
+   * Twilio Insights API.
+   */
   get twilioInsights(): TwilioInsights {
     return (this.#twilioInsights ??= new TwilioInsights(this.#rawClient, this.#servers, this.#auth));
   }
 
+  /**
+   * In Request Bulk
+   *
+   * @remarks
+   * Discussions made regarding how to help the customer to correlation request and response
+   * objects:
+   * - Respecting the natural order (requests vs. response)
+   * - Using phone numbers as unique key
+   * - Adding a correlation_id key
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   createBulkLookup(
     request: TwilioSdkClient.CreateBulkLookupRequest,
     options?: RequestOptions,
-  ): ApiPromise<LookupResponse1, ResponseError> {
-    return this.#rawClient.execute<LookupResponse1, ResponseError>(
+  ): ApiPromise<LookupResponse1, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default4("/v2/batch/query"),
+        urlTemplate: this.#servers.default4("/v2/batch/query"),
         auth: this.#auth.accountSidAuthToken,
+        pathParams: [],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: { kind: "json", value: request.body, schema: s.optional(s.lazy(() => lookupRequestSchema)) },
       },
       {
         success: { kind: "json", schema: lookupResponse1Schema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Create Override for a Phone Number for a specific field
+   *
+   * @remarks
+   * Create an Override for a specific package and phone number.
+   *
+   * @returns Created
+   *
+   * @throws {@link TwilioSdkClient.CreateLookupPhoneNumberOverridesError} when the API answers with
+   * an error status — narrow on `err.payload.kind`
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   createLookupPhoneNumberOverrides(
     request: TwilioSdkClient.CreateLookupPhoneNumberOverridesRequest,
     options?: RequestOptions,
@@ -2915,12 +2998,14 @@ export class TwilioSdkClient {
     return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default4("/v2/PhoneNumbers/{PhoneNumber}/Overrides/{Field}"),
+        urlTemplate: this.#servers.default4("/v2/PhoneNumbers/{PhoneNumber}/Overrides/{Field}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           { name: "Field", value: request.field, schema: s.string() },
           { name: "PhoneNumber", value: request.phoneNumber, schema: s.string() },
         ],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: { kind: "json", value: request.body, schema: s.optional(s.lazy(() => overridesRequestSchema)) },
       },
       {
@@ -2931,6 +3016,21 @@ export class TwilioSdkClient {
     );
   }
 
+  /**
+   * Delete an Override for a Phone Number for a specific field
+   *
+   * @remarks
+   * Delete an Override for a specific package and phone number.
+   *
+   * @returns No Content
+   *
+   * @throws {@link TwilioSdkClient.DeleteLookupPhoneNumberOverridesError} when the API answers with
+   * an error status — narrow on `err.payload.kind`
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   deleteLookupPhoneNumberOverrides(
     request: TwilioSdkClient.DeleteLookupPhoneNumberOverridesRequest,
     options?: RequestOptions,
@@ -2938,12 +3038,14 @@ export class TwilioSdkClient {
     return this.#rawClient.execute(
       {
         method: "DELETE",
-        url: this.#servers.default4("/v2/PhoneNumbers/{PhoneNumber}/Overrides/{Field}"),
+        urlTemplate: this.#servers.default4("/v2/PhoneNumbers/{PhoneNumber}/Overrides/{Field}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           { name: "Field", value: request.field, schema: s.string() },
           { name: "PhoneNumber", value: request.phoneNumber, schema: s.string() },
         ],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: { kind: "empty" },
       },
       {
@@ -2954,6 +3056,18 @@ export class TwilioSdkClient {
     );
   }
 
+  /**
+   * Delete rate limit
+   *
+   * @returns No Content
+   *
+   * @throws {@link TwilioSdkClient.DeleteLookupRateLimitError} when the API answers with an error
+   * status — narrow on `err.payload.kind`
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   deleteLookupRateLimit(
     request: TwilioSdkClient.DeleteLookupRateLimitRequest,
     options?: RequestOptions,
@@ -2961,12 +3075,14 @@ export class TwilioSdkClient {
     return this.#rawClient.execute(
       {
         method: "DELETE",
-        url: this.#servers.default4("/v2/RateLimits/Fields/{Field}/Bucket/{Bucket}"),
+        urlTemplate: this.#servers.default4("/v2/RateLimits/Fields/{Field}/Bucket/{Bucket}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           { name: "Field", value: request.field, schema: s.string() },
           { name: "Bucket", value: request.bucket, schema: s.string() },
         ],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: { kind: "empty" },
       },
       {
@@ -2977,6 +3093,22 @@ export class TwilioSdkClient {
     );
   }
 
+  /**
+   * Get account rate limits
+   *
+   * @remarks
+   * Retrieve the list of rate limits for all fields (if any) It returns also the twilio rate
+   * limits.
+   *
+   * @returns OK
+   *
+   * @throws {@link TwilioSdkClient.FetchLookupAccountRateLimitsError} when the API answers with an
+   * error status — narrow on `err.payload.kind`
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   fetchLookupAccountRateLimits(
     request: TwilioSdkClient.FetchLookupAccountRateLimitsRequest,
     options?: RequestOptions,
@@ -2984,9 +3116,11 @@ export class TwilioSdkClient {
     return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default4("/v2/RateLimits"),
+        urlTemplate: this.#servers.default4("/v2/RateLimits"),
         auth: this.#auth.accountSidAuthToken,
+        pathParams: [],
         query: [{ name: "Fields", value: request.fields, schema: s.optional(s.array(s.string())) }],
+        headers: [],
         body: { kind: "empty" },
       },
       {
@@ -2997,6 +3131,21 @@ export class TwilioSdkClient {
     );
   }
 
+  /**
+   * Get Overrides for a Phone Number for a specific field.
+   *
+   * @remarks
+   * Retrieve an Override for a specific package and phone number.
+   *
+   * @returns OK
+   *
+   * @throws {@link TwilioSdkClient.FetchLookupPhoneNumberOverridesError} when the API answers with
+   * an error status — narrow on `err.payload.kind`
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   fetchLookupPhoneNumberOverrides(
     request: TwilioSdkClient.FetchLookupPhoneNumberOverridesRequest,
     options?: RequestOptions,
@@ -3004,12 +3153,14 @@ export class TwilioSdkClient {
     return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default4("/v2/PhoneNumbers/{PhoneNumber}/Overrides/{Field}"),
+        urlTemplate: this.#servers.default4("/v2/PhoneNumbers/{PhoneNumber}/Overrides/{Field}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           { name: "Field", value: request.field, schema: s.string() },
           { name: "PhoneNumber", value: request.phoneNumber, schema: s.string() },
         ],
+        query: [],
+        headers: [],
         body: { kind: "empty" },
       },
       {
@@ -3020,6 +3171,18 @@ export class TwilioSdkClient {
     );
   }
 
+  /**
+   * Get rate limit
+   *
+   * @returns OK
+   *
+   * @throws {@link TwilioSdkClient.FetchLookupRateLimitError} when the API answers with an error
+   * status — narrow on `err.payload.kind`
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   fetchLookupRateLimit(
     request: TwilioSdkClient.FetchLookupRateLimitRequest,
     options?: RequestOptions,
@@ -3027,12 +3190,14 @@ export class TwilioSdkClient {
     return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default4("/v2/RateLimits/Fields/{Field}/Bucket/{Bucket}"),
+        urlTemplate: this.#servers.default4("/v2/RateLimits/Fields/{Field}/Bucket/{Bucket}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           { name: "Field", value: request.field, schema: s.string() },
           { name: "Bucket", value: request.bucket, schema: s.string() },
         ],
+        query: [],
+        headers: [],
         body: { kind: "empty" },
       },
       {
@@ -3043,26 +3208,57 @@ export class TwilioSdkClient {
     );
   }
 
+  /**
+   * Approve a Passkeys Challenge
+   *
+   * @remarks
+   * Approve a Passkeys challenge
+   *
+   * @returns Approved
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   updateChallengePasskeys(
     request: TwilioSdkClient.UpdateChallengePasskeysRequest,
     options?: RequestOptions,
-  ): ApiPromise<V2ServicesPasskeysApproveChallengeResponse, ResponseError> {
-    return this.#rawClient.execute<V2ServicesPasskeysApproveChallengeResponse, ResponseError>(
+  ): ApiPromise<V2ServicesPasskeysApproveChallengeResponse, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default3("/v2/Services/{ServiceSid}/Passkeys/ApproveChallenge"),
+        urlTemplate: this.#servers.default3("/v2/Services/{ServiceSid}/Passkeys/ApproveChallenge"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "ServiceSid", value: request.serviceSid, schema: s.string() }],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: { kind: "json", value: request.body, schema: approvePasskeysChallengeRequestSchema },
       },
       {
         success: { kind: "json", schema: v2ServicesPasskeysApproveChallengeResponseSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Update Override for a Phone Number for a specific field
+   *
+   * @remarks
+   * Update an Override for a specific package and phone number.
+   *
+   * @returns OK
+   *
+   * @throws {@link TwilioSdkClient.UpdateLookupPhoneNumberOverridesError} when the API answers with
+   * an error status — narrow on `err.payload.kind`
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   updateLookupPhoneNumberOverrides(
     request: TwilioSdkClient.UpdateLookupPhoneNumberOverridesRequest,
     options?: RequestOptions,
@@ -3070,12 +3266,14 @@ export class TwilioSdkClient {
     return this.#rawClient.execute(
       {
         method: "PUT",
-        url: this.#servers.default4("/v2/PhoneNumbers/{PhoneNumber}/Overrides/{Field}"),
+        urlTemplate: this.#servers.default4("/v2/PhoneNumbers/{PhoneNumber}/Overrides/{Field}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           { name: "Field", value: request.field, schema: s.string() },
           { name: "PhoneNumber", value: request.phoneNumber, schema: s.string() },
         ],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: { kind: "json", value: request.body, schema: s.optional(s.lazy(() => overridesRequestSchema)) },
       },
       {
@@ -3086,6 +3284,18 @@ export class TwilioSdkClient {
     );
   }
 
+  /**
+   * Upsert rate limit
+   *
+   * @returns OK
+   *
+   * @throws {@link TwilioSdkClient.UpdateLookupRateLimitError} when the API answers with an error
+   * status — narrow on `err.payload.kind`
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   updateLookupRateLimit(
     request: TwilioSdkClient.UpdateLookupRateLimitRequest,
     options?: RequestOptions,
@@ -3093,12 +3303,14 @@ export class TwilioSdkClient {
     return this.#rawClient.execute(
       {
         method: "PUT",
-        url: this.#servers.default4("/v2/RateLimits/Fields/{Field}/Bucket/{Bucket}"),
+        urlTemplate: this.#servers.default4("/v2/RateLimits/Fields/{Field}/Bucket/{Bucket}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           { name: "Field", value: request.field, schema: s.string() },
           { name: "Bucket", value: request.bucket, schema: s.string() },
         ],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: { kind: "json", value: request.body, schema: s.optional(s.lazy(() => rateLimitRequestSchema)) },
       },
       {
@@ -3109,21 +3321,37 @@ export class TwilioSdkClient {
     );
   }
 
+  /**
+   * Verify a Passkeys Factor
+   *
+   * @remarks
+   * Verify a Passkeys Factor
+   *
+   * @returns Created
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   updatePasskeysFactor(
     request: TwilioSdkClient.UpdatePasskeysFactorRequest,
     options?: RequestOptions,
-  ): ApiPromise<V2ServicesPasskeysVerifyFactorResponse, ResponseError> {
-    return this.#rawClient.execute<V2ServicesPasskeysVerifyFactorResponse, ResponseError>(
+  ): ApiPromise<V2ServicesPasskeysVerifyFactorResponse, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default3("/v2/Services/{ServiceSid}/Passkeys/VerifyFactor"),
+        urlTemplate: this.#servers.default3("/v2/Services/{ServiceSid}/Passkeys/VerifyFactor"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "ServiceSid", value: request.serviceSid, schema: s.string() }],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: { kind: "json", value: request.body, schema: verifyPasskeysFactorRequestSchema },
       },
       {
         success: { kind: "json", schema: v2ServicesPasskeysVerifyFactorResponseSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -3141,9 +3369,11 @@ export namespace TwilioSdkClient {
     body?: OverridesRequest;
   };
 
-  export class CreateLookupPhoneNumberOverridesError extends ResponseError<
-    Declared<"accountsCallsRecordingsSidJson201041408Error1", AccountsCallsRecordingsSidJson201041408Error1>
-  > {
+  export class CreateLookupPhoneNumberOverridesError extends ApiError {
+    declare readonly payload: ErrorPayload<
+      Declared<"accountsCallsRecordingsSidJson201041408Error1", AccountsCallsRecordingsSidJson201041408Error1>
+    >;
+
     static readonly errors: ErrorDecoders<CreateLookupPhoneNumberOverridesError> = [
       {
         on: 400,
@@ -3158,9 +3388,11 @@ export namespace TwilioSdkClient {
     phoneNumber: string;
   };
 
-  export class DeleteLookupPhoneNumberOverridesError extends ResponseError<
-    Declared<"accountsCallsRecordingsSidJson201041408Error1", AccountsCallsRecordingsSidJson201041408Error1>
-  > {
+  export class DeleteLookupPhoneNumberOverridesError extends ApiError {
+    declare readonly payload: ErrorPayload<
+      Declared<"accountsCallsRecordingsSidJson201041408Error1", AccountsCallsRecordingsSidJson201041408Error1>
+    >;
+
     static readonly errors: ErrorDecoders<DeleteLookupPhoneNumberOverridesError> = [
       {
         on: 400,
@@ -3171,13 +3403,17 @@ export namespace TwilioSdkClient {
   }
 
   export type DeleteLookupRateLimitRequest = {
+    /** bucket name */
     field: string;
+    /** bucket name */
     bucket: string;
   };
 
-  export class DeleteLookupRateLimitError extends ResponseError<
-    Declared<"accountsCallsRecordingsSidJson201041408Error1", AccountsCallsRecordingsSidJson201041408Error1>
-  > {
+  export class DeleteLookupRateLimitError extends ApiError {
+    declare readonly payload: ErrorPayload<
+      Declared<"accountsCallsRecordingsSidJson201041408Error1", AccountsCallsRecordingsSidJson201041408Error1>
+    >;
+
     static readonly errors: ErrorDecoders<DeleteLookupRateLimitError> = [
       {
         on: 400,
@@ -3191,9 +3427,11 @@ export namespace TwilioSdkClient {
     fields?: string[];
   };
 
-  export class FetchLookupAccountRateLimitsError extends ResponseError<
-    Declared<"accountsCallsRecordingsSidJson201041408Error1", AccountsCallsRecordingsSidJson201041408Error1>
-  > {
+  export class FetchLookupAccountRateLimitsError extends ApiError {
+    declare readonly payload: ErrorPayload<
+      Declared<"accountsCallsRecordingsSidJson201041408Error1", AccountsCallsRecordingsSidJson201041408Error1>
+    >;
+
     static readonly errors: ErrorDecoders<FetchLookupAccountRateLimitsError> = [
       {
         on: 400,
@@ -3208,13 +3446,18 @@ export namespace TwilioSdkClient {
     phoneNumber: string;
   };
 
-  export class FetchLookupPhoneNumberOverridesError extends ResponseError<
-    | Declared<"accountsCallsRecordingsSidJson201041408Error1", AccountsCallsRecordingsSidJson201041408Error1>
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error12",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-  > {
+  export class FetchLookupPhoneNumberOverridesError extends ApiError {
+    declare readonly payload: ErrorPayload<
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error1",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error12",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+    >;
+
     static readonly errors: ErrorDecoders<FetchLookupPhoneNumberOverridesError> = [
       {
         on: 400,
@@ -3230,17 +3473,24 @@ export namespace TwilioSdkClient {
   }
 
   export type FetchLookupRateLimitRequest = {
+    /** bucket name */
     field: string;
+    /** bucket name */
     bucket: string;
   };
 
-  export class FetchLookupRateLimitError extends ResponseError<
-    | Declared<"accountsCallsRecordingsSidJson201041408Error1", AccountsCallsRecordingsSidJson201041408Error1>
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error12",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-  > {
+  export class FetchLookupRateLimitError extends ApiError {
+    declare readonly payload: ErrorPayload<
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error1",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error12",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+    >;
+
     static readonly errors: ErrorDecoders<FetchLookupRateLimitError> = [
       {
         on: 400,
@@ -3256,6 +3506,7 @@ export namespace TwilioSdkClient {
   }
 
   export type UpdateChallengePasskeysRequest = {
+    /** The unique SID identifier of the Service. */
     serviceSid: string;
     body: ApprovePasskeysChallengeRequest;
   };
@@ -3266,13 +3517,18 @@ export namespace TwilioSdkClient {
     body?: OverridesRequest;
   };
 
-  export class UpdateLookupPhoneNumberOverridesError extends ResponseError<
-    | Declared<"accountsCallsRecordingsSidJson201041408Error1", AccountsCallsRecordingsSidJson201041408Error1>
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error12",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-  > {
+  export class UpdateLookupPhoneNumberOverridesError extends ApiError {
+    declare readonly payload: ErrorPayload<
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error1",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error12",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+    >;
+
     static readonly errors: ErrorDecoders<UpdateLookupPhoneNumberOverridesError> = [
       {
         on: 400,
@@ -3288,14 +3544,18 @@ export namespace TwilioSdkClient {
   }
 
   export type UpdateLookupRateLimitRequest = {
+    /** field name */
     field: string;
+    /** bucket name */
     bucket: string;
     body?: RateLimitRequest;
   };
 
-  export class UpdateLookupRateLimitError extends ResponseError<
-    Declared<"accountsCallsRecordingsSidJson201041408Error1", AccountsCallsRecordingsSidJson201041408Error1>
-  > {
+  export class UpdateLookupRateLimitError extends ApiError {
+    declare readonly payload: ErrorPayload<
+      Declared<"accountsCallsRecordingsSidJson201041408Error1", AccountsCallsRecordingsSidJson201041408Error1>
+    >;
+
     static readonly errors: ErrorDecoders<UpdateLookupRateLimitError> = [
       {
         on: 400,
@@ -3306,6 +3566,7 @@ export namespace TwilioSdkClient {
   }
 
   export type UpdatePasskeysFactorRequest = {
+    /** The unique SID identifier of the Service. */
     serviceSid: string;
     body: VerifyPasskeysFactorRequest;
   };

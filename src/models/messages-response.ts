@@ -3,8 +3,11 @@ import type { Schema } from "../core/validation/schema.js";
 import { messagePropertiesSchema, type MessageProperties } from "./message-properties.js";
 
 export type MessagesResponse = {
+  /** The SID of the account that owns this opt-out configuration */
   accountSid: string;
+  /** The SID of the opt-out configuration */
   optOutSid: string;
+  /** List of message configurations for different keyword types */
   config: MessageProperties[];
 };
 

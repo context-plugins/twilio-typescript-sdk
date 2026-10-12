@@ -3,15 +3,37 @@ import type { Schema } from "../core/validation/schema.js";
 import { replaceItemsEnumStatusSchema, type ReplaceItemsEnumStatus } from "./replace-items-enum-status.js";
 
 export type NumbersV2RegulatoryComplianceBundleReplaceItems = {
+  /** The unique string that we created to identify the Bundle resource. */
   sid?: string | null;
+  /**
+   * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Bundle
+   * resource.
+   */
   accountSid?: string | null;
+  /** The unique string of a regulation that is associated to the Bundle resource. */
   regulationSid?: string | null;
+  /** The string that you assigned to describe the resource. */
   friendlyName?: string | null;
+  /** The verification status of the Bundle resource. */
   status?: ReplaceItemsEnumStatus;
+  /**
+   * The date and time in GMT in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format when the
+   * resource will be valid until.
+   */
   validUntil?: Date | null;
+  /** The email address that will receive updates when the Bundle resource changes status. */
   email?: string | null;
+  /** The URL we call to inform your application of status changes. */
   statusCallback?: string | null;
+  /**
+   * The date and time in GMT when the resource was created specified in [ISO
+   * 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+   */
   dateCreated?: Date | null;
+  /**
+   * The date and time in GMT when the resource was last updated specified in [ISO
+   * 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+   */
   dateUpdated?: Date | null;
 };
 

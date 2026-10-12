@@ -3,18 +3,43 @@ import type { Schema } from "../core/validation/schema.js";
 import { trustProductEnumStatusSchema, type TrustProductEnumStatus } from "./trust-product-enum-status.js";
 
 export type TrusthubV1TrustProduct = {
+  /** The unique string that we created to identify the Trust Product resource. */
   sid?: string | null;
+  /**
+   * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Trust
+   * Product resource.
+   */
   accountSid?: string | null;
+  /** The unique string of the policy that is associated with the Trust Product resource. */
   policySid?: string | null;
+  /** The string that you assigned to describe the resource. */
   friendlyName?: string | null;
+  /** The verification status of the Trust Product resource. */
   status?: TrustProductEnumStatus;
+  /**
+   * The date and time in GMT in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format until
+   * which the resource will be valid.
+   */
   validUntil?: Date | null;
+  /** The email address that will receive updates when the Trust Product resource changes status. */
   email?: string | null;
+  /** The URL we call to inform your application of status changes. */
   statusCallback?: string | null;
+  /**
+   * The date and time in GMT when the resource was created specified in [ISO
+   * 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+   */
   dateCreated?: Date | null;
+  /**
+   * The date and time in GMT when the resource was last updated specified in [ISO
+   * 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+   */
   dateUpdated?: Date | null;
+  /** The absolute URL of the Trust Product resource. */
   url?: string | null;
+  /** The URLs of the Assigned Items of the Trust Product resource. */
   links?: Record<string, unknown> | null;
+  /** The error codes associated with the rejection of the Trust Product. */
   errors?: Record<string, unknown>[] | null;
 };
 

@@ -4,17 +4,18 @@
 
 Accessor: `client.verifyV2NewChallenge` · Source: `src/resources/verify-v2-new-challenge.ts` · 1 operation · Request types: namespace `VerifyV2NewChallenge`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createChallengePasskeys
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createChallengePasskeys(request: VerifyV2NewChallenge.CreateChallengePasskeysRequest, options?: RequestOptions): ApiPromise<V2ServicesPasskeysChallengesResponse, ResponseError>`
+- **Signature**: `createChallengePasskeys(request: VerifyV2NewChallenge.CreateChallengePasskeysRequest, options?: RequestOptions): ApiPromise<V2ServicesPasskeysChallengesResponse, ApiError>`
 - **Wire**: `POST /v2/Services/{ServiceSid}/Passkeys/Challenges`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/json` — the `body` field
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `V2ServicesPasskeysChallengesResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VerifyV2NewChallenge.CreateChallengePasskeysRequest` (2):
 

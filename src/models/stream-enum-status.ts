@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The status of the Stream. Possible values are `stopped` and `in-progress`. */
 export const StreamEnumStatus = {
   InProgress: "in-progress",
   Stopped: "stopped",

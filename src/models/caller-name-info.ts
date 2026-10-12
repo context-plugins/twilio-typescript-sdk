@@ -10,7 +10,7 @@ export type CallerNameInfo = {
 export const callerNameInfoSchema: Schema<CallerNameInfo> = s.object<CallerNameInfo>({
   callerName: s.optional(s.string()),
   callerType: s.optional(s.string()),
-  errorCode: s.optional(s.number()),
+  errorCode: s.optional(s.int()),
   _keysMap: {
     callerName: "caller_name",
     callerType: "caller_type",

@@ -4,17 +4,18 @@
 
 Accessor: `client.trusthubV1SupportingDocumentApi` · Source: `src/resources/trusthub-v1-supporting-document-api.ts` · 5 operations · Request types: namespace `TrusthubV1SupportingDocumentApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createSupportingDocument2
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createSupportingDocument2(request: TrusthubV1SupportingDocumentApi.CreateSupportingDocument2Request, options?: RequestOptions): ApiPromise<TrusthubV1SupportingDocument, ResponseError>`
+- **Signature**: `createSupportingDocument2(request: TrusthubV1SupportingDocumentApi.CreateSupportingDocument2Request, options?: RequestOptions): ApiPromise<TrusthubV1SupportingDocument, ApiError>`
 - **Wire**: `POST /v1/SupportingDocuments`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `TrusthubV1SupportingDocument`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1SupportingDocumentApi.CreateSupportingDocument2Request` (3):
 
@@ -31,12 +32,13 @@ Accessor: `client.trusthubV1SupportingDocumentApi` · Source: `src/resources/tru
 ### deleteSupportingDocument2
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteSupportingDocument2(request: TrusthubV1SupportingDocumentApi.DeleteSupportingDocument2Request, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteSupportingDocument2(request: TrusthubV1SupportingDocumentApi.DeleteSupportingDocument2Request, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/SupportingDocuments/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1SupportingDocumentApi.DeleteSupportingDocument2Request` (1):
 
@@ -47,12 +49,12 @@ Accessor: `client.trusthubV1SupportingDocumentApi` · Source: `src/resources/tru
 ### fetchSupportingDocument2
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchSupportingDocument2(request: TrusthubV1SupportingDocumentApi.FetchSupportingDocument2Request, options?: RequestOptions): ApiPromise<TrusthubV1SupportingDocument, ResponseError>`
+- **Signature**: `fetchSupportingDocument2(request: TrusthubV1SupportingDocumentApi.FetchSupportingDocument2Request, options?: RequestOptions): ApiPromise<TrusthubV1SupportingDocument, ApiError>`
 - **Wire**: `GET /v1/SupportingDocuments/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `TrusthubV1SupportingDocument`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1SupportingDocumentApi.FetchSupportingDocument2Request` (1):
 
@@ -67,12 +69,12 @@ Accessor: `client.trusthubV1SupportingDocumentApi` · Source: `src/resources/tru
 ### listSupportingDocument2
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listSupportingDocument2(request: TrusthubV1SupportingDocumentApi.ListSupportingDocument2Request, options?: RequestOptions): ApiPromise<ListSupportingDocumentResponse1, ResponseError>`
+- **Signature**: `listSupportingDocument2(request: TrusthubV1SupportingDocumentApi.ListSupportingDocument2Request, options?: RequestOptions): ApiPromise<ListSupportingDocumentResponse1, ApiError>`
 - **Wire**: `GET /v1/SupportingDocuments`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListSupportingDocumentResponse1`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1SupportingDocumentApi.ListSupportingDocument2Request` (3):
 
@@ -89,12 +91,13 @@ Accessor: `client.trusthubV1SupportingDocumentApi` · Source: `src/resources/tru
 ### updateSupportingDocument2
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateSupportingDocument2(request: TrusthubV1SupportingDocumentApi.UpdateSupportingDocument2Request, options?: RequestOptions): ApiPromise<TrusthubV1SupportingDocument, ResponseError>`
+- **Signature**: `updateSupportingDocument2(request: TrusthubV1SupportingDocumentApi.UpdateSupportingDocument2Request, options?: RequestOptions): ApiPromise<TrusthubV1SupportingDocument, ApiError>`
 - **Wire**: `POST /v1/SupportingDocuments/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `TrusthubV1SupportingDocument`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1SupportingDocumentApi.UpdateSupportingDocument2Request` (3):
 

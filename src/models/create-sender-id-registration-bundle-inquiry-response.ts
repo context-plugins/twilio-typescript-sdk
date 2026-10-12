@@ -2,9 +2,13 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type CreateSenderIdRegistrationBundleInquiryResponse = {
+  /** The unique identifier of the inquiry. */
   inquiryId?: string;
+  /** The session token for the inquiry. */
   inquirySessionToken?: string;
+  /** The unique identifier of the Sender ID Registration Application. */
   applicationSid?: string;
+  /** The Bundle SID associated with the inquiry. */
   bundleSid?: string;
 };
 

@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The HTTP method that we should use to call the `sms_fallback_url`. Can be: `GET` or `POST`. */
 export const SmsFallbackMethod14 = {
   Get: "GET",
   Post: "POST",

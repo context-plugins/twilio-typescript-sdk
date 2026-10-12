@@ -4,17 +4,18 @@
 
 Accessor: `client.conversationsV1AddressConfiguration` · Source: `src/resources/conversations-v1-address-configuration.ts` · 5 operations · Request types: namespace `ConversationsV1AddressConfiguration`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createConfigurationAddress
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createConfigurationAddress(request: ConversationsV1AddressConfiguration.CreateConfigurationAddressRequest, options?: RequestOptions): ApiPromise<ConversationsV1ConfigurationAddress, ResponseError>`
+- **Signature**: `createConfigurationAddress(request: ConversationsV1AddressConfiguration.CreateConfigurationAddressRequest, options?: RequestOptions): ApiPromise<ConversationsV1ConfigurationAddress, ApiError>`
 - **Wire**: `POST /v1/Configuration/Addresses`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ConversationsV1ConfigurationAddress`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1AddressConfiguration.CreateConfigurationAddressRequest` (12):
 
@@ -43,12 +44,13 @@ Accessor: `client.conversationsV1AddressConfiguration` · Source: `src/resources
 ### deleteConfigurationAddress
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteConfigurationAddress(request: ConversationsV1AddressConfiguration.DeleteConfigurationAddressRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteConfigurationAddress(request: ConversationsV1AddressConfiguration.DeleteConfigurationAddressRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Configuration/Addresses/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1AddressConfiguration.DeleteConfigurationAddressRequest` (1):
 
@@ -59,12 +61,12 @@ Accessor: `client.conversationsV1AddressConfiguration` · Source: `src/resources
 ### fetchConfigurationAddress
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchConfigurationAddress(request: ConversationsV1AddressConfiguration.FetchConfigurationAddressRequest, options?: RequestOptions): ApiPromise<ConversationsV1ConfigurationAddress, ResponseError>`
+- **Signature**: `fetchConfigurationAddress(request: ConversationsV1AddressConfiguration.FetchConfigurationAddressRequest, options?: RequestOptions): ApiPromise<ConversationsV1ConfigurationAddress, ApiError>`
 - **Wire**: `GET /v1/Configuration/Addresses/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ConversationsV1ConfigurationAddress`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1AddressConfiguration.FetchConfigurationAddressRequest` (1):
 
@@ -79,12 +81,12 @@ Accessor: `client.conversationsV1AddressConfiguration` · Source: `src/resources
 ### listConfigurationAddress
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listConfigurationAddress(request: ConversationsV1AddressConfiguration.ListConfigurationAddressRequest, options?: RequestOptions): ApiPromise<ListConfigurationAddressResponse, ResponseError>`
+- **Signature**: `listConfigurationAddress(request: ConversationsV1AddressConfiguration.ListConfigurationAddressRequest, options?: RequestOptions): ApiPromise<ListConfigurationAddressResponse, ApiError>`
 - **Wire**: `GET /v1/Configuration/Addresses`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListConfigurationAddressResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1AddressConfiguration.ListConfigurationAddressRequest` (4):
 
@@ -102,12 +104,13 @@ Accessor: `client.conversationsV1AddressConfiguration` · Source: `src/resources
 ### updateConfigurationAddress
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateConfigurationAddress(request: ConversationsV1AddressConfiguration.UpdateConfigurationAddressRequest, options?: RequestOptions): ApiPromise<ConversationsV1ConfigurationAddress, ResponseError>`
+- **Signature**: `updateConfigurationAddress(request: ConversationsV1AddressConfiguration.UpdateConfigurationAddressRequest, options?: RequestOptions): ApiPromise<ConversationsV1ConfigurationAddress, ApiError>`
 - **Wire**: `POST /v1/Configuration/Addresses/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ConversationsV1ConfigurationAddress`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1AddressConfiguration.UpdateConfigurationAddressRequest` (10):
 

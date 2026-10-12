@@ -1,400 +1,137 @@
-import type { UrlTemplate } from "./core/api-request.js";
-import { SdkError } from "./core/errors.js";
-
-export const ServerEnvironment = {
-  Production: "production",
-} as const;
-export type ServerEnvironment = (typeof ServerEnvironment)[keyof typeof ServerEnvironment];
-
-export type DefaultServerOptions = {
-  production?: { baseUrl?: string };
-};
-
-export type Default1ServerOptions = {
-  production?: { baseUrl?: string };
-};
-
-export type Default2ServerOptions = {
-  production?: { baseUrl?: string };
-};
-
-export type Default3ServerOptions = {
-  production?: { baseUrl?: string };
-};
-
-export type Default4ServerOptions = {
-  production?: { baseUrl?: string };
-};
-
-export type Default5ServerOptions = {
-  production?: { baseUrl?: string };
-};
-
-export type Default6ServerOptions = {
-  production?: { baseUrl?: string };
-};
-
-export type Default7ServerOptions = {
-  production?: { baseUrl?: string };
-};
-
-export type Default8ServerOptions = {
-  production?: { baseUrl?: string };
-};
-
-export type Default9ServerOptions = {
-  production?: { baseUrl?: string };
-};
-
-export type Default10ServerOptions = {
-  production?: { baseUrl?: string };
-};
-
-export type Default11ServerOptions = {
-  production?: { baseUrl?: string };
-};
-
-export type Default12ServerOptions = {
-  production?: { baseUrl?: string };
-};
-
-export type Default13ServerOptions = {
-  production?: { baseUrl?: string };
-};
-
-export type Default14ServerOptions = {
-  production?: { baseUrl?: string };
-};
-
-export type ServerOptions = {
-  default?: DefaultServerOptions;
-  default1?: Default1ServerOptions;
-  default2?: Default2ServerOptions;
-  default3?: Default3ServerOptions;
-  default4?: Default4ServerOptions;
-  default5?: Default5ServerOptions;
-  default6?: Default6ServerOptions;
-  default7?: Default7ServerOptions;
-  default8?: Default8ServerOptions;
-  default9?: Default9ServerOptions;
-  default10?: Default10ServerOptions;
-  default11?: Default11ServerOptions;
-  default12?: Default12ServerOptions;
-  default13?: Default13ServerOptions;
-  default14?: Default14ServerOptions;
-};
+import type { ClientOptions } from "./client-options.js";
+import type { ServerBase, UrlTemplate } from "./core/api-request.js";
+import { resolveBaseUrl } from "./core/url.js";
+import * as s from "./core/validation/index.js";
 
 export type Servers = {
-  default: (subPath: string) => UrlTemplate;
-  default1: (subPath: string) => UrlTemplate;
-  default2: (subPath: string) => UrlTemplate;
-  default3: (subPath: string) => UrlTemplate;
-  default4: (subPath: string) => UrlTemplate;
-  default5: (subPath: string) => UrlTemplate;
-  default6: (subPath: string) => UrlTemplate;
-  default7: (subPath: string) => UrlTemplate;
-  default8: (subPath: string) => UrlTemplate;
-  default9: (subPath: string) => UrlTemplate;
-  default10: (subPath: string) => UrlTemplate;
-  default11: (subPath: string) => UrlTemplate;
-  default12: (subPath: string) => UrlTemplate;
-  default13: (subPath: string) => UrlTemplate;
-  default14: (subPath: string) => UrlTemplate;
+  default: <Path extends string>(subPath: Path) => UrlTemplate<Path>;
+  default1: <Path extends string>(subPath: Path) => UrlTemplate<Path>;
+  default2: <Path extends string>(subPath: Path) => UrlTemplate<Path>;
+  default3: <Path extends string>(subPath: Path) => UrlTemplate<Path>;
+  default4: <Path extends string>(subPath: Path) => UrlTemplate<Path>;
+  default5: <Path extends string>(subPath: Path) => UrlTemplate<Path>;
+  default6: <Path extends string>(subPath: Path) => UrlTemplate<Path>;
+  default7: <Path extends string>(subPath: Path) => UrlTemplate<Path>;
+  default8: <Path extends string>(subPath: Path) => UrlTemplate<Path>;
+  default9: <Path extends string>(subPath: Path) => UrlTemplate<Path>;
+  default10: <Path extends string>(subPath: Path) => UrlTemplate<Path>;
+  default11: <Path extends string>(subPath: Path) => UrlTemplate<Path>;
+  default12: <Path extends string>(subPath: Path) => UrlTemplate<Path>;
+  default13: <Path extends string>(subPath: Path) => UrlTemplate<Path>;
+  default14: <Path extends string>(subPath: Path) => UrlTemplate<Path>;
 };
 
-export const DEFAULT_SERVER_OPTIONS = {
-  default: {
-    production: { baseUrl: "https://api.twilio.com" },
-  },
-  default1: {
-    production: { baseUrl: "https://messaging.twilio.com" },
-  },
-  default2: {
-    production: { baseUrl: "https://content.twilio.com" },
-  },
-  default3: {
-    production: { baseUrl: "https://verify.twilio.com" },
-  },
-  default4: {
-    production: { baseUrl: "https://lookups.twilio.com" },
-  },
-  default5: {
-    production: { baseUrl: "https://numbers.twilio.com" },
-  },
-  default6: {
-    production: { baseUrl: "https://video.twilio.com" },
-  },
-  default7: {
-    production: { baseUrl: "https://conversations.twilio.com" },
-  },
-  default8: {
-    production: { baseUrl: "https://taskrouter.twilio.com" },
-  },
-  default9: {
-    production: { baseUrl: "https://trusthub.twilio.com" },
-  },
-  default10: {
-    production: { baseUrl: "https://proxy.twilio.com" },
-  },
-  default11: {
-    production: { baseUrl: "https://studio.twilio.com" },
-  },
-  default12: {
-    production: { baseUrl: "https://sync.twilio.com" },
-  },
-  default13: {
-    production: { baseUrl: "https://flex-api.twilio.com" },
-  },
-  default14: {
-    production: { baseUrl: "https://insights.twilio.com" },
-  },
-} as const satisfies ServerOptions;
+const serverSchemas = {
+  default: { baseUrl: s.of(s.defaulted(s.string(), "https://api.twilio.com")) },
+  default1: { baseUrl: s.of(s.defaulted(s.string(), "https://messaging.twilio.com")) },
+  default2: { baseUrl: s.of(s.defaulted(s.string(), "https://content.twilio.com")) },
+  default3: { baseUrl: s.of(s.defaulted(s.string(), "https://verify.twilio.com")) },
+  default4: { baseUrl: s.of(s.defaulted(s.string(), "https://lookups.twilio.com")) },
+  default5: { baseUrl: s.of(s.defaulted(s.string(), "https://numbers.twilio.com")) },
+  default6: { baseUrl: s.of(s.defaulted(s.string(), "https://video.twilio.com")) },
+  default7: { baseUrl: s.of(s.defaulted(s.string(), "https://conversations.twilio.com")) },
+  default8: { baseUrl: s.of(s.defaulted(s.string(), "https://taskrouter.twilio.com")) },
+  default9: { baseUrl: s.of(s.defaulted(s.string(), "https://trusthub.twilio.com")) },
+  default10: { baseUrl: s.of(s.defaulted(s.string(), "https://proxy.twilio.com")) },
+  default11: { baseUrl: s.of(s.defaulted(s.string(), "https://studio.twilio.com")) },
+  default12: { baseUrl: s.of(s.defaulted(s.string(), "https://sync.twilio.com")) },
+  default13: { baseUrl: s.of(s.defaulted(s.string(), "https://flex-api.twilio.com")) },
+  default14: { baseUrl: s.of(s.defaulted(s.string(), "https://insights.twilio.com")) },
+};
 
-export function buildServers(environment: ServerEnvironment, options: ServerOptions): Servers {
+export function buildServers(options: ClientOptions): Servers {
+  const base = {
+    default: resolveBaseUrl(defaultServer(options)),
+    default1: resolveBaseUrl(default1Server(options)),
+    default2: resolveBaseUrl(default2Server(options)),
+    default3: resolveBaseUrl(default3Server(options)),
+    default4: resolveBaseUrl(default4Server(options)),
+    default5: resolveBaseUrl(default5Server(options)),
+    default6: resolveBaseUrl(default6Server(options)),
+    default7: resolveBaseUrl(default7Server(options)),
+    default8: resolveBaseUrl(default8Server(options)),
+    default9: resolveBaseUrl(default9Server(options)),
+    default10: resolveBaseUrl(default10Server(options)),
+    default11: resolveBaseUrl(default11Server(options)),
+    default12: resolveBaseUrl(default12Server(options)),
+    default13: resolveBaseUrl(default13Server(options)),
+    default14: resolveBaseUrl(default14Server(options)),
+  };
   return {
-    default: (s) => defaultServer(environment, s, options.default),
-    default1: (s) => default1Server(environment, s, options.default1),
-    default2: (s) => default2Server(environment, s, options.default2),
-    default3: (s) => default3Server(environment, s, options.default3),
-    default4: (s) => default4Server(environment, s, options.default4),
-    default5: (s) => default5Server(environment, s, options.default5),
-    default6: (s) => default6Server(environment, s, options.default6),
-    default7: (s) => default7Server(environment, s, options.default7),
-    default8: (s) => default8Server(environment, s, options.default8),
-    default9: (s) => default9Server(environment, s, options.default9),
-    default10: (s) => default10Server(environment, s, options.default10),
-    default11: (s) => default11Server(environment, s, options.default11),
-    default12: (s) => default12Server(environment, s, options.default12),
-    default13: (s) => default13Server(environment, s, options.default13),
-    default14: (s) => default14Server(environment, s, options.default14),
+    default: (subPath) => ({ baseUrl: base.default, subPath }),
+    default1: (subPath) => ({ baseUrl: base.default1, subPath }),
+    default2: (subPath) => ({ baseUrl: base.default2, subPath }),
+    default3: (subPath) => ({ baseUrl: base.default3, subPath }),
+    default4: (subPath) => ({ baseUrl: base.default4, subPath }),
+    default5: (subPath) => ({ baseUrl: base.default5, subPath }),
+    default6: (subPath) => ({ baseUrl: base.default6, subPath }),
+    default7: (subPath) => ({ baseUrl: base.default7, subPath }),
+    default8: (subPath) => ({ baseUrl: base.default8, subPath }),
+    default9: (subPath) => ({ baseUrl: base.default9, subPath }),
+    default10: (subPath) => ({ baseUrl: base.default10, subPath }),
+    default11: (subPath) => ({ baseUrl: base.default11, subPath }),
+    default12: (subPath) => ({ baseUrl: base.default12, subPath }),
+    default13: (subPath) => ({ baseUrl: base.default13, subPath }),
+    default14: (subPath) => ({ baseUrl: base.default14, subPath }),
   };
 }
 
-function defaultServer(
-  environment: ServerEnvironment,
-  subPath: string,
-  options?: DefaultServerOptions,
-): UrlTemplate {
-  switch (environment) {
-    case ServerEnvironment.Production: {
-      const production = { ...DEFAULT_SERVER_OPTIONS.default.production, ...options?.production };
-      return { baseUrl: production.baseUrl, subPath };
-    }
-    default:
-      unknownEnvironment(environment);
-  }
+function defaultServer(options: ClientOptions): ServerBase {
+  return { baseUrl: serverSchemas.default.baseUrl.decode(options.serverOptions?.default?.baseUrl) };
 }
 
-function default1Server(
-  environment: ServerEnvironment,
-  subPath: string,
-  options?: Default1ServerOptions,
-): UrlTemplate {
-  switch (environment) {
-    case ServerEnvironment.Production: {
-      const production = { ...DEFAULT_SERVER_OPTIONS.default1.production, ...options?.production };
-      return { baseUrl: production.baseUrl, subPath };
-    }
-    default:
-      unknownEnvironment(environment);
-  }
+function default1Server(options: ClientOptions): ServerBase {
+  return { baseUrl: serverSchemas.default1.baseUrl.decode(options.serverOptions?.default1?.baseUrl) };
 }
 
-function default2Server(
-  environment: ServerEnvironment,
-  subPath: string,
-  options?: Default2ServerOptions,
-): UrlTemplate {
-  switch (environment) {
-    case ServerEnvironment.Production: {
-      const production = { ...DEFAULT_SERVER_OPTIONS.default2.production, ...options?.production };
-      return { baseUrl: production.baseUrl, subPath };
-    }
-    default:
-      unknownEnvironment(environment);
-  }
+function default2Server(options: ClientOptions): ServerBase {
+  return { baseUrl: serverSchemas.default2.baseUrl.decode(options.serverOptions?.default2?.baseUrl) };
 }
 
-function default3Server(
-  environment: ServerEnvironment,
-  subPath: string,
-  options?: Default3ServerOptions,
-): UrlTemplate {
-  switch (environment) {
-    case ServerEnvironment.Production: {
-      const production = { ...DEFAULT_SERVER_OPTIONS.default3.production, ...options?.production };
-      return { baseUrl: production.baseUrl, subPath };
-    }
-    default:
-      unknownEnvironment(environment);
-  }
+function default3Server(options: ClientOptions): ServerBase {
+  return { baseUrl: serverSchemas.default3.baseUrl.decode(options.serverOptions?.default3?.baseUrl) };
 }
 
-function default4Server(
-  environment: ServerEnvironment,
-  subPath: string,
-  options?: Default4ServerOptions,
-): UrlTemplate {
-  switch (environment) {
-    case ServerEnvironment.Production: {
-      const production = { ...DEFAULT_SERVER_OPTIONS.default4.production, ...options?.production };
-      return { baseUrl: production.baseUrl, subPath };
-    }
-    default:
-      unknownEnvironment(environment);
-  }
+function default4Server(options: ClientOptions): ServerBase {
+  return { baseUrl: serverSchemas.default4.baseUrl.decode(options.serverOptions?.default4?.baseUrl) };
 }
 
-function default5Server(
-  environment: ServerEnvironment,
-  subPath: string,
-  options?: Default5ServerOptions,
-): UrlTemplate {
-  switch (environment) {
-    case ServerEnvironment.Production: {
-      const production = { ...DEFAULT_SERVER_OPTIONS.default5.production, ...options?.production };
-      return { baseUrl: production.baseUrl, subPath };
-    }
-    default:
-      unknownEnvironment(environment);
-  }
+function default5Server(options: ClientOptions): ServerBase {
+  return { baseUrl: serverSchemas.default5.baseUrl.decode(options.serverOptions?.default5?.baseUrl) };
 }
 
-function default6Server(
-  environment: ServerEnvironment,
-  subPath: string,
-  options?: Default6ServerOptions,
-): UrlTemplate {
-  switch (environment) {
-    case ServerEnvironment.Production: {
-      const production = { ...DEFAULT_SERVER_OPTIONS.default6.production, ...options?.production };
-      return { baseUrl: production.baseUrl, subPath };
-    }
-    default:
-      unknownEnvironment(environment);
-  }
+function default6Server(options: ClientOptions): ServerBase {
+  return { baseUrl: serverSchemas.default6.baseUrl.decode(options.serverOptions?.default6?.baseUrl) };
 }
 
-function default7Server(
-  environment: ServerEnvironment,
-  subPath: string,
-  options?: Default7ServerOptions,
-): UrlTemplate {
-  switch (environment) {
-    case ServerEnvironment.Production: {
-      const production = { ...DEFAULT_SERVER_OPTIONS.default7.production, ...options?.production };
-      return { baseUrl: production.baseUrl, subPath };
-    }
-    default:
-      unknownEnvironment(environment);
-  }
+function default7Server(options: ClientOptions): ServerBase {
+  return { baseUrl: serverSchemas.default7.baseUrl.decode(options.serverOptions?.default7?.baseUrl) };
 }
 
-function default8Server(
-  environment: ServerEnvironment,
-  subPath: string,
-  options?: Default8ServerOptions,
-): UrlTemplate {
-  switch (environment) {
-    case ServerEnvironment.Production: {
-      const production = { ...DEFAULT_SERVER_OPTIONS.default8.production, ...options?.production };
-      return { baseUrl: production.baseUrl, subPath };
-    }
-    default:
-      unknownEnvironment(environment);
-  }
+function default8Server(options: ClientOptions): ServerBase {
+  return { baseUrl: serverSchemas.default8.baseUrl.decode(options.serverOptions?.default8?.baseUrl) };
 }
 
-function default9Server(
-  environment: ServerEnvironment,
-  subPath: string,
-  options?: Default9ServerOptions,
-): UrlTemplate {
-  switch (environment) {
-    case ServerEnvironment.Production: {
-      const production = { ...DEFAULT_SERVER_OPTIONS.default9.production, ...options?.production };
-      return { baseUrl: production.baseUrl, subPath };
-    }
-    default:
-      unknownEnvironment(environment);
-  }
+function default9Server(options: ClientOptions): ServerBase {
+  return { baseUrl: serverSchemas.default9.baseUrl.decode(options.serverOptions?.default9?.baseUrl) };
 }
 
-function default10Server(
-  environment: ServerEnvironment,
-  subPath: string,
-  options?: Default10ServerOptions,
-): UrlTemplate {
-  switch (environment) {
-    case ServerEnvironment.Production: {
-      const production = { ...DEFAULT_SERVER_OPTIONS.default10.production, ...options?.production };
-      return { baseUrl: production.baseUrl, subPath };
-    }
-    default:
-      unknownEnvironment(environment);
-  }
+function default10Server(options: ClientOptions): ServerBase {
+  return { baseUrl: serverSchemas.default10.baseUrl.decode(options.serverOptions?.default10?.baseUrl) };
 }
 
-function default11Server(
-  environment: ServerEnvironment,
-  subPath: string,
-  options?: Default11ServerOptions,
-): UrlTemplate {
-  switch (environment) {
-    case ServerEnvironment.Production: {
-      const production = { ...DEFAULT_SERVER_OPTIONS.default11.production, ...options?.production };
-      return { baseUrl: production.baseUrl, subPath };
-    }
-    default:
-      unknownEnvironment(environment);
-  }
+function default11Server(options: ClientOptions): ServerBase {
+  return { baseUrl: serverSchemas.default11.baseUrl.decode(options.serverOptions?.default11?.baseUrl) };
 }
 
-function default12Server(
-  environment: ServerEnvironment,
-  subPath: string,
-  options?: Default12ServerOptions,
-): UrlTemplate {
-  switch (environment) {
-    case ServerEnvironment.Production: {
-      const production = { ...DEFAULT_SERVER_OPTIONS.default12.production, ...options?.production };
-      return { baseUrl: production.baseUrl, subPath };
-    }
-    default:
-      unknownEnvironment(environment);
-  }
+function default12Server(options: ClientOptions): ServerBase {
+  return { baseUrl: serverSchemas.default12.baseUrl.decode(options.serverOptions?.default12?.baseUrl) };
 }
 
-function default13Server(
-  environment: ServerEnvironment,
-  subPath: string,
-  options?: Default13ServerOptions,
-): UrlTemplate {
-  switch (environment) {
-    case ServerEnvironment.Production: {
-      const production = { ...DEFAULT_SERVER_OPTIONS.default13.production, ...options?.production };
-      return { baseUrl: production.baseUrl, subPath };
-    }
-    default:
-      unknownEnvironment(environment);
-  }
+function default13Server(options: ClientOptions): ServerBase {
+  return { baseUrl: serverSchemas.default13.baseUrl.decode(options.serverOptions?.default13?.baseUrl) };
 }
 
-function default14Server(
-  environment: ServerEnvironment,
-  subPath: string,
-  options?: Default14ServerOptions,
-): UrlTemplate {
-  switch (environment) {
-    case ServerEnvironment.Production: {
-      const production = { ...DEFAULT_SERVER_OPTIONS.default14.production, ...options?.production };
-      return { baseUrl: production.baseUrl, subPath };
-    }
-    default:
-      unknownEnvironment(environment);
-  }
-}
-
-function unknownEnvironment(environment: never): never {
-  throw new SdkError({ message: `Unknown server environment: ${String(environment)}` });
+function default14Server(options: ClientOptions): ServerBase {
+  return { baseUrl: serverSchemas.default14.baseUrl.decode(options.serverOptions?.default14?.baseUrl) };
 }

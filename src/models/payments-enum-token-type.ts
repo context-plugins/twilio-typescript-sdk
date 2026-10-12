@@ -1,6 +1,11 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * Indicates whether the payment method should be tokenized as a `one-time`, `reusable`, or
+ * `payment-method` token. The default value is `reusable`. Do not enter a charge amount when
+ * tokenizing. If a charge amount is entered, the payment method will be charged and not tokenized.
+ */
 export const PaymentsEnumTokenType = {
   OneTime: "one-time",
   Reusable: "reusable",

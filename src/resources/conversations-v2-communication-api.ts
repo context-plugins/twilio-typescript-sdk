@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError, type Declared, type ErrorDecoders, type ErrorPayload } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError, type Declared, type ErrorDecoders } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import {
   accountsCallsRecordingsSidJson201041408Error1Schema,
@@ -22,6 +23,10 @@ import {
 } from "../models/v2-conversations-communications-response.js";
 import type { Servers } from "../servers.js";
 
+/**
+ * A communication is the smallest unit of interaction within a conversation. Each communication
+ * represents a single event—such as an SMS message or a voice utterance.
+ */
 export class ConversationsV2CommunicationApi {
   readonly #rawClient: RawClient;
   readonly #servers: Servers;
@@ -33,6 +38,21 @@ export class ConversationsV2CommunicationApi {
     this.#auth = auth;
   }
 
+  /**
+   * Create Communication
+   *
+   * @remarks
+   * Create a Communication.
+   *
+   * @returns Created
+   *
+   * @throws {@link ConversationsV2CommunicationApi.CreateCommunicationInConversationError} when the
+   * API answers with an error status — narrow on `err.payload.kind`
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   createCommunicationInConversation(
     request: ConversationsV2CommunicationApi.CreateCommunicationInConversationRequest,
     options?: RequestOptions,
@@ -43,9 +63,11 @@ export class ConversationsV2CommunicationApi {
     return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default7("/v2/Conversations/{ConversationSid}/Communications"),
+        urlTemplate: this.#servers.default7("/v2/Conversations/{ConversationSid}/Communications"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "ConversationSid", value: request.conversationSid, schema: s.string() }],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: {
           kind: "json",
           value: request.body,
@@ -60,6 +82,21 @@ export class ConversationsV2CommunicationApi {
     );
   }
 
+  /**
+   * Fetch Communication
+   *
+   * @remarks
+   * Retrieve a Communication.
+   *
+   * @returns OK
+   *
+   * @throws {@link ConversationsV2CommunicationApi.FetchCommunicationError} when the API answers
+   * with an error status — narrow on `err.payload.kind`
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   fetchCommunication(
     request: ConversationsV2CommunicationApi.FetchCommunicationRequest,
     options?: RequestOptions,
@@ -67,12 +104,14 @@ export class ConversationsV2CommunicationApi {
     return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default7("/v2/Conversations/{ConversationSid}/Communications/{Sid}"),
+        urlTemplate: this.#servers.default7("/v2/Conversations/{ConversationSid}/Communications/{Sid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           { name: "ConversationSid", value: request.conversationSid, schema: s.string() },
           { name: "Sid", value: request.sid, schema: s.string() },
         ],
+        query: [],
+        headers: [],
         body: { kind: "empty" },
       },
       {
@@ -83,6 +122,21 @@ export class ConversationsV2CommunicationApi {
     );
   }
 
+  /**
+   * List Communications
+   *
+   * @remarks
+   * Retrieve a list of Communications in a Conversation.
+   *
+   * @returns OK
+   *
+   * @throws {@link ConversationsV2CommunicationApi.ListCommunicationByConversationError} when the
+   * API answers with an error status — narrow on `err.payload.kind`
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   listCommunicationByConversation(
     request: ConversationsV2CommunicationApi.ListCommunicationByConversationRequest,
     options?: RequestOptions,
@@ -93,14 +147,15 @@ export class ConversationsV2CommunicationApi {
     return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default7("/v2/Conversations/{ConversationSid}/Communications"),
+        urlTemplate: this.#servers.default7("/v2/Conversations/{ConversationSid}/Communications"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "ConversationSid", value: request.conversationSid, schema: s.string() }],
         query: [
           { name: "channelId", value: request.channelId, schema: s.optional(s.string()) },
-          { name: "pageSize", value: request.pageSize, schema: s.defaulted(s.number(), 50) },
+          { name: "pageSize", value: request.pageSize, schema: s.defaulted(s.int(), 50) },
           { name: "pageToken", value: request.pageToken, schema: s.optional(s.string()) },
         ],
+        headers: [],
         body: { kind: "empty" },
       },
       {
@@ -118,25 +173,30 @@ export namespace ConversationsV2CommunicationApi {
     body?: V2ConversationsCommunicationsRequest;
   };
 
-  export class CreateCommunicationInConversationError extends ResponseError<
-    | Declared<"accountsCallsRecordingsSidJson201041408Error1", AccountsCallsRecordingsSidJson201041408Error1>
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error12",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error13",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error14",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error15",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-  > {
+  export class CreateCommunicationInConversationError extends ApiError {
+    declare readonly payload: ErrorPayload<
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error1",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error12",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error13",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error14",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error15",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+    >;
+
     static readonly errors: ErrorDecoders<CreateCommunicationInConversationError> = [
       {
         on: 400,
@@ -171,25 +231,30 @@ export namespace ConversationsV2CommunicationApi {
     sid: string;
   };
 
-  export class FetchCommunicationError extends ResponseError<
-    | Declared<"accountsCallsRecordingsSidJson201041408Error1", AccountsCallsRecordingsSidJson201041408Error1>
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error12",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error13",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error14",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error15",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-  > {
+  export class FetchCommunicationError extends ApiError {
+    declare readonly payload: ErrorPayload<
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error1",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error12",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error13",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error14",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error15",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+    >;
+
     static readonly errors: ErrorDecoders<FetchCommunicationError> = [
       {
         on: 400,
@@ -221,30 +286,38 @@ export namespace ConversationsV2CommunicationApi {
 
   export type ListCommunicationByConversationRequest = {
     conversationSid: string;
+    /** Resource identifier to filter communications */
     channelId?: string;
+    /** Maximum number of items to return @default 50 */
     pageSize?: number;
+    /** Page token for pagination */
     pageToken?: string;
   };
 
-  export class ListCommunicationByConversationError extends ResponseError<
-    | Declared<"accountsCallsRecordingsSidJson201041408Error1", AccountsCallsRecordingsSidJson201041408Error1>
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error12",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error13",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error14",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error15",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-  > {
+  export class ListCommunicationByConversationError extends ApiError {
+    declare readonly payload: ErrorPayload<
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error1",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error12",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error13",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error14",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error15",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+    >;
+
     static readonly errors: ErrorDecoders<ListCommunicationByConversationError> = [
       {
         on: 400,

@@ -1,6 +1,10 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * The current status of the reservation. Can be: `pending`, `accepted`, `rejected`, `timeout`,
+ * `canceled`, or `rescinded`.
+ */
 export const WorkerReservationEnumStatus = {
   Pending: "pending",
   Accepted: "accepted",

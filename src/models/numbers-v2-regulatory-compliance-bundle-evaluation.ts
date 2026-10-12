@@ -3,11 +3,20 @@ import type { Schema } from "../core/validation/schema.js";
 import { evaluationEnumStatusSchema, type EvaluationEnumStatus } from "./evaluation-enum-status.js";
 
 export type NumbersV2RegulatoryComplianceBundleEvaluation = {
+  /** The unique string that identifies the Evaluation resource. */
   sid?: string | null;
+  /**
+   * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Bundle
+   * resource.
+   */
   accountSid?: string | null;
+  /** The unique string of a regulation that is associated to the Bundle resource. */
   regulationSid?: string | null;
+  /** The unique string that we created to identify the Bundle resource. */
   bundleSid?: string | null;
+  /** The compliance status of the Evaluation resource. */
   status?: EvaluationEnumStatus;
+  /** The results of the Evaluation which includes the valid and invalid attributes. */
   results?: Record<string, unknown>[] | null;
   dateCreated?: Date | null;
   url?: string | null;

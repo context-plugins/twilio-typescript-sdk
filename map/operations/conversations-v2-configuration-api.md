@@ -4,7 +4,7 @@
 
 Accessor: `client.conversationsV2ConfigurationApi` · Source: `src/resources/conversations-v2-configuration-api.ts` · 5 operations · Request and error types: namespace `ConversationsV2ConfigurationApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createConfiguration
 
@@ -12,9 +12,9 @@ Accessor: `client.conversationsV2ConfigurationApi` · Source: `src/resources/con
 - **Signature**: `createConfiguration(request: ConversationsV2ConfigurationApi.CreateConfigurationRequest, options?: RequestOptions): ApiPromise<ConversationsV2OperationAccepted, ConversationsV2ConfigurationApi.CreateConfigurationError>`
 - **Wire**: `POST /v2/ControlPlane/Configurations`
 - **Auth**: `accountSidAuthToken`
-- **Request body**: `application/json` — the `body` field
+- **Request body**: `application/json` — the `body` field. **Optional**: omit it and the request carries no body and no `Content-Type` header at all
 - **Returns**: `ConversationsV2OperationAccepted`
-- **Error**: `ConversationsV2ConfigurationApi.CreateConfigurationError` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `ConversationsV2ConfigurationApi.CreateConfigurationError` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"accountsCallsRecordingsSidJson201041408Error1"` [400] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error12"` [409] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error13"` [429] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error14"` [500] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error15"` [503] `AccountsCallsRecordingsSidJson201041408Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `ConversationsV2ConfigurationApi.CreateConfigurationRequest` (2):
@@ -38,7 +38,7 @@ Accessor: `client.conversationsV2ConfigurationApi` · Source: `src/resources/con
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ConversationsV2OperationAccepted`
-- **Error**: `ConversationsV2ConfigurationApi.DeleteConfigurationError` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `ConversationsV2ConfigurationApi.DeleteConfigurationError` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"accountsCallsRecordingsSidJson201041408Error1"` [404] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error12"` [409] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error13"` [429] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error14"` [500] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error15"` [503] `AccountsCallsRecordingsSidJson201041408Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `ConversationsV2ConfigurationApi.DeleteConfigurationRequest` (2):
@@ -61,7 +61,7 @@ Accessor: `client.conversationsV2ConfigurationApi` · Source: `src/resources/con
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ConversationsV2Configuration`
-- **Error**: `ConversationsV2ConfigurationApi.FetchConfiguration2Error` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `ConversationsV2ConfigurationApi.FetchConfiguration2Error` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"accountsCallsRecordingsSidJson201041408Error1"` [404] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error12"` [429] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error13"` [500] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error14"` [503] `AccountsCallsRecordingsSidJson201041408Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `ConversationsV2ConfigurationApi.FetchConfiguration2Request` (1):
@@ -83,7 +83,7 @@ Accessor: `client.conversationsV2ConfigurationApi` · Source: `src/resources/con
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `V2ControlPlaneConfigurationsResponse`
-- **Error**: `ConversationsV2ConfigurationApi.ListConfigurationError` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `ConversationsV2ConfigurationApi.ListConfigurationError` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"accountsCallsRecordingsSidJson201041408Error1"` [400] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error12"` [404] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error13"` [429] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error14"` [500] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error15"` [503] `AccountsCallsRecordingsSidJson201041408Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `ConversationsV2ConfigurationApi.ListConfigurationRequest` (3):
@@ -105,9 +105,9 @@ Accessor: `client.conversationsV2ConfigurationApi` · Source: `src/resources/con
 - **Signature**: `updateConfiguration2(request: ConversationsV2ConfigurationApi.UpdateConfiguration2Request, options?: RequestOptions): ApiPromise<ConversationsV2OperationAccepted, ConversationsV2ConfigurationApi.UpdateConfiguration2Error>`
 - **Wire**: `PUT /v2/ControlPlane/Configurations/{Sid}`
 - **Auth**: `accountSidAuthToken`
-- **Request body**: `application/json` — the `body` field
+- **Request body**: `application/json` — the `body` field. **Optional**: omit it and the request carries no body and no `Content-Type` header at all
 - **Returns**: `ConversationsV2OperationAccepted`
-- **Error**: `ConversationsV2ConfigurationApi.UpdateConfiguration2Error` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `ConversationsV2ConfigurationApi.UpdateConfiguration2Error` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"accountsCallsRecordingsSidJson201041408Error1"` [400] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error12"` [404] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error13"` [409] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error14"` [429] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error15"` [500] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error16"` [503] `AccountsCallsRecordingsSidJson201041408Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `ConversationsV2ConfigurationApi.UpdateConfiguration2Request` (3):

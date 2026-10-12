@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import {
   flexV1PluginConfigurationArchiveSchema,
@@ -24,19 +25,23 @@ export class FlexV1PluginConfigurationArchiveApi {
   updatePluginConfigurationArchive(
     request: FlexV1PluginConfigurationArchiveApi.UpdatePluginConfigurationArchiveRequest,
     options?: RequestOptions,
-  ): ApiPromise<FlexV1PluginConfigurationArchive, ResponseError> {
-    return this.#rawClient.execute<FlexV1PluginConfigurationArchive, ResponseError>(
+  ): ApiPromise<FlexV1PluginConfigurationArchive, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default13("/v1/PluginService/Configurations/{Sid}/Archive"),
+        urlTemplate: this.#servers.default13("/v1/PluginService/Configurations/{Sid}/Archive"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "Sid", value: request.sid, schema: s.string() }],
-        headers: [{ name: "Flex-Metadata", value: request.flexMetadata, schema: s.optional(s.string()) }],
+        query: [],
+        headers: [
+          { name: "Flex-Metadata", value: request.flexMetadata, schema: s.optional(s.string()) },
+          { name: "Idempotency-Key", value: uuid(), schema: s.string() },
+        ],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: flexV1PluginConfigurationArchiveSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -45,7 +50,9 @@ export class FlexV1PluginConfigurationArchiveApi {
 
 export namespace FlexV1PluginConfigurationArchiveApi {
   export type UpdatePluginConfigurationArchiveRequest = {
+    /** The SID of the Flex Plugin Configuration resource to archive. */
     sid: string;
+    /** The Flex-Metadata HTTP request header */
     flexMetadata?: string;
   };
 }

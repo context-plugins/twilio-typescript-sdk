@@ -6,14 +6,32 @@ import {
 } from "./room-participant-published-track-enum-kind.js";
 
 export type VideoV1RoomRoomParticipantRoomParticipantPublishedTrack = {
+  /** The unique string that we created to identify the RoomParticipantPublishedTrack resource. */
   sid?: string | null;
+  /** The SID of the Participant resource with the published track. */
   participantSid?: string | null;
+  /** The SID of the Room resource where the track is published. */
   roomSid?: string | null;
+  /**
+   * The track name. Must be no more than 128 characters, and be unique among the participant's
+   * published tracks.
+   */
   name?: string | null;
+  /**
+   * The date and time in GMT when the resource was created specified in [ISO
+   * 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+   */
   dateCreated?: Date | null;
+  /**
+   * The date and time in GMT when the resource was last updated specified in [ISO
+   * 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+   */
   dateUpdated?: Date | null;
+  /** Whether the track is enabled. */
   enabled?: boolean | null;
+  /** The track type. Can be: `audio`, `video` or `data`. */
   kind?: RoomParticipantPublishedTrackEnumKind;
+  /** The absolute URL of the resource. */
   url?: string | null;
 };
 

@@ -2,11 +2,23 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type TrusthubV1CustomerProfileCustomerProfileEntityAssignment = {
+  /** The unique string that we created to identify the Item Assignment resource. */
   sid?: string | null;
+  /** The unique string that we created to identify the CustomerProfile resource. */
   customerProfileSid?: string | null;
+  /**
+   * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Item
+   * Assignment resource.
+   */
   accountSid?: string | null;
+  /** The SID of an object bag that holds information of the different items. */
   objectSid?: string | null;
+  /**
+   * The date and time in GMT when the resource was created specified in [ISO
+   * 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+   */
   dateCreated?: Date | null;
+  /** The absolute URL of the Identity resource. */
   url?: string | null;
 };
 

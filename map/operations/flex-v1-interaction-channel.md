@@ -4,17 +4,17 @@
 
 Accessor: `client.flexV1InteractionChannel` · Source: `src/resources/flex-v1-interaction-channel.ts` · 3 operations · Request types: namespace `FlexV1InteractionChannel`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchInteractionChannel
 
 - **Server**: `default13` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchInteractionChannel(request: FlexV1InteractionChannel.FetchInteractionChannelRequest, options?: RequestOptions): ApiPromise<FlexV1InteractionInteractionChannel, ResponseError>`
+- **Signature**: `fetchInteractionChannel(request: FlexV1InteractionChannel.FetchInteractionChannelRequest, options?: RequestOptions): ApiPromise<FlexV1InteractionInteractionChannel, ApiError>`
 - **Wire**: `GET /v1/Interactions/{InteractionSid}/Channels/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `FlexV1InteractionInteractionChannel`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `FlexV1InteractionChannel.FetchInteractionChannelRequest` (2):
 
@@ -30,12 +30,12 @@ Accessor: `client.flexV1InteractionChannel` · Source: `src/resources/flex-v1-in
 ### listInteractionChannel
 
 - **Server**: `default13` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listInteractionChannel(request: FlexV1InteractionChannel.ListInteractionChannelRequest, options?: RequestOptions): ApiPromise<ListInteractionChannelResponse, ResponseError>`
+- **Signature**: `listInteractionChannel(request: FlexV1InteractionChannel.ListInteractionChannelRequest, options?: RequestOptions): ApiPromise<ListInteractionChannelResponse, ApiError>`
 - **Wire**: `GET /v1/Interactions/{InteractionSid}/Channels`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListInteractionChannelResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `FlexV1InteractionChannel.ListInteractionChannelRequest` (4):
 
@@ -53,12 +53,13 @@ Accessor: `client.flexV1InteractionChannel` · Source: `src/resources/flex-v1-in
 ### updateInteractionChannel
 
 - **Server**: `default13` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateInteractionChannel(request: FlexV1InteractionChannel.UpdateInteractionChannelRequest, options?: RequestOptions): ApiPromise<FlexV1InteractionInteractionChannel, ResponseError>`
+- **Signature**: `updateInteractionChannel(request: FlexV1InteractionChannel.UpdateInteractionChannelRequest, options?: RequestOptions): ApiPromise<FlexV1InteractionInteractionChannel, ApiError>`
 - **Wire**: `POST /v1/Interactions/{InteractionSid}/Channels/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `FlexV1InteractionInteractionChannel`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `FlexV1InteractionChannel.UpdateInteractionChannelRequest` (4):
 

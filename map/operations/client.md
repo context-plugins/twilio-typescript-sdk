@@ -6,17 +6,18 @@ Accessor: `client` (the client itself) · Source: `src/client.ts` · 11 operatio
 
 Operations the spec leaves untagged are methods on the client rather than on a resource, so there is no accessor property to go through. The request type still lives in a namespace merged onto the exported class, so you write `TwilioSdkClient.CreateBulkLookupRequest`.
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createBulkLookup
 
 - **Server**: `default4` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createBulkLookup(request: TwilioSdkClient.CreateBulkLookupRequest, options?: RequestOptions): ApiPromise<LookupResponse1, ResponseError>`
+- **Signature**: `createBulkLookup(request: TwilioSdkClient.CreateBulkLookupRequest, options?: RequestOptions): ApiPromise<LookupResponse1, ApiError>`
 - **Wire**: `POST /v2/batch/query`
 - **Auth**: `accountSidAuthToken`
-- **Request body**: `application/json` — the `body` field
+- **Request body**: `application/json` — the `body` field. **Optional**: omit it and the request carries no body and no `Content-Type` header at all
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `LookupResponse1`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TwilioSdkClient.CreateBulkLookupRequest` (1):
 
@@ -35,9 +36,10 @@ Operations the spec leaves untagged are methods on the client rather than on a r
 - **Signature**: `createLookupPhoneNumberOverrides(request: TwilioSdkClient.CreateLookupPhoneNumberOverridesRequest, options?: RequestOptions): ApiPromise<OverridesResponse, TwilioSdkClient.CreateLookupPhoneNumberOverridesError>`
 - **Wire**: `POST /v2/PhoneNumbers/{PhoneNumber}/Overrides/{Field}`
 - **Auth**: `accountSidAuthToken`
-- **Request body**: `application/json` — the `body` field
+- **Request body**: `application/json` — the `body` field. **Optional**: omit it and the request carries no body and no `Content-Type` header at all
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `OverridesResponse`
-- **Error**: `TwilioSdkClient.CreateLookupPhoneNumberOverridesError` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `TwilioSdkClient.CreateLookupPhoneNumberOverridesError` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"accountsCallsRecordingsSidJson201041408Error1"` [400] `AccountsCallsRecordingsSidJson201041408Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `TwilioSdkClient.CreateLookupPhoneNumberOverridesRequest` (3):
@@ -61,8 +63,9 @@ Operations the spec leaves untagged are methods on the client rather than on a r
 - **Wire**: `DELETE /v2/PhoneNumbers/{PhoneNumber}/Overrides/{Field}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `TwilioSdkClient.DeleteLookupPhoneNumberOverridesError` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `TwilioSdkClient.DeleteLookupPhoneNumberOverridesError` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"accountsCallsRecordingsSidJson201041408Error1"` [400] `AccountsCallsRecordingsSidJson201041408Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `TwilioSdkClient.DeleteLookupPhoneNumberOverridesRequest` (2):
@@ -83,8 +86,9 @@ Operations the spec leaves untagged are methods on the client rather than on a r
 - **Wire**: `DELETE /v2/RateLimits/Fields/{Field}/Bucket/{Bucket}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `TwilioSdkClient.DeleteLookupRateLimitError` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `TwilioSdkClient.DeleteLookupRateLimitError` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"accountsCallsRecordingsSidJson201041408Error1"` [400] `AccountsCallsRecordingsSidJson201041408Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `TwilioSdkClient.DeleteLookupRateLimitRequest` (2):
@@ -106,7 +110,7 @@ Operations the spec leaves untagged are methods on the client rather than on a r
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `RateLimitListResponse`
-- **Error**: `TwilioSdkClient.FetchLookupAccountRateLimitsError` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `TwilioSdkClient.FetchLookupAccountRateLimitsError` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"accountsCallsRecordingsSidJson201041408Error1"` [400] `AccountsCallsRecordingsSidJson201041408Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `TwilioSdkClient.FetchLookupAccountRateLimitsRequest` (1):
@@ -128,7 +132,7 @@ Operations the spec leaves untagged are methods on the client rather than on a r
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `OverridesResponse`
-- **Error**: `TwilioSdkClient.FetchLookupPhoneNumberOverridesError` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `TwilioSdkClient.FetchLookupPhoneNumberOverridesError` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"accountsCallsRecordingsSidJson201041408Error1"` [400] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error12"` [404] `AccountsCallsRecordingsSidJson201041408Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `TwilioSdkClient.FetchLookupPhoneNumberOverridesRequest` (2):
@@ -151,7 +155,7 @@ Operations the spec leaves untagged are methods on the client rather than on a r
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `RateLimitResponse`
-- **Error**: `TwilioSdkClient.FetchLookupRateLimitError` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `TwilioSdkClient.FetchLookupRateLimitError` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"accountsCallsRecordingsSidJson201041408Error1"` [400] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error12"` [404] `AccountsCallsRecordingsSidJson201041408Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `TwilioSdkClient.FetchLookupRateLimitRequest` (2):
@@ -169,12 +173,13 @@ Operations the spec leaves untagged are methods on the client rather than on a r
 ### updateChallengePasskeys
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateChallengePasskeys(request: TwilioSdkClient.UpdateChallengePasskeysRequest, options?: RequestOptions): ApiPromise<V2ServicesPasskeysApproveChallengeResponse, ResponseError>`
+- **Signature**: `updateChallengePasskeys(request: TwilioSdkClient.UpdateChallengePasskeysRequest, options?: RequestOptions): ApiPromise<V2ServicesPasskeysApproveChallengeResponse, ApiError>`
 - **Wire**: `POST /v2/Services/{ServiceSid}/Passkeys/ApproveChallenge`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/json` — the `body` field
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `V2ServicesPasskeysApproveChallengeResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TwilioSdkClient.UpdateChallengePasskeysRequest` (2):
 
@@ -194,9 +199,10 @@ Operations the spec leaves untagged are methods on the client rather than on a r
 - **Signature**: `updateLookupPhoneNumberOverrides(request: TwilioSdkClient.UpdateLookupPhoneNumberOverridesRequest, options?: RequestOptions): ApiPromise<OverridesResponse, TwilioSdkClient.UpdateLookupPhoneNumberOverridesError>`
 - **Wire**: `PUT /v2/PhoneNumbers/{PhoneNumber}/Overrides/{Field}`
 - **Auth**: `accountSidAuthToken`
-- **Request body**: `application/json` — the `body` field
+- **Request body**: `application/json` — the `body` field. **Optional**: omit it and the request carries no body and no `Content-Type` header at all
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `OverridesResponse`
-- **Error**: `TwilioSdkClient.UpdateLookupPhoneNumberOverridesError` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `TwilioSdkClient.UpdateLookupPhoneNumberOverridesError` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"accountsCallsRecordingsSidJson201041408Error1"` [400] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error12"` [404] `AccountsCallsRecordingsSidJson201041408Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `TwilioSdkClient.UpdateLookupPhoneNumberOverridesRequest` (3):
@@ -219,9 +225,10 @@ Operations the spec leaves untagged are methods on the client rather than on a r
 - **Signature**: `updateLookupRateLimit(request: TwilioSdkClient.UpdateLookupRateLimitRequest, options?: RequestOptions): ApiPromise<RateLimitResponse, TwilioSdkClient.UpdateLookupRateLimitError>`
 - **Wire**: `PUT /v2/RateLimits/Fields/{Field}/Bucket/{Bucket}`
 - **Auth**: `accountSidAuthToken`
-- **Request body**: `application/json` — the `body` field
+- **Request body**: `application/json` — the `body` field. **Optional**: omit it and the request carries no body and no `Content-Type` header at all
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `RateLimitResponse`
-- **Error**: `TwilioSdkClient.UpdateLookupRateLimitError` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `TwilioSdkClient.UpdateLookupRateLimitError` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"accountsCallsRecordingsSidJson201041408Error1"` [400] `AccountsCallsRecordingsSidJson201041408Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `TwilioSdkClient.UpdateLookupRateLimitRequest` (3):
@@ -241,12 +248,13 @@ Operations the spec leaves untagged are methods on the client rather than on a r
 ### updatePasskeysFactor
 
 - **Server**: `default3` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updatePasskeysFactor(request: TwilioSdkClient.UpdatePasskeysFactorRequest, options?: RequestOptions): ApiPromise<V2ServicesPasskeysVerifyFactorResponse, ResponseError>`
+- **Signature**: `updatePasskeysFactor(request: TwilioSdkClient.UpdatePasskeysFactorRequest, options?: RequestOptions): ApiPromise<V2ServicesPasskeysVerifyFactorResponse, ApiError>`
 - **Wire**: `POST /v2/Services/{ServiceSid}/Passkeys/VerifyFactor`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/json` — the `body` field
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `V2ServicesPasskeysVerifyFactorResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TwilioSdkClient.UpdatePasskeysFactorRequest` (2):
 

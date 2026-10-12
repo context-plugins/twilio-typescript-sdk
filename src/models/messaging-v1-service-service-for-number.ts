@@ -2,9 +2,13 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type MessagingV1ServiceServiceForNumber = {
+  /** The SID to identify the number resource. */
   numberSid?: string | null;
+  /** The SID of the messaging service that the phone number is in. */
   sid?: string | null;
+  /** The string that you assigned to describe the messaging service resource. */
   friendlyName?: string | null;
+  /** The absolute URL of the Service resource. */
   url?: string | null;
 };
 

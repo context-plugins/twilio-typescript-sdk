@@ -2,6 +2,7 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 import { status1Schema, type Status1 } from "./status1.js";
 
+/** The override status of the country for the sender Id */
 export type StatusOverrideInfo = {
   status?: Status1;
 };

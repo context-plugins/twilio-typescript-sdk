@@ -4,16 +4,17 @@
 
 Accessor: `client.api20100401Payload` · Source: `src/resources/api20100401-payload.ts` · 3 operations · Request types: namespace `Api20100401Payload`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### deleteRecordingAddOnResultPayload
 
-- **Signature**: `deleteRecordingAddOnResultPayload(request: Api20100401Payload.DeleteRecordingAddOnResultPayloadRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteRecordingAddOnResultPayload(request: Api20100401Payload.DeleteRecordingAddOnResultPayloadRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{AddOnResultSid}/Payloads/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Payload.DeleteRecordingAddOnResultPayloadRequest` (4):
 
@@ -26,12 +27,12 @@ Accessor: `client.api20100401Payload` · Source: `src/resources/api20100401-payl
 
 ### fetchRecordingAddOnResultPayload
 
-- **Signature**: `fetchRecordingAddOnResultPayload(request: Api20100401Payload.FetchRecordingAddOnResultPayloadRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResultPayload, ResponseError>`
+- **Signature**: `fetchRecordingAddOnResultPayload(request: Api20100401Payload.FetchRecordingAddOnResultPayloadRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResultPayload, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{AddOnResultSid}/Payloads/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResultPayload`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Payload.FetchRecordingAddOnResultPayloadRequest` (4):
 
@@ -48,12 +49,12 @@ Accessor: `client.api20100401Payload` · Source: `src/resources/api20100401-payl
 
 ### listRecordingAddOnResultPayload
 
-- **Signature**: `listRecordingAddOnResultPayload(request: Api20100401Payload.ListRecordingAddOnResultPayloadRequest, options?: RequestOptions): ApiPromise<ListRecordingAddOnResultPayloadResponse, ResponseError>`
+- **Signature**: `listRecordingAddOnResultPayload(request: Api20100401Payload.ListRecordingAddOnResultPayloadRequest, options?: RequestOptions): ApiPromise<ListRecordingAddOnResultPayloadResponse, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{AddOnResultSid}/Payloads.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListRecordingAddOnResultPayloadResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Payload.ListRecordingAddOnResultPayloadRequest` (6):
 

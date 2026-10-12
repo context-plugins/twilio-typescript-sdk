@@ -1,6 +1,9 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * Channel type. Required when participantId has multiple addresses or when using explicit address.
+ */
 export const Channel4 = {
   Sms: "SMS",
   Rcs: "RCS",

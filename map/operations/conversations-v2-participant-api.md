@@ -4,7 +4,7 @@
 
 Accessor: `client.conversationsV2ParticipantApi` · Source: `src/resources/conversations-v2-participant-api.ts` · 4 operations · Request and error types: namespace `ConversationsV2ParticipantApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createParticipantInConversation
 
@@ -12,9 +12,10 @@ Accessor: `client.conversationsV2ParticipantApi` · Source: `src/resources/conve
 - **Signature**: `createParticipantInConversation(request: ConversationsV2ParticipantApi.CreateParticipantInConversationRequest, options?: RequestOptions): ApiPromise<ConversationsV2Participant, ConversationsV2ParticipantApi.CreateParticipantInConversationError>`
 - **Wire**: `POST /v2/Conversations/{ConversationSid}/Participants`
 - **Auth**: `accountSidAuthToken`
-- **Request body**: `application/json` — the `body` field
+- **Request body**: `application/json` — the `body` field. **Optional**: omit it and the request carries no body and no `Content-Type` header at all
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ConversationsV2Participant`
-- **Error**: `ConversationsV2ParticipantApi.CreateParticipantInConversationError` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `ConversationsV2ParticipantApi.CreateParticipantInConversationError` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"accountsCallsRecordingsSidJson201041408Error1"` [400] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error12"` [404] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error13"` [409] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error14"` [429] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error15"` [500] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error16"` [503] `AccountsCallsRecordingsSidJson201041408Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `ConversationsV2ParticipantApi.CreateParticipantInConversationRequest` (2):
@@ -38,7 +39,7 @@ Accessor: `client.conversationsV2ParticipantApi` · Source: `src/resources/conve
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ConversationsV2Participant`
-- **Error**: `ConversationsV2ParticipantApi.FetchParticipant2Error` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `ConversationsV2ParticipantApi.FetchParticipant2Error` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"accountsCallsRecordingsSidJson201041408Error1"` [400] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error12"` [404] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error13"` [429] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error14"` [500] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error15"` [503] `AccountsCallsRecordingsSidJson201041408Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `ConversationsV2ParticipantApi.FetchParticipant2Request` (2):
@@ -61,7 +62,7 @@ Accessor: `client.conversationsV2ParticipantApi` · Source: `src/resources/conve
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `V2ConversationsParticipantsResponse`
-- **Error**: `ConversationsV2ParticipantApi.ListParticipantByConversationError` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `ConversationsV2ParticipantApi.ListParticipantByConversationError` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"accountsCallsRecordingsSidJson201041408Error1"` [400] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error12"` [404] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error13"` [429] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error14"` [500] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error15"` [503] `AccountsCallsRecordingsSidJson201041408Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `ConversationsV2ParticipantApi.ListParticipantByConversationRequest` (3):
@@ -83,9 +84,10 @@ Accessor: `client.conversationsV2ParticipantApi` · Source: `src/resources/conve
 - **Signature**: `updateParticipantInConversation(request: ConversationsV2ParticipantApi.UpdateParticipantInConversationRequest, options?: RequestOptions): ApiPromise<ConversationsV2Participant, ConversationsV2ParticipantApi.UpdateParticipantInConversationError>`
 - **Wire**: `PUT /v2/Conversations/{ConversationSid}/Participants/{Sid}`
 - **Auth**: `accountSidAuthToken`
-- **Request body**: `application/json` — the `body` field
+- **Request body**: `application/json` — the `body` field. **Optional**: omit it and the request carries no body and no `Content-Type` header at all
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ConversationsV2Participant`
-- **Error**: `ConversationsV2ParticipantApi.UpdateParticipantInConversationError` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `ConversationsV2ParticipantApi.UpdateParticipantInConversationError` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"accountsCallsRecordingsSidJson201041408Error1"` [400] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error12"` [404] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error13"` [429] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error14"` [500] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error15"` [503] `AccountsCallsRecordingsSidJson201041408Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `ConversationsV2ParticipantApi.UpdateParticipantInConversationRequest` (3):

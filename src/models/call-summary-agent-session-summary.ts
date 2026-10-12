@@ -45,7 +45,7 @@ export const callSummaryAgentSessionSummarySchema: Schema<CallSummaryAgentSessio
     applicationLatencyMs: s.optional(s.lazy(() => callSummaryCrelayRateStatsSchema)),
     tokens: s.optional(s.lazy(() => callSummaryCrelayTokenStatsSchema)),
     words: s.optional(s.lazy(() => callSummaryCrelayWordStatsSchema)),
-    turns: s.optional(s.number()),
+    turns: s.optional(s.int()),
     interruptions: s.optional(s.lazy(() => callSummaryCrelayInterruptionsSchema)),
     sessionState: s.optional(s.lazy(() => callSummaryCrelaySessionStateSchema)),
     _keysMap: {

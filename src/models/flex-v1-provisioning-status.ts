@@ -6,7 +6,9 @@ import {
 } from "./provisioning-status-enum-status.js";
 
 export type FlexV1ProvisioningStatus = {
+  /** Email Provisioning Status */
   status?: ProvisioningStatusEnumStatus;
+  /** The absolute URL of the resource. */
   url?: string | null;
 };
 

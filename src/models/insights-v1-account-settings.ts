@@ -2,9 +2,13 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type InsightsV1AccountSettings = {
+  /** The unique SID identifier of the Account. */
   accountSid?: string | null;
+  /** A boolean flag indicating whether Advanced Features for Voice Insights are enabled. */
   advancedFeatures?: boolean | null;
+  /** A boolean flag indicating whether Voice Trace is enabled. */
   voiceTrace?: boolean | null;
+  /** The URL of this resource. */
   url?: string | null;
 };
 

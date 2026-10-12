@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import {
   brandVettingEnumVettingProviderSchema,
@@ -29,16 +30,29 @@ export class MessagingV1BrandVetting {
     this.#auth = auth;
   }
 
+  /**
+   * A Messaging Service resource to add and get Brand Vettings.
+   *
+   * @returns Created
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   createBrandVetting(
     request: MessagingV1BrandVetting.CreateBrandVettingRequest,
     options?: RequestOptions,
-  ): ApiPromise<MessagingV1BrandRegistrationsBrandVetting, ResponseError> {
-    return this.#rawClient.execute<MessagingV1BrandRegistrationsBrandVetting, ResponseError>(
+  ): ApiPromise<MessagingV1BrandRegistrationsBrandVetting, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default1("/v1/a2p/BrandRegistrations/{BrandSid}/Vettings"),
+        urlTemplate: this.#servers.default1("/v1/a2p/BrandRegistrations/{BrandSid}/Vettings"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "BrandSid", value: request.brandSid, schema: s.string() }],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: {
           kind: "formUrlEncoded",
           value: [
@@ -53,43 +67,69 @@ export class MessagingV1BrandVetting {
       },
       {
         success: { kind: "json", schema: messagingV1BrandRegistrationsBrandVettingSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * A Messaging Service resource to add and get Brand Vettings.
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   fetchBrandVetting(
     request: MessagingV1BrandVetting.FetchBrandVettingRequest,
     options?: RequestOptions,
-  ): ApiPromise<MessagingV1BrandRegistrationsBrandVetting, ResponseError> {
-    return this.#rawClient.execute<MessagingV1BrandRegistrationsBrandVetting, ResponseError>(
+  ): ApiPromise<MessagingV1BrandRegistrationsBrandVetting, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default1("/v1/a2p/BrandRegistrations/{BrandSid}/Vettings/{BrandVettingSid}"),
+        urlTemplate: this.#servers.default1(
+          "/v1/a2p/BrandRegistrations/{BrandSid}/Vettings/{BrandVettingSid}",
+        ),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           { name: "BrandSid", value: request.brandSid, schema: s.string() },
           { name: "BrandVettingSid", value: request.brandVettingSid, schema: s.string() },
         ],
+        query: [],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: messagingV1BrandRegistrationsBrandVettingSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * A Messaging Service resource to add and get Brand Vettings.
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   listBrandVetting(
     request: MessagingV1BrandVetting.ListBrandVettingRequest,
     options?: RequestOptions,
-  ): ApiPromise<ListBrandVettingResponse, ResponseError> {
-    return this.#rawClient.execute<ListBrandVettingResponse, ResponseError>(
+  ): ApiPromise<ListBrandVettingResponse, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default1("/v1/a2p/BrandRegistrations/{BrandSid}/Vettings"),
+        urlTemplate: this.#servers.default1("/v1/a2p/BrandRegistrations/{BrandSid}/Vettings"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "BrandSid", value: request.brandSid, schema: s.string() }],
         query: [
@@ -99,11 +139,12 @@ export class MessagingV1BrandVetting {
             schema: s.optional(s.lazy(() => brandVettingEnumVettingProviderSchema)),
           },
         ],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: listBrandVettingResponseSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -112,18 +153,28 @@ export class MessagingV1BrandVetting {
 
 export namespace MessagingV1BrandVetting {
   export type CreateBrandVettingRequest = {
+    /** The SID of the Brand Registration resource of the vettings to create . */
     brandSid: string;
+    /**
+     * The third-party provider that has conducted the vetting. One of “CampaignVerify” (Campaign
+     * Verify tokens) or “AEGIS” (Secondary Vetting).
+     */
     vettingProvider: BrandVettingEnumVettingProvider;
+    /** The unique ID of the vetting */
     vettingId?: string;
   };
 
   export type FetchBrandVettingRequest = {
+    /** The SID of the Brand Registration resource of the vettings to read . */
     brandSid: string;
+    /** The Twilio SID of the third-party vetting record. */
     brandVettingSid: string;
   };
 
   export type ListBrandVettingRequest = {
+    /** The SID of the Brand Registration resource of the vettings to read . */
     brandSid: string;
+    /** The third-party provider of the vettings to read */
     vettingProvider?: BrandVettingEnumVettingProvider;
   };
 }

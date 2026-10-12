@@ -6,13 +6,27 @@ import {
 } from "./authorized-connect-app-enum-permission.js";
 
 export type ApiV2010AccountAuthorizedConnectApp = {
+  /**
+   * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the
+   * AuthorizedConnectApp resource.
+   */
   accountSid?: string | null;
+  /** The company name set for the Connect App. */
   connectAppCompanyName?: string | null;
+  /** A detailed description of the Connect App. */
   connectAppDescription?: string | null;
+  /** The name of the Connect App. */
   connectAppFriendlyName?: string | null;
+  /** The public URL for the Connect App. */
   connectAppHomepageUrl?: string | null;
+  /** The SID that we assigned to the Connect App. */
   connectAppSid?: string | null;
+  /**
+   * The set of permissions that you authorized for the Connect App. Can be: `get-all` or
+   * `post-all`.
+   */
   permissions?: AuthorizedConnectAppEnumPermission[] | null;
+  /** The URI of the resource, relative to `https://api.twilio.com`. */
   uri?: string | null;
 };
 

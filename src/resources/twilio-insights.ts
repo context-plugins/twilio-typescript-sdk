@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError, type Declared, type ErrorDecoders, type ErrorPayload } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError, type Declared, type ErrorDecoders } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import {
   insightsMetadataResponseSchema,
@@ -39,6 +40,9 @@ import {
 } from "../models/v3-insights-domains-conversations-query500-error1.js";
 import type { Servers } from "../servers.js";
 
+/**
+ * Twilio Insights API.
+ */
 export class TwilioInsights {
   readonly #rawClient: RawClient;
   readonly #servers: Servers;
@@ -50,6 +54,21 @@ export class TwilioInsights {
     this.#auth = auth;
   }
 
+  /**
+   * Execute a semantic query
+   *
+   * @remarks
+   * Execute a semantic query against the Conversations domain.
+   *
+   * @returns Successful query response
+   *
+   * @throws {@link TwilioInsights.CreateQueryResultsError} when the API answers with an error
+   * status — narrow on `err.payload.kind`
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   createQueryResults(
     request: TwilioInsights.CreateQueryResultsRequest,
     options?: RequestOptions,
@@ -57,9 +76,11 @@ export class TwilioInsights {
     return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default14("/v3/InsightsDomains/Conversations/Query"),
+        urlTemplate: this.#servers.default14("/v3/InsightsDomains/Conversations/Query"),
         auth: this.#auth.accountSidAuthToken,
-        query: [{ name: "pageSize", value: request.pageSize, schema: s.optional(s.number()) }],
+        pathParams: [],
+        query: [{ name: "pageSize", value: request.pageSize, schema: s.optional(s.int()) }],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: { kind: "json", value: request.body, schema: insightsQueryRequestSchema },
       },
       {
@@ -70,14 +91,32 @@ export class TwilioInsights {
     );
   }
 
+  /**
+   * Fetch Metadata for the Conversations domain
+   *
+   * @remarks
+   * Fetch Metadata for the Conversations domain.
+   *
+   * @returns successful operation
+   *
+   * @throws {@link TwilioInsights.FetchMetadataError} when the API answers with an error status —
+   * narrow on `err.payload.kind`
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   fetchMetadata(
     options?: RequestOptions,
   ): ApiPromise<InsightsMetadataResponse, TwilioInsights.FetchMetadataError> {
     return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default14("/v3/InsightsDomains/Conversations/Metadata"),
+        urlTemplate: this.#servers.default14("/v3/InsightsDomains/Conversations/Metadata"),
         auth: this.#auth.accountSidAuthToken,
+        pathParams: [],
+        query: [],
+        headers: [],
         body: { kind: "empty" },
       },
       {
@@ -88,6 +127,18 @@ export class TwilioInsights {
     );
   }
 
+  /**
+   * Fetch semantic query results
+   *
+   * @returns Successful query response
+   *
+   * @throws {@link TwilioInsights.FetchQueryResultsError} when the API answers with an error status
+   * — narrow on `err.payload.kind`
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   fetchQueryResults(
     request: TwilioInsights.FetchQueryResultsRequest,
     options?: RequestOptions,
@@ -95,9 +146,11 @@ export class TwilioInsights {
     return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default14("/v3/InsightsDomains/Conversations/Query"),
+        urlTemplate: this.#servers.default14("/v3/InsightsDomains/Conversations/Query"),
         auth: this.#auth.accountSidAuthToken,
+        pathParams: [],
         query: [{ name: "pageToken", value: request.pageToken, schema: s.string() }],
+        headers: [],
         body: { kind: "empty" },
       },
       {
@@ -111,15 +164,18 @@ export class TwilioInsights {
 
 export namespace TwilioInsights {
   export type CreateQueryResultsRequest = {
+    /** Number of items per page */
     pageSize?: number;
     body: InsightsQueryRequest;
   };
 
-  export class CreateQueryResultsError extends ResponseError<
-    | Declared<"v3InsightsDomainsConversationsQuery400Error1", V3InsightsDomainsConversationsQuery400Error1>
-    | Declared<"v3InsightsDomainsConversationsQuery429Error1", V3InsightsDomainsConversationsQuery429Error1>
-    | Declared<"v3InsightsDomainsConversationsQuery500Error1", V3InsightsDomainsConversationsQuery500Error1>
-  > {
+  export class CreateQueryResultsError extends ApiError {
+    declare readonly payload: ErrorPayload<
+      | Declared<"v3InsightsDomainsConversationsQuery400Error1", V3InsightsDomainsConversationsQuery400Error1>
+      | Declared<"v3InsightsDomainsConversationsQuery429Error1", V3InsightsDomainsConversationsQuery429Error1>
+      | Declared<"v3InsightsDomainsConversationsQuery500Error1", V3InsightsDomainsConversationsQuery500Error1>
+    >;
+
     static readonly errors: ErrorDecoders<CreateQueryResultsError> = [
       {
         on: 400,
@@ -139,20 +195,22 @@ export namespace TwilioInsights {
     ];
   }
 
-  export class FetchMetadataError extends ResponseError<
-    | Declared<
-      "v3InsightsDomainsConversationsMetadata400Error1",
-      V3InsightsDomainsConversationsMetadata400Error1
-    >
-    | Declared<
-      "v3InsightsDomainsConversationsMetadata429Error1",
-      V3InsightsDomainsConversationsMetadata429Error1
-    >
-    | Declared<
-      "v3InsightsDomainsConversationsMetadata500Error1",
-      V3InsightsDomainsConversationsMetadata500Error1
-    >
-  > {
+  export class FetchMetadataError extends ApiError {
+    declare readonly payload: ErrorPayload<
+      | Declared<
+          "v3InsightsDomainsConversationsMetadata400Error1",
+          V3InsightsDomainsConversationsMetadata400Error1
+        >
+      | Declared<
+          "v3InsightsDomainsConversationsMetadata429Error1",
+          V3InsightsDomainsConversationsMetadata429Error1
+        >
+      | Declared<
+          "v3InsightsDomainsConversationsMetadata500Error1",
+          V3InsightsDomainsConversationsMetadata500Error1
+        >
+    >;
+
     static readonly errors: ErrorDecoders<FetchMetadataError> = [
       {
         on: 400,
@@ -173,14 +231,17 @@ export namespace TwilioInsights {
   }
 
   export type FetchQueryResultsRequest = {
+    /** Pagination token */
     pageToken: string;
   };
 
-  export class FetchQueryResultsError extends ResponseError<
-    | Declared<"v3InsightsDomainsConversationsQuery400Error1", V3InsightsDomainsConversationsQuery400Error1>
-    | Declared<"v3InsightsDomainsConversationsQuery429Error1", V3InsightsDomainsConversationsQuery429Error1>
-    | Declared<"v3InsightsDomainsConversationsQuery500Error1", V3InsightsDomainsConversationsQuery500Error1>
-  > {
+  export class FetchQueryResultsError extends ApiError {
+    declare readonly payload: ErrorPayload<
+      | Declared<"v3InsightsDomainsConversationsQuery400Error1", V3InsightsDomainsConversationsQuery400Error1>
+      | Declared<"v3InsightsDomainsConversationsQuery429Error1", V3InsightsDomainsConversationsQuery429Error1>
+      | Declared<"v3InsightsDomainsConversationsQuery500Error1", V3InsightsDomainsConversationsQuery500Error1>
+    >;
+
     static readonly errors: ErrorDecoders<FetchQueryResultsError> = [
       {
         on: 400,

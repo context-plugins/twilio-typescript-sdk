@@ -1,6 +1,10 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * The status of the result. Can be: `canceled`, `completed`, `deleted`, `failed`, `in-progress`,
+ * `init`, `processing`, `queued`.
+ */
 export const RecordingAddOnResultEnumStatus = {
   Canceled: "canceled",
   Completed: "completed",

@@ -2,10 +2,15 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 import { typesSchema, type Types } from "./types.js";
 
+/** Content creation request body */
 export type ContentCreateRequest = {
+  /** User defined name of the content */
   friendlyName?: string;
+  /** Key value pairs of variable name to value */
   variables?: Record<string, string>;
+  /** Language code for the content */
   language: string;
+  /** Content types */
   types: Types;
 };
 

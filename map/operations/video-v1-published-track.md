@@ -4,17 +4,17 @@
 
 Accessor: `client.videoV1PublishedTrack` · Source: `src/resources/video-v1-published-track.ts` · 2 operations · Request types: namespace `VideoV1PublishedTrack`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchRoomParticipantPublishedTrack
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchRoomParticipantPublishedTrack(request: VideoV1PublishedTrack.FetchRoomParticipantPublishedTrackRequest, options?: RequestOptions): ApiPromise<VideoV1RoomRoomParticipantRoomParticipantPublishedTrack, ResponseError>`
+- **Signature**: `fetchRoomParticipantPublishedTrack(request: VideoV1PublishedTrack.FetchRoomParticipantPublishedTrackRequest, options?: RequestOptions): ApiPromise<VideoV1RoomRoomParticipantRoomParticipantPublishedTrack, ApiError>`
 - **Wire**: `GET /v1/Rooms/{RoomSid}/Participants/{ParticipantSid}/PublishedTracks/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `VideoV1RoomRoomParticipantRoomParticipantPublishedTrack`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1PublishedTrack.FetchRoomParticipantPublishedTrackRequest` (3):
 
@@ -31,12 +31,12 @@ Accessor: `client.videoV1PublishedTrack` · Source: `src/resources/video-v1-publ
 ### listRoomParticipantPublishedTrack
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listRoomParticipantPublishedTrack(request: VideoV1PublishedTrack.ListRoomParticipantPublishedTrackRequest, options?: RequestOptions): ApiPromise<ListRoomParticipantPublishedTrackResponse, ResponseError>`
+- **Signature**: `listRoomParticipantPublishedTrack(request: VideoV1PublishedTrack.ListRoomParticipantPublishedTrackRequest, options?: RequestOptions): ApiPromise<ListRoomParticipantPublishedTrackResponse, ApiError>`
 - **Wire**: `GET /v1/Rooms/{RoomSid}/Participants/{ParticipantSid}/PublishedTracks`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListRoomParticipantPublishedTrackResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1PublishedTrack.ListRoomParticipantPublishedTrackRequest` (5):
 

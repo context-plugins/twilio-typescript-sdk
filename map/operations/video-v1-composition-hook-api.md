@@ -4,17 +4,18 @@
 
 Accessor: `client.videoV1CompositionHookApi` · Source: `src/resources/video-v1-composition-hook-api.ts` · 5 operations · Request types: namespace `VideoV1CompositionHookApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createCompositionHook
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createCompositionHook(request: VideoV1CompositionHookApi.CreateCompositionHookRequest, options?: RequestOptions): ApiPromise<VideoV1CompositionHook, ResponseError>`
+- **Signature**: `createCompositionHook(request: VideoV1CompositionHookApi.CreateCompositionHookRequest, options?: RequestOptions): ApiPromise<VideoV1CompositionHook, ApiError>`
 - **Wire**: `POST /v1/CompositionHooks`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `VideoV1CompositionHook`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1CompositionHookApi.CreateCompositionHookRequest` (10):
 
@@ -40,12 +41,13 @@ Accessor: `client.videoV1CompositionHookApi` · Source: `src/resources/video-v1-
 ### deleteCompositionHook
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteCompositionHook(request: VideoV1CompositionHookApi.DeleteCompositionHookRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteCompositionHook(request: VideoV1CompositionHookApi.DeleteCompositionHookRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/CompositionHooks/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1CompositionHookApi.DeleteCompositionHookRequest` (1):
 
@@ -56,12 +58,12 @@ Accessor: `client.videoV1CompositionHookApi` · Source: `src/resources/video-v1-
 ### fetchCompositionHook
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchCompositionHook(request: VideoV1CompositionHookApi.FetchCompositionHookRequest, options?: RequestOptions): ApiPromise<VideoV1CompositionHook, ResponseError>`
+- **Signature**: `fetchCompositionHook(request: VideoV1CompositionHookApi.FetchCompositionHookRequest, options?: RequestOptions): ApiPromise<VideoV1CompositionHook, ApiError>`
 - **Wire**: `GET /v1/CompositionHooks/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `VideoV1CompositionHook`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1CompositionHookApi.FetchCompositionHookRequest` (1):
 
@@ -76,12 +78,12 @@ Accessor: `client.videoV1CompositionHookApi` · Source: `src/resources/video-v1-
 ### listCompositionHook
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listCompositionHook(request: VideoV1CompositionHookApi.ListCompositionHookRequest, options?: RequestOptions): ApiPromise<ListCompositionHookResponse, ResponseError>`
+- **Signature**: `listCompositionHook(request: VideoV1CompositionHookApi.ListCompositionHookRequest, options?: RequestOptions): ApiPromise<ListCompositionHookResponse, ApiError>`
 - **Wire**: `GET /v1/CompositionHooks`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListCompositionHookResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1CompositionHookApi.ListCompositionHookRequest` (7):
 
@@ -102,12 +104,13 @@ Accessor: `client.videoV1CompositionHookApi` · Source: `src/resources/video-v1-
 ### updateCompositionHook
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateCompositionHook(request: VideoV1CompositionHookApi.UpdateCompositionHookRequest, options?: RequestOptions): ApiPromise<VideoV1CompositionHook, ResponseError>`
+- **Signature**: `updateCompositionHook(request: VideoV1CompositionHookApi.UpdateCompositionHookRequest, options?: RequestOptions): ApiPromise<VideoV1CompositionHook, ApiError>`
 - **Wire**: `POST /v1/CompositionHooks/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `VideoV1CompositionHook`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1CompositionHookApi.UpdateCompositionHookRequest` (11):
 

@@ -2,7 +2,9 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type TimeRange1 = {
+  /** Start date time of the report */
   startDatetime?: Date;
+  /** End date time of the report */
   endDatetime?: Date;
 };
 

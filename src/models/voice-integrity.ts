@@ -5,15 +5,19 @@ import {
   type VoiceIntegrityCallsPerBundle,
 } from "./voice-integrity-calls-per-bundle.js";
 
+/** Metrics related to Voice Integrity enabled calls for the report period. */
 export type VoiceIntegrity = {
+  /** Total number of calls with Voice Integrity enabled. */
   enabledCalls?: number;
+  /** Percentage of calls with Voice Integrity enabled. */
   enabledPercentage?: number;
+  /** Number of calls per Voice Integrity enabled Bundle Sid. */
   callsPerBundle?: VoiceIntegrityCallsPerBundle[];
 };
 
 export const voiceIntegritySchema: Schema<VoiceIntegrity> = s.object<VoiceIntegrity>({
-  enabledCalls: s.optional(s.number()),
-  enabledPercentage: s.optional(s.number()),
+  enabledCalls: s.optional(s.int()),
+  enabledPercentage: s.optional(s.float64()),
   callsPerBundle: s.optional(s.array(s.lazy(() => voiceIntegrityCallsPerBundleSchema))),
   _keysMap: {
     enabledCalls: "enabled_calls",

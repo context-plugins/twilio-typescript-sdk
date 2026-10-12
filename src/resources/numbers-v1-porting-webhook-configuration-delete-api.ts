@@ -1,8 +1,10 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
+import * as s from "../core/validation/index.js";
 import {
   portingWebhookConfigurationDeleteEnumWebhookTypeSchema,
   type PortingWebhookConfigurationDeleteEnumWebhookType,
@@ -20,14 +22,28 @@ export class NumbersV1PortingWebhookConfigurationDeleteApi {
     this.#auth = auth;
   }
 
+  /**
+   * Allows the client to delete a webhook configuration.
+   *
+   * @remarks
+   * Allows the client to delete a webhook configuration.
+   *
+   * @returns The resource was deleted successfully.
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   deletePortingWebhookConfigurationDelete(
     request: NumbersV1PortingWebhookConfigurationDeleteApi.DeletePortingWebhookConfigurationDeleteRequest,
     options?: RequestOptions,
-  ): ApiPromise<undefined, ResponseError> {
-    return this.#rawClient.execute<undefined, ResponseError>(
+  ): ApiPromise<undefined, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "DELETE",
-        url: this.#servers.default5("/v1/Porting/Configuration/Webhook/{WebhookType}"),
+        urlTemplate: this.#servers.default5("/v1/Porting/Configuration/Webhook/{WebhookType}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           {
@@ -36,11 +52,13 @@ export class NumbersV1PortingWebhookConfigurationDeleteApi {
             schema: portingWebhookConfigurationDeleteEnumWebhookTypeSchema,
           },
         ],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: { kind: "empty" },
       },
       {
         success: { kind: "empty" },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -49,6 +67,7 @@ export class NumbersV1PortingWebhookConfigurationDeleteApi {
 
 export namespace NumbersV1PortingWebhookConfigurationDeleteApi {
   export type DeletePortingWebhookConfigurationDeleteRequest = {
+    /** The webhook type for the configuration to be delete. `PORT_IN`, `PORT_OUT` */
     webhookType: PortingWebhookConfigurationDeleteEnumWebhookType;
   };
 }

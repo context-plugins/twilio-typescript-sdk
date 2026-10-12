@@ -15,8 +15,8 @@ export const metaSchema: Schema<Meta> = s.object<Meta>({
   firstPageUrl: s.optional(s.string()),
   key: s.optional(s.string()),
   nextPageUrl: s.optionalNullable(s.string()),
-  page: s.optional(s.number()),
-  pageSize: s.optional(s.number()),
+  page: s.optional(s.int()),
+  pageSize: s.optional(s.int()),
   previousPageUrl: s.optionalNullable(s.string()),
   url: s.optional(s.string()),
   _keysMap: {

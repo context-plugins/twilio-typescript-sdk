@@ -3,7 +3,9 @@ import type { Schema } from "../core/validation/schema.js";
 import { bundleEnumSortDirectionSchema, type BundleEnumSortDirection } from "./bundle-enum-sort-direction.js";
 
 export type OrderBy = {
+  /** Dimension or measure to order by */
   field?: string;
+  /** Sort order direction, ascending or descending */
   direction?: BundleEnumSortDirection;
 };
 

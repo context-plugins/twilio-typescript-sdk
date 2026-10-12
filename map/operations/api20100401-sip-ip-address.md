@@ -4,16 +4,17 @@
 
 Accessor: `client.api20100401SipIpAddress` · Source: `src/resources/api20100401-sip-ip-address.ts` · 5 operations · Request types: namespace `Api20100401SipIpAddress`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createSipIpAddress
 
-- **Signature**: `createSipIpAddress(request: Api20100401SipIpAddress.CreateSipIpAddressRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountSipSipIpAccessControlListSipIpAddress, ResponseError>`
+- **Signature**: `createSipIpAddress(request: Api20100401SipIpAddress.CreateSipIpAddressRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountSipSipIpAccessControlListSipIpAddress, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountSipSipIpAccessControlListSipIpAddress`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401SipIpAddress.CreateSipIpAddressRequest` (5):
 
@@ -31,12 +32,13 @@ Accessor: `client.api20100401SipIpAddress` · Source: `src/resources/api20100401
 
 ### deleteSipIpAddress
 
-- **Signature**: `deleteSipIpAddress(request: Api20100401SipIpAddress.DeleteSipIpAddressRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteSipIpAddress(request: Api20100401SipIpAddress.DeleteSipIpAddressRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401SipIpAddress.DeleteSipIpAddressRequest` (3):
 
@@ -48,12 +50,12 @@ Accessor: `client.api20100401SipIpAddress` · Source: `src/resources/api20100401
 
 ### fetchSipIpAddress
 
-- **Signature**: `fetchSipIpAddress(request: Api20100401SipIpAddress.FetchSipIpAddressRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountSipSipIpAccessControlListSipIpAddress, ResponseError>`
+- **Signature**: `fetchSipIpAddress(request: Api20100401SipIpAddress.FetchSipIpAddressRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountSipSipIpAccessControlListSipIpAddress, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ApiV2010AccountSipSipIpAccessControlListSipIpAddress`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401SipIpAddress.FetchSipIpAddressRequest` (3):
 
@@ -69,12 +71,12 @@ Accessor: `client.api20100401SipIpAddress` · Source: `src/resources/api20100401
 
 ### listSipIpAddress
 
-- **Signature**: `listSipIpAddress(request: Api20100401SipIpAddress.ListSipIpAddressRequest, options?: RequestOptions): ApiPromise<ListSipIpAddressResponse, ResponseError>`
+- **Signature**: `listSipIpAddress(request: Api20100401SipIpAddress.ListSipIpAddressRequest, options?: RequestOptions): ApiPromise<ListSipIpAddressResponse, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListSipIpAddressResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401SipIpAddress.ListSipIpAddressRequest` (5):
 
@@ -92,12 +94,13 @@ Accessor: `client.api20100401SipIpAddress` · Source: `src/resources/api20100401
 
 ### updateSipIpAddress
 
-- **Signature**: `updateSipIpAddress(request: Api20100401SipIpAddress.UpdateSipIpAddressRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountSipSipIpAccessControlListSipIpAddress, ResponseError>`
+- **Signature**: `updateSipIpAddress(request: Api20100401SipIpAddress.UpdateSipIpAddressRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountSipSipIpAccessControlListSipIpAddress, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountSipSipIpAccessControlListSipIpAddress`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401SipIpAddress.UpdateSipIpAddressRequest` (6):
 

@@ -4,16 +4,16 @@
 
 Accessor: `client.api20100401AuthorizedConnectApp` · Source: `src/resources/api20100401-authorized-connect-app.ts` · 2 operations · Request types: namespace `Api20100401AuthorizedConnectApp`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchAuthorizedConnectApp
 
-- **Signature**: `fetchAuthorizedConnectApp(request: Api20100401AuthorizedConnectApp.FetchAuthorizedConnectAppRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountAuthorizedConnectApp, ResponseError>`
+- **Signature**: `fetchAuthorizedConnectApp(request: Api20100401AuthorizedConnectApp.FetchAuthorizedConnectAppRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountAuthorizedConnectApp, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/AuthorizedConnectApps/{ConnectAppSid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ApiV2010AccountAuthorizedConnectApp`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401AuthorizedConnectApp.FetchAuthorizedConnectAppRequest` (2):
 
@@ -28,12 +28,12 @@ Accessor: `client.api20100401AuthorizedConnectApp` · Source: `src/resources/api
 
 ### listAuthorizedConnectApp
 
-- **Signature**: `listAuthorizedConnectApp(request: Api20100401AuthorizedConnectApp.ListAuthorizedConnectAppRequest, options?: RequestOptions): ApiPromise<ListAuthorizedConnectAppResponse, ResponseError>`
+- **Signature**: `listAuthorizedConnectApp(request: Api20100401AuthorizedConnectApp.ListAuthorizedConnectAppRequest, options?: RequestOptions): ApiPromise<ListAuthorizedConnectAppResponse, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/AuthorizedConnectApps.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListAuthorizedConnectAppResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401AuthorizedConnectApp.ListAuthorizedConnectAppRequest` (4):
 

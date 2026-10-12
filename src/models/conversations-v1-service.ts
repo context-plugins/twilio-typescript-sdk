@@ -2,12 +2,25 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type ConversationsV1Service = {
+  /**
+   * The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for
+   * this service.
+   */
   accountSid?: string | null;
+  /** A 34 character string that uniquely identifies this resource. */
   sid?: string | null;
+  /** The human-readable name of this service, limited to 256 characters. Optional. */
   friendlyName?: string | null;
+  /** The date that this resource was created. */
   dateCreated?: Date | null;
+  /** The date that this resource was last updated. */
   dateUpdated?: Date | null;
+  /** An absolute API resource URL for this service. */
   url?: string | null;
+  /**
+   * Contains absolute API resource URLs to access conversations, users, roles, bindings and
+   * configuration of this service.
+   */
   links?: Record<string, unknown> | null;
 };
 

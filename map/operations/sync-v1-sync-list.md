@@ -4,17 +4,18 @@
 
 Accessor: `client.syncV1SyncList` · Source: `src/resources/sync-v1-sync-list.ts` · 5 operations · Request types: namespace `SyncV1SyncList`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createSyncList
 
 - **Server**: `default12` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createSyncList(request: SyncV1SyncList.CreateSyncListRequest, options?: RequestOptions): ApiPromise<SyncV1ServiceSyncList, ResponseError>`
+- **Signature**: `createSyncList(request: SyncV1SyncList.CreateSyncListRequest, options?: RequestOptions): ApiPromise<SyncV1ServiceSyncList, ApiError>`
 - **Wire**: `POST /v1/Services/{ServiceSid}/Lists`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `SyncV1ServiceSyncList`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `SyncV1SyncList.CreateSyncListRequest` (4):
 
@@ -32,12 +33,13 @@ Accessor: `client.syncV1SyncList` · Source: `src/resources/sync-v1-sync-list.ts
 ### deleteSyncList
 
 - **Server**: `default12` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteSyncList(request: SyncV1SyncList.DeleteSyncListRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteSyncList(request: SyncV1SyncList.DeleteSyncListRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Services/{ServiceSid}/Lists/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `SyncV1SyncList.DeleteSyncListRequest` (2):
 
@@ -49,12 +51,12 @@ Accessor: `client.syncV1SyncList` · Source: `src/resources/sync-v1-sync-list.ts
 ### fetchSyncList
 
 - **Server**: `default12` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchSyncList(request: SyncV1SyncList.FetchSyncListRequest, options?: RequestOptions): ApiPromise<SyncV1ServiceSyncList, ResponseError>`
+- **Signature**: `fetchSyncList(request: SyncV1SyncList.FetchSyncListRequest, options?: RequestOptions): ApiPromise<SyncV1ServiceSyncList, ApiError>`
 - **Wire**: `GET /v1/Services/{ServiceSid}/Lists/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `SyncV1ServiceSyncList`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `SyncV1SyncList.FetchSyncListRequest` (2):
 
@@ -70,12 +72,12 @@ Accessor: `client.syncV1SyncList` · Source: `src/resources/sync-v1-sync-list.ts
 ### listSyncList
 
 - **Server**: `default12` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listSyncList(request: SyncV1SyncList.ListSyncListRequest, options?: RequestOptions): ApiPromise<ListSyncListResponse, ResponseError>`
+- **Signature**: `listSyncList(request: SyncV1SyncList.ListSyncListRequest, options?: RequestOptions): ApiPromise<ListSyncListResponse, ApiError>`
 - **Wire**: `GET /v1/Services/{ServiceSid}/Lists`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListSyncListResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `SyncV1SyncList.ListSyncListRequest` (4):
 
@@ -93,12 +95,13 @@ Accessor: `client.syncV1SyncList` · Source: `src/resources/sync-v1-sync-list.ts
 ### updateSyncList
 
 - **Server**: `default12` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateSyncList(request: SyncV1SyncList.UpdateSyncListRequest, options?: RequestOptions): ApiPromise<SyncV1ServiceSyncList, ResponseError>`
+- **Signature**: `updateSyncList(request: SyncV1SyncList.UpdateSyncListRequest, options?: RequestOptions): ApiPromise<SyncV1ServiceSyncList, ApiError>`
 - **Wire**: `POST /v1/Services/{ServiceSid}/Lists/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `SyncV1ServiceSyncList`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `SyncV1SyncList.UpdateSyncListRequest` (4):
 

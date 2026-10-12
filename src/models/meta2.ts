@@ -10,7 +10,7 @@ export type Meta2 = {
 
 export const meta2Schema: Schema<Meta2> = s.object<Meta2>({
   key: s.optional(s.string()),
-  pageSize: s.optional(s.number()),
+  pageSize: s.optional(s.int()),
   previousToken: s.optional(s.string()),
   nextToken: s.optional(s.string()),
 });

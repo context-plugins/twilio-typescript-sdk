@@ -4,17 +4,18 @@
 
 Accessor: `client.trusthubV1TrustProducts` · Source: `src/resources/trusthub-v1-trust-products.ts` · 5 operations · Request types: namespace `TrusthubV1TrustProducts`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createTrustProduct
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createTrustProduct(request: TrusthubV1TrustProducts.CreateTrustProductRequest, options?: RequestOptions): ApiPromise<TrusthubV1TrustProduct, ResponseError>`
+- **Signature**: `createTrustProduct(request: TrusthubV1TrustProducts.CreateTrustProductRequest, options?: RequestOptions): ApiPromise<TrusthubV1TrustProduct, ApiError>`
 - **Wire**: `POST /v1/TrustProducts`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `TrusthubV1TrustProduct`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1TrustProducts.CreateTrustProductRequest` (4):
 
@@ -32,12 +33,13 @@ Accessor: `client.trusthubV1TrustProducts` · Source: `src/resources/trusthub-v1
 ### deleteTrustProduct
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteTrustProduct(request: TrusthubV1TrustProducts.DeleteTrustProductRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteTrustProduct(request: TrusthubV1TrustProducts.DeleteTrustProductRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/TrustProducts/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1TrustProducts.DeleteTrustProductRequest` (1):
 
@@ -48,12 +50,12 @@ Accessor: `client.trusthubV1TrustProducts` · Source: `src/resources/trusthub-v1
 ### fetchTrustProduct
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchTrustProduct(request: TrusthubV1TrustProducts.FetchTrustProductRequest, options?: RequestOptions): ApiPromise<TrusthubV1TrustProduct, ResponseError>`
+- **Signature**: `fetchTrustProduct(request: TrusthubV1TrustProducts.FetchTrustProductRequest, options?: RequestOptions): ApiPromise<TrusthubV1TrustProduct, ApiError>`
 - **Wire**: `GET /v1/TrustProducts/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `TrusthubV1TrustProduct`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1TrustProducts.FetchTrustProductRequest` (1):
 
@@ -68,12 +70,12 @@ Accessor: `client.trusthubV1TrustProducts` · Source: `src/resources/trusthub-v1
 ### listTrustProduct
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listTrustProduct(request: TrusthubV1TrustProducts.ListTrustProductRequest, options?: RequestOptions): ApiPromise<ListTrustProductResponse, ResponseError>`
+- **Signature**: `listTrustProduct(request: TrusthubV1TrustProducts.ListTrustProductRequest, options?: RequestOptions): ApiPromise<ListTrustProductResponse, ApiError>`
 - **Wire**: `GET /v1/TrustProducts`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListTrustProductResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1TrustProducts.ListTrustProductRequest` (6):
 
@@ -94,12 +96,13 @@ Accessor: `client.trusthubV1TrustProducts` · Source: `src/resources/trusthub-v1
 ### updateTrustProduct
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateTrustProduct(request: TrusthubV1TrustProducts.UpdateTrustProductRequest, options?: RequestOptions): ApiPromise<TrusthubV1TrustProduct, ResponseError>`
+- **Signature**: `updateTrustProduct(request: TrusthubV1TrustProducts.UpdateTrustProductRequest, options?: RequestOptions): ApiPromise<TrusthubV1TrustProduct, ApiError>`
 - **Wire**: `POST /v1/TrustProducts/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `TrusthubV1TrustProduct`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1TrustProducts.UpdateTrustProductRequest` (5):
 

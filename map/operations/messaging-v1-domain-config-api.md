@@ -4,17 +4,17 @@
 
 Accessor: `client.messagingV1DomainConfigApi` · Source: `src/resources/messaging-v1-domain-config-api.ts` · 2 operations · Request types: namespace `MessagingV1DomainConfigApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchDomainConfig
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchDomainConfig(request: MessagingV1DomainConfigApi.FetchDomainConfigRequest, options?: RequestOptions): ApiPromise<MessagingV1DomainConfig, ResponseError>`
+- **Signature**: `fetchDomainConfig(request: MessagingV1DomainConfigApi.FetchDomainConfigRequest, options?: RequestOptions): ApiPromise<MessagingV1DomainConfig, ApiError>`
 - **Wire**: `GET /v1/LinkShortening/Domains/{DomainSid}/Config`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `MessagingV1DomainConfig`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1DomainConfigApi.FetchDomainConfigRequest` (1):
 
@@ -29,12 +29,13 @@ Accessor: `client.messagingV1DomainConfigApi` · Source: `src/resources/messagin
 ### updateDomainConfig
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateDomainConfig(request: MessagingV1DomainConfigApi.UpdateDomainConfigRequest, options?: RequestOptions): ApiPromise<MessagingV1DomainConfig, ResponseError>`
+- **Signature**: `updateDomainConfig(request: MessagingV1DomainConfigApi.UpdateDomainConfigRequest, options?: RequestOptions): ApiPromise<MessagingV1DomainConfig, ApiError>`
 - **Wire**: `POST /v1/LinkShortening/Domains/{DomainSid}/Config`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `MessagingV1DomainConfig`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1DomainConfigApi.UpdateDomainConfigRequest` (5):
 

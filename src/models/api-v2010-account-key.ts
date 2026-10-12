@@ -2,9 +2,19 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type ApiV2010AccountKey = {
+  /** The unique string that that we created to identify the Key resource. */
   sid?: string | null;
+  /** The string that you assigned to describe the resource. */
   friendlyName?: string | null;
+  /**
+   * The date and time in GMT that the resource was created specified in [RFC
+   * 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+   */
   dateCreated?: string | null;
+  /**
+   * The date and time in GMT that the resource was last updated specified in [RFC
+   * 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+   */
   dateUpdated?: string | null;
 };
 

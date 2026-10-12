@@ -4,17 +4,17 @@
 
 Accessor: `client.conversationsV1DeliveryReceipt` · Source: `src/resources/conversations-v1-delivery-receipt.ts` · 4 operations · Request types: namespace `ConversationsV1DeliveryReceipt`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchConversationMessageReceipt
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchConversationMessageReceipt(request: ConversationsV1DeliveryReceipt.FetchConversationMessageReceiptRequest, options?: RequestOptions): ApiPromise<ConversationsV1ConversationConversationMessageConversationMessageReceipt, ResponseError>`
+- **Signature**: `fetchConversationMessageReceipt(request: ConversationsV1DeliveryReceipt.FetchConversationMessageReceiptRequest, options?: RequestOptions): ApiPromise<ConversationsV1ConversationConversationMessageConversationMessageReceipt, ApiError>`
 - **Wire**: `GET /v1/Conversations/{ConversationSid}/Messages/{MessageSid}/Receipts/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ConversationsV1ConversationConversationMessageConversationMessageReceipt`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1DeliveryReceipt.FetchConversationMessageReceiptRequest` (3):
 
@@ -31,12 +31,12 @@ Accessor: `client.conversationsV1DeliveryReceipt` · Source: `src/resources/conv
 ### fetchServiceConversationMessageReceipt
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchServiceConversationMessageReceipt(request: ConversationsV1DeliveryReceipt.FetchServiceConversationMessageReceiptRequest, options?: RequestOptions): ApiPromise<ServiceConversationMessageReceipt, ResponseError>`
+- **Signature**: `fetchServiceConversationMessageReceipt(request: ConversationsV1DeliveryReceipt.FetchServiceConversationMessageReceiptRequest, options?: RequestOptions): ApiPromise<ServiceConversationMessageReceipt, ApiError>`
 - **Wire**: `GET /v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Messages/{MessageSid}/Receipts/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ServiceConversationMessageReceipt`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1DeliveryReceipt.FetchServiceConversationMessageReceiptRequest` (4):
 
@@ -54,12 +54,12 @@ Accessor: `client.conversationsV1DeliveryReceipt` · Source: `src/resources/conv
 ### listConversationMessageReceipt
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listConversationMessageReceipt(request: ConversationsV1DeliveryReceipt.ListConversationMessageReceiptRequest, options?: RequestOptions): ApiPromise<ListConversationMessageReceiptResponse, ResponseError>`
+- **Signature**: `listConversationMessageReceipt(request: ConversationsV1DeliveryReceipt.ListConversationMessageReceiptRequest, options?: RequestOptions): ApiPromise<ListConversationMessageReceiptResponse, ApiError>`
 - **Wire**: `GET /v1/Conversations/{ConversationSid}/Messages/{MessageSid}/Receipts`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListConversationMessageReceiptResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1DeliveryReceipt.ListConversationMessageReceiptRequest` (5):
 
@@ -78,12 +78,12 @@ Accessor: `client.conversationsV1DeliveryReceipt` · Source: `src/resources/conv
 ### listServiceConversationMessageReceipt
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listServiceConversationMessageReceipt(request: ConversationsV1DeliveryReceipt.ListServiceConversationMessageReceiptRequest, options?: RequestOptions): ApiPromise<ListServiceConversationMessageReceiptResponse, ResponseError>`
+- **Signature**: `listServiceConversationMessageReceipt(request: ConversationsV1DeliveryReceipt.ListServiceConversationMessageReceiptRequest, options?: RequestOptions): ApiPromise<ListServiceConversationMessageReceiptResponse, ApiError>`
 - **Wire**: `GET /v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Messages/{MessageSid}/Receipts`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListServiceConversationMessageReceiptResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1DeliveryReceipt.ListServiceConversationMessageReceiptRequest` (6):
 

@@ -2,12 +2,25 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type TrusthubV1TrustProductTrustProductChannelEndpointAssignment = {
+  /** The unique string that we created to identify the Item Assignment resource. */
   sid?: string | null;
+  /** The unique string that we created to identify the CustomerProfile resource. */
   trustProductSid?: string | null;
+  /**
+   * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Item
+   * Assignment resource.
+   */
   accountSid?: string | null;
+  /** The type of channel endpoint. eg: phone-number */
   channelEndpointType?: string | null;
+  /** The SID of an channel endpoint */
   channelEndpointSid?: string | null;
+  /**
+   * The date and time in GMT when the resource was created specified in [ISO
+   * 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+   */
   dateCreated?: Date | null;
+  /** The absolute URL of the Identity resource. */
   url?: string | null;
 };
 

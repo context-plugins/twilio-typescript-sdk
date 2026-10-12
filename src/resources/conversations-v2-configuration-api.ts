@@ -1,8 +1,8 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError, type Declared, type ErrorDecoders, type ErrorPayload } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError, type Declared, type ErrorDecoders } from "../core/response-error.js";
 import * as s from "../core/validation/index.js";
 import {
   accountsCallsRecordingsSidJson201041408Error1Schema,
@@ -30,6 +30,11 @@ import {
 } from "../models/v2-control-plane-configurations-response.js";
 import type { Servers } from "../servers.js";
 
+/**
+ * A conversation configuration is the top-level object in Conversation Orchestrator. It contains
+ * the settings that define how Conversation Orchestrator captures traffic and connects to other
+ * services.
+ */
 export class ConversationsV2ConfigurationApi {
   readonly #rawClient: RawClient;
   readonly #servers: Servers;
@@ -41,6 +46,21 @@ export class ConversationsV2ConfigurationApi {
     this.#auth = auth;
   }
 
+  /**
+   * Create a Configuration
+   *
+   * @remarks
+   * Create a new Configuration
+   *
+   * @returns Accepted - Operation created for asynchronous processing
+   *
+   * @throws {@link ConversationsV2ConfigurationApi.CreateConfigurationError} when the API answers
+   * with an error status — narrow on `err.payload.kind`
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   createConfiguration(
     request: ConversationsV2ConfigurationApi.CreateConfigurationRequest,
     options?: RequestOptions,
@@ -48,8 +68,10 @@ export class ConversationsV2ConfigurationApi {
     return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default7("/v2/ControlPlane/Configurations"),
+        urlTemplate: this.#servers.default7("/v2/ControlPlane/Configurations"),
         auth: this.#auth.accountSidAuthToken,
+        pathParams: [],
+        query: [],
         headers: [{ name: "Idempotency-Key", value: request.idempotencyKey, schema: s.optional(s.string()) }],
         body: {
           kind: "json",
@@ -65,6 +87,21 @@ export class ConversationsV2ConfigurationApi {
     );
   }
 
+  /**
+   * Delete Configuration
+   *
+   * @remarks
+   * Delete a Configuration
+   *
+   * @returns Accepted - Operation created for asynchronous processing
+   *
+   * @throws {@link ConversationsV2ConfigurationApi.DeleteConfigurationError} when the API answers
+   * with an error status — narrow on `err.payload.kind`
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   deleteConfiguration(
     request: ConversationsV2ConfigurationApi.DeleteConfigurationRequest,
     options?: RequestOptions,
@@ -72,9 +109,10 @@ export class ConversationsV2ConfigurationApi {
     return this.#rawClient.execute(
       {
         method: "DELETE",
-        url: this.#servers.default7("/v2/ControlPlane/Configurations/{Sid}"),
+        urlTemplate: this.#servers.default7("/v2/ControlPlane/Configurations/{Sid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "Sid", value: request.sid, schema: s.string() }],
+        query: [],
         headers: [{ name: "Idempotency-Key", value: request.idempotencyKey, schema: s.optional(s.string()) }],
         body: { kind: "empty" },
       },
@@ -86,6 +124,21 @@ export class ConversationsV2ConfigurationApi {
     );
   }
 
+  /**
+   * Fetch Configuration
+   *
+   * @remarks
+   * Retrieve a Configuration.
+   *
+   * @returns OK
+   *
+   * @throws {@link ConversationsV2ConfigurationApi.FetchConfiguration2Error} when the API answers
+   * with an error status — narrow on `err.payload.kind`
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   fetchConfiguration2(
     request: ConversationsV2ConfigurationApi.FetchConfiguration2Request,
     options?: RequestOptions,
@@ -93,9 +146,11 @@ export class ConversationsV2ConfigurationApi {
     return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default7("/v2/ControlPlane/Configurations/{Sid}"),
+        urlTemplate: this.#servers.default7("/v2/ControlPlane/Configurations/{Sid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "Sid", value: request.sid, schema: s.string() }],
+        query: [],
+        headers: [],
         body: { kind: "empty" },
       },
       {
@@ -106,6 +161,21 @@ export class ConversationsV2ConfigurationApi {
     );
   }
 
+  /**
+   * List Configurations
+   *
+   * @remarks
+   * Retrieve a list of Configurations.
+   *
+   * @returns OK
+   *
+   * @throws {@link ConversationsV2ConfigurationApi.ListConfigurationError} when the API answers
+   * with an error status — narrow on `err.payload.kind`
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   listConfiguration(
     request: ConversationsV2ConfigurationApi.ListConfigurationRequest,
     options?: RequestOptions,
@@ -116,13 +186,15 @@ export class ConversationsV2ConfigurationApi {
     return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default7("/v2/ControlPlane/Configurations"),
+        urlTemplate: this.#servers.default7("/v2/ControlPlane/Configurations"),
         auth: this.#auth.accountSidAuthToken,
+        pathParams: [],
         query: [
-          { name: "pageSize", value: request.pageSize, schema: s.defaulted(s.number(), 50) },
+          { name: "pageSize", value: request.pageSize, schema: s.defaulted(s.int(), 50) },
           { name: "pageToken", value: request.pageToken, schema: s.optional(s.string()) },
           { name: "memoryStoreId", value: request.memoryStoreId, schema: s.optional(s.string()) },
         ],
+        headers: [],
         body: { kind: "empty" },
       },
       {
@@ -133,6 +205,21 @@ export class ConversationsV2ConfigurationApi {
     );
   }
 
+  /**
+   * Update Configuration
+   *
+   * @remarks
+   * Update an existing Configuration
+   *
+   * @returns Accepted - Operation created for asynchronous processing
+   *
+   * @throws {@link ConversationsV2ConfigurationApi.UpdateConfiguration2Error} when the API answers
+   * with an error status — narrow on `err.payload.kind`
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   updateConfiguration2(
     request: ConversationsV2ConfigurationApi.UpdateConfiguration2Request,
     options?: RequestOptions,
@@ -140,9 +227,10 @@ export class ConversationsV2ConfigurationApi {
     return this.#rawClient.execute(
       {
         method: "PUT",
-        url: this.#servers.default7("/v2/ControlPlane/Configurations/{Sid}"),
+        urlTemplate: this.#servers.default7("/v2/ControlPlane/Configurations/{Sid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "Sid", value: request.sid, schema: s.string() }],
+        query: [],
         headers: [{ name: "Idempotency-Key", value: request.idempotencyKey, schema: s.optional(s.string()) }],
         body: {
           kind: "json",
@@ -161,29 +249,40 @@ export class ConversationsV2ConfigurationApi {
 
 export namespace ConversationsV2ConfigurationApi {
   export type CreateConfigurationRequest = {
+    /**
+     * Client-generated UUID key to ensure idempotent behavior. Submitting the same key returns the
+     * original response without creating a duplicate operation. Keys are scoped to account + region
+     * with a 24-hour TTL.
+     */
     idempotencyKey?: string;
+    /** The configuration to create */
     body?: V2ControlPlaneConfigurationsRequest;
   };
 
-  export class CreateConfigurationError extends ResponseError<
-    | Declared<"accountsCallsRecordingsSidJson201041408Error1", AccountsCallsRecordingsSidJson201041408Error1>
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error12",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error13",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error14",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error15",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-  > {
+  export class CreateConfigurationError extends ApiError {
+    declare readonly payload: ErrorPayload<
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error1",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error12",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error13",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error14",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error15",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+    >;
+
     static readonly errors: ErrorDecoders<CreateConfigurationError> = [
       {
         on: 400,
@@ -215,28 +314,38 @@ export namespace ConversationsV2ConfigurationApi {
 
   export type DeleteConfigurationRequest = {
     sid: string;
+    /**
+     * Client-generated UUID key to ensure idempotent behavior. Submitting the same key returns the
+     * original response without creating a duplicate operation. Keys are scoped to account + region
+     * with a 24-hour TTL.
+     */
     idempotencyKey?: string;
   };
 
-  export class DeleteConfigurationError extends ResponseError<
-    | Declared<"accountsCallsRecordingsSidJson201041408Error1", AccountsCallsRecordingsSidJson201041408Error1>
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error12",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error13",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error14",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error15",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-  > {
+  export class DeleteConfigurationError extends ApiError {
+    declare readonly payload: ErrorPayload<
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error1",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error12",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error13",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error14",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error15",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+    >;
+
     static readonly errors: ErrorDecoders<DeleteConfigurationError> = [
       {
         on: 404,
@@ -270,21 +379,26 @@ export namespace ConversationsV2ConfigurationApi {
     sid: string;
   };
 
-  export class FetchConfiguration2Error extends ResponseError<
-    | Declared<"accountsCallsRecordingsSidJson201041408Error1", AccountsCallsRecordingsSidJson201041408Error1>
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error12",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error13",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error14",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-  > {
+  export class FetchConfiguration2Error extends ApiError {
+    declare readonly payload: ErrorPayload<
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error1",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error12",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error13",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error14",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+    >;
+
     static readonly errors: ErrorDecoders<FetchConfiguration2Error> = [
       {
         on: 404,
@@ -310,30 +424,38 @@ export namespace ConversationsV2ConfigurationApi {
   }
 
   export type ListConfigurationRequest = {
+    /** Maximum number of items to return in a single response @default 50 */
     pageSize?: number;
+    /** A URL-safe, base64-encoded token representing the page of results to return */
     pageToken?: string;
+    /** Filter configurations by Memory Store ID */
     memoryStoreId?: string;
   };
 
-  export class ListConfigurationError extends ResponseError<
-    | Declared<"accountsCallsRecordingsSidJson201041408Error1", AccountsCallsRecordingsSidJson201041408Error1>
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error12",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error13",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error14",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error15",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-  > {
+  export class ListConfigurationError extends ApiError {
+    declare readonly payload: ErrorPayload<
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error1",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error12",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error13",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error14",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error15",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+    >;
+
     static readonly errors: ErrorDecoders<ListConfigurationError> = [
       {
         on: 400,
@@ -365,33 +487,44 @@ export namespace ConversationsV2ConfigurationApi {
 
   export type UpdateConfiguration2Request = {
     sid: string;
+    /**
+     * Client-generated UUID key to ensure idempotent behavior. Submitting the same key returns the
+     * original response without creating a duplicate operation. Keys are scoped to account + region
+     * with a 24-hour TTL.
+     */
     idempotencyKey?: string;
+    /** The configuration to update */
     body?: V2ControlPlaneConfigurationsRequest1;
   };
 
-  export class UpdateConfiguration2Error extends ResponseError<
-    | Declared<"accountsCallsRecordingsSidJson201041408Error1", AccountsCallsRecordingsSidJson201041408Error1>
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error12",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error13",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error14",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error15",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-    | Declared<
-      "accountsCallsRecordingsSidJson201041408Error16",
-      AccountsCallsRecordingsSidJson201041408Error1
-    >
-  > {
+  export class UpdateConfiguration2Error extends ApiError {
+    declare readonly payload: ErrorPayload<
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error1",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error12",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error13",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error14",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error15",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+      | Declared<
+          "accountsCallsRecordingsSidJson201041408Error16",
+          AccountsCallsRecordingsSidJson201041408Error1
+        >
+    >;
+
     static readonly errors: ErrorDecoders<UpdateConfiguration2Error> = [
       {
         on: 400,

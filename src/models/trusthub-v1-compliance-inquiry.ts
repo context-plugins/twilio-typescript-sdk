@@ -2,9 +2,15 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type TrusthubV1ComplianceInquiry = {
+  /** The unique ID used to start an embedded compliance registration session. */
   inquiryId?: string | null;
+  /** The session token used to start an embedded compliance registration session. */
   inquirySessionToken?: string | null;
+  /**
+   * The CustomerID matching the Customer Profile that should be resumed or resubmitted for editing.
+   */
   customerId?: string | null;
+  /** The URL of this resource. */
   url?: string | null;
 };
 

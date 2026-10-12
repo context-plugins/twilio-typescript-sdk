@@ -7,26 +7,73 @@ import { voiceFallbackMethodSchema, type VoiceFallbackMethod } from "./voice-fal
 import { voiceMethodSchema, type VoiceMethod } from "./voice-method.js";
 
 export type ApiV2010AccountApplication = {
+  /**
+   * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the
+   * Application resource.
+   */
   accountSid?: string | null;
+  /** The API version used to start a new TwiML session. */
   apiVersion?: string | null;
+  /**
+   * The date and time in GMT that the resource was created specified in [RFC
+   * 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+   */
   dateCreated?: string | null;
+  /**
+   * The date and time in GMT that the resource was last updated specified in [RFC
+   * 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+   */
   dateUpdated?: string | null;
+  /** The string that you assigned to describe the resource. */
   friendlyName?: string | null;
+  /** The URL we call using a POST method to send message status information to your application. */
   messageStatusCallback?: string | null;
+  /** The unique string that that we created to identify the Application resource. */
   sid?: string | null;
+  /** The HTTP method we use to call `sms_fallback_url`. Can be: `GET` or `POST`. */
   smsFallbackMethod?: SmsFallbackMethod | null;
+  /**
+   * The URL that we call when an error occurs while retrieving or executing the TwiML from
+   * `sms_url`.
+   */
   smsFallbackUrl?: string | null;
+  /** The HTTP method we use to call `sms_url`. Can be: `GET` or `POST`. */
   smsMethod?: SmsMethod | null;
+  /**
+   * The URL we call using a POST method to send status information to your application about SMS
+   * messages that refer to the application.
+   */
   smsStatusCallback?: string | null;
+  /** The URL we call when the phone number receives an incoming SMS message. */
   smsUrl?: string | null;
+  /**
+   * The URL we call using the `status_callback_method` to send status information to your
+   * application.
+   */
   statusCallback?: string | null;
+  /** The HTTP method we use to call `status_callback`. Can be: `GET` or `POST`. */
   statusCallbackMethod?: StatusCallbackMethod | null;
+  /** The URI of the resource, relative to `https://api.twilio.com`. */
   uri?: string | null;
+  /**
+   * Whether we look up the caller's caller-ID name from the CNAM database (additional charges
+   * apply). Can be: `true` or `false`.
+   */
   voiceCallerIdLookup?: boolean | null;
+  /** The HTTP method we use to call `voice_fallback_url`. Can be: `GET` or `POST`. */
   voiceFallbackMethod?: VoiceFallbackMethod | null;
+  /**
+   * The URL that we call when an error occurs retrieving or executing the TwiML requested by `url`.
+   */
   voiceFallbackUrl?: string | null;
+  /** The HTTP method we use to call `voice_url`. Can be: `GET` or `POST`. */
   voiceMethod?: VoiceMethod | null;
+  /** The URL we call when the phone number assigned to this application receives a call. */
   voiceUrl?: string | null;
+  /**
+   * Whether to allow other Twilio accounts to dial this applicaton using Dial verb. Can be: `true`
+   * or `false`.
+   */
   publicApplicationConnectEnabled?: boolean | null;
 };
 

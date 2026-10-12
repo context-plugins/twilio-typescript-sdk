@@ -4,17 +4,18 @@
 
 Accessor: `client.flexV2WebChannels` · Source: `src/resources/flex-v2-web-channels.ts` · 1 operation · Request types: namespace `FlexV2WebChannels`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createWebChannel2
 
 - **Server**: `default13` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createWebChannel2(request: FlexV2WebChannels.CreateWebChannel2Request, options?: RequestOptions): ApiPromise<FlexV2WebChannel, ResponseError>`
+- **Signature**: `createWebChannel2(request: FlexV2WebChannels.CreateWebChannel2Request, options?: RequestOptions): ApiPromise<FlexV2WebChannel, ApiError>`
 - **Wire**: `POST /v2/WebChats`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `FlexV2WebChannel`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `FlexV2WebChannels.CreateWebChannel2Request` (6):
 

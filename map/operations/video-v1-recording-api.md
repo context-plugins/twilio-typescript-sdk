@@ -4,17 +4,18 @@
 
 Accessor: `client.videoV1RecordingApi` · Source: `src/resources/video-v1-recording-api.ts` · 3 operations · Request types: namespace `VideoV1RecordingApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### deleteRecording2
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteRecording2(request: VideoV1RecordingApi.DeleteRecording2Request, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteRecording2(request: VideoV1RecordingApi.DeleteRecording2Request, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Recordings/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1RecordingApi.DeleteRecording2Request` (1):
 
@@ -25,12 +26,12 @@ Accessor: `client.videoV1RecordingApi` · Source: `src/resources/video-v1-record
 ### fetchRecording2
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchRecording2(request: VideoV1RecordingApi.FetchRecording2Request, options?: RequestOptions): ApiPromise<VideoV1Recording, ResponseError>`
+- **Signature**: `fetchRecording2(request: VideoV1RecordingApi.FetchRecording2Request, options?: RequestOptions): ApiPromise<VideoV1Recording, ApiError>`
 - **Wire**: `GET /v1/Recordings/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `VideoV1Recording`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1RecordingApi.FetchRecording2Request` (1):
 
@@ -45,12 +46,12 @@ Accessor: `client.videoV1RecordingApi` · Source: `src/resources/video-v1-record
 ### listRecording2
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listRecording2(request: VideoV1RecordingApi.ListRecording2Request, options?: RequestOptions): ApiPromise<ListRecordingResponse1, ResponseError>`
+- **Signature**: `listRecording2(request: VideoV1RecordingApi.ListRecording2Request, options?: RequestOptions): ApiPromise<ListRecordingResponse1, ApiError>`
 - **Wire**: `GET /v1/Recordings`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListRecordingResponse1`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1RecordingApi.ListRecording2Request` (9):
 

@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import {
   messagingV1LinkshorteningMessagingServiceSchema,
@@ -24,11 +25,11 @@ export class MessagingV1LinkshorteningMessagingServiceApi {
   createLinkshorteningMessagingService(
     request: MessagingV1LinkshorteningMessagingServiceApi.CreateLinkshorteningMessagingServiceRequest,
     options?: RequestOptions,
-  ): ApiPromise<MessagingV1LinkshorteningMessagingService, ResponseError> {
-    return this.#rawClient.execute<MessagingV1LinkshorteningMessagingService, ResponseError>(
+  ): ApiPromise<MessagingV1LinkshorteningMessagingService, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default1(
+        urlTemplate: this.#servers.default1(
           "/v1/LinkShortening/Domains/{DomainSid}/MessagingServices/{MessagingServiceSid}",
         ),
         auth: this.#auth.accountSidAuthToken,
@@ -36,11 +37,13 @@ export class MessagingV1LinkshorteningMessagingServiceApi {
           { name: "DomainSid", value: request.domainSid, schema: s.string() },
           { name: "MessagingServiceSid", value: request.messagingServiceSid, schema: s.string() },
         ],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: messagingV1LinkshorteningMessagingServiceSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -49,11 +52,11 @@ export class MessagingV1LinkshorteningMessagingServiceApi {
   deleteLinkshorteningMessagingService(
     request: MessagingV1LinkshorteningMessagingServiceApi.DeleteLinkshorteningMessagingServiceRequest,
     options?: RequestOptions,
-  ): ApiPromise<undefined, ResponseError> {
-    return this.#rawClient.execute<undefined, ResponseError>(
+  ): ApiPromise<undefined, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "DELETE",
-        url: this.#servers.default1(
+        urlTemplate: this.#servers.default1(
           "/v1/LinkShortening/Domains/{DomainSid}/MessagingServices/{MessagingServiceSid}",
         ),
         auth: this.#auth.accountSidAuthToken,
@@ -61,11 +64,13 @@ export class MessagingV1LinkshorteningMessagingServiceApi {
           { name: "DomainSid", value: request.domainSid, schema: s.string() },
           { name: "MessagingServiceSid", value: request.messagingServiceSid, schema: s.string() },
         ],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: { kind: "empty" },
       },
       {
         success: { kind: "empty" },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -74,12 +79,28 @@ export class MessagingV1LinkshorteningMessagingServiceApi {
 
 export namespace MessagingV1LinkshorteningMessagingServiceApi {
   export type CreateLinkshorteningMessagingServiceRequest = {
+    /**
+     * The domain SID to associate with a messaging service. With URL shortening enabled, links in
+     * messages sent with the associated messaging service will be shortened to the provided domain
+     */
     domainSid: string;
+    /**
+     * A messaging service SID to associate with a domain. With URL shortening enabled, links in
+     * messages sent with the provided messaging service will be shortened to the associated domain
+     */
     messagingServiceSid: string;
   };
 
   export type DeleteLinkshorteningMessagingServiceRequest = {
+    /**
+     * The domain SID to dissociate from a messaging service. With URL shortening enabled, links in
+     * messages sent with the associated messaging service will be shortened to the provided domain
+     */
     domainSid: string;
+    /**
+     * A messaging service SID to dissociate from a domain. With URL shortening enabled, links in
+     * messages sent with the provided messaging service will be shortened to the associated domain
+     */
     messagingServiceSid: string;
   };
 }

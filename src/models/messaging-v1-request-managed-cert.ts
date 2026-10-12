@@ -2,14 +2,25 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type MessagingV1RequestManagedCert = {
+  /** The unique string that we created to identify the Domain resource. */
   domainSid?: string | null;
+  /** Date that this Domain was last updated. */
   dateUpdated?: Date | null;
+  /** Date that this Domain was registered to the Twilio platform to create a new Domain object. */
   dateCreated?: Date | null;
+  /**
+   * Date that the private certificate associated with this domain expires. This is the expiration
+   * date of your existing cert.
+   */
   dateExpires?: Date | null;
+  /** Full url path for this domain. */
   domainName?: string | null;
+  /** The unique string that we created to identify this Certificate resource. */
   certificateSid?: string | null;
   url?: string | null;
+  /** A boolean flag indicating if the certificate is managed by Twilio. */
   managed?: boolean | null;
+  /** A boolean flag indicating if a managed certificate needs to be fulfilled by Twilio. */
   requesting?: boolean | null;
 };
 

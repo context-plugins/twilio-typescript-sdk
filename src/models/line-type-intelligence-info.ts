@@ -15,7 +15,7 @@ export const lineTypeIntelligenceInfoSchema: Schema<LineTypeIntelligenceInfo> =
     mobileNetworkCode: s.optional(s.string()),
     carrierName: s.optional(s.string()),
     type: s.optional(s.string()),
-    errorCode: s.optional(s.number()),
+    errorCode: s.optional(s.int()),
     _keysMap: {
       mobileCountryCode: "mobile_country_code",
       mobileNetworkCode: "mobile_network_code",

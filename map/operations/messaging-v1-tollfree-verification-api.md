@@ -4,17 +4,18 @@
 
 Accessor: `client.messagingV1TollfreeVerificationApi` · Source: `src/resources/messaging-v1-tollfree-verification-api.ts` · 5 operations · Request types: namespace `MessagingV1TollfreeVerificationApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createTollfreeVerification
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createTollfreeVerification(request: MessagingV1TollfreeVerificationApi.CreateTollfreeVerificationRequest, options?: RequestOptions): ApiPromise<MessagingV1TollfreeVerification, ResponseError>`
+- **Signature**: `createTollfreeVerification(request: MessagingV1TollfreeVerificationApi.CreateTollfreeVerificationRequest, options?: RequestOptions): ApiPromise<MessagingV1TollfreeVerification, ApiError>`
 - **Wire**: `POST /v1/Tollfree/Verifications`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `MessagingV1TollfreeVerification`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1TollfreeVerificationApi.CreateTollfreeVerificationRequest` (37):
 
@@ -70,12 +71,13 @@ Accessor: `client.messagingV1TollfreeVerificationApi` · Source: `src/resources/
 ### deleteTollfreeVerification
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteTollfreeVerification(request: MessagingV1TollfreeVerificationApi.DeleteTollfreeVerificationRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteTollfreeVerification(request: MessagingV1TollfreeVerificationApi.DeleteTollfreeVerificationRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Tollfree/Verifications/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1TollfreeVerificationApi.DeleteTollfreeVerificationRequest` (1):
 
@@ -86,12 +88,12 @@ Accessor: `client.messagingV1TollfreeVerificationApi` · Source: `src/resources/
 ### fetchTollfreeVerification
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchTollfreeVerification(request: MessagingV1TollfreeVerificationApi.FetchTollfreeVerificationRequest, options?: RequestOptions): ApiPromise<MessagingV1TollfreeVerification, ResponseError>`
+- **Signature**: `fetchTollfreeVerification(request: MessagingV1TollfreeVerificationApi.FetchTollfreeVerificationRequest, options?: RequestOptions): ApiPromise<MessagingV1TollfreeVerification, ApiError>`
 - **Wire**: `GET /v1/Tollfree/Verifications/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `MessagingV1TollfreeVerification`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1TollfreeVerificationApi.FetchTollfreeVerificationRequest` (1):
 
@@ -106,12 +108,12 @@ Accessor: `client.messagingV1TollfreeVerificationApi` · Source: `src/resources/
 ### listTollfreeVerification
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listTollfreeVerification(request: MessagingV1TollfreeVerificationApi.ListTollfreeVerificationRequest, options?: RequestOptions): ApiPromise<ListTollfreeVerificationResponse, ResponseError>`
+- **Signature**: `listTollfreeVerification(request: MessagingV1TollfreeVerificationApi.ListTollfreeVerificationRequest, options?: RequestOptions): ApiPromise<ListTollfreeVerificationResponse, ApiError>`
 - **Wire**: `GET /v1/Tollfree/Verifications`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListTollfreeVerificationResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1TollfreeVerificationApi.ListTollfreeVerificationRequest` (8):
 
@@ -134,12 +136,13 @@ Accessor: `client.messagingV1TollfreeVerificationApi` · Source: `src/resources/
 ### updateTollfreeVerification
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateTollfreeVerification(request: MessagingV1TollfreeVerificationApi.UpdateTollfreeVerificationRequest, options?: RequestOptions): ApiPromise<MessagingV1TollfreeVerification, ResponseError>`
+- **Signature**: `updateTollfreeVerification(request: MessagingV1TollfreeVerificationApi.UpdateTollfreeVerificationRequest, options?: RequestOptions): ApiPromise<MessagingV1TollfreeVerification, ApiError>`
 - **Wire**: `POST /v1/Tollfree/Verifications/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `MessagingV1TollfreeVerification`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1TollfreeVerificationApi.UpdateTollfreeVerificationRequest` (36):
 

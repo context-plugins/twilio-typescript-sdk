@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The Status of this Factor. One of `unverified` or `verified`. */
 export const NewFactorEnumFactorStatuses = {
   Unverified: "unverified",
   Verified: "verified",

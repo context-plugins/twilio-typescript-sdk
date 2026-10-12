@@ -4,17 +4,18 @@
 
 Accessor: `client.numbersV2BundleCopy` · Source: `src/resources/numbers-v2-bundle-copy.ts` · 2 operations · Request types: namespace `NumbersV2BundleCopy`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createBundleCopy
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createBundleCopy(request: NumbersV2BundleCopy.CreateBundleCopyRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceBundleBundleCopy, ResponseError>`
+- **Signature**: `createBundleCopy(request: NumbersV2BundleCopy.CreateBundleCopyRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceBundleBundleCopy, ApiError>`
 - **Wire**: `POST /v2/RegulatoryCompliance/Bundles/{BundleSid}/Copies`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `NumbersV2RegulatoryComplianceBundleBundleCopy`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2BundleCopy.CreateBundleCopyRequest` (2):
 
@@ -30,12 +31,12 @@ Accessor: `client.numbersV2BundleCopy` · Source: `src/resources/numbers-v2-bund
 ### listBundleCopy
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listBundleCopy(request: NumbersV2BundleCopy.ListBundleCopyRequest, options?: RequestOptions): ApiPromise<ListBundleCopyResponse, ResponseError>`
+- **Signature**: `listBundleCopy(request: NumbersV2BundleCopy.ListBundleCopyRequest, options?: RequestOptions): ApiPromise<ListBundleCopyResponse, ApiError>`
 - **Wire**: `GET /v2/RegulatoryCompliance/Bundles/{BundleSid}/Copies`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListBundleCopyResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2BundleCopy.ListBundleCopyRequest` (4):
 

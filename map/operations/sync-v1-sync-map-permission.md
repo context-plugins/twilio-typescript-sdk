@@ -4,17 +4,18 @@
 
 Accessor: `client.syncV1SyncMapPermission` · Source: `src/resources/sync-v1-sync-map-permission.ts` · 4 operations · Request types: namespace `SyncV1SyncMapPermission`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### deleteSyncMapPermission
 
 - **Server**: `default12` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteSyncMapPermission(request: SyncV1SyncMapPermission.DeleteSyncMapPermissionRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteSyncMapPermission(request: SyncV1SyncMapPermission.DeleteSyncMapPermissionRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Services/{ServiceSid}/Maps/{MapSid}/Permissions/{Identity}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `SyncV1SyncMapPermission.DeleteSyncMapPermissionRequest` (3):
 
@@ -27,12 +28,12 @@ Accessor: `client.syncV1SyncMapPermission` · Source: `src/resources/sync-v1-syn
 ### fetchSyncMapPermission
 
 - **Server**: `default12` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchSyncMapPermission(request: SyncV1SyncMapPermission.FetchSyncMapPermissionRequest, options?: RequestOptions): ApiPromise<SyncV1ServiceSyncMapSyncMapPermission, ResponseError>`
+- **Signature**: `fetchSyncMapPermission(request: SyncV1SyncMapPermission.FetchSyncMapPermissionRequest, options?: RequestOptions): ApiPromise<SyncV1ServiceSyncMapSyncMapPermission, ApiError>`
 - **Wire**: `GET /v1/Services/{ServiceSid}/Maps/{MapSid}/Permissions/{Identity}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `SyncV1ServiceSyncMapSyncMapPermission`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `SyncV1SyncMapPermission.FetchSyncMapPermissionRequest` (3):
 
@@ -49,12 +50,12 @@ Accessor: `client.syncV1SyncMapPermission` · Source: `src/resources/sync-v1-syn
 ### listSyncMapPermission
 
 - **Server**: `default12` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listSyncMapPermission(request: SyncV1SyncMapPermission.ListSyncMapPermissionRequest, options?: RequestOptions): ApiPromise<ListSyncMapPermissionResponse, ResponseError>`
+- **Signature**: `listSyncMapPermission(request: SyncV1SyncMapPermission.ListSyncMapPermissionRequest, options?: RequestOptions): ApiPromise<ListSyncMapPermissionResponse, ApiError>`
 - **Wire**: `GET /v1/Services/{ServiceSid}/Maps/{MapSid}/Permissions`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListSyncMapPermissionResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `SyncV1SyncMapPermission.ListSyncMapPermissionRequest` (5):
 
@@ -73,12 +74,13 @@ Accessor: `client.syncV1SyncMapPermission` · Source: `src/resources/sync-v1-syn
 ### updateSyncMapPermission
 
 - **Server**: `default12` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateSyncMapPermission(request: SyncV1SyncMapPermission.UpdateSyncMapPermissionRequest, options?: RequestOptions): ApiPromise<SyncV1ServiceSyncMapSyncMapPermission, ResponseError>`
+- **Signature**: `updateSyncMapPermission(request: SyncV1SyncMapPermission.UpdateSyncMapPermissionRequest, options?: RequestOptions): ApiPromise<SyncV1ServiceSyncMapSyncMapPermission, ApiError>`
 - **Wire**: `POST /v1/Services/{ServiceSid}/Maps/{MapSid}/Permissions/{Identity}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `SyncV1ServiceSyncMapSyncMapPermission`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `SyncV1SyncMapPermission.UpdateSyncMapPermissionRequest` (6):
 

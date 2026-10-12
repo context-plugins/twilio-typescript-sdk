@@ -4,17 +4,18 @@
 
 Accessor: `client.conversationsV1ConversationWithParticipantsApi` · Source: `src/resources/conversations-v1-conversation-with-participants-api.ts` · 2 operations · Request types: namespace `ConversationsV1ConversationWithParticipantsApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createConversationWithParticipants
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createConversationWithParticipants(request: ConversationsV1ConversationWithParticipantsApi.CreateConversationWithParticipantsRequest, options?: RequestOptions): ApiPromise<ConversationsV1ConversationWithParticipants, ResponseError>`
+- **Signature**: `createConversationWithParticipants(request: ConversationsV1ConversationWithParticipantsApi.CreateConversationWithParticipantsRequest, options?: RequestOptions): ApiPromise<ConversationsV1ConversationWithParticipants, ApiError>`
 - **Wire**: `POST /v1/ConversationWithParticipants`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ConversationsV1ConversationWithParticipants`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1ConversationWithParticipantsApi.CreateConversationWithParticipantsRequest` (13):
 
@@ -43,12 +44,13 @@ Accessor: `client.conversationsV1ConversationWithParticipantsApi` · Source: `sr
 ### createServiceConversationWithParticipants
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createServiceConversationWithParticipants(request: ConversationsV1ConversationWithParticipantsApi.CreateServiceConversationWithParticipantsRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceConversationWithParticipants, ResponseError>`
+- **Signature**: `createServiceConversationWithParticipants(request: ConversationsV1ConversationWithParticipantsApi.CreateServiceConversationWithParticipantsRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceConversationWithParticipants, ApiError>`
 - **Wire**: `POST /v1/Services/{ChatServiceSid}/ConversationWithParticipants`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ConversationsV1ServiceServiceConversationWithParticipants`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1ConversationWithParticipantsApi.CreateServiceConversationWithParticipantsRequest` (14):
 

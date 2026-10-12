@@ -2,9 +2,16 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type FlexV1InsightsSettingsAnswersets = {
+  /**
+   * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Flex
+   * Insights resource and owns this resource.
+   */
   accountSid?: string | null;
+  /** The lis of answer sets */
   answerSets?: Record<string, unknown> | null;
+  /** The list of answer set categories */
   answerSetCategories?: Record<string, unknown> | null;
+  /** The details for not applicable answer set */
   notApplicable?: Record<string, unknown> | null;
   url?: string | null;
 };

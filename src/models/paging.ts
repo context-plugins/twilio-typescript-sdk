@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
+/** Paging metadata for the list. */
 export type Paging = {
   uri?: string | null;
   nextPageUri?: string | null;
@@ -16,9 +17,9 @@ export const pagingSchema: Schema<Paging> = s.object<Paging>({
   uri: s.optionalNullable(s.string()),
   nextPageUri: s.optionalNullable(s.string()),
   previousPageUri: s.optionalNullable(s.string()),
-  pageSize: s.optionalNullable(s.number()),
-  numPages: s.optionalNullable(s.number()),
-  total: s.optionalNullable(s.number()),
+  pageSize: s.optionalNullable(s.int()),
+  numPages: s.optionalNullable(s.int()),
+  total: s.optionalNullable(s.int()),
   beforeSid: s.optionalNullable(s.string()),
   afterSid: s.optionalNullable(s.string()),
   _keysMap: {

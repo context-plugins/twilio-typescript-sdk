@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import {
   apiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeSchema,
@@ -41,16 +42,31 @@ export class Api20100401IncomingPhoneNumberTollFree {
     this.#auth = auth;
   }
 
+  /**
+   * Incoming toll free phone numbers on a Twilio account/project
+   *
+   * @returns Created
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   createIncomingPhoneNumberTollFree(
     request: Api20100401IncomingPhoneNumberTollFree.CreateIncomingPhoneNumberTollFreeRequest,
     options?: RequestOptions,
-  ): ApiPromise<ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFree, ResponseError> {
-    return this.#rawClient.execute<ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFree, ResponseError>(
+  ): ApiPromise<ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFree, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default("/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/TollFree.json"),
+        urlTemplate: this.#servers.default(
+          "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/TollFree.json",
+        ),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "AccountSid", value: request.accountSid, schema: s.string() }],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: {
           kind: "formUrlEncoded",
           value: [
@@ -125,20 +141,33 @@ export class Api20100401IncomingPhoneNumberTollFree {
           kind: "json",
           schema: apiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFreeSchema,
         },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Incoming toll free phone numbers on a Twilio account/project
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   listIncomingPhoneNumberTollFree(
     request: Api20100401IncomingPhoneNumberTollFree.ListIncomingPhoneNumberTollFreeRequest,
     options?: RequestOptions,
-  ): ApiPromise<ListIncomingPhoneNumberTollFreeResponse, ResponseError> {
-    return this.#rawClient.execute<ListIncomingPhoneNumberTollFreeResponse, ResponseError>(
+  ): ApiPromise<ListIncomingPhoneNumberTollFreeResponse, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default("/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/TollFree.json"),
+        urlTemplate: this.#servers.default(
+          "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/TollFree.json",
+        ),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "AccountSid", value: request.accountSid, schema: s.string() }],
         query: [
@@ -146,15 +175,16 @@ export class Api20100401IncomingPhoneNumberTollFree {
           { name: "FriendlyName", value: request.friendlyName, schema: s.optional(s.string()) },
           { name: "PhoneNumber", value: request.phoneNumber, schema: s.optional(s.string()) },
           { name: "Origin", value: request.origin, schema: s.optional(s.string()) },
-          { name: "PageSize", value: request.pageSize, schema: s.optional(s.number()) },
-          { name: "Page", value: request.page, schema: s.optional(s.number()) },
+          { name: "PageSize", value: request.pageSize, schema: s.optional(s.int()) },
+          { name: "Page", value: request.page, schema: s.optional(s.int()) },
           { name: "PageToken", value: request.pageToken, schema: s.optional(s.string()) },
         ],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: listIncomingPhoneNumberTollFreeResponseSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -163,40 +193,158 @@ export class Api20100401IncomingPhoneNumberTollFree {
 
 export namespace Api20100401IncomingPhoneNumberTollFree {
   export type CreateIncomingPhoneNumberTollFreeRequest = {
+    /**
+     * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the
+     * resource.
+     */
     accountSid: string;
+    /**
+     * The phone number to purchase specified in
+     * [E.164](https://www.twilio.com/docs/glossary/what-e164) format. E.164 phone numbers consist
+     * of a + followed by the country code and subscriber number without punctuation characters. For
+     * example, +14155551234.
+     */
     phoneNumber: string;
+    /**
+     * The API version to use for incoming calls made to the new phone number. The default is
+     * `2010-04-01`.
+     */
     apiVersion?: string;
+    /**
+     * A descriptive string that you created to describe the new phone number. It can be up to 64
+     * characters long. By default, this is a formatted version of the phone number.
+     */
     friendlyName?: string;
+    /**
+     * The SID of the application that should handle SMS messages sent to the new phone number. If
+     * an `sms_application_sid` is present, we ignore all `sms_*_url` values and use those of the
+     * application.
+     */
     smsApplicationSid?: string;
+    /**
+     * The HTTP method that we should use to call `sms_fallback_url`. Can be: `GET` or `POST` and
+     * defaults to `POST`.
+     */
     smsFallbackMethod?: SmsFallbackMethod9;
+    /**
+     * The URL that we should call when an error occurs while requesting or executing the TwiML
+     * defined by `sms_url`.
+     */
     smsFallbackUrl?: string;
+    /**
+     * The HTTP method that we should use to call `sms_url`. Can be: `GET` or `POST` and defaults to
+     * `POST`.
+     */
     smsMethod?: SmsMethod9;
+    /** The URL we should call when the new phone number receives an incoming SMS message. */
     smsUrl?: string;
+    /**
+     * The URL we should call using the `status_callback_method` to send status information to your
+     * application.
+     */
     statusCallback?: string;
+    /**
+     * The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST` and defaults
+     * to `POST`.
+     */
     statusCallbackMethod?: StatusCallbackMethod10;
+    /**
+     * The SID of the application we should use to handle calls to the new phone number. If a
+     * `voice_application_sid` is present, we ignore all of the voice urls and use those set on the
+     * application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and
+     * vice versa.
+     */
     voiceApplicationSid?: string;
+    /**
+     * Whether to lookup the caller's name from the CNAM database and post it to your app. Can be:
+     * `true` or `false` and defaults to `false`.
+     */
     voiceCallerIdLookup?: boolean;
+    /**
+     * The HTTP method that we should use to call `voice_fallback_url`. Can be: `GET` or `POST` and
+     * defaults to `POST`.
+     */
     voiceFallbackMethod?: VoiceFallbackMethod9;
+    /**
+     * The URL that we should call when an error occurs retrieving or executing the TwiML requested
+     * by `url`.
+     */
     voiceFallbackUrl?: string;
+    /**
+     * The HTTP method that we should use to call `voice_url`. Can be: `GET` or `POST` and defaults
+     * to `POST`.
+     */
     voiceMethod?: VoiceMethod9;
+    /**
+     * The URL that we should call to answer a call to the new phone number. The `voice_url` will
+     * not be called if a `voice_application_sid` or a `trunk_sid` is set.
+     */
     voiceUrl?: string;
+    /**
+     * The SID of the Identity resource that we should associate with the new phone number. Some
+     * regions require an Identity to meet local regulations.
+     */
     identitySid?: string;
+    /**
+     * The SID of the Address resource we should associate with the new phone number. Some regions
+     * require addresses to meet local regulations.
+     */
     addressSid?: string;
+    /**
+     * The parameter displays if emergency calling is enabled for this number. Active numbers may
+     * place emergency calls by dialing valid emergency numbers for the country.
+     */
     emergencyStatus?: IncomingPhoneNumberTollFreeEnumEmergencyStatus;
+    /**
+     * The SID of the emergency address configuration to use for emergency calling from the new
+     * phone number.
+     */
     emergencyAddressSid?: string;
+    /**
+     * The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid`
+     * is present, we ignore all of the voice urls and voice applications and use only those set on
+     * the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and
+     * vice versa.
+     */
     trunkSid?: string;
     voiceReceiveMode?: IncomingPhoneNumberTollFreeEnumVoiceReceiveMode;
+    /**
+     * The SID of the Bundle resource that you associate with the phone number. Some regions require
+     * a Bundle to meet local Regulations.
+     */
     bundleSid?: string;
   };
 
   export type ListIncomingPhoneNumberTollFreeRequest = {
+    /**
+     * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the
+     * resources to read.
+     */
     accountSid: string;
+    /**
+     * Whether to include phone numbers new to the Twilio platform. Can be: `true` or `false` and
+     * the default is `true`.
+     */
     beta?: boolean;
+    /** A string that identifies the resources to read. */
     friendlyName?: string;
+    /**
+     * The phone numbers of the IncomingPhoneNumber resources to read. You can specify partial
+     * numbers and use '*' as a wildcard for any digit.
+     */
     phoneNumber?: string;
+    /**
+     * Whether to include phone numbers based on their origin. Can be: `twilio` or `hosted`. By
+     * default, phone numbers of all origin are included.
+     */
     origin?: string;
+    /**
+     * How many resources to return in each list page. The default is 50, and the maximum is 1000.
+     */
     pageSize?: number;
+    /** The page index. This value is simply for client state. */
     page?: number;
+    /** The page token. This is provided by the API. */
     pageToken?: string;
   };
 }

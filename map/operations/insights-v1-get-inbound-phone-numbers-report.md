@@ -4,17 +4,17 @@
 
 Accessor: `client.insightsV1GetInboundPhoneNumbersReport` · Source: `src/resources/insights-v1-get-inbound-phone-numbers-report.ts` · 1 operation · Request types: namespace `InsightsV1GetInboundPhoneNumbersReport`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### listInboundPhoneNumbersReport
 
 - **Server**: `default14` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listInboundPhoneNumbersReport(request: InsightsV1GetInboundPhoneNumbersReport.ListInboundPhoneNumbersReportRequest, options?: RequestOptions): ApiPromise<ListInboundPhoneNumbersReports, ResponseError>`
+- **Signature**: `listInboundPhoneNumbersReport(request: InsightsV1GetInboundPhoneNumbersReport.ListInboundPhoneNumbersReportRequest, options?: RequestOptions): ApiPromise<ListInboundPhoneNumbersReports, ApiError>`
 - **Wire**: `GET /v2/Voice/Reports/PhoneNumbers/Inbound/{reportId}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListInboundPhoneNumbersReports`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `InsightsV1GetInboundPhoneNumbersReport.ListInboundPhoneNumbersReportRequest` (4):
 

@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The type of document. */
 export const DocumentType = {
   ScLetterOfAuthorization: "SC_LETTER_OF_AUTHORIZATION",
   CallToActionOrOptInMockup: "CALL_TO_ACTION_OR_OPT_IN_MOCKUP",

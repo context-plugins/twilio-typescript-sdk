@@ -4,17 +4,17 @@
 
 Accessor: `client.messagingV2DomainCerts` · Source: `src/resources/messaging-v2-domain-certs.ts` · 1 operation · Request types: namespace `MessagingV2DomainCerts`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchDomainCertV42
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchDomainCertV42(request: MessagingV2DomainCerts.FetchDomainCertV42Request, options?: RequestOptions): ApiPromise<MessagingV2DomainCertV4, ResponseError>`
+- **Signature**: `fetchDomainCertV42(request: MessagingV2DomainCerts.FetchDomainCertV42Request, options?: RequestOptions): ApiPromise<MessagingV2DomainCertV4, ApiError>`
 - **Wire**: `GET /v2/LinkShortening/Domains/{DomainSid}/Certificate`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `MessagingV2DomainCertV4`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV2DomainCerts.FetchDomainCertV42Request` (1):
 

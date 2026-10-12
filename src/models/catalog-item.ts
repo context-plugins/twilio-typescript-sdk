@@ -15,7 +15,7 @@ export const catalogItemSchema: Schema<CatalogItem> = s.object<CatalogItem>({
   sectionTitle: s.optional(s.string()),
   name: s.optional(s.string()),
   mediaUrl: s.optional(s.string()),
-  price: s.optional(s.number()),
+  price: s.optional(s.float64()),
   description: s.optional(s.string()),
   _keysMap: {
     sectionTitle: "section_title",

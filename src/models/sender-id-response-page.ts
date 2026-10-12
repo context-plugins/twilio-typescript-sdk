@@ -4,6 +4,7 @@ import { paginationMetaSchema, type PaginationMeta } from "./pagination-meta.js"
 import { senderIdSchema, type SenderId } from "./sender-id.js";
 
 export type SenderIdResponsePage = {
+  /** List of Sender IDs. */
   results?: SenderId[];
   meta?: PaginationMeta;
 };

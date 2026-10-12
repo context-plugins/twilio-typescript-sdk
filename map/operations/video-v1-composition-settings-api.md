@@ -4,17 +4,18 @@
 
 Accessor: `client.videoV1CompositionSettingsApi` · Source: `src/resources/video-v1-composition-settings-api.ts` · 2 operations · Request types: namespace `VideoV1CompositionSettingsApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createCompositionSettings
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createCompositionSettings(request: VideoV1CompositionSettingsApi.CreateCompositionSettingsRequest, options?: RequestOptions): ApiPromise<VideoV1CompositionSettings, ResponseError>`
+- **Signature**: `createCompositionSettings(request: VideoV1CompositionSettingsApi.CreateCompositionSettingsRequest, options?: RequestOptions): ApiPromise<VideoV1CompositionSettings, ApiError>`
 - **Wire**: `POST /v1/CompositionSettings/Default`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `VideoV1CompositionSettings`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `VideoV1CompositionSettingsApi.CreateCompositionSettingsRequest` (6):
 
@@ -34,12 +35,12 @@ Accessor: `client.videoV1CompositionSettingsApi` · Source: `src/resources/video
 ### fetchCompositionSettings
 
 - **Server**: `default6` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchCompositionSettings(options?: RequestOptions): ApiPromise<VideoV1CompositionSettings, ResponseError>`
+- **Signature**: `fetchCompositionSettings(options?: RequestOptions): ApiPromise<VideoV1CompositionSettings, ApiError>`
 - **Wire**: `GET /v1/CompositionSettings/Default`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `VideoV1CompositionSettings`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 | Type | Schema value | Source |
 | --- | --- | --- |

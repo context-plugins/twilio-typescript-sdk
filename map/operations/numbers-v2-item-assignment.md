@@ -4,17 +4,18 @@
 
 Accessor: `client.numbersV2ItemAssignment` · Source: `src/resources/numbers-v2-item-assignment.ts` · 4 operations · Request types: namespace `NumbersV2ItemAssignment`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createItemAssignment
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createItemAssignment(request: NumbersV2ItemAssignment.CreateItemAssignmentRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceBundleItemAssignment, ResponseError>`
+- **Signature**: `createItemAssignment(request: NumbersV2ItemAssignment.CreateItemAssignmentRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceBundleItemAssignment, ApiError>`
 - **Wire**: `POST /v2/RegulatoryCompliance/Bundles/{BundleSid}/ItemAssignments`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `NumbersV2RegulatoryComplianceBundleItemAssignment`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2ItemAssignment.CreateItemAssignmentRequest` (2):
 
@@ -30,12 +31,13 @@ Accessor: `client.numbersV2ItemAssignment` · Source: `src/resources/numbers-v2-
 ### deleteItemAssignment
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteItemAssignment(request: NumbersV2ItemAssignment.DeleteItemAssignmentRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteItemAssignment(request: NumbersV2ItemAssignment.DeleteItemAssignmentRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v2/RegulatoryCompliance/Bundles/{BundleSid}/ItemAssignments/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2ItemAssignment.DeleteItemAssignmentRequest` (2):
 
@@ -47,12 +49,12 @@ Accessor: `client.numbersV2ItemAssignment` · Source: `src/resources/numbers-v2-
 ### fetchItemAssignment
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchItemAssignment(request: NumbersV2ItemAssignment.FetchItemAssignmentRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceBundleItemAssignment, ResponseError>`
+- **Signature**: `fetchItemAssignment(request: NumbersV2ItemAssignment.FetchItemAssignmentRequest, options?: RequestOptions): ApiPromise<NumbersV2RegulatoryComplianceBundleItemAssignment, ApiError>`
 - **Wire**: `GET /v2/RegulatoryCompliance/Bundles/{BundleSid}/ItemAssignments/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `NumbersV2RegulatoryComplianceBundleItemAssignment`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2ItemAssignment.FetchItemAssignmentRequest` (2):
 
@@ -68,12 +70,12 @@ Accessor: `client.numbersV2ItemAssignment` · Source: `src/resources/numbers-v2-
 ### listItemAssignment
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listItemAssignment(request: NumbersV2ItemAssignment.ListItemAssignmentRequest, options?: RequestOptions): ApiPromise<ListItemAssignmentResponse, ResponseError>`
+- **Signature**: `listItemAssignment(request: NumbersV2ItemAssignment.ListItemAssignmentRequest, options?: RequestOptions): ApiPromise<ListItemAssignmentResponse, ApiError>`
 - **Wire**: `GET /v2/RegulatoryCompliance/Bundles/{BundleSid}/ItemAssignments`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListItemAssignmentResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `NumbersV2ItemAssignment.ListItemAssignmentRequest` (4):
 

@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The compliance status of the Tollfree Verification record. */
 export const TollfreeVerificationEnumStatus = {
   PendingReview: "PENDING_REVIEW",
   InReview: "IN_REVIEW",

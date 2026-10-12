@@ -4,17 +4,18 @@
 
 Accessor: `client.taskrouterV1Workflow` · Source: `src/resources/taskrouter-v1-workflow.ts` · 5 operations · Request types: namespace `TaskrouterV1Workflow`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createWorkflow
 
 - **Server**: `default8` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createWorkflow(request: TaskrouterV1Workflow.CreateWorkflowRequest, options?: RequestOptions): ApiPromise<TaskrouterV1WorkspaceWorkflow, ResponseError>`
+- **Signature**: `createWorkflow(request: TaskrouterV1Workflow.CreateWorkflowRequest, options?: RequestOptions): ApiPromise<TaskrouterV1WorkspaceWorkflow, ApiError>`
 - **Wire**: `POST /v1/Workspaces/{WorkspaceSid}/Workflows`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `TaskrouterV1WorkspaceWorkflow`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TaskrouterV1Workflow.CreateWorkflowRequest` (6):
 
@@ -34,12 +35,13 @@ Accessor: `client.taskrouterV1Workflow` · Source: `src/resources/taskrouter-v1-
 ### deleteWorkflow
 
 - **Server**: `default8` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteWorkflow(request: TaskrouterV1Workflow.DeleteWorkflowRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteWorkflow(request: TaskrouterV1Workflow.DeleteWorkflowRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Workspaces/{WorkspaceSid}/Workflows/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TaskrouterV1Workflow.DeleteWorkflowRequest` (2):
 
@@ -51,12 +53,12 @@ Accessor: `client.taskrouterV1Workflow` · Source: `src/resources/taskrouter-v1-
 ### fetchWorkflow
 
 - **Server**: `default8` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchWorkflow(request: TaskrouterV1Workflow.FetchWorkflowRequest, options?: RequestOptions): ApiPromise<TaskrouterV1WorkspaceWorkflow, ResponseError>`
+- **Signature**: `fetchWorkflow(request: TaskrouterV1Workflow.FetchWorkflowRequest, options?: RequestOptions): ApiPromise<TaskrouterV1WorkspaceWorkflow, ApiError>`
 - **Wire**: `GET /v1/Workspaces/{WorkspaceSid}/Workflows/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `TaskrouterV1WorkspaceWorkflow`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TaskrouterV1Workflow.FetchWorkflowRequest` (2):
 
@@ -72,12 +74,12 @@ Accessor: `client.taskrouterV1Workflow` · Source: `src/resources/taskrouter-v1-
 ### listWorkflow
 
 - **Server**: `default8` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listWorkflow(request: TaskrouterV1Workflow.ListWorkflowRequest, options?: RequestOptions): ApiPromise<ListWorkflowResponse, ResponseError>`
+- **Signature**: `listWorkflow(request: TaskrouterV1Workflow.ListWorkflowRequest, options?: RequestOptions): ApiPromise<ListWorkflowResponse, ApiError>`
 - **Wire**: `GET /v1/Workspaces/{WorkspaceSid}/Workflows`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListWorkflowResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TaskrouterV1Workflow.ListWorkflowRequest` (5):
 
@@ -96,12 +98,13 @@ Accessor: `client.taskrouterV1Workflow` · Source: `src/resources/taskrouter-v1-
 ### updateWorkflow
 
 - **Server**: `default8` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateWorkflow(request: TaskrouterV1Workflow.UpdateWorkflowRequest, options?: RequestOptions): ApiPromise<TaskrouterV1WorkspaceWorkflow, ResponseError>`
+- **Signature**: `updateWorkflow(request: TaskrouterV1Workflow.UpdateWorkflowRequest, options?: RequestOptions): ApiPromise<TaskrouterV1WorkspaceWorkflow, ApiError>`
 - **Wire**: `POST /v1/Workspaces/{WorkspaceSid}/Workflows/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `TaskrouterV1WorkspaceWorkflow`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TaskrouterV1Workflow.UpdateWorkflowRequest` (8):
 

@@ -4,16 +4,16 @@
 
 Accessor: `client.api20100401Notification` · Source: `src/resources/api20100401-notification.ts` · 2 operations · Request types: namespace `Api20100401Notification`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchNotification
 
-- **Signature**: `fetchNotification(request: Api20100401Notification.FetchNotificationRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountNotificationInstance, ResponseError>`
+- **Signature**: `fetchNotification(request: Api20100401Notification.FetchNotificationRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountNotificationInstance, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Notifications/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ApiV2010AccountNotificationInstance`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Notification.FetchNotificationRequest` (2):
 
@@ -28,12 +28,12 @@ Accessor: `client.api20100401Notification` · Source: `src/resources/api20100401
 
 ### listNotification
 
-- **Signature**: `listNotification(request: Api20100401Notification.ListNotificationRequest, options?: RequestOptions): ApiPromise<ListNotificationResponse, ResponseError>`
+- **Signature**: `listNotification(request: Api20100401Notification.ListNotificationRequest, options?: RequestOptions): ApiPromise<ListNotificationResponse, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Notifications.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListNotificationResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Notification.ListNotificationRequest` (8):
 

@@ -2,26 +2,49 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type CountryRequirement = {
+  /** Iso country code as per ISO 3166-1 alpha-2 standard */
   isoCountry: string;
+  /** Whether Sender ID needs to be pre-registered for the country */
   registrationRequired: boolean;
+  /**
+   * Twilio SLA for Sender Id Registration process in business days. For countries requiring dynamic
+   * registration, it will be set to 0.
+   */
   slaInDays: number;
+  /** Whether promotional usage for Sender ID is supported */
   promotionalSupported?: boolean;
+  /** Mandatory prefix string for Sender ID when used for promotional purpose in the country */
   promotionalSenderIdPrefix?: string | null;
+  /** Mandatory suffix string for Sender ID when used for promotional purpose in the country */
   promotionalSenderIdSuffix?: string | null;
+  /** Represents pricing requirements for country with free-flowing string format */
   pricingScheme?: string | null;
+  /**
+   * Represents public Twilio support URL which has information regarding the instructions and
+   * documents required for registration
+   */
   documentationUrl?: string | null;
+  /**
+   * Represents the Twilio public URL for documentation template required to be filled for the
+   * Sender ID registration
+   */
   documentationTemplateUrl?: string | null;
+  /** List of document type machine names */
   documentTypeMachineNames?: string[];
+  /** List of document type machine names for Domestic traffic reach */
   domesticDocumentTypeMachineNames?: string[];
+  /** List of document type machine names for International traffic reach */
   internationalDocumentTypeMachineNames?: string[];
+  /** Sender ID string rules for the country */
   senderIdRegistrationRules?: string | null;
+  /** Whether USO (Unified Sender Onboarding) is enabled for this country */
   usoEnabled?: boolean | null;
 };
 
 export const countryRequirementSchema: Schema<CountryRequirement> = s.object<CountryRequirement>({
   isoCountry: s.string(),
   registrationRequired: s.boolean(),
-  slaInDays: s.number(),
+  slaInDays: s.int(),
   promotionalSupported: s.optional(s.boolean()),
   promotionalSenderIdPrefix: s.optionalNullable(s.string()),
   promotionalSenderIdSuffix: s.optionalNullable(s.string()),

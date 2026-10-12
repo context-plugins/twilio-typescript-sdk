@@ -8,13 +8,25 @@ import {
 import { statusCallbackSchema, type StatusCallback } from "./status-callback.js";
 
 export type V2ControlPlaneConfigurationsRequest = {
+  /** A human-readable name for the configuration. Limited to 32 characters. */
   displayName: string;
+  /** Human-readable description for the configuration. */
   description: string;
+  /** The strategy Conversation Orchestrator uses to assign communications to conversations. */
   conversationGroupingType: ConversationGroupingType3;
+  /** The memory store ID that Conversation Orchestrator uses for profile resolution. */
   memoryStoreId: string;
   channelSettings?: Record<string, ChannelSettings>;
+  /** A list of webhook configurations. */
   statusCallbacks?: StatusCallback[];
+  /** A list of Conversational Intelligence configuration IDs. */
   intelligenceConfigurationIds?: string[];
+  /**
+   * Whether memory extraction is enabled for conversations under this configuration. Defaults to
+   * false.
+   *
+   * @default false
+   */
   memoryExtractionEnabled?: boolean;
 };
 
@@ -32,5 +44,5 @@ export const v2ControlPlaneConfigurationsRequestSchema: Schema<V2ControlPlaneCon
     ),
     statusCallbacks: s.optional(s.array(s.lazy(() => statusCallbackSchema))),
     intelligenceConfigurationIds: s.optional(s.array(s.string())),
-    memoryExtractionEnabled: s.optional(s.boolean()),
+    memoryExtractionEnabled: s.defaulted(s.boolean(), false),
   });

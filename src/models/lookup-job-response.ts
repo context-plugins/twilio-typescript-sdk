@@ -25,7 +25,7 @@ export const lookupJobResponseSchema: Schema<LookupJobResponse> = s.object<Looku
   createdAt: s.optional(s.dateTime()),
   completedAt: s.optionalNullable(s.dateTime()),
   result: s.optional(s.lazy(() => jobResultSchema)),
-  twilioErrorCode: s.optionalNullable(s.number()),
+  twilioErrorCode: s.optionalNullable(s.int()),
   _keysMap: {
     jobSid: "job_sid",
     friendlyName: "friendly_name",

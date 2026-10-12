@@ -6,7 +6,9 @@ import {
 } from "./messaging-v2-rcs-carrier-status.js";
 
 export type MessagingV2RcsCarrier = {
+  /** The name of the carrier. For example, `Verizon` or `AT&T` for US. */
   name?: string;
+  /** The carrier-level status. */
   status?: MessagingV2RcsCarrierStatus;
 };
 

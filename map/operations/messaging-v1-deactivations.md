@@ -4,7 +4,7 @@
 
 Accessor: `client.messagingV1Deactivations` · Source: `src/resources/messaging-v1-deactivations.ts` · 1 operation · Request and error types: namespace `MessagingV1Deactivations`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchDeactivation
 
@@ -14,7 +14,7 @@ Accessor: `client.messagingV1Deactivations` · Source: `src/resources/messaging-
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `MessagingV1Deactivations.FetchDeactivationError` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `MessagingV1Deactivations.FetchDeactivationError` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"recordingAddOnResultPayloadData"` [307] `RecordingAddOnResultPayloadData` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `MessagingV1Deactivations.FetchDeactivationRequest` (1):

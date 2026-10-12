@@ -4,17 +4,18 @@
 
 Accessor: `client.messagingV1ExternalCampaignApi` · Source: `src/resources/messaging-v1-external-campaign-api.ts` · 1 operation · Request types: namespace `MessagingV1ExternalCampaignApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createExternalCampaign
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createExternalCampaign(request: MessagingV1ExternalCampaignApi.CreateExternalCampaignRequest, options?: RequestOptions): ApiPromise<MessagingV1ExternalCampaign, ResponseError>`
+- **Signature**: `createExternalCampaign(request: MessagingV1ExternalCampaignApi.CreateExternalCampaignRequest, options?: RequestOptions): ApiPromise<MessagingV1ExternalCampaign, ApiError>`
 - **Wire**: `POST /v1/Services/PreregisteredUsa2p`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `MessagingV1ExternalCampaign`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1ExternalCampaignApi.CreateExternalCampaignRequest` (3):
 

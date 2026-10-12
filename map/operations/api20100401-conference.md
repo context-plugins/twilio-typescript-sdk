@@ -4,16 +4,16 @@
 
 Accessor: `client.api20100401Conference` · Source: `src/resources/api20100401-conference.ts` · 3 operations · Request types: namespace `Api20100401Conference`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchConference
 
-- **Signature**: `fetchConference(request: Api20100401Conference.FetchConferenceRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountConference, ResponseError>`
+- **Signature**: `fetchConference(request: Api20100401Conference.FetchConferenceRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountConference, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Conferences/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ApiV2010AccountConference`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Conference.FetchConferenceRequest` (2):
 
@@ -28,12 +28,12 @@ Accessor: `client.api20100401Conference` · Source: `src/resources/api20100401-c
 
 ### listConference
 
-- **Signature**: `listConference(request: Api20100401Conference.ListConferenceRequest, options?: RequestOptions): ApiPromise<ListConferenceResponse, ResponseError>`
+- **Signature**: `listConference(request: Api20100401Conference.ListConferenceRequest, options?: RequestOptions): ApiPromise<ListConferenceResponse, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/Conferences.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListConferenceResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Conference.ListConferenceRequest` (12):
 
@@ -59,12 +59,13 @@ Accessor: `client.api20100401Conference` · Source: `src/resources/api20100401-c
 
 ### updateConference
 
-- **Signature**: `updateConference(request: Api20100401Conference.UpdateConferenceRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountConference, ResponseError>`
+- **Signature**: `updateConference(request: Api20100401Conference.UpdateConferenceRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountConference, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/Conferences/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountConference`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Conference.UpdateConferenceRequest` (5):
 

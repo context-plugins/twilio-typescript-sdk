@@ -1,10 +1,18 @@
 import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
+/** Content for a SEND_MESSAGE action. */
 export type ConversationsV2SendMessageContent = {
+  /** Plain text message body. */
   text?: string;
+  /**
+   * Content template ID (HX... format). When provided, the template is rendered with the variables
+   * map and sent to the recipient.
+   */
   contentId?: string;
+  /** Variables to substitute into the content template. */
   variables?: Record<string, string>;
+  /** URLs of media attachments to include with the message. */
   mediaUrls?: string[];
 };
 

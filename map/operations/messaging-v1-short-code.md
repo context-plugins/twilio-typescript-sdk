@@ -4,17 +4,18 @@
 
 Accessor: `client.messagingV1ShortCode` · Source: `src/resources/messaging-v1-short-code.ts` · 4 operations · Request types: namespace `MessagingV1ShortCode`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createShortCode
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createShortCode(request: MessagingV1ShortCode.CreateShortCodeRequest, options?: RequestOptions): ApiPromise<MessagingV1ServiceShortCode, ResponseError>`
+- **Signature**: `createShortCode(request: MessagingV1ShortCode.CreateShortCodeRequest, options?: RequestOptions): ApiPromise<MessagingV1ServiceShortCode, ApiError>`
 - **Wire**: `POST /v1/Services/{ServiceSid}/ShortCodes`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `MessagingV1ServiceShortCode`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1ShortCode.CreateShortCodeRequest` (2):
 
@@ -30,12 +31,13 @@ Accessor: `client.messagingV1ShortCode` · Source: `src/resources/messaging-v1-s
 ### deleteShortCode
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteShortCode(request: MessagingV1ShortCode.DeleteShortCodeRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteShortCode(request: MessagingV1ShortCode.DeleteShortCodeRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Services/{ServiceSid}/ShortCodes/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1ShortCode.DeleteShortCodeRequest` (2):
 
@@ -47,12 +49,12 @@ Accessor: `client.messagingV1ShortCode` · Source: `src/resources/messaging-v1-s
 ### fetchShortCode2
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchShortCode2(request: MessagingV1ShortCode.FetchShortCode2Request, options?: RequestOptions): ApiPromise<MessagingV1ServiceShortCode, ResponseError>`
+- **Signature**: `fetchShortCode2(request: MessagingV1ShortCode.FetchShortCode2Request, options?: RequestOptions): ApiPromise<MessagingV1ServiceShortCode, ApiError>`
 - **Wire**: `GET /v1/Services/{ServiceSid}/ShortCodes/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `MessagingV1ServiceShortCode`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1ShortCode.FetchShortCode2Request` (2):
 
@@ -68,12 +70,12 @@ Accessor: `client.messagingV1ShortCode` · Source: `src/resources/messaging-v1-s
 ### listShortCode2
 
 - **Server**: `default1` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listShortCode2(request: MessagingV1ShortCode.ListShortCode2Request, options?: RequestOptions): ApiPromise<ListShortCodeResponse1, ResponseError>`
+- **Signature**: `listShortCode2(request: MessagingV1ShortCode.ListShortCode2Request, options?: RequestOptions): ApiPromise<ListShortCodeResponse1, ApiError>`
 - **Wire**: `GET /v1/Services/{ServiceSid}/ShortCodes`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListShortCodeResponse1`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `MessagingV1ShortCode.ListShortCode2Request` (4):
 

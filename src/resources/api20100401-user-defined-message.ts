@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import {
   apiV2010AccountCallUserDefinedMessageSchema,
@@ -21,14 +22,28 @@ export class Api20100401UserDefinedMessage {
     this.#auth = auth;
   }
 
+  /**
+   * Create a new User Defined Message for the given Call SID.
+   *
+   * @remarks
+   * Create a new User Defined Message for the given Call SID.
+   *
+   * @returns Created
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   createUserDefinedMessage(
     request: Api20100401UserDefinedMessage.CreateUserDefinedMessageRequest,
     options?: RequestOptions,
-  ): ApiPromise<ApiV2010AccountCallUserDefinedMessage, ResponseError> {
-    return this.#rawClient.execute<ApiV2010AccountCallUserDefinedMessage, ResponseError>(
+  ): ApiPromise<ApiV2010AccountCallUserDefinedMessage, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default(
+        urlTemplate: this.#servers.default(
           "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/UserDefinedMessages.json",
         ),
         auth: this.#auth.accountSidAuthToken,
@@ -36,6 +51,8 @@ export class Api20100401UserDefinedMessage {
           { name: "AccountSid", value: request.accountSid, schema: s.string() },
           { name: "CallSid", value: request.callSid, schema: s.string() },
         ],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: {
           kind: "formUrlEncoded",
           value: [
@@ -46,7 +63,7 @@ export class Api20100401UserDefinedMessage {
       },
       {
         success: { kind: "json", schema: apiV2010AccountCallUserDefinedMessageSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -55,9 +72,22 @@ export class Api20100401UserDefinedMessage {
 
 export namespace Api20100401UserDefinedMessage {
   export type CreateUserDefinedMessageRequest = {
+    /**
+     * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created User
+     * Defined Message.
+     */
     accountSid: string;
+    /**
+     * The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the User Defined
+     * Message is associated with.
+     */
     callSid: string;
+    /** The User Defined Message in the form of URL-encoded JSON string. */
     content: string;
+    /**
+     * A unique string value to identify API call. This should be a unique string value per API call
+     * and can be a randomly generated.
+     */
     idempotencyKey?: string;
   };
 }

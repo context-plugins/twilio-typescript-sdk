@@ -6,8 +6,14 @@ import {
 } from "./messaging-v2-rcs-country-status.js";
 
 export type MessagingV2RcsComplianceCountryUpdatePatchResponse = {
+  /** The ISO 3166-1 alpha-2 country code. */
   country: string;
+  /**
+   * The default compliance registration SID (e.g., from CR-Google) that applies to all countries
+   * unless overridden in the `countries` array.
+   */
   registrationSid?: string;
+  /** The country-level status. Based on the aggregation of the carrier-level status. */
   status?: MessagingV2RcsCountryStatus;
 };
 

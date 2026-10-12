@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The new line type after the override */
 export const OverriddenLineType = {
   Mobile: "mobile",
   Landline: "landline",

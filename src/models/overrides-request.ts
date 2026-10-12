@@ -3,7 +3,9 @@ import type { Schema } from "../core/validation/schema.js";
 import { lineTypeSchema, type LineType } from "./line-type.js";
 
 export type OverridesRequest = {
+  /** The new line type to override the original line type */
   lineType?: LineType;
+  /** The reason for the override */
   reason?: string;
 };
 

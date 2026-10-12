@@ -2,10 +2,24 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type SipAuthCallsIpAccessControlListMapping = {
+  /**
+   * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the
+   * IpAccessControlListMapping resource.
+   */
   accountSid?: string | null;
+  /**
+   * The date and time in GMT that the resource was created specified in [RFC
+   * 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+   */
   dateCreated?: string | null;
+  /**
+   * The date and time in GMT that the resource was last updated specified in [RFC
+   * 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+   */
   dateUpdated?: string | null;
+  /** The string that you assigned to describe the resource. */
   friendlyName?: string | null;
+  /** The unique string that that we created to identify the IpAccessControlListMapping resource. */
   sid?: string | null;
 };
 

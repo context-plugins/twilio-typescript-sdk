@@ -4,10 +4,14 @@ import { reportMetadataSchema, type ReportMetadata } from "./report-metadata.js"
 import { reportStatusSchema, type ReportStatus } from "./report-status.js";
 
 export type InsightsV2CreateReportResponse = {
+  /** The unique SID identifier of the Account. */
   accountSid?: string;
+  /** The report identifier as Voice Insights Report TTID. */
   reportId?: string;
+  /** The status of the report. */
   status?: ReportStatus;
   requestMeta?: ReportMetadata;
+  /** The URL of this resource. */
   url?: string | null;
 };
 

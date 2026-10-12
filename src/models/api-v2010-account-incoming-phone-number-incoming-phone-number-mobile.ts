@@ -24,38 +24,133 @@ import { voiceFallbackMethodSchema, type VoiceFallbackMethod } from "./voice-fal
 import { voiceMethodSchema, type VoiceMethod } from "./voice-method.js";
 
 export type ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberMobile = {
+  /**
+   * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the
+   * resource.
+   */
   accountSid?: string | null;
+  /** The SID of the Address resource associated with the phone number. */
   addressSid?: string | null;
+  /**
+   * Whether the phone number requires an [Address](https://www.twilio.com/docs/usage/api/address)
+   * registered with Twilio. Can be: `none`, `any`, `local`, or `foreign`.
+   */
   addressRequirements?: IncomingPhoneNumberMobileEnumAddressRequirement;
+  /** The API version used to start a new TwiML session. */
   apiVersion?: string | null;
+  /** Whether the phone number is new to the Twilio platform. Can be: `true` or `false`. */
   beta?: boolean | null;
+  /**
+   * The set of Boolean properties that indicate whether a phone number can receive calls or
+   * messages. Capabilities are `Voice`, `SMS`, and `MMS` and each capability can be: `true` or
+   * `false`.
+   */
   capabilities?: Capabilities7 | null;
+  /**
+   * The date and time in GMT that the resource was created specified in [RFC
+   * 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+   */
   dateCreated?: string | null;
+  /**
+   * The date and time in GMT that the resource was last updated specified in [RFC
+   * 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+   */
   dateUpdated?: string | null;
+  /** The string that you assigned to describe the resource. */
   friendlyName?: string | null;
+  /**
+   * The SID of the Identity resource that we associate with the phone number. Some regions require
+   * an Identity to meet local regulations.
+   */
   identitySid?: string | null;
+  /**
+   * The phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which
+   * consists of a + followed by the country code and subscriber number.
+   */
   phoneNumber?: string | null;
+  /**
+   * The phone number's origin. `twilio` identifies Twilio-owned phone numbers and `hosted`
+   * identifies hosted phone numbers.
+   */
   origin?: string | null;
+  /** The unique string that that we created to identify the resource. */
   sid?: string | null;
+  /**
+   * The SID of the application that handles SMS messages sent to the phone number. If an
+   * `sms_application_sid` is present, we ignore all `sms_*_url` values and use those of the
+   * application.
+   */
   smsApplicationSid?: string | null;
+  /** The HTTP method we use to call `sms_fallback_url`. Can be: `GET` or `POST`. */
   smsFallbackMethod?: SmsFallbackMethod | null;
+  /**
+   * The URL that we call when an error occurs while retrieving or executing the TwiML from
+   * `sms_url`.
+   */
   smsFallbackUrl?: string | null;
+  /** The HTTP method we use to call `sms_url`. Can be: `GET` or `POST`. */
   smsMethod?: SmsMethod | null;
+  /** The URL we call when the phone number receives an incoming SMS message. */
   smsUrl?: string | null;
+  /**
+   * The URL we call using the `status_callback_method` to send status information to your
+   * application.
+   */
   statusCallback?: string | null;
+  /** The HTTP method we use to call `status_callback`. Can be: `GET` or `POST`. */
   statusCallbackMethod?: StatusCallbackMethod | null;
+  /**
+   * The SID of the Trunk that handles calls to the phone number. If a `trunk_sid` is present, we
+   * ignore all of the voice urls and voice applications and use those set on the Trunk. Setting a
+   * `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.
+   */
   trunkSid?: string | null;
+  /** The URI of the resource, relative to `https://api.twilio.com`. */
   uri?: string | null;
   voiceReceiveMode?: IncomingPhoneNumberMobileEnumVoiceReceiveMode;
+  /**
+   * The SID of the application that handles calls to the phone number. If a `voice_application_sid`
+   * is present, we ignore all of the voice urls and use those set on the application. Setting a
+   * `voice_application_sid` will automatically delete your `trunk_sid` and vice versa.
+   */
   voiceApplicationSid?: string | null;
+  /**
+   * Whether we look up the caller's caller-ID name from the CNAM database ($0.01 per look up). Can
+   * be: `true` or `false`.
+   */
   voiceCallerIdLookup?: boolean | null;
+  /** The HTTP method we use to call `voice_fallback_url`. Can be: `GET` or `POST`. */
   voiceFallbackMethod?: VoiceFallbackMethod | null;
+  /**
+   * The URL that we call when an error occurs retrieving or executing the TwiML requested by `url`.
+   */
   voiceFallbackUrl?: string | null;
+  /** The HTTP method we use to call `voice_url`. Can be: `GET` or `POST`. */
   voiceMethod?: VoiceMethod | null;
+  /**
+   * The URL we call when the phone number receives a call. The `voice_url` will not be used if a
+   * `voice_application_sid` or a `trunk_sid` is set.
+   */
   voiceUrl?: string | null;
+  /**
+   * The parameter displays if emergency calling is enabled for this number. Active numbers may
+   * place emergency calls by dialing valid emergency numbers for the country.
+   */
   emergencyStatus?: IncomingPhoneNumberMobileEnumEmergencyStatus;
+  /**
+   * The SID of the emergency address configuration that we use for emergency calling from this
+   * phone number.
+   */
   emergencyAddressSid?: string | null;
+  /**
+   * The status of address registration with emergency services. A registered emergency address will
+   * be used during handling of emergency calls from this number.
+   */
   emergencyAddressStatus?: IncomingPhoneNumberMobileEnumEmergencyAddressStatus;
+  /**
+   * The SID of the Bundle resource that you associate with the phone number. Some regions require a
+   * Bundle to meet local Regulations.
+   */
   bundleSid?: string | null;
   status?: string | null;
 };

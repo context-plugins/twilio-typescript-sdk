@@ -1,6 +1,10 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * The organizational authority for business registrations. Required for all business types except
+ * SOLE_PROPRIETOR.
+ */
 export const TollfreeVerificationEnumBusinessRegistrationAuthority = {
   Ein: "EIN",
   Cbn: "CBN",

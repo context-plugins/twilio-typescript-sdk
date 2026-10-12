@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
+/** The billing information for the phone number. */
 export type Billing = {
   recurringBillableItemSid?: string;
   setupBillableItemSid?: string;

@@ -3,8 +3,11 @@ import type { Schema } from "../core/validation/schema.js";
 import { keywordConfigurationSchema, type KeywordConfiguration } from "./keyword-configuration.js";
 
 export type KeywordsResponse = {
+  /** The SID of the account that owns this opt-out configuration */
   accountSid: string;
+  /** The SID of the opt-out configuration */
   optOutSid: string;
+  /** List of keyword configurations for different keyword types */
   config: KeywordConfiguration[];
 };
 

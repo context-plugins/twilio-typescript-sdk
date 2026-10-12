@@ -1,8 +1,8 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
 import * as s from "../core/validation/index.js";
 import {
   messagingV2DomainCertV4Schema,
@@ -24,18 +24,20 @@ export class MessagingV2DomainCerts {
   fetchDomainCertV42(
     request: MessagingV2DomainCerts.FetchDomainCertV42Request,
     options?: RequestOptions,
-  ): ApiPromise<MessagingV2DomainCertV4, ResponseError> {
-    return this.#rawClient.execute<MessagingV2DomainCertV4, ResponseError>(
+  ): ApiPromise<MessagingV2DomainCertV4, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default1("/v2/LinkShortening/Domains/{DomainSid}/Certificate"),
+        urlTemplate: this.#servers.default1("/v2/LinkShortening/Domains/{DomainSid}/Certificate"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "DomainSid", value: request.domainSid, schema: s.string() }],
+        query: [],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: messagingV2DomainCertV4Schema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -44,6 +46,9 @@ export class MessagingV2DomainCerts {
 
 export namespace MessagingV2DomainCerts {
   export type FetchDomainCertV42Request = {
+    /**
+     * Unique string used to identify the domain that this certificate should be associated with.
+     */
     domainSid: string;
   };
 }

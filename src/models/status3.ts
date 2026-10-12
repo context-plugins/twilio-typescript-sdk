@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** Conversation status. */
 export const Status3 = {
   Active: "ACTIVE",
   Inactive: "INACTIVE",

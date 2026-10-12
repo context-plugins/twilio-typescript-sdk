@@ -4,17 +4,18 @@
 
 Accessor: `client.studioV1FlowApi` · Source: `src/resources/studio-v1-flow-api.ts` · 3 operations · Request types: namespace `StudioV1FlowApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### deleteFlow
 
 - **Server**: `default11` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteFlow(request: StudioV1FlowApi.DeleteFlowRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteFlow(request: StudioV1FlowApi.DeleteFlowRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Flows/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `StudioV1FlowApi.DeleteFlowRequest` (1):
 
@@ -25,12 +26,12 @@ Accessor: `client.studioV1FlowApi` · Source: `src/resources/studio-v1-flow-api.
 ### fetchFlow
 
 - **Server**: `default11` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchFlow(request: StudioV1FlowApi.FetchFlowRequest, options?: RequestOptions): ApiPromise<StudioV1Flow, ResponseError>`
+- **Signature**: `fetchFlow(request: StudioV1FlowApi.FetchFlowRequest, options?: RequestOptions): ApiPromise<StudioV1Flow, ApiError>`
 - **Wire**: `GET /v1/Flows/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `StudioV1Flow`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `StudioV1FlowApi.FetchFlowRequest` (1):
 
@@ -45,12 +46,12 @@ Accessor: `client.studioV1FlowApi` · Source: `src/resources/studio-v1-flow-api.
 ### listFlow
 
 - **Server**: `default11` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listFlow(request: StudioV1FlowApi.ListFlowRequest, options?: RequestOptions): ApiPromise<ListFlowResponse, ResponseError>`
+- **Signature**: `listFlow(request: StudioV1FlowApi.ListFlowRequest, options?: RequestOptions): ApiPromise<ListFlowResponse, ApiError>`
 - **Wire**: `GET /v1/Flows`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListFlowResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `StudioV1FlowApi.ListFlowRequest` (3):
 

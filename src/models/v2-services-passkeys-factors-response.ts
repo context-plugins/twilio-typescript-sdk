@@ -7,20 +7,46 @@ import {
 import { factorEnumFactorTypesSchema, type FactorEnumFactorTypes } from "./factor-enum-factor-types.js";
 
 export type V2ServicesPasskeysFactorsResponse = {
+  /** A 34 character string that uniquely identifies this Factor. */
   sid?: string | null;
+  /** The unique SID identifier of the Account. */
   accountSid?: string | null;
+  /** The unique SID identifier of the Service. */
   serviceSid?: string | null;
+  /** The unique SID identifier of the Entity. */
   entitySid?: string | null;
+  /** Customer unique identity for the Entity owner of the Factor. */
   identity?: string | null;
+  /**
+   * Contains the `factor_type` specific secret and metadata. The Binding property is ONLY returned
+   * upon Factor creation.
+   */
   binding?: Record<string, unknown> | null;
   options?: Record<string, unknown> | null;
+  /**
+   * The date that this Factor was created, given in [ISO
+   * 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+   */
   dateCreated?: Date | null;
+  /**
+   * The date that this Factor was updated, given in [ISO
+   * 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+   */
   dateUpdated?: Date | null;
+  /**
+   * The friendly name of this Factor. This can be any string up to 64 characters, meant for humans
+   * to distinguish between Factors.
+   */
   friendlyName?: string | null;
+  /** The Status of this Factor. One of `unverified` or `verified`. */
   status?: FactorEnumFactorStatuses;
+  /** The Type of this Factor. Currently `push` and `totp` are supported. */
   factorType?: FactorEnumFactorTypes;
+  /** An object that contains configurations specific to a `factor_type`. */
   config?: Record<string, unknown> | null;
+  /** Custom metadata associated with the factor. */
   metadata?: Record<string, unknown> | null;
+  /** The URL of this resource. */
   url?: string | null;
 };
 

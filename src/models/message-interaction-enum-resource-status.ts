@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** Always empty for created Message Interactions. */
 export const MessageInteractionEnumResourceStatus = {
   Accepted: "accepted",
   Answered: "answered",

@@ -16,28 +16,49 @@ import { conferenceEnumRegionSchema, type ConferenceEnumRegion } from "./confere
 import { conferenceEnumTagSchema, type ConferenceEnumTag } from "./conference-enum-tag.js";
 
 export type InsightsV1Conference = {
+  /** The unique SID identifier of the Conference. */
   conferenceSid?: string | null;
+  /** The unique SID identifier of the Account. */
   accountSid?: string | null;
+  /** Custom label for the conference resource, up to 64 characters. */
   friendlyName?: string | null;
+  /** Conference creation date and time in ISO 8601 format. */
   createTime?: Date | null;
+  /**
+   * Timestamp in ISO 8601 format when the conference started. Conferences do not start until at
+   * least two participants join, at least one of whom has startConferenceOnEnter=true.
+   */
   startTime?: Date | null;
+  /** Conference end date and time in ISO 8601 format. */
   endTime?: Date | null;
+  /** Conference duration in seconds. */
   durationSeconds?: number | null;
+  /** Duration of the between conference start event and conference end event in seconds. */
   connectDurationSeconds?: number | null;
   status?: ConferenceEnumConferenceStatus;
+  /** Maximum number of concurrent participants as specified by the configuration. */
   maxParticipants?: number | null;
+  /** Actual maximum number of concurrent participants in the conference. */
   maxConcurrentParticipants?: number | null;
+  /** Unique conference participants based on caller ID. */
   uniqueParticipants?: number | null;
   endReason?: ConferenceEnumConferenceEndReason;
+  /** Call SID of the participant whose actions ended the conference. */
   endedBy?: string | null;
   mixerRegion?: ConferenceEnumRegion;
   mixerRegionRequested?: ConferenceEnumRegion;
+  /** Boolean. Indicates whether recording was enabled at the conference mixer. */
   recordingEnabled?: boolean | null;
+  /** Potential issues detected by Twilio during the conference. */
   detectedIssues?: Record<string, unknown> | null;
+  /** Tags for detected conference conditions and participant behaviors which may be of interest. */
   tags?: ConferenceEnumTag[] | null;
+  /** Object. Contains details about conference tags including severity. */
   tagInfo?: Record<string, unknown> | null;
   processingState?: ConferenceEnumProcessingState;
+  /** The URL of this resource. */
   url?: string | null;
+  /** Contains a dictionary of URL links to nested resources of this Conference. */
   links?: Record<string, unknown> | null;
 };
 
@@ -48,12 +69,12 @@ export const insightsV1ConferenceSchema: Schema<InsightsV1Conference> = s.object
   createTime: s.optionalNullable(s.dateTime()),
   startTime: s.optionalNullable(s.dateTime()),
   endTime: s.optionalNullable(s.dateTime()),
-  durationSeconds: s.optionalNullable(s.number()),
-  connectDurationSeconds: s.optionalNullable(s.number()),
+  durationSeconds: s.optionalNullable(s.int()),
+  connectDurationSeconds: s.optionalNullable(s.int()),
   status: s.optional(s.lazy(() => conferenceEnumConferenceStatusSchema)),
-  maxParticipants: s.optionalNullable(s.number()),
-  maxConcurrentParticipants: s.optionalNullable(s.number()),
-  uniqueParticipants: s.optionalNullable(s.number()),
+  maxParticipants: s.optionalNullable(s.int()),
+  maxConcurrentParticipants: s.optionalNullable(s.int()),
+  uniqueParticipants: s.optionalNullable(s.int()),
   endReason: s.optional(s.lazy(() => conferenceEnumConferenceEndReasonSchema)),
   endedBy: s.optionalNullable(s.string()),
   mixerRegion: s.optional(s.lazy(() => conferenceEnumRegionSchema)),

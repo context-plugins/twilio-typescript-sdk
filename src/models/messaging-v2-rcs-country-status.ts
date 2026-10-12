@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The country-level status. Based on the aggregation of the carrier-level status. */
 export const MessagingV2RcsCountryStatus = {
   Online: "ONLINE",
   Offline: "OFFLINE",

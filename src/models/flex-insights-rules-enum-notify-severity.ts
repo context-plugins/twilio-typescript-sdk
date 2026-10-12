@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The minimum severity level that will trigger a notification. */
 export const FlexInsightsRulesEnumNotifySeverity = {
   Critical: "Critical",
   Warning: "Warning",

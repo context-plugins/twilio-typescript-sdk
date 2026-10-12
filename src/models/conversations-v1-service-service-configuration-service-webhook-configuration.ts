@@ -3,12 +3,34 @@ import type { Schema } from "../core/validation/schema.js";
 import { amdStatusCallbackMethodSchema, type AmdStatusCallbackMethod } from "./amd-status-callback-method.js";
 
 export type ConversationsV1ServiceServiceConfigurationServiceWebhookConfiguration = {
+  /**
+   * The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for
+   * this service.
+   */
   accountSid?: string | null;
+  /**
+   * The unique ID of the [Conversation
+   * Service](https://www.twilio.com/docs/conversations/api/service-resource) this conversation
+   * belongs to.
+   */
   chatServiceSid?: string | null;
+  /** The absolute url the pre-event webhook request should be sent to. */
   preWebhookUrl?: string | null;
+  /** The absolute url the post-event webhook request should be sent to. */
   postWebhookUrl?: string | null;
+  /**
+   * The list of events that your configured webhook targets will receive. Events not configured
+   * here will not fire. Possible values are `onParticipantAdd`, `onParticipantAdded`,
+   * `onDeliveryUpdated`, `onConversationUpdated`, `onConversationRemove`, `onParticipantRemove`,
+   * `onConversationUpdate`, `onMessageAdd`, `onMessageRemoved`, `onParticipantUpdated`,
+   * `onConversationAdded`, `onMessageAdded`, `onConversationAdd`, `onConversationRemoved`,
+   * `onParticipantUpdate`, `onMessageRemove`, `onMessageUpdated`, `onParticipantRemoved`,
+   * `onMessageUpdate` or `onConversationStateUpdated`.
+   */
   filters?: string[] | null;
+  /** The HTTP method to be used when sending a webhook request. One of `GET` or `POST`. */
   method?: AmdStatusCallbackMethod;
+  /** An absolute API resource URL for this webhook. */
   url?: string | null;
 };
 

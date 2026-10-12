@@ -6,7 +6,9 @@ import {
 } from "./porting-webhook-configuration-delete-enum-webhook-type.js";
 
 export type NumbersV1PortingWebhookConfigurationDelete = {
+  /** The URL of the webhook configuration request */
   url?: string | null;
+  /** The of the webhook type of the configuration to be deleted */
   webhookType?: PortingWebhookConfigurationDeleteEnumWebhookType;
 };
 

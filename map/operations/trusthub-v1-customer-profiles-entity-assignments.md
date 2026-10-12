@@ -4,17 +4,18 @@
 
 Accessor: `client.trusthubV1CustomerProfilesEntityAssignments` · Source: `src/resources/trusthub-v1-customer-profiles-entity-assignments.ts` · 4 operations · Request types: namespace `TrusthubV1CustomerProfilesEntityAssignments`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createCustomerProfileEntityAssignment
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createCustomerProfileEntityAssignment(request: TrusthubV1CustomerProfilesEntityAssignments.CreateCustomerProfileEntityAssignmentRequest, options?: RequestOptions): ApiPromise<TrusthubV1CustomerProfileCustomerProfileEntityAssignment, ResponseError>`
+- **Signature**: `createCustomerProfileEntityAssignment(request: TrusthubV1CustomerProfilesEntityAssignments.CreateCustomerProfileEntityAssignmentRequest, options?: RequestOptions): ApiPromise<TrusthubV1CustomerProfileCustomerProfileEntityAssignment, ApiError>`
 - **Wire**: `POST /v1/CustomerProfiles/{CustomerProfileSid}/EntityAssignments`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `TrusthubV1CustomerProfileCustomerProfileEntityAssignment`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1CustomerProfilesEntityAssignments.CreateCustomerProfileEntityAssignmentRequest` (2):
 
@@ -30,12 +31,13 @@ Accessor: `client.trusthubV1CustomerProfilesEntityAssignments` · Source: `src/r
 ### deleteCustomerProfileEntityAssignment
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteCustomerProfileEntityAssignment(request: TrusthubV1CustomerProfilesEntityAssignments.DeleteCustomerProfileEntityAssignmentRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteCustomerProfileEntityAssignment(request: TrusthubV1CustomerProfilesEntityAssignments.DeleteCustomerProfileEntityAssignmentRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/CustomerProfiles/{CustomerProfileSid}/EntityAssignments/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1CustomerProfilesEntityAssignments.DeleteCustomerProfileEntityAssignmentRequest` (2):
 
@@ -47,12 +49,12 @@ Accessor: `client.trusthubV1CustomerProfilesEntityAssignments` · Source: `src/r
 ### fetchCustomerProfileEntityAssignment
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchCustomerProfileEntityAssignment(request: TrusthubV1CustomerProfilesEntityAssignments.FetchCustomerProfileEntityAssignmentRequest, options?: RequestOptions): ApiPromise<TrusthubV1CustomerProfileCustomerProfileEntityAssignment, ResponseError>`
+- **Signature**: `fetchCustomerProfileEntityAssignment(request: TrusthubV1CustomerProfilesEntityAssignments.FetchCustomerProfileEntityAssignmentRequest, options?: RequestOptions): ApiPromise<TrusthubV1CustomerProfileCustomerProfileEntityAssignment, ApiError>`
 - **Wire**: `GET /v1/CustomerProfiles/{CustomerProfileSid}/EntityAssignments/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `TrusthubV1CustomerProfileCustomerProfileEntityAssignment`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1CustomerProfilesEntityAssignments.FetchCustomerProfileEntityAssignmentRequest` (2):
 
@@ -68,12 +70,12 @@ Accessor: `client.trusthubV1CustomerProfilesEntityAssignments` · Source: `src/r
 ### listCustomerProfileEntityAssignment
 
 - **Server**: `default9` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listCustomerProfileEntityAssignment(request: TrusthubV1CustomerProfilesEntityAssignments.ListCustomerProfileEntityAssignmentRequest, options?: RequestOptions): ApiPromise<ListCustomerProfileEntityAssignmentResponse, ResponseError>`
+- **Signature**: `listCustomerProfileEntityAssignment(request: TrusthubV1CustomerProfilesEntityAssignments.ListCustomerProfileEntityAssignmentRequest, options?: RequestOptions): ApiPromise<ListCustomerProfileEntityAssignmentResponse, ApiError>`
 - **Wire**: `GET /v1/CustomerProfiles/{CustomerProfileSid}/EntityAssignments`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListCustomerProfileEntityAssignmentResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TrusthubV1CustomerProfilesEntityAssignments.ListCustomerProfileEntityAssignmentRequest` (5):
 

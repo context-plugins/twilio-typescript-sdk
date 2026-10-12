@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** Shared channel identifier */
 export const Channel = {
   Whatsapp: "whatsapp",
 } as const;

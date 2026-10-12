@@ -4,17 +4,18 @@
 
 Accessor: `client.proxyV1Session` · Source: `src/resources/proxy-v1-session.ts` · 5 operations · Request types: namespace `ProxyV1Session`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createSession
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createSession(request: ProxyV1Session.CreateSessionRequest, options?: RequestOptions): ApiPromise<ProxyV1ServiceSession, ResponseError>`
+- **Signature**: `createSession(request: ProxyV1Session.CreateSessionRequest, options?: RequestOptions): ApiPromise<ProxyV1ServiceSession, ApiError>`
 - **Wire**: `POST /v1/Services/{ServiceSid}/Sessions`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ProxyV1ServiceSession`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1Session.CreateSessionRequest` (7):
 
@@ -37,12 +38,13 @@ Accessor: `client.proxyV1Session` · Source: `src/resources/proxy-v1-session.ts`
 ### deleteSession
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteSession(request: ProxyV1Session.DeleteSessionRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteSession(request: ProxyV1Session.DeleteSessionRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Services/{ServiceSid}/Sessions/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1Session.DeleteSessionRequest` (2):
 
@@ -54,12 +56,12 @@ Accessor: `client.proxyV1Session` · Source: `src/resources/proxy-v1-session.ts`
 ### fetchSession
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchSession(request: ProxyV1Session.FetchSessionRequest, options?: RequestOptions): ApiPromise<ProxyV1ServiceSession, ResponseError>`
+- **Signature**: `fetchSession(request: ProxyV1Session.FetchSessionRequest, options?: RequestOptions): ApiPromise<ProxyV1ServiceSession, ApiError>`
 - **Wire**: `GET /v1/Services/{ServiceSid}/Sessions/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ProxyV1ServiceSession`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1Session.FetchSessionRequest` (2):
 
@@ -75,12 +77,12 @@ Accessor: `client.proxyV1Session` · Source: `src/resources/proxy-v1-session.ts`
 ### listSession
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listSession(request: ProxyV1Session.ListSessionRequest, options?: RequestOptions): ApiPromise<ListSessionResponse, ResponseError>`
+- **Signature**: `listSession(request: ProxyV1Session.ListSessionRequest, options?: RequestOptions): ApiPromise<ListSessionResponse, ApiError>`
 - **Wire**: `GET /v1/Services/{ServiceSid}/Sessions`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListSessionResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1Session.ListSessionRequest` (4):
 
@@ -98,12 +100,13 @@ Accessor: `client.proxyV1Session` · Source: `src/resources/proxy-v1-session.ts`
 ### updateSession
 
 - **Server**: `default10` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `updateSession(request: ProxyV1Session.UpdateSessionRequest, options?: RequestOptions): ApiPromise<ProxyV1ServiceSession, ResponseError>`
+- **Signature**: `updateSession(request: ProxyV1Session.UpdateSessionRequest, options?: RequestOptions): ApiPromise<ProxyV1ServiceSession, ApiError>`
 - **Wire**: `POST /v1/Services/{ServiceSid}/Sessions/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ProxyV1ServiceSession`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ProxyV1Session.UpdateSessionRequest` (5):
 

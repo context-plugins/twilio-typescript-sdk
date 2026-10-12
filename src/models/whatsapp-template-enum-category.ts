@@ -1,6 +1,12 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * The Category of this WhatsApp Template. One of `ACCOUNT_UPDATE`, `ALERT_UPDATE`,
+ * `APPOINTMENT_UPDATE`, `AUTO_REPLY`, `ISSUE_RESOLUTION`, `PAYMENT_UPDATE`,
+ * `PERSONAL_FINANCE_UPDATE`, `RESERVATION_UPDATE`, `SHIPPING_UPDATE`, `TICKET_UPDATE`,
+ * `TRANSPORTATION_UPDATE`, `MARKETING`, `AUTHENTICATION`, `UTILITY`, `OTP` or `TRANSACTIONAL`.
+ */
 export const WhatsappTemplateEnumCategory = {
   AccountUpdate: "ACCOUNT_UPDATE",
   AlertUpdate: "ALERT_UPDATE",

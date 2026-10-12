@@ -4,7 +4,7 @@
 
 Accessor: `client.messagingV3TypingIndicator` · Source: `src/resources/messaging-v3-typing-indicator.ts` · 1 operation · Request and error types: namespace `MessagingV3TypingIndicator`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createV3TypingIndicator
 
@@ -13,8 +13,9 @@ Accessor: `client.messagingV3TypingIndicator` · Source: `src/resources/messagin
 - **Wire**: `POST /v3/Indicators/Typing.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/json` — the `body` field
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `V2IndicatorsTypingJsonResponse`
-- **Error**: `MessagingV3TypingIndicator.CreateV3TypingIndicatorError` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `MessagingV3TypingIndicator.CreateV3TypingIndicatorError` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"accountsCallsRecordingsSidJson201041408Error1"` [400] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error12"` [401] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error13"` [403] `AccountsCallsRecordingsSidJson201041408Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `MessagingV3TypingIndicator.CreateV3TypingIndicatorRequest` (1):

@@ -4,12 +4,19 @@ import { statusOverrideInfoSchema, type StatusOverrideInfo } from "./status-over
 import { statusSchema, type Status } from "./status.js";
 
 export type SenderIdCountry = {
+  /** The unique identifier of the Sender ID Country. */
   routingTableSid: string;
+  /** The ISO country code. */
   isoCountry: string;
+  /** The date and time when the country routing table was created. */
   dateCreated: Date;
+  /** The date and time when the country routing table was last updated. */
   dateUpdated: Date;
+  /** Indicates if this is the default routing table for the country. */
   default: boolean;
+  /** The status of the country for the sender Id */
   status: Status;
+  /** The override status of the country for the sender Id */
   statusOverrideInfo?: StatusOverrideInfo;
 };
 

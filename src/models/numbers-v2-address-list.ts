@@ -4,7 +4,9 @@ import { numbersV2AddressSchema, type NumbersV2Address } from "./numbers-v2-addr
 import { pagingSchema, type Paging } from "./paging.js";
 
 export type NumbersV2AddressList = {
+  /** List of address resources. */
   addresses?: NumbersV2Address[];
+  /** Paging metadata for the list. */
   paging?: Paging;
 };
 

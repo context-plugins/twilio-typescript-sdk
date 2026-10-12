@@ -4,16 +4,17 @@
 
 Accessor: `client.api20100401CallTranscription` · Source: `src/resources/api20100401-call-transcription.ts` · 2 operations · Request types: namespace `Api20100401CallTranscription`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createRealtimeTranscription
 
-- **Signature**: `createRealtimeTranscription(request: Api20100401CallTranscription.CreateRealtimeTranscriptionRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountCallRealtimeTranscription, ResponseError>`
+- **Signature**: `createRealtimeTranscription(request: Api20100401CallTranscription.CreateRealtimeTranscriptionRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountCallRealtimeTranscription, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Transcriptions.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountCallRealtimeTranscription`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401CallTranscription.CreateRealtimeTranscriptionRequest` (20):
 
@@ -48,12 +49,13 @@ Accessor: `client.api20100401CallTranscription` · Source: `src/resources/api201
 
 ### updateRealtimeTranscription
 
-- **Signature**: `updateRealtimeTranscription(request: Api20100401CallTranscription.UpdateRealtimeTranscriptionRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountCallRealtimeTranscription, ResponseError>`
+- **Signature**: `updateRealtimeTranscription(request: Api20100401CallTranscription.UpdateRealtimeTranscriptionRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountCallRealtimeTranscription, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Transcriptions/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountCallRealtimeTranscription`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401CallTranscription.UpdateRealtimeTranscriptionRequest` (4):
 

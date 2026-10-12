@@ -3,8 +3,11 @@ import type { Schema } from "../core/validation/schema.js";
 import { documentTypeSchema, type DocumentType } from "./document-type.js";
 
 export type ShortCodeApplicationDocument = {
+  /** The unique identifier of the document. */
   sid?: string;
+  /** The type of document. */
   documentType?: DocumentType;
+  /** The friendly name of the document. */
   friendlyName?: string;
 };
 

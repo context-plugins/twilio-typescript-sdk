@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** The HTTP method used to invoke the webhook URL. */
 export const Method11 = {
   Post: "POST",
   Get: "GET",

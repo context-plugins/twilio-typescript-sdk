@@ -2,26 +2,45 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type FlexV1InsightsSegments = {
+  /** To unique id of the segment */
   segmentId?: string | null;
+  /** The unique id for the conversation. */
   externalId?: string | null;
   queue?: string | null;
   externalContact?: string | null;
+  /** The uuid for the external_segment_link. */
   externalSegmentLinkId?: string | null;
+  /** The date of the conversation. */
   date?: string | null;
+  /** The unique id for the account. */
   accountId?: string | null;
+  /** The hyperlink to recording of the task event. */
   externalSegmentLink?: string | null;
+  /** The unique id for the agent. */
   agentId?: string | null;
+  /** The phone number of the agent. */
   agentPhone?: string | null;
+  /** The name of the agent. */
   agentName?: string | null;
+  /** The team name to which agent belongs. */
   agentTeamName?: string | null;
+  /** he team name to which agent belongs. */
   agentTeamNameInHierarchy?: string | null;
+  /** The link to the agent conversation. */
   agentLink?: string | null;
+  /** The phone number of the customer. */
   customerPhone?: string | null;
+  /** The name of the customer. */
   customerName?: string | null;
+  /** The link to the customer conversation. */
   customerLink?: string | null;
+  /** The offset value for the recording. */
   segmentRecordingOffset?: string | null;
+  /** The media identifiers of the conversation. */
   media?: Record<string, unknown> | null;
+  /** The type of the assessment. */
   assessmentType?: Record<string, unknown> | null;
+  /** The percentage scored on the Assessments. */
   assessmentPercentage?: Record<string, unknown> | null;
   url?: string | null;
 };

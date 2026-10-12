@@ -2,6 +2,10 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type NumbersV1CreateEmbeddedSessionRequest = {
+  /**
+   * Theme ID for the Compliance Embeddable UI. Overrides the theme set during registration
+   * creation.
+   */
   themeSetId?: string;
 };
 

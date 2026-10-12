@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** Describe how a user opts-in to text messages. */
 export const ComplianceTollfreeInquiryEnumOptInType = {
   Verbal: "VERBAL",
   WebForm: "WEB_FORM",

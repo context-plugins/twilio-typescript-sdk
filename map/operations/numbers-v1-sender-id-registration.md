@@ -4,7 +4,7 @@
 
 Accessor: `client.numbersV1SenderIdRegistration` · Source: `src/resources/numbers-v1-sender-id-registration.ts` · 1 operation · Request and error types: namespace `NumbersV1SenderIdRegistration`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createSenderIdRegistration
 
@@ -13,8 +13,9 @@ Accessor: `client.numbersV1SenderIdRegistration` · Source: `src/resources/numbe
 - **Wire**: `POST /v1/SenderIdRegistrations`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/json` — the `body` field
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `NumbersV1CreateEmbeddedRegistrationResponse`
-- **Error**: `NumbersV1SenderIdRegistration.CreateSenderIdRegistrationError` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `TwilioSdkError` with `kind: "api"`, an instance of `NumbersV1SenderIdRegistration.CreateSenderIdRegistrationError` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"accountsCallsRecordingsSidJson201041408Error1"` [400] `AccountsCallsRecordingsSidJson201041408Error1` · `"accountsCallsRecordingsSidJson201041408Error12"` [500] `AccountsCallsRecordingsSidJson201041408Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `NumbersV1SenderIdRegistration.CreateSenderIdRegistrationRequest` (1):

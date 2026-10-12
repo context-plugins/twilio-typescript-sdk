@@ -1,8 +1,8 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
 import * as s from "../core/validation/index.js";
 import {
   listInboundPhoneNumbersReportsSchema,
@@ -21,26 +21,41 @@ export class InsightsV1GetInboundPhoneNumbersReport {
     this.#auth = auth;
   }
 
+  /**
+   * List Inbound Phone Numbers Level Reports
+   *
+   * @remarks
+   * Get Inbound Phone Numbers Level Reports for the given Report Id.
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   listInboundPhoneNumbersReport(
     request: InsightsV1GetInboundPhoneNumbersReport.ListInboundPhoneNumbersReportRequest,
     options?: RequestOptions,
-  ): ApiPromise<ListInboundPhoneNumbersReports, ResponseError> {
-    return this.#rawClient.execute<ListInboundPhoneNumbersReports, ResponseError>(
+  ): ApiPromise<ListInboundPhoneNumbersReports, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default14("/v2/Voice/Reports/PhoneNumbers/Inbound/{reportId}"),
+        urlTemplate: this.#servers.default14("/v2/Voice/Reports/PhoneNumbers/Inbound/{reportId}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "reportId", value: request.reportId, schema: s.string() }],
         query: [
-          { name: "PageSize", value: request.pageSize, schema: s.optional(s.number()) },
-          { name: "Page", value: request.page, schema: s.optional(s.number()) },
+          { name: "PageSize", value: request.pageSize, schema: s.optional(s.int()) },
+          { name: "Page", value: request.page, schema: s.optional(s.int()) },
           { name: "PageToken", value: request.pageToken, schema: s.optional(s.string()) },
         ],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: listInboundPhoneNumbersReportsSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -49,9 +64,13 @@ export class InsightsV1GetInboundPhoneNumbersReport {
 
 export namespace InsightsV1GetInboundPhoneNumbersReport {
   export type ListInboundPhoneNumbersReportRequest = {
+    /** A unique Report Id. */
     reportId: string;
+    /** How many resources to return in each list page. */
     pageSize?: number;
+    /** The page index. This value is simply for client state. */
     page?: number;
+    /** The page token. This is provided by the API. */
     pageToken?: string;
   };
 }

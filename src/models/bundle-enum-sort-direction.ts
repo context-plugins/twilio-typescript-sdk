@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** Sort order direction, ascending or descending */
 export const BundleEnumSortDirection = {
   Asc: "ASC",
   Desc: "DESC",

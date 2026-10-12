@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import { listSyncListResponseSchema, type ListSyncListResponse } from "../models/list-sync-list-response.js";
 import {
@@ -22,128 +23,192 @@ export class SyncV1SyncList {
     this.#auth = auth;
   }
 
+  /**
+   * Sync list objects
+   *
+   * @returns Created
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   createSyncList(
     request: SyncV1SyncList.CreateSyncListRequest,
     options?: RequestOptions,
-  ): ApiPromise<SyncV1ServiceSyncList, ResponseError> {
-    return this.#rawClient.execute<SyncV1ServiceSyncList, ResponseError>(
+  ): ApiPromise<SyncV1ServiceSyncList, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default12("/v1/Services/{ServiceSid}/Lists"),
+        urlTemplate: this.#servers.default12("/v1/Services/{ServiceSid}/Lists"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "ServiceSid", value: request.serviceSid, schema: s.string() }],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: {
           kind: "formUrlEncoded",
           value: [
             { name: "UniqueName", value: request.uniqueName, schema: s.optional(s.string()) },
-            { name: "Ttl", value: request.ttl, schema: s.optional(s.number()) },
-            { name: "CollectionTtl", value: request.collectionTtl, schema: s.optional(s.number()) },
+            { name: "Ttl", value: request.ttl, schema: s.optional(s.int()) },
+            { name: "CollectionTtl", value: request.collectionTtl, schema: s.optional(s.int()) },
           ],
         },
       },
       {
         success: { kind: "json", schema: syncV1ServiceSyncListSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Sync list objects
+   *
+   * @returns The resource was deleted successfully.
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   deleteSyncList(
     request: SyncV1SyncList.DeleteSyncListRequest,
     options?: RequestOptions,
-  ): ApiPromise<undefined, ResponseError> {
-    return this.#rawClient.execute<undefined, ResponseError>(
+  ): ApiPromise<undefined, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "DELETE",
-        url: this.#servers.default12("/v1/Services/{ServiceSid}/Lists/{Sid}"),
+        urlTemplate: this.#servers.default12("/v1/Services/{ServiceSid}/Lists/{Sid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           { name: "ServiceSid", value: request.serviceSid, schema: s.string() },
           { name: "Sid", value: request.sid, schema: s.string() },
         ],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: { kind: "empty" },
       },
       {
         success: { kind: "empty" },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Sync list objects
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   fetchSyncList(
     request: SyncV1SyncList.FetchSyncListRequest,
     options?: RequestOptions,
-  ): ApiPromise<SyncV1ServiceSyncList, ResponseError> {
-    return this.#rawClient.execute<SyncV1ServiceSyncList, ResponseError>(
+  ): ApiPromise<SyncV1ServiceSyncList, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default12("/v1/Services/{ServiceSid}/Lists/{Sid}"),
+        urlTemplate: this.#servers.default12("/v1/Services/{ServiceSid}/Lists/{Sid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           { name: "ServiceSid", value: request.serviceSid, schema: s.string() },
           { name: "Sid", value: request.sid, schema: s.string() },
         ],
+        query: [],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: syncV1ServiceSyncListSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Sync list objects
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   listSyncList(
     request: SyncV1SyncList.ListSyncListRequest,
     options?: RequestOptions,
-  ): ApiPromise<ListSyncListResponse, ResponseError> {
-    return this.#rawClient.execute<ListSyncListResponse, ResponseError>(
+  ): ApiPromise<ListSyncListResponse, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "GET",
-        url: this.#servers.default12("/v1/Services/{ServiceSid}/Lists"),
+        urlTemplate: this.#servers.default12("/v1/Services/{ServiceSid}/Lists"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [{ name: "ServiceSid", value: request.serviceSid, schema: s.string() }],
         query: [
-          { name: "PageSize", value: request.pageSize, schema: s.optional(s.number()) },
-          { name: "Page", value: request.page, schema: s.optional(s.number()) },
+          { name: "PageSize", value: request.pageSize, schema: s.optional(s.int()) },
+          { name: "Page", value: request.page, schema: s.optional(s.int()) },
           { name: "PageToken", value: request.pageToken, schema: s.optional(s.string()) },
         ],
+        headers: [],
         body: { kind: "empty" },
       },
       {
         success: { kind: "json", schema: listSyncListResponseSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
   }
 
+  /**
+   * Sync list objects
+   *
+   * @returns OK
+   *
+   * @throws {@link ApiError} when the API answers with an error status
+   *
+   * @throws {@link TwilioSdkError} when no usable response was produced: a connection failure, a
+   * timeout, a body that would not decode, a value that would not encode, or a credential that
+   * could not be obtained
+   */
   updateSyncList(
     request: SyncV1SyncList.UpdateSyncListRequest,
     options?: RequestOptions,
-  ): ApiPromise<SyncV1ServiceSyncList, ResponseError> {
-    return this.#rawClient.execute<SyncV1ServiceSyncList, ResponseError>(
+  ): ApiPromise<SyncV1ServiceSyncList, ApiError> {
+    return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default12("/v1/Services/{ServiceSid}/Lists/{Sid}"),
+        urlTemplate: this.#servers.default12("/v1/Services/{ServiceSid}/Lists/{Sid}"),
         auth: this.#auth.accountSidAuthToken,
         pathParams: [
           { name: "ServiceSid", value: request.serviceSid, schema: s.string() },
           { name: "Sid", value: request.sid, schema: s.string() },
         ],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: {
           kind: "formUrlEncoded",
           value: [
-            { name: "Ttl", value: request.ttl, schema: s.optional(s.number()) },
-            { name: "CollectionTtl", value: request.collectionTtl, schema: s.optional(s.number()) },
+            { name: "Ttl", value: request.ttl, schema: s.optional(s.int()) },
+            { name: "CollectionTtl", value: request.collectionTtl, schema: s.optional(s.int()) },
           ],
         },
       },
       {
         success: { kind: "json", schema: syncV1ServiceSyncListSchema },
-        errorFactory: ResponseError,
+        errorFactory: ApiError,
       },
       options,
     );
@@ -152,33 +217,85 @@ export class SyncV1SyncList {
 
 export namespace SyncV1SyncList {
   export type CreateSyncListRequest = {
+    /**
+     * The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) to create the new
+     * Sync List in.
+     */
     serviceSid: string;
+    /**
+     * An application-defined string that uniquely identifies the resource. This value must be
+     * unique within its Service and it can be up to 320 characters long. The `unique_name` value
+     * can be used as an alternative to the `sid` in the URL path to address the resource.
+     */
     uniqueName?: string;
+    /** Alias for collection_ttl. If both are provided, this value is ignored. */
     ttl?: number;
+    /**
+     * How long, [in seconds](https://www.twilio.com/docs/sync/limits#sync-payload-limits), before
+     * the Sync List expires (time-to-live) and is deleted.
+     */
     collectionTtl?: number;
   };
 
   export type DeleteSyncListRequest = {
+    /**
+     * The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync
+     * List resource to delete.
+     */
     serviceSid: string;
+    /**
+     * The SID of the Sync List resource to delete. Can be the Sync List resource's `sid` or its
+     * `unique_name`.
+     */
     sid: string;
   };
 
   export type FetchSyncListRequest = {
+    /**
+     * The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync
+     * List resource to fetch.
+     */
     serviceSid: string;
+    /**
+     * The SID of the Sync List resource to fetch. Can be the Sync List resource's `sid` or its
+     * `unique_name`.
+     */
     sid: string;
   };
 
   export type ListSyncListRequest = {
+    /**
+     * The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync
+     * List resources to read.
+     */
     serviceSid: string;
+    /**
+     * How many resources to return in each list page. The default is 50, and the maximum is 100.
+     */
     pageSize?: number;
+    /** The page index. This value is simply for client state. */
     page?: number;
+    /** The page token. This is provided by the API. */
     pageToken?: string;
   };
 
   export type UpdateSyncListRequest = {
+    /**
+     * The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) with the Sync
+     * List resource to update.
+     */
     serviceSid: string;
+    /**
+     * The SID of the Sync List resource to update. Can be the Sync List resource's `sid` or its
+     * `unique_name`.
+     */
     sid: string;
+    /** An alias for `collection_ttl`. If both are provided, this value is ignored. */
     ttl?: number;
+    /**
+     * How long, [in seconds](https://www.twilio.com/docs/sync/limits#sync-payload-limits), before
+     * the Sync List expires (time-to-live) and is deleted.
+     */
     collectionTtl?: number;
   };
 }

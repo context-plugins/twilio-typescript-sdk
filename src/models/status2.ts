@@ -1,6 +1,7 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/** Status of the Sender ID Registration Application */
 export const Status2 = {
   Draft: "DRAFT",
   PendingReview: "PENDING_REVIEW",

@@ -4,16 +4,17 @@
 
 Accessor: `client.api20100401IncomingPhoneNumberTollFree` · Source: `src/resources/api20100401-incoming-phone-number-toll-free.ts` · 2 operations · Request types: namespace `Api20100401IncomingPhoneNumberTollFree`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createIncomingPhoneNumberTollFree
 
-- **Signature**: `createIncomingPhoneNumberTollFree(request: Api20100401IncomingPhoneNumberTollFree.CreateIncomingPhoneNumberTollFreeRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFree, ResponseError>`
+- **Signature**: `createIncomingPhoneNumberTollFree(request: Api20100401IncomingPhoneNumberTollFree.CreateIncomingPhoneNumberTollFreeRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFree, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/TollFree.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberTollFree`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401IncomingPhoneNumberTollFree.CreateIncomingPhoneNumberTollFreeRequest` (24):
 
@@ -57,12 +58,12 @@ Accessor: `client.api20100401IncomingPhoneNumberTollFree` · Source: `src/resour
 
 ### listIncomingPhoneNumberTollFree
 
-- **Signature**: `listIncomingPhoneNumberTollFree(request: Api20100401IncomingPhoneNumberTollFree.ListIncomingPhoneNumberTollFreeRequest, options?: RequestOptions): ApiPromise<ListIncomingPhoneNumberTollFreeResponse, ResponseError>`
+- **Signature**: `listIncomingPhoneNumberTollFree(request: Api20100401IncomingPhoneNumberTollFree.ListIncomingPhoneNumberTollFreeRequest, options?: RequestOptions): ApiPromise<ListIncomingPhoneNumberTollFreeResponse, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/TollFree.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListIncomingPhoneNumberTollFreeResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401IncomingPhoneNumberTollFree.ListIncomingPhoneNumberTollFreeRequest` (8):
 

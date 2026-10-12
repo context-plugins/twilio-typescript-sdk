@@ -4,16 +4,17 @@
 
 Accessor: `client.api20100401Domain` · Source: `src/resources/api20100401-domain.ts` · 5 operations · Request types: namespace `Api20100401Domain`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createSipDomain
 
-- **Signature**: `createSipDomain(request: Api20100401Domain.CreateSipDomainRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountSipSipDomain, ResponseError>`
+- **Signature**: `createSipDomain(request: Api20100401Domain.CreateSipDomainRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountSipSipDomain, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/SIP/Domains.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountSipSipDomain`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Domain.CreateSipDomainRequest` (14):
 
@@ -43,12 +44,13 @@ Accessor: `client.api20100401Domain` · Source: `src/resources/api20100401-domai
 
 ### deleteSipDomain
 
-- **Signature**: `deleteSipDomain(request: Api20100401Domain.DeleteSipDomainRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteSipDomain(request: Api20100401Domain.DeleteSipDomainRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /2010-04-01/Accounts/{AccountSid}/SIP/Domains/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Domain.DeleteSipDomainRequest` (2):
 
@@ -59,12 +61,12 @@ Accessor: `client.api20100401Domain` · Source: `src/resources/api20100401-domai
 
 ### fetchSipDomain
 
-- **Signature**: `fetchSipDomain(request: Api20100401Domain.FetchSipDomainRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountSipSipDomain, ResponseError>`
+- **Signature**: `fetchSipDomain(request: Api20100401Domain.FetchSipDomainRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountSipSipDomain, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/SIP/Domains/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ApiV2010AccountSipSipDomain`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Domain.FetchSipDomainRequest` (2):
 
@@ -79,12 +81,12 @@ Accessor: `client.api20100401Domain` · Source: `src/resources/api20100401-domai
 
 ### listSipDomain
 
-- **Signature**: `listSipDomain(request: Api20100401Domain.ListSipDomainRequest, options?: RequestOptions): ApiPromise<ListSipDomainResponse, ResponseError>`
+- **Signature**: `listSipDomain(request: Api20100401Domain.ListSipDomainRequest, options?: RequestOptions): ApiPromise<ListSipDomainResponse, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/SIP/Domains.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListSipDomainResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Domain.ListSipDomainRequest` (4):
 
@@ -101,12 +103,13 @@ Accessor: `client.api20100401Domain` · Source: `src/resources/api20100401-domai
 
 ### updateSipDomain
 
-- **Signature**: `updateSipDomain(request: Api20100401Domain.UpdateSipDomainRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountSipSipDomain, ResponseError>`
+- **Signature**: `updateSipDomain(request: Api20100401Domain.UpdateSipDomainRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountSipSipDomain, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/SIP/Domains/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountSipSipDomain`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401Domain.UpdateSipDomainRequest` (15):
 

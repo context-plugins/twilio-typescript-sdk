@@ -1,6 +1,11 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * The status of the hosted number order. Can be: `twilio-processing`, `received`,
+ * `pending-verification`, `verified`, `pending-loa`, `carrier-processing`, `testing`, `completed`,
+ * `failed`, or `action-required`.
+ */
 export const HostedNumberOrderEnumStatus = {
   TwilioProcessing: "twilio-processing",
   Received: "received",

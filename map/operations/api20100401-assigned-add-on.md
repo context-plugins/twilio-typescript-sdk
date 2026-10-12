@@ -4,16 +4,17 @@
 
 Accessor: `client.api20100401AssignedAddOn` · Source: `src/resources/api20100401-assigned-add-on.ts` · 4 operations · Request types: namespace `Api20100401AssignedAddOn`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createIncomingPhoneNumberAssignedAddOn
 
-- **Signature**: `createIncomingPhoneNumberAssignedAddOn(request: Api20100401AssignedAddOn.CreateIncomingPhoneNumberAssignedAddOnRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOn, ResponseError>`
+- **Signature**: `createIncomingPhoneNumberAssignedAddOn(request: Api20100401AssignedAddOn.CreateIncomingPhoneNumberAssignedAddOnRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOn, ApiError>`
 - **Wire**: `POST /2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/x-www-form-urlencoded;charset=UTF-8` — every field marked `form`
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOn`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401AssignedAddOn.CreateIncomingPhoneNumberAssignedAddOnRequest` (3):
 
@@ -29,12 +30,13 @@ Accessor: `client.api20100401AssignedAddOn` · Source: `src/resources/api2010040
 
 ### deleteIncomingPhoneNumberAssignedAddOn
 
-- **Signature**: `deleteIncomingPhoneNumberAssignedAddOn(request: Api20100401AssignedAddOn.DeleteIncomingPhoneNumberAssignedAddOnRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteIncomingPhoneNumberAssignedAddOn(request: Api20100401AssignedAddOn.DeleteIncomingPhoneNumberAssignedAddOnRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401AssignedAddOn.DeleteIncomingPhoneNumberAssignedAddOnRequest` (3):
 
@@ -46,12 +48,12 @@ Accessor: `client.api20100401AssignedAddOn` · Source: `src/resources/api2010040
 
 ### fetchIncomingPhoneNumberAssignedAddOn
 
-- **Signature**: `fetchIncomingPhoneNumberAssignedAddOn(request: Api20100401AssignedAddOn.FetchIncomingPhoneNumberAssignedAddOnRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOn, ResponseError>`
+- **Signature**: `fetchIncomingPhoneNumberAssignedAddOn(request: Api20100401AssignedAddOn.FetchIncomingPhoneNumberAssignedAddOnRequest, options?: RequestOptions): ApiPromise<ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOn, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns/{Sid}.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOn`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401AssignedAddOn.FetchIncomingPhoneNumberAssignedAddOnRequest` (3):
 
@@ -67,12 +69,12 @@ Accessor: `client.api20100401AssignedAddOn` · Source: `src/resources/api2010040
 
 ### listIncomingPhoneNumberAssignedAddOn
 
-- **Signature**: `listIncomingPhoneNumberAssignedAddOn(request: Api20100401AssignedAddOn.ListIncomingPhoneNumberAssignedAddOnRequest, options?: RequestOptions): ApiPromise<ListIncomingPhoneNumberAssignedAddOnResponse, ResponseError>`
+- **Signature**: `listIncomingPhoneNumberAssignedAddOn(request: Api20100401AssignedAddOn.ListIncomingPhoneNumberAssignedAddOnRequest, options?: RequestOptions): ApiPromise<ListIncomingPhoneNumberAssignedAddOnResponse, ApiError>`
 - **Wire**: `GET /2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns.json`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListIncomingPhoneNumberAssignedAddOnResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `Api20100401AssignedAddOn.ListIncomingPhoneNumberAssignedAddOnRequest` (5):
 

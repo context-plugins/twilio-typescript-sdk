@@ -4,17 +4,17 @@
 
 Accessor: `client.studioV1StepContext` · Source: `src/resources/studio-v1-step-context.ts` · 1 operation · Request types: namespace `StudioV1StepContext`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### fetchStepContext
 
 - **Server**: `default11` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchStepContext(request: StudioV1StepContext.FetchStepContextRequest, options?: RequestOptions): ApiPromise<StudioV1FlowEngagementStepStepContext, ResponseError>`
+- **Signature**: `fetchStepContext(request: StudioV1StepContext.FetchStepContextRequest, options?: RequestOptions): ApiPromise<StudioV1FlowEngagementStepStepContext, ApiError>`
 - **Wire**: `GET /v1/Flows/{FlowSid}/Engagements/{EngagementSid}/Steps/{StepSid}/Context`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `StudioV1FlowEngagementStepStepContext`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `StudioV1StepContext.FetchStepContextRequest` (3):
 

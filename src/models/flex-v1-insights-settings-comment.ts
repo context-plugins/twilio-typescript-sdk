@@ -2,6 +2,10 @@ import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
 export type FlexV1InsightsSettingsComment = {
+  /**
+   * The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Flex
+   * Insights resource and owns this resource.
+   */
   accountSid?: string | null;
   comments?: Record<string, unknown> | null;
   url?: string | null;

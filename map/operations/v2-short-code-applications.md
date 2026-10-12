@@ -4,17 +4,18 @@
 
 Accessor: `client.v2ShortCodeApplications` · Source: `src/resources/v2-short-code-applications.ts` · 3 operations · Request types: namespace `V2ShortCodeApplications`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### createShortCodeApplication
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `createShortCodeApplication(request: V2ShortCodeApplications.CreateShortCodeApplicationRequestParams, options?: RequestOptions): ApiPromise<CreateShortCodeApplicationResponse, ResponseError>`
+- **Signature**: `createShortCodeApplication(request: V2ShortCodeApplications.CreateShortCodeApplicationRequestParams, options?: RequestOptions): ApiPromise<CreateShortCodeApplicationResponse, ApiError>`
 - **Wire**: `POST /v2/ShortCodes/Applications`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: `application/json` — the `body` field
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `CreateShortCodeApplicationResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `V2ShortCodeApplications.CreateShortCodeApplicationRequestParams` (1):
 
@@ -30,12 +31,12 @@ Accessor: `client.v2ShortCodeApplications` · Source: `src/resources/v2-short-co
 ### fetchShortCodeApplication
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchShortCodeApplication(request: V2ShortCodeApplications.FetchShortCodeApplicationRequest, options?: RequestOptions): ApiPromise<ShortCodeApplication, ResponseError>`
+- **Signature**: `fetchShortCodeApplication(request: V2ShortCodeApplications.FetchShortCodeApplicationRequest, options?: RequestOptions): ApiPromise<ShortCodeApplication, ApiError>`
 - **Wire**: `GET /v2/ShortCodes/Applications/{sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ShortCodeApplication`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `V2ShortCodeApplications.FetchShortCodeApplicationRequest` (1):
 
@@ -50,12 +51,12 @@ Accessor: `client.v2ShortCodeApplications` · Source: `src/resources/v2-short-co
 ### listShortCodeApplications
 
 - **Server**: `default5` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listShortCodeApplications(request: V2ShortCodeApplications.ListShortCodeApplicationsRequest, options?: RequestOptions): ApiPromise<ShortCodeApplicationResponsePage, ResponseError>`
+- **Signature**: `listShortCodeApplications(request: V2ShortCodeApplications.ListShortCodeApplicationsRequest, options?: RequestOptions): ApiPromise<ShortCodeApplicationResponsePage, ApiError>`
 - **Wire**: `GET /v2/ShortCodes/Applications`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ShortCodeApplicationResponsePage`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `V2ShortCodeApplications.ListShortCodeApplicationsRequest` (7):
 

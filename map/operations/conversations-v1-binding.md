@@ -4,17 +4,18 @@
 
 Accessor: `client.conversationsV1Binding` · Source: `src/resources/conversations-v1-binding.ts` · 3 operations · Request types: namespace `ConversationsV1Binding`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `twilio-sdk`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### deleteServiceBinding
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `deleteServiceBinding(request: ConversationsV1Binding.DeleteServiceBindingRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `deleteServiceBinding(request: ConversationsV1Binding.DeleteServiceBindingRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `DELETE /v1/Services/{ChatServiceSid}/Bindings/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1Binding.DeleteServiceBindingRequest` (2):
 
@@ -26,12 +27,12 @@ Accessor: `client.conversationsV1Binding` · Source: `src/resources/conversation
 ### fetchServiceBinding
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `fetchServiceBinding(request: ConversationsV1Binding.FetchServiceBindingRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceBinding, ResponseError>`
+- **Signature**: `fetchServiceBinding(request: ConversationsV1Binding.FetchServiceBindingRequest, options?: RequestOptions): ApiPromise<ConversationsV1ServiceServiceBinding, ApiError>`
 - **Wire**: `GET /v1/Services/{ChatServiceSid}/Bindings/{Sid}`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ConversationsV1ServiceServiceBinding`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1Binding.FetchServiceBindingRequest` (2):
 
@@ -47,12 +48,12 @@ Accessor: `client.conversationsV1Binding` · Source: `src/resources/conversation
 ### listServiceBinding
 
 - **Server**: `default7` — not the `default` group; see Servers & auth in sdk-map.md
-- **Signature**: `listServiceBinding(request: ConversationsV1Binding.ListServiceBindingRequest, options?: RequestOptions): ApiPromise<ListServiceBindingResponse, ResponseError>`
+- **Signature**: `listServiceBinding(request: ConversationsV1Binding.ListServiceBindingRequest, options?: RequestOptions): ApiPromise<ListServiceBindingResponse, ApiError>`
 - **Wire**: `GET /v1/Services/{ChatServiceSid}/Bindings`
 - **Auth**: `accountSidAuthToken`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `ListServiceBindingResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `TwilioSdkError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `ConversationsV1Binding.ListServiceBindingRequest` (6):
 
